@@ -1,0 +1,17 @@
+{
+	"codes": [
+		["A25", "7ED"],
+		["LEB", "LEG", "TMP", "STH"],
+		["MIR", "VIS"],
+		["KTK", "DTK", "FRF", "KLD", "AER", "AKH", "HOU", "XLN", "RIX"],
+		["EXP", "MPS", "MPS_AKH"]
+	],
+	"names":
+	[
+		["Masters 25", "Seventh Edition"],
+		["Beta", "Legends", "Tempest", "Stronghold"],
+		["Mirage", "Visions"],
+		["Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan"],
+		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations"]
+	]
+}

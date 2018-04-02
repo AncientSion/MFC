@@ -1,0 +1,42 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+.container {
+	display: inline-block;
+	position: relative;
+	width: 48%;
+	margin-right: 20px;
+	height: 340px;
+}
+
+.mainContainer {
+	height: 750px;
+	width: 1400px;
+	padding: 5px;
+}
+
+.border {
+	border: 1px solid white;
+}
+
+#cardName {
+	color: red;
+	float: right;
+	text-align: center;
+	margin-left: 350px;
+	font-size: 30px;
+}
+
+.ui {
+	position: absolute;
+	top: 365px;
+}
+
+canvas {
+}
+
+div > input {
+	font-size: 24px;
+}
