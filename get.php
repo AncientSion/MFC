@@ -24,9 +24,12 @@ echo "Script Execution Started \n";
 
 //getFullFoilSets($date, $context, $data[0]);
 //getFullNonFoilSets($date, $context, $data[1]);
-getNotCommonNotFoilSets($date, $context, $data[2]);
-getStandSets($date, $context, $data[3]);
+//getNotCommonNotFoilSets($date, $context, $data[2]);
+getStandSets($date, $context, array("MBS"));
+//getStandSets($date, $context, $data[3]);
 //getMPSSets($date, $context, $data[3]);
+
+
 
 $time += microtime(true);
 echo "Script Execution Completed; TIME:".round($time/60, 2)." minutes.";
