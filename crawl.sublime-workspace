@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"json",
+				"json_encode"
+			],
+			[
+				"getCard",
+				"getCardDataSet"
+			],
+			[
 				"foilP",
 				"foilPrice"
 			],
@@ -506,24 +514,16 @@
 			[
 				"geu",
 				"getUnitById"
-			],
-			[
-				"getUnt",
-				"getUnitById"
-			],
-			[
-				"order",
-				"ordered"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "get.php",
+			"file": "crawl.php",
 			"settings":
 			{
-				"buffer_size": 9945,
+				"buffer_size": 9996,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +541,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 2659,
+				"buffer_size": 5120,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -556,19 +556,28 @@
 			}
 		},
 		{
+			"file": "output/cardlist.json",
+			"settings":
+			{
+				"buffer_size": 232454,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "input/sets.json",
 			"settings":
 			{
-				"buffer_size": 538,
+				"buffer_size": 617,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "output/cardlist.json",
+			"file": "input/A25.json",
 			"settings":
 			{
-				"buffer_size": 206323,
+				"buffer_size": 199594,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -576,9 +585,9 @@
 			"file": "output/A25.json",
 			"settings":
 			{
-				"buffer_size": 158380,
+				"buffer_size": 28,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -789,6 +798,7 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/crawl/writeCardList.php",
 		"/C/xampp/htdocs/crawl/input/VIS.json",
 		"/C/xampp/htdocs/crawl/output/RIX.json",
 		"/C/xampp/htdocs/crawl/output/AKH.json",
@@ -915,12 +925,11 @@
 		"/C/xampp/htdocs/fire/server/ships/Haven.php",
 		"/C/xampp/htdocs/fire/server/volley.php",
 		"/C/xampp/htdocs/fire/server/systems/weapons/ballistic.php",
-		"/C/xampp/htdocs/fire/dbManager.php",
-		"/C/xampp/htdocs/fire/manager.php"
+		"/C/xampp/htdocs/fire/dbManager.php"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -1062,6 +1071,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"content",
 			"rds[$j][\"name\"].\", \".$ca",
 			"ds[$j][\"name\"]",
 			"$get",
@@ -1188,8 +1198,7 @@
 			"of 9",
 			"space",
 			"ject.create(W",
-			"getReqString",
-			"DmgCalc::doDm"
+			"getReqString"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1335,24 +1344,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "get.php",
+					"file": "crawl.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9945,
+						"buffer_size": 9996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2946,
-								2946
+								9962,
+								9966
 							]
 						],
 						"settings":
@@ -1420,10 +1429,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1458.0,
+						"translation.y": 3977.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1439,8 +1448,8 @@
 						"selection":
 						[
 							[
-								154,
-								154
+								204,
+								205
 							]
 						],
 						"settings":
@@ -1504,13 +1513,14 @@
 								"bh_tag_close",
 								"bh_tag_content"
 							],
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1519,15 +1529,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2659,
+						"buffer_size": 5120,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2160,
-								2160
+								1415,
+								1415
 							]
 						],
 						"settings":
@@ -1595,16 +1605,16 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1638.0,
+						"translation.y": 427.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 9,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1620,8 +1630,8 @@
 						"selection":
 						[
 							[
-								1195,
-								1195
+								149,
+								149
 							]
 						],
 						"settings":
@@ -1689,27 +1699,114 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 813.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "input/sets.json",
+					"file": "output/cardlist.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 538,
+						"buffer_size": 232454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								176,
-								176
+								232454,
+								232454
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 1625992.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "input/sets.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								31,
+								31
 							]
 						],
 						"settings":
@@ -1780,111 +1877,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "output/cardlist.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 206323,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								67962,
-								67962
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 542711.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "output/A25.json",
+					"file": "input/A25.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 158380,
+						"buffer_size": 199594,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								130588,
-								130588
+								125,
+								125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "output/A25.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
 							]
 						],
 						"settings":
@@ -1954,11 +1994,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "output/7ED.json",
 					"semi_transient": false,
 					"settings":
@@ -1970,8 +2010,8 @@
 						"selection":
 						[
 							[
-								70251,
-								70251
+								35,
+								35
 							]
 						],
 						"settings":
@@ -2041,11 +2081,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "output/KTK.json",
 					"semi_transient": false,
 					"settings":
@@ -2069,11 +2109,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "output/LEB.json",
 					"semi_transient": false,
 					"settings":
@@ -2097,11 +2137,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "output/LEG.json",
 					"semi_transient": false,
 					"settings":
@@ -2125,11 +2165,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "output/MIR.json",
 					"semi_transient": false,
 					"settings":
@@ -2212,11 +2252,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "output/VIS.json",
 					"semi_transient": false,
 					"settings":
@@ -2299,11 +2339,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "output/TMP.json",
 					"semi_transient": false,
 					"settings":
@@ -2327,11 +2367,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "output/MPS.json",
 					"semi_transient": false,
 					"settings":
@@ -2355,11 +2395,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "output/EXP.json",
 					"semi_transient": false,
 					"settings":
@@ -2383,11 +2423,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "output/STH.json",
 					"semi_transient": false,
 					"settings":
@@ -2411,11 +2451,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "output/DTK.json",
 					"semi_transient": false,
 					"settings":
@@ -2439,11 +2479,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "output/FRF.json",
 					"semi_transient": false,
 					"settings":
@@ -2467,11 +2507,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "output/KLD.json",
 					"semi_transient": false,
 					"settings":
@@ -2495,11 +2535,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "output/AER.json",
 					"semi_transient": false,
 					"settings":
@@ -2523,11 +2563,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "output/HOU.json",
 					"semi_transient": false,
 					"settings":
@@ -2551,11 +2591,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "output/XLN.json",
 					"semi_transient": false,
 					"settings":
@@ -2575,15 +2615,15 @@
 						{
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
-						"translation.x": 134935.0,
+						"translation.x": 118999.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "output/AKH.json",
 					"semi_transient": false,
 					"settings":
@@ -2603,15 +2643,15 @@
 						{
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
-						"translation.x": 120871.0,
+						"translation.x": 106728.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "output/RIX.json",
 					"semi_transient": false,
 					"settings":
@@ -2631,11 +2671,11 @@
 						{
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
-						"translation.x": 103516.0,
+						"translation.x": 91601.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 23,
 					"type": "text"
 				}
 			]
@@ -2669,7 +2709,7 @@
 		"cols":
 		[
 			0.0,
-			0.432447247603,
+			0.517198440934,
 			1.0
 		],
 		"rows":
@@ -2696,6 +2736,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ind",
+				"C:\\xampp\\htdocs\\crawl\\index.php"
+			],
+			[
+				"crw",
+				"C:\\xampp\\htdocs\\crawl\\crawl.php"
+			],
 			[
 				"mi",
 				"C:\\xampp\\htdocs\\crawl\\output\\VIS.json"
@@ -2734,10 +2782,6 @@
 			],
 			[
 				"nd",
-				"C:\\xampp\\htdocs\\crawl\\index.php"
-			],
-			[
-				"ind",
 				"C:\\xampp\\htdocs\\crawl\\index.php"
 			],
 			[
@@ -3203,10 +3247,6 @@
 			[
 				"gae",
 				"C:\\xampp\\htdocs\\fire\\game.php"
-			],
-			[
-				"og",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\omega.php"
 			]
 		],
 		"width": 0.0
@@ -3237,7 +3277,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 140.0,
+	"side_bar_width": 126.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

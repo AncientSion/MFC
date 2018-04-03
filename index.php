@@ -1,29 +1,4 @@
 <?php
-
-	if (0){ // create new initial set data
-		$sets = file_get_contents(__DIR__."/input/sets.json");
-		$sets = json_decode($sets);
-
-		$data = array();
-
-		for ($i = 0; $i < sizeof($sets->codes); $i++){
-			for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
-				echo "adding set: ".$sets->codes[$i][$j]."\n";
-				$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
-
-				$set = array("code" => $json->code, "name" => $json->name, "cards" => array());
-				foreach ($json->cards as $card){
-					$set["cards"][] = array("name" => $card->name, "rarity" => $card->rarity);
-				}
-				$data[] = $set;
-			}
-		}
-
-		$file = fopen(__DIR__."/output/cardlist.json", "a");
-		fwrite($file, json_encode($data));
-		fclose($file);
-		return;
-	}
 	
 	if (isset($_GET["type"])){
 		if ($_GET["type"] == "cardList"){
@@ -55,6 +30,110 @@
 	}
 
 
+
+	if (1){
+		$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+		$codes = $sets["codes"];
+		$names = $sets["names"];
+
+
+		//for ($i = 0; $i < sizeof($codes); $i++){
+		//	for ($j = 0; $j < sizeof($codes[$i]); $j++){
+		for ($i = 0; $i < 1; $i++){
+			for ($j = 0; $j < 1; $j++){
+				$data = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE);
+
+				for ($k = 0; $k < sizeof($data["content"]); $k++){
+					for ($l = 0; $l < sizeof($data["content"][$k]["data"]); $l++){
+	if (!isset($data["content"][$k]["data"][$l]["baseAvail"])){echo "no baseAvail</br>"; $data["content"][$k]["data"][$l]["baseAvail"] = 0;}
+	if (!isset($data["content"][$k]["data"][$l]["basePrice"])){echo "no basePrice</br>"; $data["content"][$k]["data"][$l]["basePrice"] = 0;}
+	if (!isset($data["content"][$k]["data"][$l]["foilAvail"])){echo "no foilAvail</br>"; $data["content"][$k]["data"][$l]["foilAvail"] = 0;}
+	if (!isset($data["content"][$k]["data"][$l]["foilPrice"])){echo "no foilPrice</br>"; $data["content"][$k]["data"][$l]["foilPrice"] = 0;}
+					}
+				}
+
+				$file = fopen(__DIR__."/output/" . $codes[$i][$j] .".json", "r+");
+				fseek($file, 0);
+
+
+				fwrite($file, '{"code": "A25",');				
+				fwrite($file, "\n");
+				fwrite($file, '"content": [');
+				//fwrite($file, json_encode($data));
+				echo "WRTIE!";
+				fclose($file);
+			}
+		}
+
+		return;
+	}
+
+	
+
+	if (0){
+		$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+		$codes = $sets["codes"];
+		$names = $sets["names"];
+
+		$depth = 5;
+
+		//for ($i = 0; $i < sizeof($codes); $i++){
+			//for ($j = 0; $j < sizeof($codes[$i]); $j++){
+		for ($i = 0; $i < 1; $i++){
+			for ($j = 0; $j < 1; $j++){
+				$setName = $names[$i][$j];
+
+				$cards = json_decode(file_get_contents(__DIR__."/input/".$codes[$i][$j].".json"), TRUE)["cards"];
+				$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE)["content"];	
+
+
+				//for ($k = 0; $k < sizeof($cards); $k++){
+				for ($k = 0; $k < 3; $k++){
+					$name = $cards[$k]["name"];
+					$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
+
+					$cardData = array(
+						"name" => $name,
+						"baseAvail" => array($last["baseAvail"]),
+						"basePrice" => array($last["basePrice"]),
+						"foilAvail" => array($last["foilAvail"]),
+						"foilPrice" => array($last["foilPrice"]),
+					);
+
+					if (!$last){continue;}
+
+					for ($l = sizeof($points)-2; $l >= max(0, sizeof($points)-2 - $depth); $l--){
+						addCardDataSet($cardData, getCardDataSet($name, $points[$l]["data"]));
+					}
+
+					var_export($cardData);
+				}
+			}
+		}
+	}
+
+	function getCardDataSet($name, $data){
+		for ($i = 0; $i < sizeof($data); $i++){
+			if ($data[$i]["name"] == $name){
+				return $data[$i];
+			}
+		}
+		return false;
+	}
+
+	function addCardDataSet($data, $set){
+		$cardData["baseAvail"][] = $set["baseAvail"];
+		$cardData["basePrice"][] = $set["basePrice"];
+		$cardData["foilAvail"][] = $set["foilAvail"];
+		$cardData["foilPrice"][] = $set["foilPrice"];
+	}
+
+
+	function getMemory(){
+		$size = memory_get_usage(true);
+	    $unit=array('b','kb','mb','gb','tb','pb');
+	    echo (@round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i])."</br>";
+	}
 ?>
 
 
