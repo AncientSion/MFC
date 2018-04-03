@@ -31,36 +31,54 @@
 
 
 
-	if (1){
+	if (0){ // fix missing data
 		$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
 		$codes = $sets["codes"];
 		$names = $sets["names"];
 
 
-		//for ($i = 0; $i < sizeof($codes); $i++){
-		//	for ($j = 0; $j < sizeof($codes[$i]); $j++){
-		for ($i = 0; $i < 1; $i++){
-			for ($j = 0; $j < 1; $j++){
-				$data = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE);
+		for ($i = 0; $i < sizeof($codes); $i++){
+			for ($j = 0; $j < sizeof($codes[$i]); $j++){
+		//for ($i = 0; $i < 1; $i++){
+			//for ($j = 0; $j < 1; $j++){
 
-				for ($k = 0; $k < sizeof($data["content"]); $k++){
-					for ($l = 0; $l < sizeof($data["content"][$k]["data"]); $l++){
-	if (!isset($data["content"][$k]["data"][$l]["baseAvail"])){echo "no baseAvail</br>"; $data["content"][$k]["data"][$l]["baseAvail"] = 0;}
-	if (!isset($data["content"][$k]["data"][$l]["basePrice"])){echo "no basePrice</br>"; $data["content"][$k]["data"][$l]["basePrice"] = 0;}
-	if (!isset($data["content"][$k]["data"][$l]["foilAvail"])){echo "no foilAvail</br>"; $data["content"][$k]["data"][$l]["foilAvail"] = 0;}
-	if (!isset($data["content"][$k]["data"][$l]["foilPrice"])){echo "no foilPrice</br>"; $data["content"][$k]["data"][$l]["foilPrice"] = 0;}
-					}
-				}
+				echo "doing set: ".$names[$i][$j]."</br>";
+				$errorA = 0;
+				$errorB = 0;
+				$errorC = 0;
+				$errorD = 0;
 
 				$file = fopen(__DIR__."/output/" . $codes[$i][$j] .".json", "r+");
 				fseek($file, 0);
 
-
-				fwrite($file, '{"code": "A25",');				
+				fwrite($file, '{"code": "'.$codes[$i][$j].'",');
 				fwrite($file, "\n");
 				fwrite($file, '"content": [');
-				//fwrite($file, json_encode($data));
-				echo "WRTIE!";
+				fwrite($file, "\n");
+
+				//fclose($file);
+				//$file = fopen(__DIR__."/output/" . $codes[$i][$j] .".json", "a");
+
+				$data = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE);
+
+				for ($k = 0; $k < sizeof($data["content"]); $k++){
+					//echo "size: ".sizeof($data["content"][$k]["data"])."</br>";
+					for ($l = 0; $l < sizeof($data["content"][$k]["data"]); $l++){
+						if (!isset($data["content"][$k]["data"][$l]["baseAvail"])){$data["content"][$k]["data"][$l]["baseAvail"] = 0;$errorA++;}
+						if (!isset($data["content"][$k]["data"][$l]["basePrice"])){$data["content"][$k]["data"][$l]["basePrice"] = 0;$errorB++;}
+						if (!isset($data["content"][$k]["data"][$l]["foilAvail"])){$data["content"][$k]["data"][$l]["foilAvail"] = 0;$errorC++;}
+						if (!isset($data["content"][$k]["data"][$l]["foilPrice"])){$data["content"][$k]["data"][$l]["foilPrice"] = 0;$errorD++;}
+					}
+
+					fwrite($file, json_encode($data["content"][$k]));
+					fwrite($file, "\n");
+
+					if ($k < sizeof($data["content"])-1){
+						fwrite($file, ",");
+					} else fwrite($file, "]}");
+				}
+
+				echo "found errors: ".$errorA."/".$errorB."/".$errorC."/".$errorD."</br>";
 				fclose($file);
 			}
 		}
@@ -75,7 +93,13 @@
 		$codes = $sets["codes"];
 		$names = $sets["names"];
 
-		$depth = 5;
+		$depth = 3;
+		$foilPriceMin = 20;
+		echo "Checking MASTERS 25 card prices</br>";
+		echo "Delving: ".$depth." days of data.</br>";
+		echo "Searching: Rare</br>";
+		echo "Foil Price NOW > ".$foilPriceMin."</br>";
+		echo "</br></br>";
 
 		//for ($i = 0; $i < sizeof($codes); $i++){
 			//for ($j = 0; $j < sizeof($codes[$i]); $j++){
@@ -87,26 +111,40 @@
 				$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE)["content"];	
 
 
-				//for ($k = 0; $k < sizeof($cards); $k++){
-				for ($k = 0; $k < 3; $k++){
+				for ($k = 0; $k < sizeof($cards); $k++){
+					if ($cards[$k]["rarity"][0] == "C"){continue;}
+					if ($cards[$k]["rarity"][0] == "U"){continue;}
 					$name = $cards[$k]["name"];
 					$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
-
-					$cardData = array(
-						"name" => $name,
-						"baseAvail" => array($last["baseAvail"]),
-						"basePrice" => array($last["basePrice"]),
-						"foilAvail" => array($last["foilAvail"]),
-						"foilPrice" => array($last["foilPrice"]),
+					if (!$last){continue;}
+					if ($last["foilPrice"] < $foilPriceMin){continue;}
+					$card = array(
+						//"name" => $name,
+						"baseAvail" => array(),
+						"basePrice" => array(),
+						"foilAvail" => array(),
+						"foilPrice" => array()
 					);
 
-					if (!$last){continue;}
 
-					for ($l = sizeof($points)-2; $l >= max(0, sizeof($points)-2 - $depth); $l--){
-						addCardDataSet($cardData, getCardDataSet($name, $points[$l]["data"]));
+					for ($l = sizeof($points)-1; $l >= max(0, (sizeof($points)-1 -$depth)); $l--){
+						addCardDataPoint($card, getCardDataSet($name, $points[$l]["data"]));
 					}
+					//echo "</br>"; var_export($card); echo "</br>";
 
-					var_export($cardData);
+					echo $names[$i][$j]." - ".$name."</br>";
+					foreach ($card as $key => $value){
+						$shift = round((($card[$key][0] / $card[$key][sizeof($card[$key])-1])*100)-100, 2);
+						$color = "green";
+						$type = "increase +";
+						if ($shift < 0){
+							$color = "red";
+							$type = "decrease";
+						}
+						echo $key." --- then: ".$card[$key][sizeof($card[$key])-1].", now ".$card[$key][0]." => <span class='".$color."'> ".$type." ".$shift."%</span>.";
+						echo "</br>";
+					}
+					echo "</br>";
 				}
 			}
 		}
@@ -121,11 +159,16 @@
 		return false;
 	}
 
-	function addCardDataSet($data, $set){
-		$cardData["baseAvail"][] = $set["baseAvail"];
-		$cardData["basePrice"][] = $set["basePrice"];
-		$cardData["foilAvail"][] = $set["foilAvail"];
-		$cardData["foilPrice"][] = $set["foilPrice"];
+	function addCardDataPoint(&$currentSet, $point){
+		//echo "</br>adding point</br>";
+		//var_export($point);
+		$currentSet["baseAvail"][] = $point["baseAvail"];
+		$currentSet["basePrice"][] = $point["basePrice"];
+		$currentSet["foilAvail"][] = $point["foilAvail"];
+		$currentSet["foilPrice"][] = $point["foilPrice"];
+
+		//echo "</br>current set</br>";
+		//var_Export($currentSet);
 	}
 
 
@@ -155,7 +198,7 @@
 			<div class="container">
 				<canvas id="foilPriceCanvas"</canvas>
 			</div>
-			<div class="ui">
+			<div class="ui disabled">
 				<div>
 					<input type="form" id="setSearch" value="Masters 25">
 					<input type="form" id="cardSearch" value="Rishadan Port">

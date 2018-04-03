@@ -34,9 +34,21 @@ body {
 	top: 365px;
 }
 
+.disabled {
+	display: none;
+}
+
 canvas {
 }
 
 div > input {
 	font-size: 24px;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: lightGreen;
 }

@@ -22,12 +22,11 @@ $data = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE)["codes"
 
 echo "Script Execution Started \n";
 
-//getFullFoilSets($date, $context, $data[0]);
-//getFullNonFoilSets($date, $context, $data[1]);
-//getNotCommonNotFoilSets($date, $context, $data[2]);
-getStandSets($date, $context, array("MBS"));
-//getStandSets($date, $context, $data[3]);
-//getMPSSets($date, $context, $data[3]);
+getFullFoilSets($date, $context, $data[0]);
+getFullNonFoilSets($date, $context, $data[1]);
+getNotCommonNotFoilSets($date, $context, $data[2]);
+getStandSets($date, $context, $data[3]);
+getMPSSets($date, $context, $data[4]);
 
 
 

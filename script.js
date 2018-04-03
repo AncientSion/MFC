@@ -5,6 +5,8 @@ window.onload = function(){
 		console.log("ding");
 		charter.isValidSetSelected();
 	})
+
+	$(".ui").removeClass("disabled");
 }
 
 class Entry {
