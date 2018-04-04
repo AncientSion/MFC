@@ -52,3 +52,24 @@ div > input {
 .green {
 	color: lightGreen;
 }
+
+.moveTable {
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+
+.moveTable th, .moveTable td {
+	border: 1px solid white;
+	text-align: center;
+}
+
+.moveTable .set {
+	font-size: 20px;
+}
+
+.checkContainer {
+	display: inline-block; 
+	margin-right: 10px; 
+	margin-bottom: 20px;
+	border-bottom: 1px solid white;
+}
