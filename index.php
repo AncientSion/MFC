@@ -1,5 +1,6 @@
 <?php
-	include_once(__DIR__."global.php");
+	include_once(__DIR__."/global.php");
+
 	
 	if (isset($_GET["type"])){
 		if ($_GET["type"] == "cardList"){

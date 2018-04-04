@@ -20,7 +20,8 @@ function addCardDataPoint(&$currentSet, $point){
 	//var_export($point);
 	//echo "</br>";
 
-	if (!isset($point["basePrice"])){$point["basePrice"] = 0;}
+	if (!isset($point["basePrice"])){$point["basePrice"] = 0;}//echo $point["name"];}
+	if (!isset($point["foilPrice"])){$point["foilPrice"] = 0;}//echo $point["name"];}
 	$currentSet["baseAvail"][] = $point["baseAvail"];
 	$currentSet["basePrice"][] = $point["basePrice"];
 	$currentSet["foilAvail"][] = $point["foilAvail"];
@@ -33,22 +34,41 @@ function addCardDataPoint(&$currentSet, $point){
 
 function getMemory(){
 	$size = memory_get_usage(true);
-    $unit=array('b','kb','mb','gb','tb','pb');
+    $unit = array('b','kb','mb','gb','tb','pb');
     echo (@round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i])."</br>";
 }
+	
+function buildFullCardPool(){
+	$sets = file_get_contents(__DIR__."/input/sets.json");
+	$sets = json_decode($sets);
 
+	$data = array();
 
+	for ($i = 0; $i < sizeof($sets->codes); $i++){
+		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
+			echo "adding set: ".$sets->codes[$i][$j]."\n";
+			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
 
-if (0){ // fix missing data
+			$set = array("code" => $json->code, "name" => $json->name, "cards" => array());
+			foreach ($json->cards as $card){
+				$set["cards"][] = array("name" => $card->name, "rarity" => $card->rarity);
+			}
+			$data[] = $set;
+		}
+	}
+
+	$file = fopen(__DIR__."/output/cardlist.json", "a");
+	fwrite($file, json_encode($data));
+	fclose($file);
+}
+
+function fixOutputSets(){
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
 	$codes = $sets["codes"];
 	$names = $sets["names"];
 
-
 	for ($i = 0; $i < sizeof($codes); $i++){
 		for ($j = 0; $j < sizeof($codes[$i]); $j++){
-	//for ($i = 0; $i < 1; $i++){
-		//for ($j = 0; $j < 1; $j++){
 
 			echo "doing set: ".$names[$i][$j]."</br>";
 			$errorA = 0;
@@ -90,8 +110,6 @@ if (0){ // fix missing data
 			fclose($file);
 		}
 	}
-
-	return;
 }
 
 ?>

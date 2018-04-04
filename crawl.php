@@ -1,7 +1,7 @@
 <?php
 
-include_once(__DIR__."global.php");
-include_once(__DIR__."simple_html_dom.php");
+include_once(__DIR__."\global.php");
+include_once(__DIR__."\simple_html_dom.php");
 
 
 $context = stream_context_create(
@@ -109,7 +109,7 @@ function getFullNonFoilSets($date, $context, $codes){
 		$get = 0;
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 0; $j < 2; $j++){
-			$get;
+			$get++;
 			echo "#".$get." - ".$cards[$j]["name"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);

@@ -9,22 +9,24 @@
 
 
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+
 	$codes = $sets["codes"];
 	$names = $sets["names"];
 
 	$depth = 10;
-	$foilPriceMin = 1;
-	$foilAvailShift = -5;
-	//$skips = array("C", "U", "R", "M", "S");
+	$foil = false;
+	$minPrice = 1;
+	$availChange = -5;
+	$skips = array("C", "U", "M", "S");
 	$skips = array();
-	$search = "foilAvail";
-
-
+	$search = "baseAvail";
+	$type = "pct";
 
 	echo "Checking card prices</br>";
 	echo "Delving: ".$depth." days of data.</br>";
-	echo "Foil Price NOW > ".$foilPriceMin."</br>";
-	echo "Foil Avail Shift > ".$foilAvailShift."</br>";
+	echo "Foil: ".$foil."</br>";
+	echo "Price NOW > ".$minPrice."</br>";
+	echo "Supply Avail Change > ".$availChange." ".$type."</br>";
 
 	$allSets = array();
 
@@ -40,7 +42,7 @@
 
 			$cards = json_decode(file_get_contents(__DIR__."/input/".$codes[$i][$j].".json"), TRUE)["cards"];
 			$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE)["content"];
-
+			if (!$points){continue;}
 			$extract = array(
 				"set" => $setName,
 				"compareDate" => $points[max(0, (sizeof($points)-1 -$depth))]["date"],
@@ -61,7 +63,7 @@
 				$name = $cards[$k]["name"];
 				$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
 				if (!$last){continue;}
-				if ($foilPriceMin != 0 && $last["foilPrice"] < $foilPriceMin){continue;}
+				if ($minPrice != 0 && $last["foilPrice"] < $minPrice){continue;}
 				$card = array(
 					"name" => $name,
 					"rarity" => $cards[$k]["rarity"],
@@ -69,10 +71,10 @@
 					"basePrice" => array(),
 					"foilAvail" => array(),
 					"foilPrice" => array(),
-					"baseAvailShift" => array(),
-					"basePriceShift" => array(),
-					"foilAvailShift" => array(),
-					"foilPriceShift" => array()
+					"baseAvailChange" => array(),
+					"basePriceChange" => array(),
+					"foilAvailChange" => array(),
+					"foilPriceChange" => array()
 				);
 
 
@@ -90,10 +92,10 @@
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
-			setShiftValue($allSets[$i]["shakers"][$j], "baseAvail");
-			setShiftValue($allSets[$i]["shakers"][$j], "basePrice");
-			setShiftValue($allSets[$i]["shakers"][$j], "foilAvail");
-			setShiftValue($allSets[$i]["shakers"][$j], "foilPrice");
+			setChangeValue($allSets[$i]["shakers"][$j], "baseAvail");
+			setChangeValue($allSets[$i]["shakers"][$j], "basePrice");
+			setChangeValue($allSets[$i]["shakers"][$j], "foilAvail");
+			setChangeValue($allSets[$i]["shakers"][$j], "foilPrice");
 		}
 	}
 
@@ -101,20 +103,43 @@
 	echo "</br>Markup Completed; TIME:".round($time, 2)." seconds.</br></br>";
 
 
-	$html = buildTables($allSets, $today, $foilAvailShift);
+	$html = buildTables($allSets, $today, $foil, $availChange, $type, $minPrice);
 
 
 
-	function setShiftValue(&$card, $attr){
-		if ($card[$attr][sizeof($card[$attr])-1] == 0){$card[$attr."Shift"][0] = 0; $card[$attr."Shift"][1] = 0; return;}
+	function setChangeValue(&$card, $attr){
+		if ($card[$attr][sizeof($card[$attr])-1] == 0){$card[$attr."Change"][0] = 0; $card[$attr."Change"][1] = 0; return;}
 		//var_export($card);
-		$card[$attr."Shift"][0] = round($card[$attr][0] - $card[$attr][sizeof($card[$attr])-1], 2); 
-		$card[$attr."Shift"][1] = round((($card[$attr][0] / $card[$attr][sizeof($card[$attr])-1])*100)-100, 2); 
+		$card[$attr."Change"][0] = round($card[$attr][0] - $card[$attr][sizeof($card[$attr])-1], 2); 
+		$card[$attr."Change"][1] = round((($card[$attr][0] / $card[$attr][sizeof($card[$attr])-1])*100)-100, 2); 
 	}
 
 
-	function buildTables($allSets, $today, $foilAvailShift){
+	function buildTables($allSets, $today, $foil, $availChange, $type, $minPrice){
+		$avail = "";
+		$change = "";
+		$price = "";
 		$html = "";
+		$index;
+
+		if ($foil){
+			$avail = "foilAvail";
+			$price = "foilPrice";
+			$volChange = "foilAvailChange";
+			$moneyChange = "foilAvailChange";
+		}
+		else {
+			$avail = "baseAvail";
+			$price = "basePrice";
+			$volChange = "baseAvailChange";
+			$moneyChange = "basePriceChange";
+		}
+
+		if ($type == "abs"){
+			$index = 0;
+		} else $index = 1;
+
+
 		for ($i = 0; $i < sizeof($allSets); $i++){
 			//$html .="entries: ".sizeof($allSets[$i]["shakers"])."</br>";
 			$html .="<table class='moveTable'><tbody>";
@@ -123,35 +148,37 @@
 			$html .="<th style='width: 180px'>Name</th>";
 			$html .="<th style='width: 100px'>Rarity</th>";
 
-			$html .="<th style='width: 100px'>Foil # ".$allSets[$i]["compareDate"]."</th>";
-			$html .="<th style='width: 100px'>Foil # ".$today."</th>";
+			$html .="<th style='width: 100px'># ".$allSets[$i]["compareDate"]."</th>";
+			$html .="<th style='width: 100px'># ".$today."</th>";
 			$html .="<th style='width: 100px'>ABS</th>";
 			$html .="<th style='width: 100px'>PCT</th>";
 
-			$html .="<th style='width: 100px'>Foil € ".$allSets[$i]["compareDate"]."</th>";
-			$html .="<th style='width: 100px'>Foil € ".$today."</th>";
+			$html .="<th style='width: 100px'>€ ".$allSets[$i]["compareDate"]."</th>";
+			$html .="<th style='width: 100px'>€ ".$today."</th>";
 			$html .="<th style='width: 100px'>ABS</th>";
 			$html .="<th style='width: 100px'>PCT</th>";
 
 			for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 				$card = $allSets[$i]["shakers"][$j];
 
-				if ($foilAvailShift != 0 && $card["foilAvailShift"][0] > $foilAvailShift){continue;}
+				if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
+				if ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}
 
+				//echo $card["name"].", price: ".$card[$price][sizeof($card[$price])-1];
 				$html .="<tr><td>".$card["name"]."</td>";
 				$html .="<td>".$card["rarity"]."</td>";
 
-				$html .="<td>".$card["foilAvail"][sizeof($card["foilAvail"])-1]."</td>";
-				$html .="<td>".$card["foilAvail"][0]."</td>";
-				if ($card["foilAvailShift"][0] > 0){$class = "green";} else $class ="red";
-				$html .="<td class='".$class."'>".$card["foilAvailShift"][0]."</td>";
-				$html .="<td class='".$class."'>".$card["foilAvailShift"][1]."</td>";
+				$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
+				$html .="<td>".$card[$avail][0]."</td>";
+				if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
+				$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
+				$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
 
-				$html .="<td>".$card["foilPrice"][sizeof($card["foilPrice"])-1]."</td>";
-				$html .="<td>".$card["foilPrice"][0]."</td>";
-				if ($card["foilPriceShift"][0] > 0){$class = "green";} else $class ="red";
-				$html .="<td class='".$class."'>".$card["foilPriceShift"][0]."</td>";
-				$html .="<td class='".$class."'>".$card["foilPriceShift"][1]."</td>";
+				$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
+				$html .="<td>".$card[$price][0]."</td>";
+				if ($card[$moneyChange][0] > 0){$class = "green";} else $class ="red";
+				$html .="<td class='".$class."'>".$card[$moneyChange][0]."</td>";
+				$html .="<td class='".$class."'>".$card[$moneyChange][1]." %</td>";
 				$html .="</tr>";
 			}
 

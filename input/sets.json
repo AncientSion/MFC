@@ -1,6 +1,6 @@
 {
 	"codes": [
-		["A25", "7ED"],
+		["A25", "EMA", "7ED"],
 		["LEB", "LEG", "TMP", "STH"],
 		["MIR", "VIS"],
 		["SOM", "MBS", "NPH", "KTK", "DTK", "FRF", "KLD", "AER", "AKH", "HOU", "XLN", "RIX"],
@@ -8,7 +8,7 @@
 	],
 	"names":
 	[
-		["Masters 25", "Seventh Edition"],
+		["Masters 25", "Eternal Masters", "Seventh Edition"],
 		["Beta", "Legends", "Tempest", "Stronghold"],
 		["Mirage", "Visions"],
 		["Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan"],
