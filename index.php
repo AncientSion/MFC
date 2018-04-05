@@ -1,6 +1,8 @@
 <?php
 	include_once(__DIR__."/global.php");
 
+	//fixOutputSets(); return;
+
 	
 	if (isset($_GET["type"])){
 		if ($_GET["type"] == "cardList"){
@@ -36,8 +38,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel='stylesheet' href='libs\style.css'/>
-	<link rel='stylesheet' href='libs\jquery-ui.min.css'/>
+	<link rel='stylesheet' href='style\style.css'/>
+	<link rel='stylesheet' href='style\jquery-ui.min.css'/>
 	<script src="libs\jquery-2.1.1.min.js"></script>
 	<script src='libs\jquery-ui.min.js'></script>
 	<script src='libs\Chart.bundle.min.js'></script>	
