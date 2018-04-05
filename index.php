@@ -1,9 +1,8 @@
 <?php
 	include_once(__DIR__."/global.php");
 
-	//fixOutputSets(); return;
+	//buildFullCardPool(); return;
 
-	
 	if (isset($_GET["type"])){
 		if ($_GET["type"] == "cardList"){
 			$cards = file_get_contents(__DIR__."/output/cardlist.json");
