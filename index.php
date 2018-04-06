@@ -7,6 +7,7 @@
 		if ($_GET["type"] == "cardList"){
 			$cards = file_get_contents(__DIR__."/output/cardlist.json");
 			echo $cards;	
+			return;
 		} else if ($_GET["type"] == "price"){
 			$set = $_GET["set"];
 			$card = $_GET["card"];
@@ -28,8 +29,8 @@
 				}
 			}
 			echo json_encode($dataPoints);
+			return;
 		}
-		return;
 	}
 ?>
 
@@ -54,8 +55,21 @@
 			</div>
 			<div class="ui disabled">
 				<div>
-					<input type="form" id="setSearch" value="Masters 25">
-					<input type="form" id="cardSearch" value="Rishadan Port">
+					<?php 
+
+					$card = "Rishadan Port";
+					$set = "Masters 25";
+
+
+					if (sizeof($_GET) && ($_GET["type"] == "preset")){
+						$card = $_GET["card"];
+						$set = $_GET["set"];
+					}
+					echo "<input type='form' id='setSearch' value='".$set."'>";
+					echo "<input type='form' id='cardSearch' value='".$card."'>";
+
+					?>
+					
 					<input type="button" style="font-size: 20px" onclick="charter.getCardData(this)" value="Search">
 					<div id="cardName"></div>
 				</div>

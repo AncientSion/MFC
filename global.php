@@ -91,8 +91,154 @@ function getSetNamesByCodes($data){
 }
 
 
-function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
+function getForm($get){
+	//var_export($get);
+	$html = "";
 
+	$html .="<form method='get'>";
+
+	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+	$codes = $sets["codes"];
+	$names = $sets["codes"];
+
+	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
+	$rarity = array("C", "U", "R", "M", "S");
+	$preset = array('', '', "checked='checked'", "checked='checked'", "checked='checked'");
+
+	$html .="<div class='checkWrapper'>";
+	$html .="<div id='rarity' class='toggle'>Rarities to include (right-click, toggle all)</div>";
+
+
+	if (sizeof($get) && $get["rarities"]){
+		for ($i = 0; $i < sizeof($rarity); $i++){
+			$checked = '';
+			for ($j = 0; $j < sizeof($get["rarities"]); $j++){
+				if ($get["rarities"][$j] == $rarity[$i]){
+					$checked = "checked='checked'";
+				}
+			}
+
+			$html .="<div class='checkContainer'>";
+			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$checked.">";
+			$html .="<span>".$rarityStr[$i]."</br>";
+			$html .="</div>";
+		}
+	}
+	else {
+		for ($i = 0; $i < sizeof($rarity); $i++){
+			$html .="<div class='checkContainer'>";
+			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$preset[$i].">";
+			$html .="<span>".$rarityStr[$i]."</br>";
+			$html .="</div>";
+		} 
+	}
+	$html .="</div>"; 
+
+	$foilChecked = "";
+	$nonFoilChecked = "";
+	if (sizeof($get)){
+		if ($get["foil"] == "Foil"){$foilChecked = "checked='checked'";}
+		else if ($get["foil"] == "Non Foil"){$nonFoilChecked = "checked='checked'";}
+	}
+	else {
+		$foilChecked = "checked='checked'";
+	}
+
+	$html .="<div class='checkWrapper'>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Foil'".$foilChecked."'>Foil</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'".$nonFoilChecked."'>Non Foil</div>";
+	//$html .= "</div>";
+
+	//$html .="<div class='checkWrapper'>";
+
+	$depth = 1;
+	if (sizeof($get)){$depth = $get["depth"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='depth'>DAYS</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='1' max='50' value='".$depth."' name='depth'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$minPrice = 3;
+	if (sizeof($get)){$minPrice = $get["minPrice"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='minPrice'>Min € (now)</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='0' max='5000' value='".$minPrice."' name='minPrice'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$maxPrice = 100;
+	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='maxPrice'>Max € (now)</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$availChange = -3;
+	if (sizeof($get)){$availChange = $get["availChange"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='availChange'>Supply Change</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number'min='-100' max='100' value='".$availChange."' name='availChange'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+
+	$pctChecked = "";
+	$absChecked = "";
+	if (sizeof($get)){
+		if ($get["compareType"] == "PCT"){$pctChecked = "checked='checked'";}
+		else if ($get["compareType"] == "ABS"){$absChecked = "checked='checked'";}
+	}
+	else {
+		$pctChecked = "checked='checked'"; 
+	}
+
+	$html .="<div class='inputContainer'>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='PCT'".$pctChecked."'>%-based</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='ABS'".$absChecked."'>abs-based</div>";
+	$html .= "</div>";
+
+
+
+	$html .= "</div>";
+
+	$html .="<div class='checkWrapper'>";
+	$html .="<div id='set' class='toggle'>Sets to include (right-click, toggle all)</div>";
+	for ($i = 0; $i < sizeof($codes); $i++){
+		for ($j = 0; $j < sizeof($codes[$i]); $j++){
+
+			$checked = '';
+			if (sizeof($get) && $get["sets"]){
+				for ($k = 0; $k < sizeof($get["sets"]); $k++){
+					if ($get["sets"][$k] == $codes[$i][$j]){
+						$checked = "checked='checked'";
+					}
+				}
+			}
+
+			$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
+			$html .="<span>".$codes[$i][$j]."</span>";
+			$html .="</div>";
+		}
+		//$html .="</br>";
+	}
+
+	$html .="</div>";
+	$html .="</br>";
+	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
+	$html .="</form>";
+
+	return $html;
+}
+
+
+
+function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
 
 	$names = getSetNamesByCodes($codes);
@@ -109,12 +255,13 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 
 	$html = "";
 
+	/*
 	$html .="Delving: ".$depth." days of data, ";
 	$html .="only ".$foil."</br>";
 	$html .="Price NOW > ".$minPrice.", ";
 	$html .="Price NOW < ".$maxPrice."</br>";
-	$html .="Supply Avail Change > ".$availChange." ".$compareType."</br>";
-
+	$html .="Supply Avail Change > ".$availChange." (type: ".$compareType.")</br>";
+	*/
 	$allSets = array();
 
 	//$codes = array(array("A25"));
@@ -134,6 +281,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 			if (!$points){$html .="</br></br>No data found for:".$setName; continue;}
 			$extract = array(
 				"set" => $setName,
+				"code" => $codes[$i],
 				"compareDate" => $points[max(0, (sizeof($points)-1 -$depth))]["date"],
 				"lastDate" => $points[sizeof($points)-1]["date"],
 				"shakers" => array()
@@ -147,7 +295,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 				}
 
 				if ($skip){continue;}
-
 
 				$name = $cards[$k]["name"];
 				$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
@@ -204,6 +351,8 @@ function setChangeValue(&$card, $attr){
 
 
 function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
+
+	//echo $availChange;
 	/*var_export(func_get_arg(1));
 			echo "</br></br>";
 	var_export(func_get_arg(2));
@@ -216,7 +365,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 	$avail = "";
 	$change = "";
 	$price = "";
-	$html = "";
+	$html = "<span style='color: red'>NOTE: Prefer the # (available stock) columns, price is biased because of 'cheap' foreign foils</span>";
+	$html .= "</br>";
 	$index;
 
 	if ($foil == "Non Foil"){
@@ -243,7 +393,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 
 
 		$html .="<thead>";
-		$html .="<tr><th class='set' colSpan=10>".$allSets[$i]["set"]."</th></tr>";
+		$html .="<tr><th class='set' colSpan=10>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th style='width: 180px'>Name</th>";
 		$html .="<th style='width: 100px'>Rarity</th>";
@@ -266,11 +416,10 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
 			if ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}
-			//var_export($allSets[$i]["shakers"][$j]);
-			//echo "</br></br>";
 
-			//echo $card["name"].", price: ".$card[$price][sizeof($card[$price])-1];
-			$html .="<tr><td>".$card["name"]."</td>";
+			$href = "index.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+
+			$html .="<tr><td><a target='blank' href=".$href.">".$card['name']."</a></td>";
 			$html .="<td>".$card["rarity"]."</td>";
 
 			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
@@ -347,119 +496,5 @@ function fixOutputSets(){
 	}
 }
 
-
-function getForm($get){
-	var_export($get);
-	$html = "";
-
-	$html .="<form method='get'>";
-
-	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
-	$codes = $sets["codes"];
-	$names = $sets["codes"];
-
-	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
-	$rarity = array("C", "U", "R", "M", "S");
-
-	$html .="<div class='checkWrapper'>";
-	$html .="<div id='rarity' class='toggle'>INCLUDE</div>";
-	for ($i = 0; $i < sizeof($rarity); $i++){
-		$checked = '';
-		if (sizeof($get) && $get["rarities"]){
-			for ($j = 0; $j < sizeof($get["rarities"]); $j++){
-				if ($get["rarities"][$j] == $rarity[$i]){
-					$checked = "checked='checked'";
-				}
-			}
-		}
-
-		$html .="<div class='checkContainer'>";
-		$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$checked.">";
-		$html .="<span>".$rarityStr[$i]."</br>";
-		$html .="</div>"; 
-	}
-	$html .="</div>"; 
-
-	$foilChecked = "";
-	$nonFoilChecked = "";
-	if (sizeof($get)){
-		if ($get["foil"] == "Foil"){$foilChecked = "checked='checked'";}
-		else if ($get["foil"] == "Non Foil"){$nonFoilChecked = "checked='checked'";}
-	}
-
-	$html .="<div class='checkWrapper'>";
-	$html .="<div id='foil'></div>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Foil'".$foilChecked."'>Foil</div>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'".$nonFoilChecked."'>Non Foil</div>";
-	//$html .= "</div>";
-
-	//$html .="<div class='checkWrapper'>";
-
-	$depth = 1;
-	if (sizeof($get)){$depth = $get["depth"];}
-	$html .="<div class='inputContainer'>";
-	$html .="<div id='depth'>DAYS</div>";
-	$html .="<div class=''>";
-	$html .= "<input type='number' min='1' max='50' value='".$depth."' name='depth'>";
-	$html .= "</div>";
-	$html .= "</div>";
-
-	$minPrice = 1;
-	if (sizeof($get)){$minPrice = $get["minPrice"];}
-	$html .="<div class='inputContainer'>";
-	$html .="<div id='minPrice'>Min €</div>";
-	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='5000' value='".$minPrice."' name='minPrice'>";
-	$html .= "</div>";
-	$html .= "</div>";
-
-	$maxPrice = 10;
-	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
-	$html .="<div class='inputContainer'>";
-	$html .="<div id='maxPrice'>Max €</div>";
-	$html .="<div class=''>";
-	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
-	$html .= "</div>";
-	$html .= "</div>";
-
-	$availChange = 10;
-	if (sizeof($get)){$availChange = $get["availChange"];}
-	$html .="<div class='inputContainer'>";
-	$html .="<div id='availChange'>Supply Change %</div>";
-	$html .="<div class=''>";
-	$html .= "<input type='number'min='-100' max='100' value='".$availChange."' name='availChange'>";
-	$html .= "</div>";
-	$html .= "</div>";
-
-	$html .= "</div>";
-
-	$html .="<div class='checkWrapper'>";
-	$html .="<div id='set' class='toggle'>SET</div>";
-	for ($i = 0; $i < sizeof($codes); $i++){
-		for ($j = 0; $j < sizeof($codes[$i]); $j++){
-
-			$checked = '';
-			if (sizeof($get) && $get["sets"]){
-				for ($k = 0; $k < sizeof($get["sets"]); $k++){
-					if ($get["sets"][$k] == $codes[$i][$j]){
-						$checked = "checked='checked'";
-					}
-				}
-			}
-
-			$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
-			$html .="<span>".$codes[$i][$j]."</span>";
-			$html .="</div>";
-		}
-		//$html .="</br>";
-	}
-
-	$html .="</div>";
-	$html .="</br>";
-	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
-	$html .="</form>";
-
-	return $html;
-}
 
 ?>

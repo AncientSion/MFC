@@ -15,8 +15,7 @@
 			$minPrice = $_GET["minPrice"];
 			$maxPrice = $_GET["maxPrice"];
 			$availChange = $_GET["availChange"];
-			$type = "pct";
-
+			$type = $_GET["compareType"];
 
 			echo requestShakers(
 				$_GET["sets"],
@@ -32,9 +31,12 @@
 
 			$time += microtime(true);
 			echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
-
-
 		}
+		else {
+			echo "<div style='color: red; font-size: 30px'>Brah, no sets -> no results ... !</div>";
+			echo getForm(array());
+		}
+
 	} else echo getForm($_GET);
 
 ?>

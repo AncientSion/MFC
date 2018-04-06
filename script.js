@@ -15,8 +15,8 @@ class Entry {
 		this.name = data.name;
 		this.baseAvail = data.baseAvail || 0;
 		this.basePrice = data.basePrice || 0;
-		this.foilAvail = data.foilAvail || 0;;
-		this.foilPrice = data.foilPrice || 0;;
+		this.foilAvail = data.foilAvail || 0;
+		this.foilPrice = data.foilPrice || 0;
 	}
 }
 
