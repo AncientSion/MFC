@@ -41,8 +41,8 @@ body {
 canvas {
 }
 
-div > input {
-	font-size: 24px;
+div > input, div > span{
+	font-size: 18px;
 }
 
 .red {
@@ -75,8 +75,8 @@ div > input {
 
 .checkContainer {
 	display: inline-block; 
-	margin-right: 10px; 
-	margin-bottom: 20px;
+	margin-right: 20px; 
+	margin-bottom: 10px;
 }
 
 .dataTables_wrapper {
@@ -89,3 +89,31 @@ div > input {
 	margin-bottom: 50px;
 }
 
+#set, #type, #rarity {
+	text-align: center;
+	padding: 3px;
+	display: block;
+	width: 100px;
+	font-size: 20px;
+	
+}
+
+.toggle:hover {
+	background-color: white;
+	color: black;
+}
+
+.checkWrapper {
+	width: 900px;
+	margin-bottom: 20px;
+}
+
+#depth, #minPrice, #maxPrice {
+	font-size: 18px;
+}
+
+.inputContainer {
+	display: inline-block;
+	margin-right: 20px;
+	text-align: center;
+}

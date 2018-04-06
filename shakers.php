@@ -3,28 +3,18 @@
 	include_once(__DIR__."/global.php");
 
 
-	echo getForm();
-
-
 	if (sizeof($_GET)){
-		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["sets"])){
-			
+		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
 
-			/*
-			var_export($_GET["rarities"]);
-			echo "</br>";
-			var_export($_GET["foil"]);
-			echo "</br>";
-			var_export($_GET["sets"]);
-			*/
+			echo getForm($_GET);
 
 			$time = time();
 			$time = -microtime(true);
 
-			$depth = 1;
-			$minPrice = 10;
-			$maxPrice = 0;
-			$availChange = 0;
+			$depth = $_GET["depth"];
+			$minPrice = $_GET["minPrice"];
+			$maxPrice = $_GET["maxPrice"];
+			$availChange = $_GET["availChange"];
 			$type = "pct";
 
 
@@ -45,7 +35,8 @@
 
 
 		}
-	}
+	} else echo getForm($_GET);
+
 ?>
 
 
@@ -69,6 +60,11 @@
 
 <script>
 $(document).ready(function(){
+	window.options = {
+		setAll: 0,
+		rarityAll: 0
+	}
+
 	$(".moveTable").each(function(){
 		if (!this.childNodes[1].childNodes.length){
 			$(this).remove();// return;
@@ -76,6 +72,43 @@ $(document).ready(function(){
 		$(this).DataTable({
 			"paging": false
 		})
+	})
+
+	$(document).contextmenu(function(e){
+		e.preventDefault(); e.stopPropagation();
+	})
+
+
+	$("#rarity").contextmenu(function(e){
+		e.preventDefault(); e.stopPropagation();
+		if (options.rarityAll){
+			options.rarityAll = 0;
+			$(this).parent().find("input").each(function(){
+				$(this).prop("checked", options.rarityAll);
+			})
+		}
+		else {
+			options.rarityAll = 1;
+			$(this).parent().find("input").each(function(){
+				$(this).prop("checked", options.rarityAll);
+			})
+		}
+	})
+
+	$("#set").contextmenu(function(e){
+		e.preventDefault(); e.stopPropagation();
+		if (options.setAll){
+			options.setAll = 0;
+			$(this).parent().find("input").each(function(){
+				$(this).prop("checked", options.setAll);
+			})
+		}
+		else {
+			options.setAll = 1;
+			$(this).parent().find("input").each(function(){
+				$(this).prop("checked", options.setAll);
+			})
+		}
 	})
 })
 </script>

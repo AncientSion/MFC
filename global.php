@@ -109,10 +109,9 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 
 	$html = "";
 
-	$html .="Checking card prices</br>";
-	$html .="Delving: ".$depth." days of data.</br>";
-	$html .="Card Type: ".$foil."</br>";
-	$html .="Price NOW > ".$minPrice."</br>";
+	$html .="Delving: ".$depth." days of data, ";
+	$html .="only ".$foil."</br>";
+	$html .="Price NOW > ".$minPrice.", ";
 	$html .="Price NOW < ".$maxPrice."</br>";
 	$html .="Supply Avail Change > ".$availChange." ".$compareType."</br>";
 
@@ -220,7 +219,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 	$html = "";
 	$index;
 
-	if (!$foil){
+	if ($foil == "Non Foil"){
 		$avail = "baseAvail";
 		$price = "basePrice";
 		$volChange = "baseAvailChange";
@@ -349,7 +348,8 @@ function fixOutputSets(){
 }
 
 
-function getForm(){
+function getForm($get){
+	var_export($get);
 	$html = "";
 
 	$html .="<form method='get'>";
@@ -360,28 +360,103 @@ function getForm(){
 
 	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
 	$rarity = array("C", "U", "R", "M", "S");
+
+	$html .="<div class='checkWrapper'>";
+	$html .="<div id='rarity' class='toggle'>INCLUDE</div>";
 	for ($i = 0; $i < sizeof($rarity); $i++){
+		$checked = '';
+		if (sizeof($get) && $get["rarities"]){
+			for ($j = 0; $j < sizeof($get["rarities"]); $j++){
+				if ($get["rarities"][$j] == $rarity[$i]){
+					$checked = "checked='checked'";
+				}
+			}
+		}
+
 		$html .="<div class='checkContainer'>";
-		$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' checked='checked'>";
+		$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$checked.">";
 		$html .="<span>".$rarityStr[$i]."</br>";
 		$html .="</div>"; 
 	}
+	$html .="</div>"; 
 
-	$html .="</br>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Foil' checked='checked'>Foil</div>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'>Non-Foil</div>";
-	$html .="</br>";
+	$foilChecked = "";
+	$nonFoilChecked = "";
+	if (sizeof($get)){
+		if ($get["foil"] == "Foil"){$foilChecked = "checked='checked'";}
+		else if ($get["foil"] == "Non Foil"){$nonFoilChecked = "checked='checked'";}
+	}
 
+	$html .="<div class='checkWrapper'>";
+	$html .="<div id='foil'></div>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Foil'".$foilChecked."'>Foil</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'".$nonFoilChecked."'>Non Foil</div>";
+	//$html .= "</div>";
+
+	//$html .="<div class='checkWrapper'>";
+
+	$depth = 1;
+	if (sizeof($get)){$depth = $get["depth"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='depth'>DAYS</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='1' max='50' value='".$depth."' name='depth'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$minPrice = 1;
+	if (sizeof($get)){$minPrice = $get["minPrice"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='minPrice'>Min €</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='0' max='5000' value='".$minPrice."' name='minPrice'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$maxPrice = 10;
+	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='maxPrice'>Max €</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$availChange = 10;
+	if (sizeof($get)){$availChange = $get["availChange"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='availChange'>Supply Change %</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number'min='-100' max='100' value='".$availChange."' name='availChange'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$html .= "</div>";
+
+	$html .="<div class='checkWrapper'>";
+	$html .="<div id='set' class='toggle'>SET</div>";
 	for ($i = 0; $i < sizeof($codes); $i++){
 		for ($j = 0; $j < sizeof($codes[$i]); $j++){
-			$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."'checked='checked'>";
+
+			$checked = '';
+			if (sizeof($get) && $get["sets"]){
+				for ($k = 0; $k < sizeof($get["sets"]); $k++){
+					if ($get["sets"][$k] == $codes[$i][$j]){
+						$checked = "checked='checked'";
+					}
+				}
+			}
+
+			$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
 			$html .="<span>".$codes[$i][$j]."</span>";
 			$html .="</div>";
 		}
-		$html .="</br>";
+		//$html .="</br>";
 	}
 
-	$html .="<input type='submit' style='width: 200px' value='Search'></input>";
+	$html .="</div>";
+	$html .="</br>";
+	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
 	$html .="</form>";
 
 	return $html;
