@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"url",
+				"urlencode"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
 				"text-a",
 				"text-align"
 			],
@@ -74,10 +86,6 @@
 			[
 				"var",
 				"varIcons"
-			],
-			[
-				"backg",
-				"background"
 			],
 			[
 				"reinfr",
@@ -506,14 +514,6 @@
 			[
 				"assemble",
 				"assembleBallistics"
-			],
-			[
-				"move",
-				"movementResolved"
-			],
-			[
-				"getHit",
-				"getHitSection"
 			]
 		]
 	},
@@ -532,7 +532,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1983,
+				"buffer_size": 2210,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,17 +541,19 @@
 			"file": "shakers.php",
 			"settings":
 			{
-				"buffer_size": 2267,
+				"buffer_size": 2462,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "<?php\n\n\nini_set('display_errors', 1);\nini_set('display_startup_errors', 1);\nerror_reporting(E_ALL);\n\n\n\nfunction getCardDataSet($name, $data){\n\tfor ($i = 0; $i < sizeof($data); $i++){\n\t\tif ($data[$i][\"name\"] == $name){\n\t\t\treturn $data[$i];\n\t\t}\n\t}\n\treturn false;\n}\n\nfunction addCardDataPoint(&$currentSet, $point){\n\t//echo \"</br>adding point</br>\";\n\t//var_export($point);\n\t//echo \"</br>\";\n\n\tif (!isset($point[\"basePrice\"])){$point[\"basePrice\"] = 0;}//echo $point[\"name\"];}\n\tif (!isset($point[\"foilPrice\"])){$point[\"foilPrice\"] = 0;}//echo $point[\"name\"];}\n\t$currentSet[\"baseAvail\"][] = $point[\"baseAvail\"];\n\t$currentSet[\"basePrice\"][] = $point[\"basePrice\"];\n\t$currentSet[\"foilAvail\"][] = $point[\"foilAvail\"];\n\t$currentSet[\"foilPrice\"][] = $point[\"foilPrice\"];\n\n\t//echo \"</br>current set</br>\";\n\t//var_Export($currentSet);\n}\n\n\nfunction getMemory(){\n\t$size = memory_get_usage(true);\n    $unit = array('b','kb','mb','gb','tb','pb');\n    echo (@round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i]).\"</br>\";\n}\n\t\nfunction buildFullCardPool(){\n\t$sets = file_get_contents(__DIR__.\"/input/sets.json\");\n\t$sets = json_decode($sets);\n\n\t$data = array();\n\n\tfor ($i = 0; $i < sizeof($sets->codes); $i++){\n\t\tfor ($j = 0; $j < sizeof($sets->codes[$i]); $j++){\n\t\t\techo \"adding set: \".$sets->codes[$i][$j].\"\\n\";\n\t\t\t$json = json_decode(file_get_contents(__DIR__.\"/input/\".$sets->codes[$i][$j].\".json\"));\n\n\t\t\t$set = array(\"code\" => $json->code, \"name\" => $json->name, \"cards\" => array());\n\t\t\tforeach ($json->cards as $card){\n\t\t\t\t$set[\"cards\"][] = array(\"name\" => $card->name, \"rarity\" => $card->rarity);\n\t\t\t}\n\t\t\t$data[] = $set;\n\t\t}\n\t}\n\n\t$file = fopen(__DIR__.\"/output/cardlist.json\", \"r\");\n\tfseek($file, 0);\n\tfwrite($file, json_encode($data));\n\tfclose($file);\n}\n\n\n\nfunction getSetNamesByCodes($data){\n\t$sets = json_decode(file_get_contents(__DIR__.\"/input/sets.json\"), TRUE);\n\n\t//var_export($data);\n\t//return;\n\n\t//echo \"s: \".sizeof($data);\n\n\t$codes = $sets[\"codes\"];\n\t$names = $sets[\"names\"];\n\t$return = array();\n\n\tfor ($i = 0; $i < sizeof($data); $i++){\n\t\tfor ($j = 0; $j < sizeof($codes); $j++){\n\t\t\tfor ($k = 0; $k < sizeof($codes[$j]); $k++){\n\t\t\t\tif ($data[$i] == $codes[$j][$k]){\n\t\t\t\t\t$return[] = $names[$j][$k]; break 2;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\treturn $return;\n}\n\n\nfunction getForm($get){\n\t//var_export($get);\n\t$html = \"\";\n\n\t$html .=\"<form method='get'>\";\n\n\t$sets = json_decode(file_get_contents(__DIR__.\"/input/sets.json\"), TRUE);\n\t$codes = $sets[\"codes\"];\n\t$names = $sets[\"codes\"];\n\n\t$rarityStr = array(\"Common\", \"Uncommon\", \"Rare\", \"Mythic Rare\", \"Special\");\n\t$rarity = array(\"C\", \"U\", \"R\", \"M\", \"S\");\n\t$preset = array('', '', \"checked='checked'\", \"checked='checked'\", \"checked='checked'\");\n\n\t$html .=\"<div class='checkWrapper'>\";\n\t$html .=\"<div id='rarity' class='toggle'>Rarities to include (right-click, toggle all)</div>\";\n\n\n\tif (sizeof($get) && $get[\"rarities\"]){\n\t\tfor ($i = 0; $i < sizeof($rarity); $i++){\n\t\t\t$checked = '';\n\t\t\tfor ($j = 0; $j < sizeof($get[\"rarities\"]); $j++){\n\t\t\t\tif ($get[\"rarities\"][$j] == $rarity[$i]){\n\t\t\t\t\t$checked = \"checked='checked'\";\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t$html .=\"<div class='checkContainer'>\";\n\t\t\t$html .=\"<input type='checkbox' name='rarities[]' value='\".$rarity[$i].\"' \".$checked.\">\";\n\t\t\t$html .=\"<span>\".$rarityStr[$i].\"</br>\";\n\t\t\t$html .=\"</div>\";\n\t\t}\n\t}\n\telse {\n\t\tfor ($i = 0; $i < sizeof($rarity); $i++){\n\t\t\t$html .=\"<div class='checkContainer'>\";\n\t\t\t$html .=\"<input type='checkbox' name='rarities[]' value='\".$rarity[$i].\"' \".$preset[$i].\">\";\n\t\t\t$html .=\"<span>\".$rarityStr[$i].\"</br>\";\n\t\t\t$html .=\"</div>\";\n\t\t} \n\t}\n\t$html .=\"</div>\"; \n\n\t$foilChecked = \"\";\n\t$nonFoilChecked = \"\";\n\tif (sizeof($get)){\n\t\tif ($get[\"foil\"] == \"Foil\"){$foilChecked = \"checked='checked'\";}\n\t\telse if ($get[\"foil\"] == \"Non Foil\"){$nonFoilChecked = \"checked='checked'\";}\n\t}\n\telse {\n\t\t$foilChecked = \"checked='checked'\";\n\t}\n\n\t$html .=\"<div class='checkWrapper'>\";\n\t$html .=\"<div class='checkContainer'><input type='radio' name='foil' value='Foil'\".$foilChecked.\"'>Foil</div>\";\n\t$html .=\"<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'\".$nonFoilChecked.\"'>Non Foil</div>\";\n\t//$html .= \"</div>\";\n\n\t//$html .=\"<div class='checkWrapper'>\";\n\n\t$depth = 1;\n\tif (sizeof($get)){$depth = $get[\"depth\"];}\n\t$html .=\"<div class='inputContainer'>\";\n\t$html .=\"<div id='depth'>DAYS</div>\";\n\t$html .=\"<div class=''>\";\n\t$html .= \"<input type='number' min='1' max='50' value='\".$depth.\"' name='depth'>\";\n\t$html .= \"</div>\";\n\t$html .= \"</div>\";\n\n\t$minPrice = 3;\n\tif (sizeof($get)){$minPrice = $get[\"minPrice\"];}\n\t$html .=\"<div class='inputContainer'>\";\n\t$html .=\"<div id='minPrice'>Min € (now)</div>\";\n\t$html .=\"<div class=''>\";\n\t$html .= \"<input type='number' min='0' max='5000' value='\".$minPrice.\"' name='minPrice'>\";\n\t$html .= \"</div>\";\n\t$html .= \"</div>\";\n\n\t$maxPrice = 100;\n\tif (sizeof($get)){$maxPrice = $get[\"maxPrice\"];}\n\t$html .=\"<div class='inputContainer'>\";\n\t$html .=\"<div id='maxPrice'>Max € (now)</div>\";\n\t$html .=\"<div class=''>\";\n\t$html .= \"<input type='number'min='0' max='5000' value='\".$maxPrice.\"' name='maxPrice'>\";\n\t$html .= \"</div>\";\n\t$html .= \"</div>\";\n\n\t$availChange = -3;\n\tif (sizeof($get)){$availChange = $get[\"availChange\"];}\n\t$html .=\"<div class='inputContainer'>\";\n\t$html .=\"<div id='availChange'>Supply Change</div>\";\n\t$html .=\"<div class=''>\";\n\t$html .= \"<input type='number'min='-100' max='100' value='\".$availChange.\"' name='availChange'>\";\n\t$html .= \"</div>\";\n\t$html .= \"</div>\";\n\n\n\t$pctChecked = \"\";\n\t$absChecked = \"\";\n\tif (sizeof($get)){\n\t\tif ($get[\"compareType\"] == \"PCT\"){$pctChecked = \"checked='checked'\";}\n\t\telse if ($get[\"compareType\"] == \"ABS\"){$absChecked = \"checked='checked'\";}\n\t}\n\telse {\n\t\t$pctChecked = \"checked='checked'\"; \n\t}\n\n\t$html .=\"<div class='inputContainer'>\";\n\t$html .=\"<div class='checkContainer'><input type='radio' name='compareType' value='PCT'\".$pctChecked.\"'>%-based</div>\";\n\t$html .=\"<div class='checkContainer'><input type='radio' name='compareType' value='ABS'\".$absChecked.\"'>abs-based</div>\";\n\t$html .= \"</div>\";\n\n\n\n\t$html .= \"</div>\";\n\n\t$html .=\"<div class='checkWrapper'>\";\n\t$html .=\"<div id='set' class='toggle'>Sets to include (right-click, toggle all)</div>\";\n\tfor ($i = 0; $i < sizeof($codes); $i++){\n\t\tfor ($j = 0; $j < sizeof($codes[$i]); $j++){\n\n\t\t\t$checked = '';\n\t\t\tif (sizeof($get) && $get[\"sets\"]){\n\t\t\t\tfor ($k = 0; $k < sizeof($get[\"sets\"]); $k++){\n\t\t\t\t\tif ($get[\"sets\"][$k] == $codes[$i][$j]){\n\t\t\t\t\t\t$checked = \"checked='checked'\";\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t$html .=\"<div class='checkContainer'><input type='checkbox' name='sets[]' value='\".$codes[$i][$j].\"' \".$checked.\">\";\n\t\t\t$html .=\"<span>\".$codes[$i][$j].\"</span>\";\n\t\t\t$html .=\"</div>\";\n\t\t}\n\t\t//$html .=\"</br>\";\n\t}\n\n\t$html .=\"</div>\";\n\t$html .=\"</br>\";\n\t$html .=\"<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>\";\n\t$html .=\"</form>\";\n\n\treturn $html;\n}\n\n\n\nfunction requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){\n\t$sets = json_decode(file_get_contents(__DIR__.\"/input/sets.json\"), TRUE);\n\n\t$names = getSetNamesByCodes($codes);\n\n\t/*\n\t$depth = 10;\n\t$foil = 1;\n\t$minPrice = 0.5;\n\t$maxPrice = 0;\n\t$availChange = -0.0;\n\t$includes = array(\"C\", \"R\", \"M\", \"S\");\n\t$compareType = \"pct\";\n\t*/\n\n\t$html = \"\";\n\n\t/*\n\t$html .=\"Delving: \".$depth.\" days of data, \";\n\t$html .=\"only \".$foil.\"</br>\";\n\t$html .=\"Price NOW > \".$minPrice.\", \";\n\t$html .=\"Price NOW < \".$maxPrice.\"</br>\";\n\t$html .=\"Supply Avail Change > \".$availChange.\" (type: \".$compareType.\")</br>\";\n\t*/\n\t$allSets = array();\n\n\t//$codes = array(array(\"A25\"));\n\n\tfor ($i = 0; $i < sizeof($codes); $i++){\n\t\t//for ($j = 0; $j < sizeof($codes[$i]); $j++){\n\t\t//for ($i = 0; $i < 1; $i++){\n\t\t//\tfor ($j = 0; $j < 1; $j++){\n\t\t\t$setName = $names[$i];\n\n\n\t\t\t//$html .=\"Preparing \".$setName.\" prices</br>\";\n\n\n\t\t\t$cards = json_decode(file_get_contents(__DIR__.\"/input/\".$codes[$i].\".json\"), TRUE)[\"cards\"];\n\t\t\t$points = json_decode(file_get_contents(__DIR__.\"/output/\".$codes[$i].\".json\"), TRUE)[\"content\"];\n\t\t\tif (!$points){$html .=\"</br></br>No data found for:\".$setName; continue;}\n\t\t\t$extract = array(\n\t\t\t\t\"set\" => $setName,\n\t\t\t\t\"code\" => $codes[$i],\n\t\t\t\t\"compareDate\" => $points[max(0, (sizeof($points)-1 -$depth))][\"date\"],\n\t\t\t\t\"lastDate\" => $points[sizeof($points)-1][\"date\"],\n\t\t\t\t\"shakers\" => array()\n\t\t\t);\n\n\t\t\tfor ($k = 0; $k < sizeof($cards); $k++){\n\n\t\t\t\t$skip = true;\n\t\t\t\tfor ($l = 0; $l < sizeof($includes); $l++){\n\t\t\t\t\tif ($cards[$k][\"rarity\"][0] == $includes[$l]){$skip = false; break;}\n\t\t\t\t}\n\n\t\t\t\tif ($skip){continue;}\n\n\t\t\t\t$name = $cards[$k][\"name\"];\n\t\t\t\t$last = getCardDataSet($name, $points[sizeof($points)-1][\"data\"]);\n\t\t\t\tif (!$last){continue;}\n\t\t\t\tif ($minPrice != 0 && $last[\"foilPrice\"] < $minPrice){continue;}\n\t\t\t\tif ($maxPrice != 0 && $last[\"foilPrice\"] > $maxPrice){continue;}\n\t\t\t\t$card = array(\n\t\t\t\t\t\"name\" => $name,\n\t\t\t\t\t\"rarity\" => $cards[$k][\"rarity\"],\n\t\t\t\t\t\"baseAvail\" => array(),\n\t\t\t\t\t\"basePrice\" => array(),\n\t\t\t\t\t\"foilAvail\" => array(),\n\t\t\t\t\t\"foilPrice\" => array(),\n\t\t\t\t\t\"baseAvailChange\" => array(),\n\t\t\t\t\t\"basePriceChange\" => array(),\n\t\t\t\t\t\"foilAvailChange\" => array(),\n\t\t\t\t\t\"foilPriceChange\" => array()\n\t\t\t\t);\n\n\n\t\t\t\tfor ($l = sizeof($points)-1; $l >= max(0, (sizeof($points)-1 -$depth)); $l--){\n\t\t\t\t\taddCardDataPoint($card, getCardDataSet($name, $points[$l][\"data\"]));\n\t\t\t\t}\n\t\t\t\t$extract[\"shakers\"][] = $card;\n\t\t\t}\n\n\t\t\tif (!sizeof($extract[\"shakers\"])){continue;}\n\t\t\t$allSets[] = $extract;\n\t\t//}\n\t}\n\n\n\tfor ($i = 0; $i < sizeof($allSets); $i++){\n\t\tfor ($j = 0; $j < sizeof($allSets[$i][\"shakers\"]); $j++){\n\t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"baseAvail\");\n\t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"basePrice\");\n\t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"foilAvail\");\n\t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"foilPrice\");\n\t\t}\n\t}\n\t\n\techo $html;\n\techo buildTables($allSets, $foil, $compareType, $availChange, $minPrice);\n\n}\n\n\nfunction setChangeValue(&$card, $attr){\n\tif ($card[$attr][sizeof($card[$attr])-1] == 0){$card[$attr.\"Change\"][0] = 0; $card[$attr.\"Change\"][1] = 0; return;}\n\t//var_export($card);\n\t$card[$attr.\"Change\"][0] = round($card[$attr][0] - $card[$attr][sizeof($card[$attr])-1], 2); \n\t$card[$attr.\"Change\"][1] = round((($card[$attr][0] / $card[$attr][sizeof($card[$attr])-1])*100)-100, 2); \n}\n\n\nfunction buildTables($allSets, $foil, $compareType, $availChange, $minPrice){\n\n\t//echo $availChange;\n\t/*var_export(func_get_arg(1));\n\t\t\techo \"</br></br>\";\n\tvar_export(func_get_arg(2));\n\t\t\techo \"</br></br>\";\n\tvar_export(func_get_arg(3));\n\t\t\techo \"</br></br>\";\n\tvar_export(func_get_arg(4));\n\t\t\techo \"</br></br>\";\n\t*/\n\t$avail = \"\";\n\t$change = \"\";\n\t$price = \"\";\n\t$html = \"<span style='color: red'>NOTE: Prefer the # (available stock) columns, price is biased because of 'cheap' foreign foils</span>\";\n\t$html .= \"</br>\";\n\t$index;\n\n\tif ($foil == \"Non Foil\"){\n\t\t$avail = \"baseAvail\";\n\t\t$price = \"basePrice\";\n\t\t$volChange = \"baseAvailChange\";\n\t\t$moneyChange = \"basePriceChange\";\n\t}\n\telse {\n\t\t$avail = \"foilAvail\";\n\t\t$price = \"foilPrice\";\n\t\t$volChange = \"foilAvailChange\";\n\t\t$moneyChange = \"foilPriceChange\";\n\t}\n\n\tif ($compareType == \"abs\"){\n\t\t$index = 0;\n\t} else $index = 1;\n\n\n\tfor ($i = 0; $i < sizeof($allSets); $i++){\n\t\t//$html .=\"entries: \".sizeof($allSets[$i][\"shakers\"]).\"</br>\";\n\t\t$html .=\"<table class='moveTable'>\";\n\n\n\t\t$html .=\"<thead>\";\n\t\t$html .=\"<tr><th class='set' colSpan=10>\".$allSets[$i][\"set\"].\" - \".$allSets[$i][\"code\"].\"</th></tr>\";\n\t\t$html .=\"<tr class='sort'>\";\n\t\t$html .=\"<th style='width: 180px'>Name</th>\";\n\t\t$html .=\"<th style='width: 100px'>Rarity</th>\";\n\n\t\t$html .=\"<th style='width: 100px'>#</br>\".$allSets[$i][\"compareDate\"].\"</th>\";\n\t\t$html .=\"<th style='width: 100px'>#</br>\".$allSets[$i][\"lastDate\"].\"</th>\";\n\t\t$html .=\"<th style='width: 70px'>ABS</th>\";\n\t\t$html .=\"<th style='width: 70px'>PCT</th>\";\n\n\t\t$html .=\"<th style='width: 100px'>€</br>\".$allSets[$i][\"compareDate\"].\"</th>\";\n\t\t$html .=\"<th style='width: 100px'>€</br>\".$allSets[$i][\"lastDate\"].\"</th>\";\n\t\t$html .=\"<th style='width: 70px'>ABS</th>\";\n\t\t$html .=\"<th style='width: 70px'>PCT</th>\";\n\t\t$html .=\"</tr></thead>\";\n\n\t\t$html .=\"<tbody>\";\n\n\t\tfor ($j = 0; $j < sizeof($allSets[$i][\"shakers\"]); $j++){\n\t\t\t$card = $allSets[$i][\"shakers\"][$j];\n\n\t\t\tif ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}\n\t\t\tif ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}\n\n\t\t\t$href = \"index.php?type=preset&set=\".urlencode($allSets[$i][\"set\"]).\"&card=\".urlencode($card[\"name\"]);\n\n\t\t\t$html .=\"<tr><td><a target='blank' href=\".$href.\">\".$card['name'].\"</a></td>\";\n\t\t\t$html .=\"<td>\".$card[\"rarity\"].\"</td>\";\n\n\t\t\t$html .=\"<td>\".$card[$avail][sizeof($card[$avail])-1].\"</td>\";\n\t\t\t$html .=\"<td>\".$card[$avail][0].\"</td>\";\n\t\t\tif ($card[$volChange][0] > 0){$class = \"green\";} else $class =\"red\";\n\t\t\t$html .=\"<td class='\".$class.\"'>\".$card[$volChange][0].\"</td>\";\n\t\t\t$html .=\"<td class='\".$class.\"'>\".$card[$volChange][1].\" %</td>\";\n\n\t\t\t$html .=\"<td>\".$card[$price][sizeof($card[$price])-1].\"</td>\";\n\t\t\t$html .=\"<td>\".$card[$price][0].\"</td>\";\n\t\t\tif ($card[$moneyChange][0] > 0){$class = \"green\";} else $class =\"red\";\n\t\t\t$html .=\"<td class='\".$class.\"'>\".$card[$moneyChange][0].\"</td>\";\n\t\t\t$html .=\"<td class='\".$class.\"'>\".$card[$moneyChange][1].\" %</td>\";\n\t\t\t$html .=\"</tr>\";\n\t\t}\n\n\t\t$html .=\"</tbody></table>\";\n\n\t}\n\treturn $html;\n}\n\nfunction fixOutputSets(){\n\t$sets = json_decode(file_get_contents(__DIR__.\"/input/sets.json\"), TRUE);\n\t$codes = $sets[\"codes\"];\n\t$names = $sets[\"names\"];\n\n\t//for ($i = 0; $i < 1; $i++){\n\t//\tfor ($j = 0; $j < 1; $j++){\n\tfor ($i = 0; $i < sizeof($codes); $i++){\n\t\tfor ($j = 0; $j < sizeof($codes[$i]); $j++){\n\n\t\t\techo \"doing set: \".$names[$i][$j].\"</br>\";\n\t\t\t$errorA = 0;\n\t\t\t$errorB = 0;\n\t\t\t$errorC = 0;\n\t\t\t$errorD = 0;\n\n\t\t\t$file = fopen(__DIR__.\"/output/\" . $codes[$i][$j] .\".json\", \"r+\");\n\t\t\tfseek($file, 0);\n\n\t\t\tfwrite($file, '{\"code\": \"'.$codes[$i][$j].'\",');\n\t\t\tfwrite($file, \"\\n\");\n\t\t\tfwrite($file, '\"content\": [');\n\t\t\tfwrite($file, \"\\n\");\n\n\t\t\t//fclose($file);\n\t\t\t//$file = fopen(__DIR__.\"/output/\" . $codes[$i][$j] .\".json\", \"a\");\n\n\t\t\t$data = json_decode(file_get_contents(__DIR__.\"/output/\".$codes[$i][$j].\".json\"), TRUE);\n\n\t\t\tfor ($k = 0; $k < sizeof($data[\"content\"]); $k++){\n\t\t\t\tfor ($l = 0; $l < sizeof($data[\"content\"][$k][\"data\"]); $l++){\n\n\t\t\t\t\t$data[\"content\"][$k][\"code\"] = $codes[$i][$j];\n\n\t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"baseAvail\"])){$data[\"content\"][$k][\"data\"][$l][\"baseAvail\"] = 0;$errorA++;}\n\t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"basePrice\"])){$data[\"content\"][$k][\"data\"][$l][\"basePrice\"] = 0;$errorB++;}\n\t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"foilAvail\"])){$data[\"content\"][$k][\"data\"][$l][\"foilAvail\"] = 0;$errorC++;}\n\t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"foilPrice\"])){$data[\"content\"][$k][\"data\"][$l][\"foilPrice\"] = 0;$errorD++;}\n\t\t\t\t}\n\n\t\t\t\tfwrite($file, json_encode($data[\"content\"][$k]));\n\t\t\t\tfwrite($file, \"\\n\");\n\n\t\t\t\tif ($k < sizeof($data[\"content\"])-1){\n\t\t\t\t\tfwrite($file, \",\");\n\t\t\t\t} else fwrite($file, \"]}\");\n\t\t\t}\n\n\t\t\techo \"found errors: \".$errorA.\"/\".$errorB.\"/\".$errorC.\"/\".$errorD.\"</br>\";\n\t\t\tfclose($file);\n\t\t}\n\t}\n}\n\n\n?>",
 			"file": "global.php",
+			"file_size": 15580,
+			"file_write_time": 131675232981793974,
 			"settings":
 			{
-				"buffer_size": 13809,
-				"encoding": "UTF-8",
+				"buffer_size": 15076,
 				"line_ending": "Windows"
 			}
 		},
@@ -559,7 +561,7 @@
 			"file": "style/style.css",
 			"settings":
 			{
-				"buffer_size": 1424,
+				"buffer_size": 1657,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,7 +579,8 @@
 			"file": "script.js",
 			"settings":
 			{
-				"buffer_size": 9448,
+				"buffer_size": 9446,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -591,10 +594,28 @@
 			}
 		},
 		{
+			"file": "input/LEB.json",
+			"settings":
+			{
+				"buffer_size": 204761,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "output/cardlist.json",
+			"settings":
+			{
+				"buffer_size": 269709,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "output/SOM.json",
 			"settings":
 			{
-				"buffer_size": 57173,
+				"buffer_size": 71463,
 				"line_ending": "Windows"
 			}
 		}
@@ -791,7 +812,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -933,6 +954,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"limited e",
+			"var_",
+			"var_export($c",
+			"echo t",
+			"echo co",
+			"brah",
+			"please s",
+			"compareType",
+			"getForm",
+			"type",
+			"$type",
+			"requestShakers",
+			"radio",
+			"include",
+			"include\"",
+			"include",
+			"availChange",
 			"supplyChange",
 			"getForm",
 			"buildTables",
@@ -1043,24 +1081,7 @@
 			"buildChart",
 			"build",
 			"},\n,{\"",
-			", ",
-			", , ",
-			"date",
-			"type",
-			"pGraph",
-			"buildChart",
-			"buildBothCharts",
-			"getPriceData",
-			"ctx",
-			"canvas",
-			"this.canvas",
-			"ctx",
-			"layout",
-			"\"names\": [",
-			"adanto",
-			"getStandSets",
-			"rivals of",
-			"ixalan"
+			", "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1206,7 +1227,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1231,16 +1252,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1251,11 +1262,11 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1266,26 +1277,36 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
@@ -1294,7 +1315,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1303,15 +1324,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1983,
+						"buffer_size": 2210,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								48,
+								48
 							]
 						],
 						"settings":
@@ -1324,26 +1345,31 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1354,35 +1380,30 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 266.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1391,19 +1412,78 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2267,
+						"buffer_size": 2462,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								381,
-								381
+								1635,
+								1635
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1411,7 +1491,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1420,27 +1500,86 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13809,
+						"buffer_size": 15076,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12688,
-								12688
+								262,
+								262
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5244.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1449,27 +1588,86 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1424,
+						"buffer_size": 1657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								896,
-								896
+								294,
+								294
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
 							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 697.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1497,13 +1695,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1512,27 +1710,86 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13809,
+						"buffer_size": 15076,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2266,
-								2280
+								2255,
+								2255
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1820.0,
+						"translation.y": 632.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1541,19 +1798,78 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9448,
+						"buffer_size": 9446,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								113,
+								113
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1561,7 +1877,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1577,12 +1893,71 @@
 						"selection":
 						[
 							[
-								700,
-								700
+								54,
+								54
 							]
 						],
 						"settings":
 						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1590,16 +1965,192 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
+					"file": "input/LEB.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 204761,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								121,
+								121
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "output/cardlist.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 269709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37483,
+								37483
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 299864.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "output/SOM.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 57173,
+						"buffer_size": 71463,
 						"regions":
 						{
 						},
@@ -1618,7 +2169,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1652,7 +2203,7 @@
 		"cols":
 		[
 			0.0,
-			0.785831803174,
+			0.39818520796,
 			1.0
 		],
 		"rows":
@@ -1670,7 +2221,7 @@
 	"project": "crawl.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1680,19 +2231,11 @@
 		"selected_items":
 		[
 			[
+				"shak",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
 				"sty",
-				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
-			],
-			[
-				"glo",
-				"C:\\xampp\\htdocs\\crawl\\global.php"
-			],
-			[
-				"gl",
-				"C:\\xampp\\htdocs\\crawl\\global.php"
-			],
-			[
-				"st",
 				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
 			],
 			[
@@ -1700,12 +2243,48 @@
 				"C:\\xampp\\htdocs\\crawl\\global.php"
 			],
 			[
-				"glb",
+				"scr",
+				"C:\\xampp\\htdocs\\crawl\\script.js"
+			],
+			[
+				"ind",
+				"C:\\xampp\\htdocs\\crawl\\index.php"
+			],
+			[
+				"inde",
+				"C:\\xampp\\htdocs\\crawl\\index.php"
+			],
+			[
+				"g",
 				"C:\\xampp\\htdocs\\crawl\\global.php"
 			],
 			[
-				"shak",
+				"st",
+				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
+			],
+			[
+				"glo",
+				"C:\\xampp\\htdocs\\crawl\\global.php"
+			],
+			[
+				"s",
+				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
+			],
+			[
+				"styl",
+				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
+			],
+			[
+				"shake",
 				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
+				"gl",
+				"C:\\xampp\\htdocs\\crawl\\global.php"
+			],
+			[
+				"glb",
+				"C:\\xampp\\htdocs\\crawl\\global.php"
 			],
 			[
 				"som",
@@ -1740,10 +2319,6 @@
 				"C:\\xampp\\htdocs\\crawl\\output\\RIX.json"
 			],
 			[
-				"scr",
-				"C:\\xampp\\htdocs\\crawl\\script.js"
-			],
-			[
 				"leg",
 				"C:\\xampp\\htdocs\\crawl\\output\\LEG.json"
 			],
@@ -1768,10 +2343,6 @@
 				"C:\\xampp\\htdocs\\crawl\\output\\MPS.json"
 			],
 			[
-				"styl",
-				"C:\\xampp\\htdocs\\crawl\\libs\\style.css"
-			],
-			[
 				"sha",
 				"C:\\xampp\\htdocs\\crawl\\shakers.php"
 			],
@@ -1794,10 +2365,6 @@
 			[
 				"a2",
 				"C:\\xampp\\htdocs\\crawl\\output\\A25.json"
-			],
-			[
-				"ind",
-				"C:\\xampp\\htdocs\\crawl\\index.php"
 			],
 			[
 				"crw",
@@ -2104,10 +2671,6 @@
 				"C:\\xampp\\htdocs\\fire\\fire.log"
 			],
 			[
-				"s",
-				"C:\\xampp\\htdocs\\fire\\server\\ship.php"
-			],
-			[
 				"puls",
 				"C:\\xampp\\htdocs\\fire\\server\\systems\\weapons\\pulse.php"
 			],
@@ -2178,18 +2741,6 @@
 			[
 				"ro",
 				"C:\\xampp\\htdocs\\fire\\server\\ships\\rongoth.php"
-			],
-			[
-				"oly",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\olympus.php"
-			],
-			[
-				"ka",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\katoc.php"
-			],
-			[
-				"art",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\artemis.php"
 			]
 		],
 		"width": 0.0
@@ -2220,7 +2771,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 126.0,
+	"side_bar_width": 173.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

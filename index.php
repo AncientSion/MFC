@@ -60,17 +60,18 @@
 					$card = "Rishadan Port";
 					$set = "Masters 25";
 
+						if (sizeof($_GET) && ($_GET["type"] == "preset")){
+							$card = $_GET["card"];
+							$set = $_GET["set"];
+							echo "<script>window.remote = 1</script>";
+						} else "<script>window.remote = 0</script>";
 
-					if (sizeof($_GET) && ($_GET["type"] == "preset")){
-						$card = $_GET["card"];
-						$set = $_GET["set"];
-					}
-					echo "<input type='form' id='setSearch' value='".$set."'>";
-					echo "<input type='form' id='cardSearch' value='".$card."'>";
+						echo "<input type='form' id='setSearch' value='".$set."'>";
+						echo "<input type='form' id='cardSearch' value='".$card."'>";
 
 					?>
 					
-					<input type="button" style="font-size: 20px" onclick="charter.getCardData(this)" value="Search">
+					<input type="button" style="font-size: 20px" onclick="charter.getCardData()" value="Search">
 					<div id="cardName"></div>
 				</div>
 			</div>

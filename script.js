@@ -1,5 +1,6 @@
 window.onload = function(){
 	charter = new Charter();
+	timeout = false;
 
 	$("#cardSearch").focus(function(){
 		console.log("ding");
@@ -7,6 +8,12 @@ window.onload = function(){
 	})
 
 	$(".ui").removeClass("disabled");
+
+	if (remote){
+		timeout = setTimeout(function(){
+			charter.getCardData()
+		}, 500);
+	}
 }
 
 class Entry {
@@ -63,9 +70,9 @@ class Charter {
 		}
 	}
 
-	getCardData(ele){
-		var setName = $($(ele).parent().children()[0]).val();
-		var cardName =  $($(ele).parent().children()[1]).val();
+	getCardData(){
+		var setName = $("#setSearch").val();
+		var cardName =  $("#cardSearch").val();
 
 		if (setName && cardName){
 			for (let i = 0; i < this.data.length; i++){

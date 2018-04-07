@@ -72,7 +72,9 @@ $(document).ready(function(){
 			$(this).remove();// return;
 		}
 		$(this).DataTable({
-			"paging": false
+			"paging": false,
+			"aaSorting": [[5, "asc"]]
+			//"aaSorting": []
 		})
 	})
 

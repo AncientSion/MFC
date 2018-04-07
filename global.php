@@ -6,6 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
+
 function getCardDataSet($name, $data){
 	for ($i = 0; $i < sizeof($data); $i++){
 		if ($data[$i]["name"] == $name){
