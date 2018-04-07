@@ -401,13 +401,13 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 		$html .="<th style='width: 180px'>Name</th>";
 		$html .="<th style='width: 100px'>Rarity</th>";
 
-		$html .="<th style='width: 100px'>#</br>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 100px'>#</br>".$allSets[$i]["lastDate"]."</th>";
+		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
+		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
 
-		$html .="<th style='width: 100px'>€</br>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 100px'>€</br>".$allSets[$i]["lastDate"]."</th>";
+		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
+		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
 		$html .="</tr></thead>";
