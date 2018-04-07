@@ -277,8 +277,10 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 			//$html .="Preparing ".$setName." prices</br>";
 
 
-			$cards = json_decode(file_get_contents(__DIR__."/input/".$codes[$i].".json"), TRUE)["cards"];
-			$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE)["content"];
+			$cards = json_decode(file_get_contents(__DIR__."/input/".$codes[$i].".json"), TRUE);
+			$cards = $cards["cards"];
+			$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
+			$points = $cards["content"];
 			if (!$points){$html .="</br></br>No data found for:".$setName; continue;}
 			$extract = array(
 				"set" => $setName,
