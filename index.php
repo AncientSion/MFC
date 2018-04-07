@@ -57,7 +57,7 @@
 				<div>
 					<?php 
 
-					$card = "Rishadan Port";
+					$card = "Brainstorm";
 					$set = "Masters 25";
 
 						if (sizeof($_GET) && ($_GET["type"] == "preset")){

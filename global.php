@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+include(__DIR__."\debug.php");
 
 
 function getCardDataSet($name, $data){
@@ -236,19 +237,6 @@ function getForm($get){
 
 	return $html;
 }
-
-
-function logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
-	$search = array(
-		"type" => "search",
-		"options" => array(
-			$codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType
-		)
-	);
-	
-	file_put_contents(__DIR__."/log/mfc.txt", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
-}
-
 
 function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);

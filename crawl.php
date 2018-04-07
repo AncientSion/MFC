@@ -16,7 +16,8 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
-$data = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE)["codes"];
+$data = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+$data = $data["codes"];
 
 echo "Script Execution Started \n";
 
