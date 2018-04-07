@@ -241,6 +241,7 @@ function getForm($get){
 
 function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
+	$output = file_put_contents(__DIR__"usage.log", "search++\n");
 
 	$names = getSetNamesByCodes($codes);
 
