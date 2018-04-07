@@ -152,7 +152,7 @@ function getForm($get){
 
 	//$html .="<div class='checkWrapper'>";
 
-	$depth = 1;
+	$depth = 3;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>DAYS</div>";
@@ -164,7 +164,7 @@ function getForm($get){
 	$minPrice = 3;
 	if (sizeof($get)){$minPrice = $get["minPrice"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='minPrice'>Min € (now)</div>";
+	$html .="<div id='minPrice'>Min (EUR, now)</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min='0' max='5000' value='".$minPrice."' name='minPrice'>";
 	$html .= "</div>";
@@ -173,7 +173,7 @@ function getForm($get){
 	$maxPrice = 100;
 	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='maxPrice'>Max € (now)</div>";
+	$html .="<div id='maxPrice'>Max (EUR, now)</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
 	$html .= "</div>";
@@ -238,10 +238,24 @@ function getForm($get){
 }
 
 
+function logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
+	$search = array(
+		"type" => "search",
+		"options" => array(
+			$codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType
+		)
+	);
+	
+	file_put_contents(__DIR__."/log/mfc.txt", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
+}
+
 
 function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
 	$sets = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
-	file_put_contents(__DIR__."usage.log", "search++\n");
+
+
+	logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);
+	//file_put_contents(__DIR__."mfc.log", "search++\n");
 
 	$names = getSetNamesByCodes($codes);
 
