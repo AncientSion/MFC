@@ -9,7 +9,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 a:link, a:visited {
-    color: #00e2ff;
+    color: #6ceeff;
+    text-decoration: none;
 }
 
 .container {
@@ -84,9 +85,7 @@ div > input, div > span{
 
 .checkWrapper {
 	width: 1000px;
-	margin-bottom: 20px;
 	border: 1px solid white;
-	border-radius: 5px;
 	padding: 10px;
 }
 
@@ -98,8 +97,6 @@ div > input, div > span{
 
 .dataTables_wrapper {
 	padding: 10px;
-	width: 1200px;
-	border: 1px solid white;
 }
 
 .dataTables_wrapper {

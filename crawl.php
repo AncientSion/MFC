@@ -6,10 +6,19 @@ include_once(__DIR__."\simple_html_dom.php");
 
 $context = stream_context_create(
     array(
-        "http" => array(
-            "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
-        )
-    )
+        "http" =>
+			array(
+			    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
+				"method" => "POST",
+				"content" => http_build_query(
+					array(
+						"productFilter[idLanguage]" => array(1),
+						"productFilter[isFoil]" => "Y",
+						"productFilter[condition]" => array("NM", "EX")
+					)
+				)
+			)
+		)
 );
 
 $time = time();
@@ -21,12 +30,13 @@ $data = $data["codes"];
 
 echo "Script Execution Started \n";
 
-getFullFoilSets($date, $context, $data[0]);
-getFullNonFoilSets($date, $context, $data[1]);
-getNotCommonNotFoilSets($date, $context, $data[2]);
+
+
+//getFullFoilSets($date, $context, $data[0]);
+//getFullNonFoilSets($date, $context, $data[1]);
+//getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
 getMPSSets($date, $context, $data[4]);
-
 
 
 $time += microtime(true);
@@ -51,8 +61,9 @@ function getFullFoilSets($date, $context, $codes){
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
 		$get = 0;
 
-		//for ($j = 0; $j < 3; $j++){
+		
 		for ($j = 0; $j < sizeof($cards); $j++){
+		//for ($j = 30; $j < sizeof($cards); $j++){
 			$get++;
 			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
@@ -72,11 +83,24 @@ function getFullFoilSets($date, $context, $codes){
 			$basePrice = str_replace(",", ".", $basePrice);
 
 			$foilAvail = $foil->children(1)->innertext;
-			$foilPrice = $table->children(4)->children(1)->innertext;
-			$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strpos($foilPrice, " ")));
-			//echo $foilPrice;
-			//continue;
 
+			$offers = $html->find("#articlesTable", 0);
+			$start = 0;
+			if ($offers){
+				$foilPrice = $offers->children(1)->children(5)->children(0)->children(0);
+				if (sizeof($foilPrice->children())){
+					$start = 6;
+					$foilPrice = $foilPrice->children(0)->innertext;
+				} else $foilPrice = $foilPrice->innertext;
+			}
+			else $foilPrice = $table->children(4)->children(1)->innertext;
+
+			$foilPrice = str_replace(",", ".", substr($foilPrice, $start, strpos($foilPrice, " ")));
+
+
+			//echo "price:".$foilPrice."\n";
+
+			//echo "cheapest: ".$foilPrice."\n";
 			$set["data"][] = array(
 				"name" => $cards[$j]["name"], 
 				"rarity" => $cards[$j]["rarity"], 
@@ -86,7 +110,6 @@ function getFullFoilSets($date, $context, $codes){
 				"foilPrice" => floatval($foilPrice)
 			);
 		}
-
 		writeAndClose($codes[$i], $set);
 	}
 }
@@ -241,10 +264,18 @@ function getStandSets($date, $context, $codes){
 			$basePrice = str_replace(",", ".", $basePrice);
 
 			$foilAvail = $foil->children(1)->innertext;
-			$foilPrice = $table->children(4)->children(1)->innertext;
-			$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strpos($foilPrice, " ")));
-			//echo $foilPrice;
-			//continue;
+			$offers = $html->find("#articlesTable", 0);
+			$start = 0;
+			if ($offers){
+				$foilPrice = $offers->children(1)->children(5)->children(0)->children(0);
+				if (sizeof($foilPrice->children())){
+					$start = 6;
+					$foilPrice = $foilPrice->children(0)->innertext;
+				} else $foilPrice = $foilPrice->innertext;
+			}
+			else $foilPrice = $table->children(4)->children(1)->innertext;
+
+			$foilPrice = str_replace(",", ".", substr($foilPrice, $start, strpos($foilPrice, " ")));
 
 			$set["data"][] = array(
 				"name" => $cards[$j]["name"], 
@@ -253,7 +284,7 @@ function getStandSets($date, $context, $codes){
 				"basePrice" => floatval($basePrice),
 				"foilAvail" => intval($foilAvail),
 				"foilPrice" => floatval($foilPrice)
-			);
+			);			
 		}
 		writeAndClose($codes[$i], $set);
 	}
@@ -307,6 +338,7 @@ function getMPSSets($date, $context, $codes){
 
 
 function writeAndClose($code, $data){
+	echo "Writing ".$code."\n";
 	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
 	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
 	fseek($file, -2, SEEK_END);

@@ -1,3 +1,5 @@
+remote = 0;
+
 window.onload = function(){
 	charter = new Charter();
 	timeout = false;
@@ -174,10 +176,16 @@ class Charter {
 
 	buildAllChards(card, set, data){
 
-		if (data.msg != undefined){
-			$("#cardName").html(data.msg);
-			return;
-		}
+
+	var link = "https://www.cardmarket.com/en/Magic/Products/Singles/" + $("#setSearch").val() + "/" + card;
+		link = encodeURI(link);
+		link = "<a target='_blank' href='" + link + "'>"+ card + " - " + set + " (click)</a>";
+
+
+		//if (data.msg != undefined){
+			$("#cardName").html(link);
+		//	return;
+		//}
 		/*
 		var foilAvail = this.getfoilAvailData(data);
 		var foilPrice = this.getFoilPriceData(data);
@@ -200,7 +208,7 @@ class Charter {
 		var cardData = this.getCardDataSets(data, card, set);
 		var tickData = this.getTickData(cardData);
 
-		$("#cardName").html(card + " - " + set);
+		//$("#cardName").html(card + " - " + set);
 
 		if (this.isValidData(cardData[0][0])){this.buildChart(label, cardData[0], tickData[0]);}
 		if (this.isValidData(cardData[1][0])){this.buildChart(label, cardData[1], tickData[1]);}

@@ -48,7 +48,7 @@ function buildFullCardPool(){
 
 	for ($i = 0; $i < sizeof($sets->codes); $i++){
 		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
-			echo "adding set: ".$sets->codes[$i][$j]."\n";
+			echo "adding set: ".$sets->codes[$i][$j]."</br>";
 			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
 
 			$set = array("code" => $json->code, "name" => $json->name, "cards" => array());
@@ -59,8 +59,8 @@ function buildFullCardPool(){
 		}
 	}
 
-	$file = fopen(__DIR__."/output/cardlist.json", "r");
-	fseek($file, 0);
+	$file = fopen(__DIR__."/output/cardlist.json", "a");
+	echo "writing</br>";
 	fwrite($file, json_encode($data));
 	fclose($file);
 }
@@ -167,7 +167,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='minPrice'>Min (EUR, now)</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='5000' value='".$minPrice."' name='minPrice'>";
+	$html .= "<input type='number' min='0' max='5000' step='0.5' value='".$minPrice."' name='minPrice'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -257,7 +257,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 	$compareType = "pct";
 	*/
 
-	$html = "";
+	//$html = "";
 
 	/*
 	$html .="Delving: ".$depth." days of data, ";
@@ -342,7 +342,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 		}
 	}
 	
-	echo $html;
+	//echo $html;
 	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice);
 
 }
@@ -392,17 +392,17 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 		$index = 0;
 	} else $index = 1;
 
+	$mkmBaseUrl = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
-		//$html .="entries: ".sizeof($allSets[$i]["shakers"])."</br>";
 		$html .="<table class='moveTable'>";
 
 
 		$html .="<thead>";
 		$html .="<tr><th class='set' colSpan=10>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
 		$html .="<tr class='sort'>";
-		$html .="<th style='width: 180px'>Name</th>";
-		$html .="<th style='width: 100px'>Rarity</th>";
+		$html .="<th style='width: 200px'>Name</th>";
+		$html .="<th style='width: 60px'>Rarity</th>";
 
 		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
 		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
@@ -423,10 +423,13 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
 			if ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}
 
-			$href = "index.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+			$chartUrl = "index.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+			$mkmUrl = $mkmBaseUrl.urlencode($allSets[$i]["set"]) . "/" . urlencode($card["name"]);
 
-			$html .="<tr><td><a target='blank' href=".$href.">".$card['name']."</a></td>";
-			$html .="<td>".$card["rarity"]."</td>";
+			$html .="<tr><td><a target='blank' href=".$chartUrl.">".$card['name']."</a>";
+			$html .=" - ";
+			$html .="<a target='blank' href=".$mkmUrl.">MKM</a></td>";
+			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
 
 			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
 			$html .="<td>".$card[$avail][0]."</td>";

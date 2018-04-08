@@ -3,6 +3,8 @@
 	include_once(__DIR__."/global.php");
 
 
+	//buildFullCardPool(); return;
+
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
 

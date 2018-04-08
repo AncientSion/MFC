@@ -12,7 +12,7 @@
 					"method" => "POST",
 					"content" => http_build_query(
 						array(
-							"productFilter[idLanguage]" => array(1, 3),
+							"productFilter[idLanguage]" => array(1),
 							"productFilter[isFoil]" => "Y",
 							"productFilter[condition]" => array("NM", "EX")
 						)
@@ -28,15 +28,23 @@
 	echo "Script Execution Started \n";
 
 
-	$cardName = "Maelstrom Pulse";
-	$setName = "Alara Reborn";
+	$cardName = "Keldon Warlord";
+	$setName = "Beta";
 	$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 
 	$url = $baseUrl . urlencode($setName) . "/" . urlencode($cardName);
 	$html = file_get_html($url, false, $context);
-	$table = $html->find("#articlesTable", 0);
 
-	echo $cardName." - ".$setName.", inventory: rows ".(sizeof($table->find("tr"))-1);
+	//$foilPrice = $table->children(1)->children(6)->children(1)->children(1)->innertext;
+
+//	$foilPrice = $table->children(1)->find(".st_price", 0)->plaintext;
+
+	$foilPrice = $html->find("#articlesTable", 0)->children(1)->children(5)->children(0)->children(0)->innertext;
+	$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strpos($foilPrice, " ")));
+
+
+
+	echo $cardName." - ".$setName.", cheapest EN: ".$foilPrice;
 
 
 
