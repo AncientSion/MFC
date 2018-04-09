@@ -4,11 +4,13 @@ include_once(__DIR__."\global.php");
 include_once(__DIR__."\simple_html_dom.php");
 
 
+//"header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
+
 $context = stream_context_create(
     array(
         "http" =>
 			array(
-			    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
+			    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T",
 				"method" => "POST",
 				"content" => http_build_query(
 					array(
@@ -32,9 +34,9 @@ echo "Script Execution Started \n";
 
 
 
-//getFullFoilSets($date, $context, $data[0]);
-//getFullNonFoilSets($date, $context, $data[1]);
-//getNotCommonNotFoilSets($date, $context, $data[2]);
+getFullFoilSets($date, $context, $data[0]);
+getFullNonFoilSets($date, $context, $data[1]);
+getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
 getMPSSets($date, $context, $data[4]);
 
@@ -64,6 +66,7 @@ function getFullFoilSets($date, $context, $codes){
 		
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 30; $j < sizeof($cards); $j++){
+			if ($cards[$j]["rarity"][0] == "B"){continue;}
 			$get++;
 			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
@@ -115,6 +118,11 @@ function getFullFoilSets($date, $context, $codes){
 }
 
 function getFullNonFoilSets($date, $context, $codes){
+	$sub = time();
+	$sub = -microtime(true);
+
+	echo "Script Execution Started \n";
+
 	$complete = array();
 
 	for ($i = 0; $i < sizeof($codes); $i++){
@@ -133,6 +141,7 @@ function getFullNonFoilSets($date, $context, $codes){
 		$get = 0;
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 0; $j < 2; $j++){
+			if ($cards[$j]["rarity"][0] == "B"){continue;}
 			$get++;
 			echo "#".$get." - ".$cards[$j]["name"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
@@ -165,6 +174,10 @@ function getFullNonFoilSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
+
+	$sub += microtime(true);
+	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
+ 
 }
 
 function getNotCommonNotFoilSets($date, $context, $codes){
