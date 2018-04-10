@@ -1,7 +1,6 @@
 <?php
 
 include_once(__DIR__."\global.php");
-include_once(__DIR__."\simple_html_dom.php");
 
 
 //"header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
@@ -34,7 +33,10 @@ echo "Script Execution Started \n";
 
 
 
+getFullFoilSets($date, $context, array("A25"));
+return;
 getFullFoilSets($date, $context, $data[0]);
+
 getFullNonFoilSets($date, $context, $data[1]);
 getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
@@ -42,7 +44,7 @@ getMPSSets($date, $context, $data[4]);
 
 
 $time += microtime(true);
-echo "Script Execution Completed; TIME:".round($time/60, 2)." minutes.";
+echo "FINAL Script Execution Completed; TIME:".round($time/60, 2)." minutes.";
  
 
 function getFullFoilSets($date, $context, $codes){
@@ -64,8 +66,8 @@ function getFullFoilSets($date, $context, $codes){
 		$get = 0;
 
 		
-		for ($j = 0; $j < sizeof($cards); $j++){
-		//for ($j = 30; $j < sizeof($cards); $j++){
+		//for ($j = 0; $j < sizeof($cards); $j++){
+		for ($j = 223; $j < 224; $j++){
 			if ($cards[$j]["rarity"][0] == "B"){continue;}
 			$get++;
 			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
@@ -181,6 +183,10 @@ function getFullNonFoilSets($date, $context, $codes){
 }
 
 function getNotCommonNotFoilSets($date, $context, $codes){
+	$sub = time();
+	$sub = -microtime(true);
+
+	echo "Script Execution Started \n";
 	$complete = array();
 
 	for ($i = 0; $i < sizeof($codes); $i++){
@@ -234,9 +240,16 @@ function getNotCommonNotFoilSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
+
+	$sub += microtime(true);
+	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 function getStandSets($date, $context, $codes){
+	$sub = time();
+	$sub = -microtime(true);
+
+	echo "Script Execution Started \n";
 	$complete = array();
 
 	//for ($i = 0; $i < 1; $i++){
@@ -301,9 +314,16 @@ function getStandSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
+
+	$sub += microtime(true);
+	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 function getMPSSets($date, $context, $codes){
+	$sub = time();
+	$sub = -microtime(true);
+
+	echo "Script Execution Started \n";
 	$complete = array();
 
 	//for ($i = 0; $i < 1; $i++){
@@ -347,6 +367,9 @@ function getMPSSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
+
+	$sub += microtime(true);
+	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 

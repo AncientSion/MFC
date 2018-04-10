@@ -6,6 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include(__DIR__."/debug.php");
+include(__DIR__."\simple_html_dom.php");
 
 
 function getCardDataSet($name, $data){
