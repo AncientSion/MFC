@@ -33,10 +33,7 @@ echo "Script Execution Started \n";
 
 
 
-getFullFoilSets($date, $context, array("A25"));
-return;
 getFullFoilSets($date, $context, $data[0]);
-
 getFullNonFoilSets($date, $context, $data[1]);
 getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
@@ -66,8 +63,8 @@ function getFullFoilSets($date, $context, $codes){
 		$get = 0;
 
 		
-		//for ($j = 0; $j < sizeof($cards); $j++){
-		for ($j = 223; $j < 224; $j++){
+		for ($j = 0; $j < sizeof($cards); $j++){
+		//for ($j = 223; $j < 224; $j++){
 			if ($cards[$j]["rarity"][0] == "B"){continue;}
 			$get++;
 			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
