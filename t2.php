@@ -1,33 +1,28 @@
 <?php
 
 /*/
-
-
-App token wdziBklE3HMdO4nP
-
-App secret a0Tn59XW6CbLIwfWyhCPEIqIOiEFY1vX
-
-Access token oC3ORLvDEGVE3dr66AVxxCh3YXSTuEdD
-
-Access token secret SNwiaKosP1yg3ZzZ1OpXkqNljjfyL39X
-
-request : GET https://www.mkmapi.eu/ws/v1.1/account
-
+App name MKM Charting
+App type Dedicated
+App tokenr juQSujRZwugWwsx
+App secret 0QdYZcbjM9zK7qX4x4tSs1ur6NVaBuBG
+Access token KuIKWnjG8G6Sv5XBd9XX7mYyq13LoYYG
+Access token secret Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK
 */
 
 
 
 // Declare and assign all needed variables for the request and the header
 $method = "GET";
-$url = "https://www.mkmapi.eu/ws/v2.0/output.json/account";
 $url = "https://www.mkmapi.eu/ws/v2.0/products/find?search=Springleaf&idGame=1&idLanguage=1";
 $url = "https://www.mkmapi.eu/ws/v2.0/output.json/games";
 $url = "https://www.mkmapi.eu/ws/v2.0/output.json/games/1/expansions";
 $url = "https://www.mkmapi.eu/ws/v2.0/output.json/expansions/1820/singles";
-$appToken = "wdziBklE3HMdO4nP";
-$appSecret = "a0Tn59XW6CbLIwfWyhCPEIqIOiEFY1vX";
-$accessToken = "oC3ORLvDEGVE3dr66AVxxCh3YXSTuEdD";
-$accessSecret = "SNwiaKosP1yg3ZzZ1OpXkqNljjfyL39X";
+$url = "https://www.mkmapi.eu/ws/v2.0/output.json/account";
+$url = "https://www.mkmapi.eu/ws/v2.0/output.json/games";
+$appToken = "juQSujRZwugWwsx";
+$appSecret = "0QdYZcbjM9zK7qX4x4tSs1ur6NVaBuBG";
+$accessToken = "KuIKWnjG8G6Sv5XBd9XX7mYyq13LoYYG";
+$accessSecret = "Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK";
 $nonce = uniqid();
 $timestamp = time();
 $signatureMethod = "HMAC-SHA1";
@@ -110,12 +105,9 @@ curl_close($curlHandle);
 // If you have chosen XML as response format (which is standard) use simplexml_load_string
 //  If you have chosen JSON as response format use json_decode
 $decoded = json_decode($content);
-foreach ($decoded as $key => $value){
-	echo $key."</br>";
-}
-foreach ($decoded->single as $item){
-	echo $item->enName." => ".$item->idProduct."</br>";
-}
+
+var_export(json_decode($info));
+var_export($decoded);
 //
 
 

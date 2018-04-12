@@ -424,7 +424,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
 			if ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}
 
-			$chartUrl = "index.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
 			$mkmUrl = $mkmBaseUrl.urlencode($allSets[$i]["set"]) . "/" . urlencode($card["name"]);
 
 			$html .="<tr><td><a target='blank' href=".$chartUrl.">".$card['name']."</a>";

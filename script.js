@@ -94,7 +94,7 @@ class Charter {
 	getPriceData(ref, set, card, callback){
 		$.ajax({
 			type: "GET",
-			url: "index.php",
+			url: "charts.php",
 			datatype: "json",
 			data: {
 				type: "price",
@@ -327,7 +327,7 @@ class Charter {
 		//return;
 		$.ajax({
 			type: "GET",
-			url: "index.php",
+			url: "charts.php",
 			datatype: "json",
 			data: {
 				type: type
