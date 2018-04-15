@@ -5,6 +5,18 @@ include_once(__DIR__."\global.php");
 
 //"header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36",
 
+
+
+
+$time = time();
+$date = date('d.m.Y', $time);
+$time = -microtime(true);
+
+echo "Script Execution Started \n";
+
+//getBoxPrices($date);
+
+
 $context = stream_context_create(
     array(
         "http" =>
@@ -22,15 +34,8 @@ $context = stream_context_create(
 		)
 );
 
-$time = time();
-$date = date('d.m.Y', $time);
-$time = -microtime(true);
-
 $data = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
 $data = $data["codes"];
-
-echo "Script Execution Started \n";
-
 
 
 getFullFoilSets($date, $context, $data[0]);
@@ -209,6 +214,7 @@ function getNotCommonNotFoilSets($date, $context, $codes){
 			echo "#".$get." - ".$cards[$j]["name"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
+			if (!$html){echo "no HTML! \n";}
 			$table = $html->find(".availTable", 0);
 			//echo $table;
 
@@ -367,6 +373,46 @@ function getMPSSets($date, $context, $codes){
 
 	$sub += microtime(true);
 	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
+}
+
+function getBoxPrices($date){
+	$context = stream_context_create(
+	    array(
+	        "http" =>
+				array(
+				    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
+				)
+			)
+	);
+
+	$set = array("date" => $date, "code" => "BOXES", "set" => "Booster Boxes", "data" => array());
+
+
+
+	for ($i = 0; $i < 5; $i++){
+		$url = "https://www.cardmarket.com/en/Magic/Products/Booster+Boxes?name=&idExpansion=0&onlyAvailable=&sortBy=englishName&sortDir=asc&view=list";
+
+		if ($i){$url .= "&resultsPage=".$i;}
+
+		echo "paging: ".$i."\n";
+		$html = file_get_html($url, false, $context);
+		$rows = $html->find(".MKMTable", 0)->children(1)->children();
+
+		for ($j = 0; $j < sizeof($rows); $j++){
+			$name = $rows[$j]->children(2)->children(0)->innertext;
+			$baseAvail = $rows[$j]->children(3)->children(0)->innertext;
+			$basePrice = 0.00;
+			if ($baseAvail){
+				$basePrice = $rows[$j]->children(4)->children(0)->innertext;
+				$basePrice = str_replace(",", ".", $basePrice);
+				$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+			}
+
+			$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
+		}
+	}
+
+	writeAndClose("BOXES", $set);
 }
 
 

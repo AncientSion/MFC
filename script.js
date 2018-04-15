@@ -175,11 +175,9 @@ class Charter {
 	}
 
 	buildAllChards(card, set, data){
-
-
-	var link = "https://www.cardmarket.com/en/Magic/Products/Singles/" + $("#setSearch").val() + "/" + card;
-		link = encodeURI(link);
-		link = "<a target='_blank' href='" + link + "'>"+ card + " - " + set + " (click)</a>";
+		var link = "https://www.cardmarket.com/en/Magic/Products/Singles/" + $("#setSearch").val() + "/" + card;
+			link = encodeURI(link);
+			link = "<a target='_blank' href='" + link + "'>"+ card + " - " + set + " (click)</a>";
 
 
 		//if (data.msg != undefined){

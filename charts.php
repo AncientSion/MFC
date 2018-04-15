@@ -8,9 +8,12 @@
 			$cards = file_get_contents(__DIR__."/output/cardlist.json");
 			echo $cards;	
 			return;
-		} else if ($_GET["type"] == "price"){
+		}
+		else if ($_GET["type"] == "price"){
 			$set = $_GET["set"];
 			$card = $_GET["card"];
+
+			//echo $set; echo $card;
 
 			$dataPoints = array();
 			$file = file_get_contents(__DIR__."/output/".$set.".json");
@@ -19,8 +22,6 @@
 				echo json_encode(array("msg" => "no card price data found"));
 				return;
 			}
-			//return;
-			//var_export($json->content);
 			for ($i = 0; $i < sizeof($json->content); $i++){
 				for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
 					if ($json->content[$i]->data[$j]->name == $card){

@@ -60,6 +60,17 @@ function buildFullCardPool(){
 		}
 	}
 
+
+
+	$json = json_decode(file_get_contents(__DIR__."/output/BOXES.json"));
+	$set = array("code" => "BOXES", "name" => "Booster Boxes", "cards" => array());
+	echo "adding BOXES</br>";
+	foreach ($json->content[0]->data as $box){
+		$set["cards"][] = array("name" => $box->name, "rarity" => "S");
+	}
+	$data[] = $set;
+
+
 	$file = fopen(__DIR__."/output/cardlist.json", "a");
 	echo "writing</br>";
 	fwrite($file, json_encode($data));
@@ -154,7 +165,7 @@ function getForm($get){
 
 	//$html .="<div class='checkWrapper'>";
 
-	$depth = 3;
+	$depth = 1;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>DAYS</div>";
@@ -163,7 +174,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$minPrice = 3;
+	$minPrice = 0;
 	if (sizeof($get)){$minPrice = $get["minPrice"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='minPrice'>Min (EUR, now)</div>";
@@ -172,7 +183,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$maxPrice = 100;
+	$maxPrice = 0;
 	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='maxPrice'>Max (EUR, now)</div>";
@@ -181,7 +192,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChange = -3;
+	$availChange = -1;
 	if (sizeof($get)){$availChange = $get["availChange"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
@@ -215,7 +226,8 @@ function getForm($get){
 	for ($i = 0; $i < sizeof($codes); $i++){
 		for ($j = 0; $j < sizeof($codes[$i]); $j++){
 
-			$checked = '';
+			$checked = "";
+			$checked =  "checked='checked'";
 			if (sizeof($get) && $get["sets"]){
 				for ($k = 0; $k < sizeof($get["sets"]); $k++){
 					if ($get["sets"][$k] == $codes[$i][$j]){
