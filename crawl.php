@@ -11,11 +11,10 @@ include_once(__DIR__."\global.php");
 $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
-
+$GLOBALS["gets"] = 0;
 echo "Script Execution Started \n";
 
-//getBoxPrices($date);
-
+getBoxPrices($date);
 
 $context = stream_context_create(
     array(
@@ -34,23 +33,23 @@ $context = stream_context_create(
 		)
 );
 
-$data = json_decode(file_get_contents(__DIR__."/input/sets.json"), TRUE);
-$data = $data["codes"];
 
+$data = json_decode(file_get_contents(__DIR__."/input/fetch.json"), TRUE);
+$data = $data["codes"];
 
 getFullFoilSets($date, $context, $data[0]);
 getFullNonFoilSets($date, $context, $data[1]);
 getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
 getMPSSets($date, $context, $data[4]);
+getMPSSets($date, $context, $data[5]);
 
 
 $time += microtime(true);
-echo "FINAL Script Execution Completed; TIME:".round($time/60, 2)." minutes.";
+echo "FINAL Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["gets"]." cards";
  
 
 function getFullFoilSets($date, $context, $codes){
-	$complete = array();
 
 	for ($i = 0; $i < sizeof($codes); $i++){
 	//for ($i = 0; $i < 1; $i++){
@@ -65,14 +64,12 @@ function getFullFoilSets($date, $context, $codes){
 		echo "\n\n*** Beginning - ".$setName." / ".$date."***\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
-		$get = 0;
 
-		
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 223; $j < 224; $j++){
 			if ($cards[$j]["rarity"][0] == "B"){continue;}
-			$get++;
-			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
+			$GLOBALS["gets"]++;
+			echo $cards[$j]["name"].", ".$cards[$j]["number"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
 			$table = $html->find(".availTable", 0);
@@ -122,12 +119,6 @@ function getFullFoilSets($date, $context, $codes){
 }
 
 function getFullNonFoilSets($date, $context, $codes){
-	$sub = time();
-	$sub = -microtime(true);
-
-	echo "Script Execution Started \n";
-
-	$complete = array();
 
 	for ($i = 0; $i < sizeof($codes); $i++){
 	//for ($i = 0; $i < 2; $i++){
@@ -142,12 +133,12 @@ function getFullNonFoilSets($date, $context, $codes){
 		echo "\n\n*** Beginning - ".$setName." / ".$date."***\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
-		$get = 0;
+
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 0; $j < 2; $j++){
 			if ($cards[$j]["rarity"][0] == "B"){continue;}
-			$get++;
-			echo "#".$get." - ".$cards[$j]["name"]."\n";
+			$GLOBALS["gets"]++;
+			echo $cards[$j]["name"].", "."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
 			$table = $html->find(".availTable", 0);
@@ -178,18 +169,9 @@ function getFullNonFoilSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
-
-	$sub += microtime(true);
-	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
- 
 }
 
 function getNotCommonNotFoilSets($date, $context, $codes){
-	$sub = time();
-	$sub = -microtime(true);
-
-	echo "Script Execution Started \n";
-	$complete = array();
 
 	for ($i = 0; $i < sizeof($codes); $i++){
 	//for ($i = 0; $i < 2; $i++){
@@ -204,14 +186,13 @@ function getNotCommonNotFoilSets($date, $context, $codes){
 		echo "\n\n*** Beginning - ".$setName." / ".$date."***\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
-		$get = 0;
 
 		for ($j = 0; $j < sizeof($cards); $j++){
 		//for ($j = 0; $j < 2; $j++){
 			if (($cards[$j]["rarity"][0] == "C" || $cards[$j]["rarity"][0] == "B")){continue;}
-			$get++;
+			$GLOBALS["gets"]++;
 
-			echo "#".$get." - ".$cards[$j]["name"]."\n";
+			echo $cards[$j]["name"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
 			if (!$html){echo "no HTML! \n";}
@@ -243,17 +224,9 @@ function getNotCommonNotFoilSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
-
-	$sub += microtime(true);
-	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 function getStandSets($date, $context, $codes){
-	$sub = time();
-	$sub = -microtime(true);
-
-	echo "Script Execution Started \n";
-	$complete = array();
 
 	//for ($i = 0; $i < 1; $i++){
 	for ($i = 0; $i < sizeof($codes); $i++){
@@ -268,14 +241,13 @@ function getStandSets($date, $context, $codes){
 		echo "\n\n*** Beginning - ".$setName." / ".$setData["code"]." / ".$date."***\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
-		$get = 0;
 
 		//for ($j = 0; $j < 2; $j++){
 		for ($j = 0; $j < sizeof($cards); $j++){
 			if (($cards[$j]["rarity"][0] == "C" || $cards[$j]["rarity"][0] == "B")){continue;}
 			if (($cards[$j]["layout"][0] != "n")){echo "Skipping Special: ".$cards[$j]["name"]."\n"; continue;}
-			$get++;
-			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
+			$GLOBALS["gets"]++;
+			echo $cards[$j]["name"].", ".$cards[$j]["number"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
 			$table = $html->find(".availTable", 0);
@@ -317,17 +289,9 @@ function getStandSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
-
-	$sub += microtime(true);
-	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 function getMPSSets($date, $context, $codes){
-	$sub = time();
-	$sub = -microtime(true);
-
-	echo "Script Execution Started \n";
-	$complete = array();
 
 	//for ($i = 0; $i < 1; $i++){
 	for ($i = 0; $i < sizeof($codes); $i++){
@@ -342,12 +306,11 @@ function getMPSSets($date, $context, $codes){
 		echo "\n\n*** Beginning - ".$setName." / ".$date."***\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $setName, "data" => array());
-		$get = 0;
 
 		//for ($j = 0; $j < 1; $j++){
 		for ($j = 0; $j < sizeof($cards); $j++){
-			$get++;
-			echo "#".$get." - ".$cards[$j]["name"].", ".$cards[$j]["number"]."\n";
+			$GLOBALS["gets"]++;
+			echo $cards[$j]["name"].", ".$cards[$j]["number"]."\n";
 			$url = $baseUrl . urlencode($setName) . "/" . urlencode($cards[$j]["name"]);
 			$html = file_get_html($url, false, $context);
 			$box = $html->find(".availTable", 0);
@@ -370,9 +333,6 @@ function getMPSSets($date, $context, $codes){
 		}
 		writeAndClose($codes[$i], $set);
 	}
-
-	$sub += microtime(true);
-	echo "Script Execution Completed; TIME:".round($sub)." seconds.";
 }
 
 function getBoxPrices($date){
