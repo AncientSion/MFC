@@ -62,13 +62,16 @@
 					$set = "Masters 25";
 
 						if (sizeof($_GET) && ($_GET["type"] == "preset")){
-							$card = $_GET["card"];
 							$set = $_GET["set"];
+							$card = $_GET["card"];
 							echo "<script>window.remote = 1</script>";
 						} else "<script>window.remote = 0</script>";
 
 						echo "<input type='form' id='setSearch' value='".$set."'>";
-						echo "<input type='form' id='cardSearch' value='".$card."'>";
+
+						//$card = "Inventor's Fair";
+						echo '<input type="form" id="cardSearch" value="'.$card.'">';
+
 
 					?>
 					

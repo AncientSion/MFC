@@ -7,7 +7,6 @@ include_once(__DIR__."\global.php");
 
 
 
-
 $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
@@ -42,7 +41,6 @@ getFullNonFoilSets($date, $context, $data[1]);
 getNotCommonNotFoilSets($date, $context, $data[2]);
 getStandSets($date, $context, $data[3]);
 getMPSSets($date, $context, $data[4]);
-getMPSSets($date, $context, $data[5]);
 
 
 $time += microtime(true);

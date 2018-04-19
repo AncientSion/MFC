@@ -234,12 +234,15 @@ function getForm($get){
 	$codes = $sets["codes"];
 	$names = $sets["codes"];
 
+	//var_export($codes);
+	//echo "</br></br>";
+	//var_export($get["sets"]);
 
 	for ($i = 0; $i < sizeof($codes); $i++){
 		for ($j = 0; $j < sizeof($codes[$i]); $j++){
 
 			$checked = "";
-			$checked =  "checked='checked'";
+			//$checked = "checked='checked'";
 			if (sizeof($get) && $get["sets"]){
 				for ($k = 0; $k < sizeof($get["sets"]); $k++){
 					if ($get["sets"][$k] == $codes[$i][$j]){

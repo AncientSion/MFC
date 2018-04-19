@@ -14,7 +14,7 @@ window.onload = function(){
 	if (remote){
 		timeout = setTimeout(function(){
 			charter.getCardData()
-		}, 500);
+		}, 300);
 	}
 }
 
