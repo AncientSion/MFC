@@ -13,11 +13,6 @@ include(__DIR__."\simple_html_dom.php");
 
 
 
-
-
-
-
-
 function getCardDataSet($name, $data){
 	for ($i = 0; $i < sizeof($data); $i++){
 		if ($data[$i]["name"] == $name){
@@ -32,7 +27,9 @@ function addCardDataPoint(&$currentSet, $point){
 	//var_export($point);
 	//echo "</br>";
 
+	if (!isset($point["baseAvail"])){$point["basePrice"] = 0;}//echo $point["name"];}
 	if (!isset($point["basePrice"])){$point["basePrice"] = 0;}//echo $point["name"];}
+	if (!isset($point["foilAvail"])){$point["foilAvail"] = 0;}//echo $point["name"];}
 	if (!isset($point["foilPrice"])){$point["foilPrice"] = 0;}//echo $point["name"];}
 	$currentSet["baseAvail"][] = $point["baseAvail"];
 	$currentSet["basePrice"][] = $point["basePrice"];

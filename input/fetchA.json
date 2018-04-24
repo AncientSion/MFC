@@ -1,0 +1,16 @@
+{
+	"codes": [
+		["A25", "EMA"],
+		["LEB", "LEG", "TMP", "STH"],
+		["MIR", "VIS"],
+		["WWK", "FRF", "SOI", "EMN", "AHK", "HOU", "KLD", "AER", "XLN", "RIX", "DOM"],
+		["EXP", "MPS", "MPS_AKH"]
+	],
+	"names":[
+		["Masters 25", "Eternal Masters"],
+		["Beta", "Legends", "Tempest", "Stronghold"],
+		["Mirage", "Visions"],
+		["Worldwake", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Amonkhet", "Hour of Devastation", "Kaladesh", "Aether Revolt", "Ixalan", "Rivals of Ixalan", "Dominaria"],
+		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations"]
+	]
+}

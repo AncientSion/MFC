@@ -11,7 +11,8 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 $GLOBALS["gets"] = 0;
-echo "Script Execution Started \n";
+echo "\n\n\nScript Execution Started \n";
+
 
 getBoxPrices($date);
 
@@ -32,8 +33,18 @@ $context = stream_context_create(
 		)
 );
 
+$data;
 
-$data = json_decode(file_get_contents(__DIR__."/input/fetch.json"), TRUE);
+
+if (!(floor(substr($date, 0, 2)) % 2)){
+	echo "fetching Standard \n";
+	$data = json_decode(file_get_contents(__DIR__."/input/fetchA.json"), TRUE);
+}
+else {
+	echo "fetching Past \n";
+	$data = json_decode(file_get_contents(__DIR__."/input/fetchB.json"), TRUE);
+}
+
 $data = $data["codes"];
 
 getFullFoilSets($date, $context, $data[0]);
