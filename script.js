@@ -82,7 +82,7 @@ class Charter {
 					for (let j = 0; j < this.data[i].cards.length; j++){
 						if (this.data[i].cards[j].name == cardName){
 							console.log("valid, setName: " + setName + ", cardName: " + cardName);
-							this.getPriceData(this, this.data[i].code, this.data[i].cards[j].name, "buildAllChards");
+							this.getPriceData(this, this.data[i].code, this.data[i].cards[j].name, "buildAllCards");
 							return;
 						}
 					}
@@ -174,10 +174,14 @@ class Charter {
 		return ret;
 	}
 
-	buildAllChards(card, set, data){
-		var link = "https://www.cardmarket.com/en/Magic/Products/Singles/" + $("#setSearch").val() + "/" + card;
-			link = encodeURI(link);
-			link = "<a target='_blank' href='" + link + "'>"+ card + " - " + set + " (click)</a>";
+	buildAllCards(card, set, data){
+		
+		var setEncode = encodeURIComponent($("#setSearch").val());
+		var cardEncode = escape(card);
+		
+		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + setEncode + "/" + cardEncode;
+		//	url = encodeURI(url);
+		var link = "<a target='_blank' href='" + url + "'>"+ card + " - " + set + " (click)</a>";
 
 
 		//if (data.msg != undefined){

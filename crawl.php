@@ -11,7 +11,8 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 $GLOBALS["gets"] = 0;
-echo "\n\n\nScript Execution Started \n";
+$fetch = "";
+echo "\n\n\nScript Execution Started \n\n";
 
 
 getBoxPrices($date);
@@ -37,15 +38,17 @@ $data;
 
 
 if (!(floor(substr($date, 0, 2)) % 2)){
-	echo "fetching Standard \n";
-	$data = json_decode(file_get_contents(__DIR__."/input/fetchA.json"), TRUE);
+	$fetch = "NEW";
+	$data = json_decode(file_get_contents(__DIR__."/input/fetchNew.json"), TRUE);
 }
 else {
-	echo "fetching Past \n";
-	$data = json_decode(file_get_contents(__DIR__."/input/fetchB.json"), TRUE);
+	$fetch = "OLD";
+	$data = json_decode(file_get_contents(__DIR__."/input/fetchOld.json"), TRUE);
 }
 
 $data = $data["codes"];
+
+echo "Fetching: ".$fetch."\n\n";
 
 getFullFoilSets($date, $context, $data[0]);
 getFullNonFoilSets($date, $context, $data[1]);
@@ -55,7 +58,7 @@ getMPSSets($date, $context, $data[4]);
 
 
 $time += microtime(true);
-echo "FINAL Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["gets"]." cards";
+echo "-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["gets"]." cards";
  
 
 function getFullFoilSets($date, $context, $codes){

@@ -10,9 +10,6 @@ include(__DIR__."\simple_html_dom.php");
 
 
 
-
-
-
 function getCardDataSet($name, $data){
 	for ($i = 0; $i < sizeof($data); $i++){
 		if ($data[$i]["name"] == $name){
@@ -169,16 +166,34 @@ function getForm($get){
 	$depth = 1;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='depth'>DAYS</div>";
+	$html .="<div id='depth'>Depths</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min='1' max='50' value='".$depth."' name='depth'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$minAvail = 0;
+	if (sizeof($get)){$minAvail = $get["minAvail"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='depth'>Min Avail (n)</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='0' max='10000' value='".$minAvail."' name='minAvail'>";
+	$html .= "</div>";
+	$html .= "</div>";
+
+	$maxAvail = 0;
+	if (sizeof($get)){$maxAvail = $get["maxAvail"];}
+	$html .="<div class='inputContainer'>";
+	$html .="<div id='depth'>Max Avail (n)</div>";
+	$html .="<div class=''>";
+	$html .= "<input type='number' min='0' max='10000' value='".$maxAvail."' name='maxAvail'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
 	$minPrice = 0;
 	if (sizeof($get)){$minPrice = $get["minPrice"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='minPrice'>Min (EUR, now)</div>";
+	$html .="<div id='minPrice'>Min (€, n)</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min='0' max='5000' step='0.5' value='".$minPrice."' name='minPrice'>";
 	$html .= "</div>";
@@ -187,7 +202,7 @@ function getForm($get){
 	$maxPrice = 0;
 	if (sizeof($get)){$maxPrice = $get["maxPrice"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='maxPrice'>Max (EUR, now)</div>";
+	$html .="<div id='maxPrice'>Max (€, n)</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
 	$html .= "</div>";
@@ -299,11 +314,14 @@ function writeBoosterInput(){
 
 
 
-function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType){
+function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $compareType){
+	//var_export(func_get_args());
+	echo $minAvail;
+	echo $maxAvail;
+
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 
-
-	logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);
+	//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);
 	$names = getSetNamesByCodes($codes);
 	$allSets = array();
 
@@ -316,7 +334,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 		$cards = $cards["cards"];
 		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
 		$points = $points["content"];
-		if (!$points){$html .="</br></br>No data found for:".$setName; continue;}
+		if (!$points){continue;}
 		$extract = array(
 			"set" => $setName,
 			"code" => $codes[$i],
@@ -337,8 +355,11 @@ function requestShakers($codes, $includes, $foil, $depth, $minPrice, $maxPrice, 
 			$name = $cards[$k]["name"];
 			$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
 			if (!$last){continue;}
-			if ($minPrice != 0 && $last["foilPrice"] < $minPrice){continue;}
-			if ($maxPrice != 0 && $last["foilPrice"] > $maxPrice){continue;}
+			if ($minAvail && ((!$foil && $last["baseAvail"] < $minAvail) || ($foil && $last["foilAvail"] < $minAvail))){continue;}
+			if ($maxAvail && ((!$foil && $last["baseAvail"] > $maxAvail) || ($foil && $last["foilAvail"] > $maxAvail))){continue;}
+
+			if ($minPrice && $last["foilPrice"] < $minPrice){continue;}
+			if ($maxPrice && $last["foilPrice"] > $maxPrice){continue;}
 			$card = array(
 				"name" => $name,
 				"rarity" => $cards[$k]["rarity"],
@@ -404,6 +425,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 	$change = "";
 	$price = "";
 	$html = "<span style='color: red'>NOTE: Prefer the # (available stock) columns, price is biased because of 'cheap' foreign foils</span>";
+	$html = "";
 	$html .= "</br>";
 	$index;
 
@@ -428,7 +450,6 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		$html .="<table class='moveTable'>";
-
 
 		$html .="<thead>";
 		$html .="<tr><th class='set' colSpan=10>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
@@ -458,9 +479,9 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
 			$mkmUrl = $mkmBaseUrl.urlencode($allSets[$i]["set"]) . "/" . urlencode($card["name"]);
 
-			$html .="<tr><td><a target='blank' href=".$chartUrl.">".$card['name']."</a>";
+			$html .="<tr><td><a target='_blank' href=".$chartUrl.">".$card['name']."</a>";
 			$html .=" - ";
-			$html .="<a target='blank' href=".$mkmUrl.">MKM</a></td>";
+			$html .="<a target='_blank' href=".$mkmUrl.">MKM</a></td>";
 			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
 
 			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";

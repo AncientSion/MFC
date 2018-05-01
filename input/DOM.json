@@ -7485,30 +7485,6 @@
       ]
     },
     {
-      "artist": "Titus Lunter",
-      "cmc": 5,
-      "flavor": "\"Long ago, I enchanted an army of statues to guard Zhalfir. My homeland is gone, but its protectors remain.\"\n—Teferi",
-      "id": "760b47e4ce1990495bada46ded491238a89d27f1",
-      "imageName": "teferi's sentinel",
-      "layout": "normal",
-      "manaCost": "{5}",
-      "multiverseid": 445851,
-      "name": "Teferi's Sentinel",
-      "number": "273",
-      "power": "2",
-      "rarity": "Uncommon",
-      "subtypes": [
-        "Golem"
-      ],
-      "text": "As long as you control a Teferi planeswalker, Teferi's Sentinel gets +4/+0.",
-      "toughness": "6",
-      "type": "Artifact Creature — Golem",
-      "types": [
-        "Artifact",
-        "Creature"
-      ]
-    },
-    {
       "artist": "James Paick",
       "cmc": 0,
       "colorIdentity": [
@@ -7580,35 +7556,6 @@
       "type": "Sorcery",
       "types": [
         "Sorcery"
-      ]
-    },
-    {
-      "artist": "Viktor Titov",
-      "cmc": 4,
-      "colorIdentity": [
-        "R"
-      ],
-      "colors": [
-        "Red"
-      ],
-      "flavor": "\"Don't worry, they don't bite. They much prefer setting people on fire.\"\n—Jaya Ballard, to Chandra",
-      "id": "5b863e5432ddab50c399029c5c336ba64c5e07e4",
-      "imageName": "karplusan hound",
-      "layout": "normal",
-      "manaCost": "{3}{R}",
-      "multiverseid": 445855,
-      "name": "Karplusan Hound",
-      "number": "277",
-      "power": "3",
-      "rarity": "Uncommon",
-      "subtypes": [
-        "Hound"
-      ],
-      "text": "Whenever Karplusan Hound attacks, if you control a Chandra planeswalker, this creature deals 2 damage to any target.",
-      "toughness": "3",
-      "type": "Creature — Hound",
-      "types": [
-        "Creature"
       ]
     },
     {

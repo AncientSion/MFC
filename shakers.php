@@ -10,20 +10,26 @@
 
 			echo getForm($_GET);
 
+
 			$time = time();
 			$time = -microtime(true);
 
 			$depth = $_GET["depth"];
+			$minAvail = $_GET["minAvail"];
+			$maxAvail = $_GET["maxAvail"];
 			$minPrice = $_GET["minPrice"];
 			$maxPrice = $_GET["maxPrice"];
 			$availChange = $_GET["availChange"];
 			$type = $_GET["compareType"];
+			$foil = 0; if ($_GET["foil"] == "Foil"){$foil = 1;}
 
 			echo requestShakers(
 				$_GET["sets"],
 				$_GET["rarities"],
-				$_GET["foil"],
+				$foil,
 				$depth,
+				$minAvail,
+				$maxAvail,
 				$minPrice,
 				$maxPrice,
 				$availChange,
@@ -81,7 +87,7 @@ $(document).ready(function(){
 	})
 
 	$(document).contextmenu(function(e){
-		e.preventDefault(); e.stopPropagation();
+		//e.preventDefault(); e.stopPropagation();
 	})
 
 
