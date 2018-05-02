@@ -388,14 +388,5 @@ function getBoxPrices($date){
 }
 
 
-function writeAndClose($code, $data){
-	echo "Writing ".$code."\n";
-	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
-	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
-	fseek($file, -2, SEEK_END);
-	fwrite($file, ",".json_encode($data)."\n"."]}");
-	fclose($file);
-}
-
 
 ?>

@@ -24,7 +24,7 @@ function addCardDataPoint(&$currentSet, $point){
 	//var_export($point);
 	//echo "</br>";
 
-	if (!isset($point["baseAvail"])){$point["basePrice"] = 0;}//echo $point["name"];}
+	if (!isset($point["baseAvail"])){$point["baseAvail"] = 0;}
 	if (!isset($point["basePrice"])){$point["basePrice"] = 0;}//echo $point["name"];}
 	if (!isset($point["foilAvail"])){$point["foilAvail"] = 0;}//echo $point["name"];}
 	if (!isset($point["foilPrice"])){$point["foilPrice"] = 0;}//echo $point["name"];}
@@ -63,7 +63,7 @@ function buildFullCardPool(){
 		}
 	}
 
-
+	/*
 	$json = json_decode(file_get_contents(__DIR__."/output/BOXES.json"));
 	$set = array("code" => "BOXES", "name" => "Booster Boxes", "cards" => array());
 	//echo "adding BOXES</br>";
@@ -71,7 +71,7 @@ function buildFullCardPool(){
 		$set["cards"][] = array("name" => $box->name, "rarity" => "S");
 	}
 	$data[] = $set;
-
+	*/
 
 	$file = fopen(__DIR__."/output/cardlist.json", "a");
 	echo "writing</br>";
@@ -316,8 +316,7 @@ function writeBoosterInput(){
 
 function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $compareType){
 	//var_export(func_get_args());
-	echo $minAvail;
-	echo $maxAvail;
+	//echo $minAvail; echo $maxAvail;
 
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 
@@ -503,6 +502,16 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 	}
 	return $html;
 }
+
+function writeAndClose($code, $data){
+	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
+	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
+	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
+	fseek($file, -2, SEEK_END);
+	fwrite($file, ",".json_encode($data)."\n"."]}");
+	fclose($file);
+}
+
 
 function fixOutputSets(){
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
