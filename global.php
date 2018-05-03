@@ -63,16 +63,6 @@ function buildFullCardPool(){
 		}
 	}
 
-	/*
-	$json = json_decode(file_get_contents(__DIR__."/output/BOXES.json"));
-	$set = array("code" => "BOXES", "name" => "Booster Boxes", "cards" => array());
-	//echo "adding BOXES</br>";
-	foreach ($json->content[0]->data as $box){
-		$set["cards"][] = array("name" => $box->name, "rarity" => "S");
-	}
-	$data[] = $set;
-	*/
-
 	$file = fopen(__DIR__."/output/cardlist.json", "a");
 	echo "writing</br>";
 	fwrite($file, json_encode($data));
@@ -505,6 +495,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 
 function writeAndClose($code, $data){
 	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
+	$GLOBALS["cards"] += sizeof($data["data"]);
 	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
 	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
 	fseek($file, -2, SEEK_END);

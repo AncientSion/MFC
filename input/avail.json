@@ -1,19 +1,15 @@
 {
 	"codes": [
-		["A25", "EMA"],
-		["LEB", "LEG", "TMP", "STH"],
-		["MIR", "VIS"],
-		["PLS", "LRW", "MOR", "SHM", "EVE", "RAV", "PLC", "GTC", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM"],
+		["LEB", "2ED", "LEG", "TMP", "STH", "MIR", "VIS", "EXO", "ALL"],
 		["EXP", "MPS", "MPS_AKH"],
+		["A25", "EMA", "M10", "PLS", "LRW", "MOR", "SHM", "EVE", "RAV", "PLC", "GTC", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM"],
 		["BOXES"]
 	],
 	"names":
 	[
-		["Masters 25", "Eternal Masters"],
-		["Beta", "Legends", "Tempest", "Stronghold"],
-		["Mirage", "Visions"],
-		["Planeshift", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Planar Chaos", "Gatecrash", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria"],
+		["Beta", "Unlimited", "Legends", "Tempest", "Stronghold", "Mirage", "Visions", "Exodus", "Alliances"],
 		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations"],
+		["Masters 25", "Eternal Masters", "Magic 2010", "Planeshift", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Planar Chaos", "Gatecrash", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria"],
 		["Booster Boxes"]
 	]
 }
