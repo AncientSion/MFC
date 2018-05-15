@@ -58,15 +58,25 @@ div > input, div > span{
 .red {
 	color: #ff2a2a;
 }
+.minus {
+	font-size: 12px;
+	color: #ff2a2a;
+}
 
 .green {
+	color: lightGreen;
+}
+.plus {
+	font-size: 12px;
 	color: lightGreen;
 }
 
 .moveTable {
 	border-collapse: collapse;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin: auto;
+	width: 1000px;
 }
 
 .moveTable th, .moveTable td {
@@ -100,7 +110,7 @@ div > input, div > span{
 }
 
 .dataTables_wrapper {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 #set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChange {

@@ -1,0 +1,5630 @@
+{
+	"name": "Judge Rewards Promos",
+	"mkm_name": "Judge Rewards Promos",
+	"code": "JR",
+	"gathererCode": "JR",
+	"magicCardsInfoCode": "ps",
+	"releaseDate": "2001-02-05",
+	"border": "black",
+	"type": "expansion",
+	"block": "Invasion",
+	"booster": [
+		"rare",
+		"uncommon",
+		"uncommon",
+		"uncommon",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common",
+		"common"
+	],
+	"translations": {
+		"de": "Weltenwechsel",
+		"fr": "Planeshift",
+		"it": "Congiunzione",
+		"es": "Transmigración",
+		"pt": "Conjunção"
+	},
+	"mkm_id": 35,
+	"cards": [{
+		"idProduct": 17593,
+		"idMetaproduct": 2257,
+		"countReprints": 3,
+		"enName": "Gaea's Cradle",
+		"name": "Gaea's Cradle",
+		"localization": [{
+			"name": "Gaea's Cradle",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Berceau de Gaia",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gaeas Scho\u00df",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Cuna de Gaia",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Culla di Gea",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Gaea%27s+Cradle",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/gaeas_cradle.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "1998-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 46,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17593",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2257",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17596,
+		"idMetaproduct": 3291,
+		"countReprints": 26,
+		"enName": "Lightning Bolt",
+		"name": "Lightning Bolt",
+		"localization": [{
+			"name": "Lightning Bolt",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Foudre",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Blitzschlag",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Rel\u00e1mpago",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Fulmine",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Lightning+Bolt",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/lightning_bolt.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "1998-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 18,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17596",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3291",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17600,
+		"idMetaproduct": 5663,
+		"countReprints": 4,
+		"enName": "Stroke of Genius",
+		"name": "Stroke of Genius",
+		"localization": [{
+			"name": "Stroke of Genius",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c9clair de g\u00e9nie",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Geniale Anwandlung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Golpe de ingenio",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Colpo di Genio",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Stroke+of+Genius",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/stroke_of_genius.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "1998-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 89,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17600",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5663",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17598,
+		"idMetaproduct": 3531,
+		"countReprints": 13,
+		"enName": "Memory Lapse",
+		"name": "Memory Lapse",
+		"localization": [{
+			"name": "Memory Lapse",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Trou de m\u00e9moire",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Ged\u00e4chtnisl\u00fccke",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Lapsus",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Vuoto di Memoria",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Memory+Lapse",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/memory_lapse.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "1999-01",
+		"rarity": "Common",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 80,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17598",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3531",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17592,
+		"idMetaproduct": 1158,
+		"countReprints": 41,
+		"enName": "Counterspell",
+		"name": "Counterspell",
+		"localization": [{
+			"name": "Counterspell",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Contresort",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gegenzauber",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Contrahechizo",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Contromagia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Counterspell",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/counterspell.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2000-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 64,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17592",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1158",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17602,
+		"idMetaproduct": 6287,
+		"countReprints": 6,
+		"enName": "Vampiric Tutor",
+		"name": "Vampiric Tutor",
+		"localization": [{
+			"name": "Vampiric Tutor",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Pr\u00e9cepteur vampirique",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Blutsaugender Lehrmeister",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Tutor vamp\u00edrico",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Tutore Vampirico",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Vampiric+Tutor",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/vampiric_tutor.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2000-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 72,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17602",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6287",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17591,
+		"idMetaproduct": 422,
+		"countReprints": 13,
+		"enName": "Ball Lightning",
+		"name": "Ball Lightning",
+		"localization": [{
+			"name": "Ball Lightning",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Boule fulgurante",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Kugelblitz",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Bola de rayos",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Fulmine Globulare",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Ball+Lightning",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/ball_lightning.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2001-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 97,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17591",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/422",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17599,
+		"idMetaproduct": 3951,
+		"countReprints": 3,
+		"enName": "Oath of Druids",
+		"name": "Oath of Druids",
+		"localization": [{
+			"name": "Oath of Druids",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Serment des druides",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Eid der Druiden",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Juramento de druidas",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Giuramento dei Druidi",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Oath+of+Druids",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/oath_of_druids.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2001-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 93,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17599",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3951",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17594,
+		"idMetaproduct": 2584,
+		"countReprints": 8,
+		"enName": "Hammer of Bogardan",
+		"name": "Hammer of Bogardan",
+		"localization": [{
+			"name": "Hammer of Bogardan",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Marteau du bogardan",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Hammer aus Bogardan",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Martillo de Bogardan",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Martello di Bogardan",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Hammer+of+Bogardan",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/hammer_of_bogardan.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2002-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 74,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17594",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2584",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17601,
+		"idMetaproduct": 6101,
+		"countReprints": 3,
+		"enName": "Tradewind Rider",
+		"name": "Tradewind Rider",
+		"localization": [{
+			"name": "Tradewind Rider",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Chevaucheur des aliz\u00e9s",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Brisenreiter",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Jinete de los vientos alisios",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Predone degli Alisei",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Tradewind+Rider",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/tradewind_rider.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2002-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 100,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17601",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6101",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17588,
+		"idMetaproduct": 276,
+		"countReprints": 3,
+		"enName": "Argothian Enchantress",
+		"name": "Argothian Enchantress",
+		"localization": [{
+			"name": "Argothian Enchantress",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Enchanteresse Argothienne",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Argothische Zauberin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Encantadora argotiana",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Incantatrice Argothiana",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Argothian+Enchantress",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/argothian_enchantress.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2003-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 62,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17588",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/276",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17595,
+		"idMetaproduct": 2894,
+		"countReprints": 2,
+		"enName": "Intuition",
+		"name": "Intuition",
+		"localization": [{
+			"name": "Intuition",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Intuition",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Eingebung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Intuici\u00f3n",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Intuizione",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Intuition",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/intuition.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2003-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 34,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17595",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2894",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17597,
+		"idMetaproduct": 3322,
+		"countReprints": 7,
+		"enName": "Living Death",
+		"name": "Living Death",
+		"localization": [{
+			"name": "Living Death",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Mort vivante",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Lebende Tote",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "La muerte de los vivos",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Morte Vivente",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Living+Death",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/living_death.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2003-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 68,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17597",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3322",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17589,
+		"idMetaproduct": 409,
+		"countReprints": 22,
+		"enName": "Balance",
+		"name": "Balance",
+		"localization": [{
+			"name": "Balance",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Balance",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Balance",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Equilibrio",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Bilancia dell'Equilibrio",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Balance",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/balance.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 104,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17589",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/409",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17603,
+		"idMetaproduct": 283,
+		"countReprints": 27,
+		"enName": "Armageddon",
+		"name": "Armageddon",
+		"localization": [{
+			"name": "Armageddon",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Armaguedon",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "G\u00f6tterd\u00e4mmerung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Armaged\u00f3n",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Armageddon",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Armageddon",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/armageddon.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 76,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17603",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/283",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17604,
+		"idMetaproduct": 6028,
+		"countReprints": 5,
+		"enName": "Time Warp",
+		"name": "Time Warp",
+		"localization": [{
+			"name": "Time Warp",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Distorsion temporelle",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zeitschleife",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Distorsi\u00f3n temporal",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Distorsione Temporale",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Time+Warp",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/time_warp.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 27,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17604",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6028",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17606,
+		"idMetaproduct": 4199,
+		"countReprints": 5,
+		"enName": "Phyrexian Negator",
+		"name": "Phyrexian Negator",
+		"localization": [{
+			"name": "Phyrexian Negator",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "N\u00e9gateur Phyrexian",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Phyrexianischer Verneiner",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Negador pirexiano",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Eliminatore di Phyrexia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Phyrexian+Negator",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/phyrexian_negator.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 99,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17606",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4199",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17607,
+		"idMetaproduct": 1443,
+		"countReprints": 2,
+		"enName": "Deranged Hermit",
+		"name": "Deranged Hermit",
+		"localization": [{
+			"name": "Deranged Hermit",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ermite f\u00eal\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Irrer Einsiedler",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Ermita\u00f1o trastornado",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Eremita Folle",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Deranged+Hermit",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/deranged_hermit.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 50,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17607",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1443",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17608,
+		"idMetaproduct": 2671,
+		"countReprints": 2,
+		"enName": "Hermit Druid",
+		"name": "Hermit Druid",
+		"localization": [{
+			"name": "Hermit Druid",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Druide ermite",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Druideneinsiedler",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Druida ermita\u00f1o",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Druido Eremita",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Hermit+Druid",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/hermit_druid.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2004-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 53,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17608",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2671",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17609,
+		"idMetaproduct": 2290,
+		"countReprints": 5,
+		"enName": "Gemstone Mine",
+		"name": "Gemstone Mine",
+		"localization": [{
+			"name": "Gemstone Mine",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Mine de gemmes",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Edelsteinmine",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Yacimiento de gemas",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Miniera di Diamanti",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Gemstone+Mine",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/gemstone_mine.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2005-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 21,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17609",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2290",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17610,
+		"idMetaproduct": 4602,
+		"countReprints": 12,
+		"enName": "Regrowth",
+		"name": "Regrowth",
+		"localization": [{
+			"name": "Regrowth",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "R\u00e9apparition",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Neues Leben",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Regrowth",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Nuova Crescita",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Regrowth",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/regrowth.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2005-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 68,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17610",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4602",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17611,
+		"idMetaproduct": 5359,
+		"countReprints": 19,
+		"enName": "Sol Ring",
+		"name": "Sol Ring",
+		"localization": [{
+			"name": "Sol Ring",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Anneau solaire",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Sonnenring",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Anillo solar",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Anello Solare",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sol+Ring",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sol_ring.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2005-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 30,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17611",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5359",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17612,
+		"idMetaproduct": 3649,
+		"countReprints": 19,
+		"enName": "Mishra's Factory",
+		"name": "Mishra's Factory",
+		"localization": [{
+			"name": "Mishra's Factory",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Usine de Mishra",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Mishras Fabrik",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Factor\u00eda de Mishra",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Fabbrica di Mishra",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mishra%27s+Factory",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/mishras_factory.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2005-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 46,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17612",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3649",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17613,
+		"idMetaproduct": 1891,
+		"countReprints": 5,
+		"enName": "Exalted Angel",
+		"name": "Exalted Angel",
+		"localization": [{
+			"name": "Exalted Angel",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ange exalt\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Erhabener Engel",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "\u00c1ngel exaltado",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Angelo Eminente",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Exalted+Angel",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/exalted_angel.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2006-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 90,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17613",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1891",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17614,
+		"idMetaproduct": 2531,
+		"countReprints": 5,
+		"enName": "Grim Lavamancer",
+		"name": "Grim Lavamancer",
+		"localization": [{
+			"name": "Grim Lavamancer",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Sinistre lavamancien",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Grimmiger Magmamagier",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Lavamante Siniestro",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Lavamante Spietato",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Grim+Lavamancer",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/grim_lavamancer.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2006-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 103,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17614",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2531",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17615,
+		"idMetaproduct": 3517,
+		"countReprints": 3,
+		"enName": "Meddling Mage",
+		"name": "Meddling Mage",
+		"localization": [{
+			"name": "Meddling Mage",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ing\u00e9rence du mage",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Herumpfuschender Magier",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Mago Entrometido",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Mago Intrigante",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Meddling+Mage",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/meddling_mage.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2006-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 21,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17615",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3517",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 17616,
+		"idMetaproduct": 4145,
+		"countReprints": 4,
+		"enName": "Pernicious Deed",
+		"name": "Pernicious Deed",
+		"localization": [{
+			"name": "Pernicious Deed",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Action pernicieuse",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "B\u00f6se Tat",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Acci\u00f3n perniciosa",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Azione Malvagia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Pernicious+Deed",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/pernicious_deed.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2006-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 119,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/17616",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4145",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 18983,
+		"idMetaproduct": 4529,
+		"countReprints": 5,
+		"enName": "Ravenous Baloth",
+		"name": "Ravenous Baloth",
+		"localization": [{
+			"name": "Ravenous Baloth",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Baloth vorace",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gieriger Baloth",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "B\u00e1loth voraz",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Baloth Famelico",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Ravenous+Baloth",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/ravenous_baloth.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2007-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 180,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/18983",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4529",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 18984,
+		"idMetaproduct": 1249,
+		"countReprints": 4,
+		"enName": "Cunning Wish",
+		"name": "Cunning Wish",
+		"localization": [{
+			"name": "Cunning Wish",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Souhait rus\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Listiger Wunsch",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Deseo Astuto",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Desiderio Astuto",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Cunning+Wish",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/cunning_wish.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2007-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 65,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/18984",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1249",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 18985,
+		"idMetaproduct": 6773,
+		"countReprints": 4,
+		"enName": "Yawgmoth's Will",
+		"name": "Yawgmoth's Will",
+		"localization": [{
+			"name": "Yawgmoth's Will",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Volont\u00e9 de Yaugzebul",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Yawgmoths Wille",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Voluntad de Yawgmoth",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Volont\u00e0 di Yawgmoth",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Yawgmoth%27s+Will",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/yawgmoths_will.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2007-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 18,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/18985",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6773",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 18986,
+		"idMetaproduct": 6370,
+		"countReprints": 6,
+		"enName": "Vindicate (Version 1)",
+		"name": "Vindicate (Version 1)",
+		"localization": [{
+			"name": "Vindicate",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Justification",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Selbstbehauptung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Vindicar",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Rivendicare",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Vindicate+%28Version+1%29",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/vindicate1.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2007-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 73,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/18986",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6370",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 18987,
+		"idMetaproduct": 1385,
+		"countReprints": 8,
+		"enName": "Decree of Justice",
+		"name": "Decree of Justice",
+		"localization": [{
+			"name": "Decree of Justice",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "D\u00e9cret de justice",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Dekret der Gerechtigkeit",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Decreto de justicia",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Decreto della Giustizia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Decree+of+Justice",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/decree_of_justice.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2007-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 100,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/18987",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1385",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 19775,
+		"idMetaproduct": 1436,
+		"countReprints": 12,
+		"enName": "Demonic Tutor",
+		"name": "Demonic Tutor",
+		"localization": [{
+			"name": "Demonic Tutor",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Pr\u00e9cepteur diabolique",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "D\u00e4monischer Tutor",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Demonic Tutor",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Tutore Demoniaco",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Demonic+Tutor",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/demonic_tutor.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2008-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 17,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/19775",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1436",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 19776,
+		"idMetaproduct": 3608,
+		"countReprints": 4,
+		"enName": "Mind's Desire",
+		"name": "Mind's Desire",
+		"localization": [{
+			"name": "Mind's Desire",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c0 mon seul d\u00e9sir",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Begierde des Verstands",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Anhelo de la mente",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Desiderio della Mente",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mind%27s+Desire",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/minds_desire.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2008-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 102,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/19776",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3608",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 19969,
+		"idMetaproduct": 2427,
+		"countReprints": 5,
+		"enName": "Goblin Piledriver",
+		"name": "Goblin Piledriver",
+		"localization": [{
+			"name": "Goblin Piledriver",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Pelleteur gobelin",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Goblin-Rudeltreiber",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Encabezahorda trasgo",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Scagliaorda Goblin",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Goblin+Piledriver",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/goblin_piledriver.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2008-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 121,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/19969",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2427",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 19970,
+		"idMetaproduct": 4029,
+		"countReprints": 2,
+		"enName": "Orim's Chant",
+		"name": "Orim's Chant",
+		"localization": [{
+			"name": "Orim's Chant",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Cantique selon Orime",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Orims Ges\u00e4nge",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Canto de Orim",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Canto di Orim",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Orim%27s+Chant",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/orims_chant.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2008-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 92,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/19970",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4029",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 20805,
+		"idMetaproduct": 3328,
+		"countReprints": 4,
+		"enName": "Living Wish",
+		"name": "Living Wish",
+		"localization": [{
+			"name": "Living Wish",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Souhait vivant",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Lebender Wunsch",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Deseo de Vida",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Desiderio Vivente",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Living+Wish",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/living_wish.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2008-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 63,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/20805",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3328",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 20806,
+		"idMetaproduct": 1295,
+		"countReprints": 35,
+		"enName": "Dark Ritual",
+		"name": "Dark Ritual",
+		"localization": [{
+			"name": "Dark Ritual",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Messe noire",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schwarzer Ritus",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Ritual siniestro",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Rito Oscuro",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Dark+Ritual",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/dark_ritual.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 40,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/20806",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1295",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 20807,
+		"idMetaproduct": 614,
+		"countReprints": 6,
+		"enName": "Bloodstained Mire",
+		"name": "Bloodstained Mire",
+		"localization": [{
+			"name": "Bloodstained Mire",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Fondri\u00e8re sanguinolente",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Blutbeflecktes Schlammloch",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Cenagal ensangrentado",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Pantano Insanguinato",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Bloodstained+Mire",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/bloodstained_mire.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 38,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/20807",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/614",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 20876,
+		"idMetaproduct": 3514,
+		"countReprints": 5,
+		"enName": "Maze of Ith",
+		"name": "Maze of Ith",
+		"localization": [{
+			"name": "Maze of Ith",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Maze of Ith",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Maze of Ith",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Maze of Ith",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Labirinto di Ith",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Maze+of+Ith",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/maze_of_ith.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 56,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/20876",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3514",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 21037,
+		"idMetaproduct": 5615,
+		"countReprints": 5,
+		"enName": "Stifle",
+		"name": "Stifle",
+		"localization": [{
+			"name": "Stifle",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Asphyxie",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Abw\u00fcrgen",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Reprimir",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Reprimere",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Stifle",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/stifle.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 139,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/21037",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5615",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 21038,
+		"idMetaproduct": 6701,
+		"countReprints": 4,
+		"enName": "Wooded Foothills",
+		"name": "Wooded Foothills",
+		"localization": [{
+			"name": "Wooded Foothills",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Contreforts bois\u00e9s",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Bewaldete Gebirgsausl\u00e4ufer",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Estribaciones boscosas",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Colline Boscose",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Wooded+Foothills",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/wooded_foothills.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-10",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 54,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/21038",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6701",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 21039,
+		"idMetaproduct": 6653,
+		"countReprints": 5,
+		"enName": "Windswept Heath",
+		"name": "Windswept Heath",
+		"localization": [{
+			"name": "Windswept Heath",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Lande venteuse",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zerzauste Heide",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Brezal azotado por el viento",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Landa Ventosa",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Windswept+Heath",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/windswept_heath.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-09",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 76,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/21039",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6653",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22095,
+		"idMetaproduct": 4282,
+		"countReprints": 4,
+		"enName": "Polluted Delta",
+		"name": "Polluted Delta",
+		"localization": [{
+			"name": "Polluted Delta",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Estuaire pollu\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Verschmutztes Delta",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Delta contaminado",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Delta Inquinato",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Polluted+Delta",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/polluted_delta.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 67,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22095",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4282",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22096,
+		"idMetaproduct": 757,
+		"countReprints": 4,
+		"enName": "Burning Wish",
+		"name": "Burning Wish",
+		"localization": [{
+			"name": "Burning Wish",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Souhait br\u00fblant",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Brennender Wunsch",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Deseo Ardiente",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Desiderio Bruciante",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Burning+Wish",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/burning_wish.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 94,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22096",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/757",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22098,
+		"idMetaproduct": 2116,
+		"countReprints": 7,
+		"enName": "Flooded Strand",
+		"name": "Flooded Strand",
+		"localization": [{
+			"name": "Flooded Strand",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Gr\u00e8ve inond\u00e9e",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gefluteter Strand",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Playa anegada",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Spiaggia Allagata",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Flooded+Strand",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/flooded_strand.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 67,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22098",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2116",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22094,
+		"idMetaproduct": 5732,
+		"countReprints": 3,
+		"enName": "Survival of the Fittest",
+		"name": "Survival of the Fittest",
+		"localization": [{
+			"name": "Survival of the Fittest",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Survie du plus apte",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "\u00dcberleben der St\u00e4rksten",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Supervivencia de los fuertes",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Legge del Pi\u00f9 Forte",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Survival+of+the+Fittest",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/survival_of_the_fittest.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2009-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 18,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22094",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5732",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22330,
+		"idMetaproduct": 3835,
+		"countReprints": 4,
+		"enName": "Natural Order",
+		"name": "Natural Order",
+		"localization": [{
+			"name": "Natural Order",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ordre naturel",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Nat\u00fcrliche Ordnung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Orden natural",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Ordine Naturale",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Natural+Order",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/natural_order.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 99,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22330",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3835",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 22336,
+		"idMetaproduct": 4187,
+		"countReprints": 2,
+		"enName": "Phyrexian Dreadnought",
+		"name": "Phyrexian Dreadnought",
+		"localization": [{
+			"name": "Phyrexian Dreadnought",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Cuirass\u00e9 phyrexian",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Phyrexianisches Schlachtschiff",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Acorazado pirexiano",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Sterminatore di Phyrexia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Phyrexian+Dreadnought",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/phyrexian_dreadnought.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 33,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/22336",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4187",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 240418,
+		"idMetaproduct": 3188,
+		"countReprints": 14,
+		"enName": "Land Tax",
+		"name": "Land Tax",
+		"localization": [{
+			"name": "Land Tax",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Contribution fonci\u00e8re",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Grundsteuer",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Impuesto sobre las tierras",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Tassa sulle Terre",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Land+Tax",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/land_tax.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 27,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/240418",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3188",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 240419,
+		"idMetaproduct": 5917,
+		"countReprints": 3,
+		"enName": "Thawing Glaciers",
+		"name": "Thawing Glaciers",
+		"localization": [{
+			"name": "Thawing Glaciers",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Glaciers en d\u00e9gel",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Tauende Gletscher",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Glaciares menguantes",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Ghiacciai in Disgelo",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Thawing+Glaciers",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/thawing_glaciers.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 34,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/240419",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5917",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 242570,
+		"idMetaproduct": 6585,
+		"countReprints": 11,
+		"enName": "Wheel of Fortune",
+		"name": "Wheel of Fortune",
+		"localization": [{
+			"name": "Wheel of Fortune",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Roue de la fortune",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gl\u00fccksrad",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Wheel of Fortune",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Ruota della Fortuna",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Wheel+of+Fortune",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/wheel_of_fortune.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 11,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/242570",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6585",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 242571,
+		"idMetaproduct": 6538,
+		"countReprints": 10,
+		"enName": "Wasteland (Version 1)",
+		"name": "Wasteland (Version 1)",
+		"localization": [{
+			"name": "Wasteland",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Terres d\u00e9vast\u00e9es",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Ein\u00f6de",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Erial",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Lande Desolate",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Wasteland+%28Version+1%29",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/wasteland1.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 101,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/242571",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6538",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 245052,
+		"idMetaproduct": 5224,
+		"countReprints": 7,
+		"enName": "Sinkhole",
+		"name": "Sinkhole",
+		"localization": [{
+			"name": "Sinkhole",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Sinkhole",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Sinkhole",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Sinkhole",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Sinkhole",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sinkhole",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sinkhole.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 103,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/245052",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5224",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 245053,
+		"idMetaproduct": 3731,
+		"countReprints": 2,
+		"enName": "Morphling",
+		"name": "Morphling",
+		"localization": [{
+			"name": "Morphling",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Morphelin",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Morphling",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Morfoide",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Multiforma",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Morphling",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/morphling.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2010-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 89,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/245053",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3731",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 245690,
+		"idMetaproduct": 9475,
+		"countReprints": 3,
+		"enName": "Bitterblossom",
+		"name": "Bitterblossom",
+		"localization": [{
+			"name": "Bitterblossom",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c2pre fleur",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Bitterbl\u00fcte",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Floraci\u00f3n amarga",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Fioritura Amara",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Bitterblossom",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/bitterblossom.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 84,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/245690",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/9475",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 245691,
+		"idMetaproduct": 9472,
+		"countReprints": 5,
+		"enName": "Vendilion Clique",
+		"name": "Vendilion Clique",
+		"localization": [{
+			"name": "Vendilion Clique",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Clique Vendilion",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Vendilion-Clique",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Pandilla Vendilion",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Cricca Vendilion",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Vendilion+Clique",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/vendilion_clique.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 78,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/245691",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/9472",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 245054,
+		"idMetaproduct": 5748,
+		"countReprints": 4,
+		"enName": "Sword of Fire and Ice",
+		"name": "Sword of Fire and Ice",
+		"localization": [{
+			"name": "Sword of Fire and Ice",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c9p\u00e9e d'Eau et de Feu",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schwert aus Feuer und Eis",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Espada de fuego y hielo",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Spada di Fuoco e Ghiaccio",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sword+of+Fire+and+Ice",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sword_of_fire_and_ice.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 51,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/245054",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5748",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 246714,
+		"idMetaproduct": 3443,
+		"countReprints": 5,
+		"enName": "Mana Crypt",
+		"name": "Mana Crypt",
+		"localization": [{
+			"name": "Mana Crypt",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Crypte de mana",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Mana Crypt",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Cripta de man\u00e1",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Mana Crypt",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mana+Crypt",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/mana_crypt.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 37,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/246714",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3443",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 248395,
+		"idMetaproduct": 2461,
+		"countReprints": 4,
+		"enName": "Goblin Welder",
+		"name": "Goblin Welder",
+		"localization": [{
+			"name": "Goblin Welder",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Soudeur gobelin",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Goblinschwei\u00dfmeister",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Soldador trasgo",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Saldatore Goblin",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Goblin+Welder",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/goblin_welder.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 98,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/248395",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2461",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 248397,
+		"idMetaproduct": 7926,
+		"countReprints": 4,
+		"enName": "Dark Confidant",
+		"name": "Dark Confidant",
+		"localization": [{
+			"name": "Dark Confidant",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Obscur confident",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Dunkler Mitwisser",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Confidente oscuro",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Confidente Oscuro",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Dark+Confidant",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/dark_confidant.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 42,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/248397",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/7926",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 250563,
+		"idMetaproduct": 7941,
+		"countReprints": 3,
+		"enName": "Doubling Season",
+		"name": "Doubling Season",
+		"localization": [{
+			"name": "Doubling Season",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Saison de d\u00e9doublement",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zeit der Verdopplung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Temporada duplicadora",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Stagione del Raddoppio",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Doubling+Season",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/doubling_season.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 57,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/250563",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/7941",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266414,
+		"idMetaproduct": 1832,
+		"countReprints": 6,
+		"enName": "Entomb",
+		"name": "Entomb",
+		"localization": [{
+			"name": "Entomb",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ensevelissement",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Einbuddeln",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Sepultar",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Seppellire",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Entomb",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/entomb.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2011-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 172,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266414",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1832",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 252042,
+		"idMetaproduct": 6752,
+		"countReprints": 2,
+		"enName": "Xiahou Dun, the One-Eyed",
+		"name": "Xiahou Dun, the One-Eyed",
+		"localization": [{
+			"name": "Xiahou Dun, the One-Eyed",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Xiahou Dun, the One-Eyed",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Xiahou Dun, the One-Eyed",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Xiahou Dun, the One-Eyed",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Xiahou Dun, the One-Eyed",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Xiahou+Dun%2C+the+One-Eyed",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/xiahou_dun_the_one_eyed.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 53,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/252042",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6752",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 252043,
+		"idMetaproduct": 203373,
+		"countReprints": 3,
+		"enName": "Flusterstorm",
+		"name": "Flusterstorm",
+		"localization": [{
+			"name": "Flusterstorm",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "D\u00e9luge irrit\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Wirrsturm",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Tormenta azoradora",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Tempesta d'Agitazione",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Flusterstorm",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/flusterstorm.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 76,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/252043",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/203373",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 253051,
+		"idMetaproduct": 3022,
+		"countReprints": 5,
+		"enName": "Karmic Guide",
+		"name": "Karmic Guide",
+		"localization": [{
+			"name": "Karmic Guide",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Guide karmique",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Karmischer Begleiter",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Gu\u00eda k\u00e1rmica",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Guida del Karma",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Karmic+Guide",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/karmic_guide.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 145,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/253051",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3022",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 256753,
+		"idMetaproduct": 5343,
+		"countReprints": 3,
+		"enName": "Sneak Attack",
+		"name": "Sneak Attack",
+		"localization": [{
+			"name": "Sneak Attack",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Attaque furtive",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schleichangriff",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Ataque a hurtadillas",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Attacco a Sorpresa",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sneak+Attack",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sneak_attack.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 111,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/256753",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5343",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 256754,
+		"idMetaproduct": 203332,
+		"countReprints": 8,
+		"enName": "Command Tower",
+		"name": "Command Tower",
+		"localization": [{
+			"name": "Command Tower",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Tour de commandement",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Befehlsturm",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Torre de mando",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Torre di Comando",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Command+Tower",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/command_tower.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 24,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/256754",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/203332",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 259179,
+		"idMetaproduct": 3020,
+		"countReprints": 4,
+		"enName": "Karakas",
+		"name": "Karakas",
+		"localization": [{
+			"name": "Karakas",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Karakas",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Karakas",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Karakas",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Karakas",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Karakas",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/karakas.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 126,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/259179",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3020",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 253052,
+		"idMetaproduct": 5750,
+		"countReprints": 4,
+		"enName": "Sword of Light and Shadow",
+		"name": "Sword of Light and Shadow",
+		"localization": [{
+			"name": "Sword of Light and Shadow",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c9p\u00e9e des T\u00e9n\u00e8bres et de la Lumi\u00e8re",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schwert aus Licht und Schatten",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Espada de luz y sombra",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Spada di Luce e Ombre",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sword+of+Light+and+Shadow",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sword_of_light_and_shadow.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 130,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/253052",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5750",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 259180,
+		"idMetaproduct": 10355,
+		"countReprints": 4,
+		"enName": "Noble Hierarch",
+		"name": "Noble Hierarch",
+		"localization": [{
+			"name": "Noble Hierarch",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Noble hi\u00e9rarche",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Edle Hierarchin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Jerarca noble",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Gerarca Nobile",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Noble+Hierarch",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/noble_hierarch.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2012-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 41,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/259180",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/10355",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 260250,
+		"idMetaproduct": 5753,
+		"countReprints": 36,
+		"enName": "Swords to Plowshares",
+		"name": "Swords to Plowshares",
+		"localization": [{
+			"name": "Swords to Plowshares",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Retour au pays",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schwerter zu Pflugscharen",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Espadas en guada\u00f1as",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Da Spade a Spighe!",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Swords+to+Plowshares",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/swords_to_plowshares.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 99,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/260250",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5753",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 260251,
+		"idMetaproduct": 706,
+		"countReprints": 3,
+		"enName": "Bribery",
+		"name": "Bribery",
+		"localization": [{
+			"name": "Bribery",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Subornation",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Bestechung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Soborno",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Corruzione",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Bribery",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/bribery.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 112,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/260251",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/706",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 260252,
+		"idMetaproduct": 2832,
+		"countReprints": 3,
+		"enName": "Imperial Recruiter",
+		"name": "Imperial Recruiter",
+		"localization": [{
+			"name": "Imperial Recruiter",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Imperial Recruiter",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Imperial Recruiter",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Imperial Recruiter",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Imperial Recruiter",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Imperial+Recruiter",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/imperial_recruiter.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 130,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/260252",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2832",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 261477,
+		"idMetaproduct": 1217,
+		"countReprints": 4,
+		"enName": "Crucible of Worlds",
+		"name": "Crucible of Worlds",
+		"localization": [{
+			"name": "Crucible of Worlds",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Creuset des mondes",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schmelztiegel der Welten",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Crisol de mundos",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Crogiolo di Mondi",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Crucible+of+Worlds",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/crucible_of_worlds.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 94,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/261477",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1217",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 263278,
+		"idMetaproduct": 5166,
+		"countReprints": 3,
+		"enName": "Show and Tell",
+		"name": "Show and Tell",
+		"localization": [{
+			"name": "Show and Tell",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Expos\u00e9 libre",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Sachkunde",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Muestra y explica",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Mostra e Dimostra",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Show+and+Tell",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/show_and_tell.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 165,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/263278",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5166",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 263279,
+		"idMetaproduct": 4054,
+		"countReprints": 2,
+		"enName": "Overwhelming Forces",
+		"name": "Overwhelming Forces",
+		"localization": [{
+			"name": "Overwhelming Forces",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Overwhelming Forces",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Overwhelming Forces",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Overwhelming Forces",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Overwhelming Forces",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Overwhelming+Forces",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/overwhelming_forces.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 133,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/263279",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4054",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 263956,
+		"idMetaproduct": 6370,
+		"countReprints": 6,
+		"enName": "Vindicate (Version 2)",
+		"name": "Vindicate (Version 2)",
+		"localization": [{
+			"name": "Vindicate",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Justification",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Selbstbehauptung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Vindicar",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Rivendicare",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Vindicate+%28Version+2%29",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/vindicate2.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 150,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/263956",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6370",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 263957,
+		"idMetaproduct": 2293,
+		"countReprints": 4,
+		"enName": "Genesis",
+		"name": "Genesis",
+		"localization": [{
+			"name": "Genesis",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "La Gen\u00e8se",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Die Entstehung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "G\u00e9nesis",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "La Genesi",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Genesis",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/genesis.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2013-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 154,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/263957",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2293",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266415,
+		"idMetaproduct": 203313,
+		"countReprints": 3,
+		"enName": "Karador, Ghost Chieftain",
+		"name": "Karador, Ghost Chieftain",
+		"localization": [{
+			"name": "Karador, Ghost Chieftain",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Karador, chef de clan fant\u00f4me",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Karador, Geisterh\u00e4uptling",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Karador, Cacique Fantasma",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Karador, Capitano Fantasma",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Karador%2C+Ghost+Chieftain",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/karador_ghost_chieftain.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-01",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 97,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266415",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/203313",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266981,
+		"idMetaproduct": 2517,
+		"countReprints": 3,
+		"enName": "Greater Good",
+		"name": "Greater Good",
+		"localization": [{
+			"name": "Greater Good",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Pour le plus grand bien",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gr\u00f6\u00dferes Wohl",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Beneficio superior",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Bene Supremo",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Greater+Good",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/greater_good.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 49,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266981",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2517",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266982,
+		"idMetaproduct": 203390,
+		"countReprints": 3,
+		"enName": "Riku of Two Reflections",
+		"name": "Riku of Two Reflections",
+		"localization": [{
+			"name": "Riku of Two Reflections",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Riku aux deux reflets",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Riku der Doppelspiegler",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Riku de los Dos Reflejos",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Riku dei Due Riflessi",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Riku+of+Two+Reflections",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/riku_of_two_reflections.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-03",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 107,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266982",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/203390",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266983,
+		"idMetaproduct": 2168,
+		"countReprints": 6,
+		"enName": "Force of Will",
+		"name": "Force of Will",
+		"localization": [{
+			"name": "Force of Will",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Force de volont\u00e9",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Willenskraft",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Fuerza de voluntad",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Forza di Volont\u00e0",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Force+of+Will",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/force_of_will.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 107,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266983",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2168",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266984,
+		"idMetaproduct": 2590,
+		"countReprints": 4,
+		"enName": "Hanna, Ship's Navigator",
+		"name": "Hanna, Ship's Navigator",
+		"localization": [{
+			"name": "Hanna, Ship's Navigator",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Hanna la navigatrice",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Hanna die Navigatorin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Hanna, navegante del barco",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Hanna, Pilota della Nave",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Hanna%2C+Ship%27s+Navigator",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/hanna_ships_navigator.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 133,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266984",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2590",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266985,
+		"idMetaproduct": 202437,
+		"countReprints": 4,
+		"enName": "Sword of Feast and Famine",
+		"name": "Sword of Feast and Famine",
+		"localization": [{
+			"name": "Sword of Feast and Famine",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00c9p\u00e9e de Festin et de Famine",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Schwert aus Schmaus und Hunger",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Espada de abundancia y escasez",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Spada di Abbondanza e Carestia",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Sword+of+Feast+and+Famine",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/sword_of_feast_and_famine.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 66,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266985",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/202437",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266986,
+		"idMetaproduct": 208911,
+		"countReprints": 3,
+		"enName": "Oloro, Ageless Ascetic",
+		"name": "Oloro, Ageless Ascetic",
+		"localization": [{
+			"name": "Oloro, Ageless Ascetic",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Oloro, asc\u00e8te sans \u00e2ge",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Oloro, der zeitlose Asket",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Oloro, el asceta inmortal",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Oloro, Asceta Eterno",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Oloro%2C+Ageless+Ascetic",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/oloro_ageless_ascetic.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-09",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 98,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266986",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/208911",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 268630,
+		"idMetaproduct": 4251,
+		"countReprints": 466,
+		"enName": "Plains",
+		"name": "Plains",
+		"localization": [{
+			"name": "Plains",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Plaine",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Ebene",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Llanura",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Pianura",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Plains",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/plains.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-10",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 29,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/268630",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4251",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 268631,
+		"idMetaproduct": 2923,
+		"countReprints": 508,
+		"enName": "Island",
+		"name": "Island",
+		"localization": [{
+			"name": "Island",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "\u00cele",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Insel",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Isla",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Isola",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Island",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/island.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-11",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 16,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/268631",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2923",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 268632,
+		"idMetaproduct": 5739,
+		"countReprints": 496,
+		"enName": "Swamp",
+		"name": "Swamp",
+		"localization": [{
+			"name": "Swamp",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Marais",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Sumpf",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Pantano",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Palude",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Swamp",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/swamp.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-12",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 33,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/268632",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5739",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 268633,
+		"idMetaproduct": 3743,
+		"countReprints": 493,
+		"enName": "Mountain",
+		"name": "Mountain",
+		"localization": [{
+			"name": "Mountain",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Montagne",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gebirge",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Monta\u00f1a",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Montagna",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mountain",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/mountain.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-13",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 57,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/268633",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3743",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266987,
+		"idMetaproduct": 202636,
+		"countReprints": 4,
+		"enName": "Elesh Norn, Grand Cenobite",
+		"name": "Elesh Norn, Grand Cenobite",
+		"localization": [{
+			"name": "Elesh Norn, Grand Cenobite",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Elesh Norn, Grand C\u00e9nobite",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Elesh Norn, Hohe Z\u00f6nobitin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Elesh Norn, Gran Cenobita",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Elesh Norn, Grande Cenobita",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Elesh+Norn%2C+Grand+Cenobite",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/elesh_norn_grand_cenobite.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 59,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266987",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/202636",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 266988,
+		"idMetaproduct": 208910,
+		"countReprints": 3,
+		"enName": "Nekusar, the Mindrazer",
+		"name": "Nekusar, the Mindrazer",
+		"localization": [{
+			"name": "Nekusar, the Mindrazer",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Nekusar, le terrasseur d'esprit",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Nekusar der Gedankenrei\u00dfer",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Nekusar, el arrasamentes",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Nekusar, il Distruttore di Menti",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Nekusar%2C+the+Mindrazer",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/nekusar_the_mindrazer.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 88,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/266988",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/208910",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 268634,
+		"idMetaproduct": 2177,
+		"countReprints": 533,
+		"enName": "Forest",
+		"name": "Forest",
+		"localization": [{
+			"name": "Forest",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "For\u00eat",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Wald",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Bosque",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Foresta",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Forest",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/forest.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2014-14",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 16,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/268634",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2177",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 282047,
+		"idMetaproduct": 8671,
+		"countReprints": 5,
+		"enName": "Damnation",
+		"name": "Damnation",
+		"localization": [{
+			"name": "Damnation",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Damnation",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Verdammung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Condenaci\u00f3n",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Dannazione",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Damnation",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/damnation.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 106,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/282047",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/8671",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 282048,
+		"idMetaproduct": 210456,
+		"countReprints": 4,
+		"enName": "Dualcaster Mage",
+		"name": "Dualcaster Mage",
+		"localization": [{
+			"name": "Dualcaster Mage",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Mage ambisort",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zauberverdopplerin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Maga del lanzamiento doble",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Maga Duplicatrice",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Dualcaster+Mage",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/dualcaster_mage.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 219,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/282048",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/210456",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 282049,
+		"idMetaproduct": 210453,
+		"countReprints": 3,
+		"enName": "Feldon of the Third Path",
+		"name": "Feldon of the Third Path",
+		"localization": [{
+			"name": "Feldon of the Third Path",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Feldonn de la Troisi\u00e8me Voie",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Feldon vom Dritten Pfad",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Feldon del tercer camino",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Feldon del Terzo Cammino",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Feldon+of+the+Third+Path",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/feldon_of_the_third_path.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 137,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/282049",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/210453",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 282050,
+		"idMetaproduct": 4523,
+		"countReprints": 2,
+		"enName": "Ravages of War",
+		"name": "Ravages of War",
+		"localization": [{
+			"name": "Ravages of War",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Ravages of War",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Ravages of War",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Ravages of War",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Ravages of War",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Ravages+of+War",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/ravages_of_war.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 43,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/282050",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4523",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 282051,
+		"idMetaproduct": 6538,
+		"countReprints": 10,
+		"enName": "Wasteland (Version 2)",
+		"name": "Wasteland (Version 2)",
+		"localization": [{
+			"name": "Wasteland",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Terres d\u00e9vast\u00e9es",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Ein\u00f6de",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Erial",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Lande Desolate",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Wasteland+%28Version+2%29",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/wasteland2.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 83,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/282051",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6538",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 287720,
+		"idMetaproduct": 4733,
+		"countReprints": 8,
+		"enName": "Rishadan Port",
+		"name": "Rishadan Port",
+		"localization": [{
+			"name": "Rishadan Port",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Port rishadan",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Hafen von Rishada",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Puerto rishadano",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Porto di Rishada",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Rishadan+Port",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/rishadan_port.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 113,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/287720",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4733",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 289446,
+		"idMetaproduct": 205773,
+		"countReprints": 4,
+		"enName": "Shardless Agent",
+		"name": "Shardless Agent",
+		"localization": [{
+			"name": "Shardless Agent",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Agente sans \u00e9clat",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Fragmentlose Agentin",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Agente sin fragmento",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Agente di Nessun Frammento",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Shardless+Agent",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/shardless_agent.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 216,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/289446",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/205773",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 289447,
+		"idMetaproduct": 5881,
+		"countReprints": 2,
+		"enName": "Temporal Manipulation",
+		"name": "Temporal Manipulation",
+		"localization": [{
+			"name": "Temporal Manipulation",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Manipulation temporelle",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zeitmanipulation",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Temporal Manipulation",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Manipolazione Temporale",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Temporal+Manipulation",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/temporal_manipulation.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2015-01",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 69,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/289447",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/5881",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 287641,
+		"idMetaproduct": 3445,
+		"countReprints": 4,
+		"enName": "Mana Drain",
+		"name": "Mana Drain",
+		"localization": [{
+			"name": "Mana Drain",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Mana Drain",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Mana Drain",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Mana Drain",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Risucchia Potere",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mana+Drain",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/mana_drain.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-02",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 135,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/287641",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3445",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 287721,
+		"idMetaproduct": 221068,
+		"countReprints": 2,
+		"enName": "Command Beacon",
+		"name": "Command Beacon",
+		"localization": [{
+			"name": "Command Beacon",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Flambeau du Commandement",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Kommando-Signalturm",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Faro del dominio",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Faro di Comando",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Command+Beacon",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/command_beacon.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-04",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 66,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/287721",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/221068",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 290913,
+		"idMetaproduct": 6936,
+		"countReprints": 4,
+		"enName": "Azusa, Lost but Seeking",
+		"name": "Azusa, Lost but Seeking",
+		"localization": [{
+			"name": "Azusa, Lost but Seeking",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Azusa, \u00e9gar\u00e9e mais en qu\u00eate",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Azusa die Suchende",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Azusa, perdida pero buscando",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Azusa, Smarrita ma Cercatrice",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Azusa%2C+Lost+but+Seeking",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/azusa_lost_but_seeking.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 83,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/290913",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/6936",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 293176,
+		"idMetaproduct": 1407,
+		"countReprints": 2,
+		"enName": "Defense of the Heart",
+		"name": "Defense of the Heart",
+		"localization": [{
+			"name": "Defense of the Heart",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "D\u00e9fense du cOEur de la for\u00eat",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Verteidigung des Herzens",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Defensa del coraz\u00f3n",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Difesa del Cuore",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Defense+of+the+Heart",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/defense_of_the_heart.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-07",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 72,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/293176",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/1407",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 293177,
+		"idMetaproduct": 8303,
+		"countReprints": 4,
+		"enName": "Zur the Enchanter",
+		"name": "Zur the Enchanter",
+		"localization": [{
+			"name": "Zur the Enchanter",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Zur l'enchanteur",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zur der Verzauberer",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Zur el Encantador",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Zur l'Incantatore",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Zur+the+Enchanter",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/zur_the_enchanter.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-08",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 108,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/293177",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/8303",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 294190,
+		"idMetaproduct": 2833,
+		"countReprints": 2,
+		"enName": "Imperial Seal",
+		"name": "Imperial Seal",
+		"localization": [{
+			"name": "Imperial Seal",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Imperial Seal",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Imperial Seal",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Imperial Seal",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Imperial Seal",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Imperial+Seal",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/imperial_seal.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-06",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 64,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/294190",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/2833",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 294697,
+		"idMetaproduct": 221074,
+		"countReprints": 2,
+		"enName": "Mystic Confluence",
+		"name": "Mystic Confluence",
+		"localization": [{
+			"name": "Mystic Confluence",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Confluence mystique",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Mystische Konfluenz",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Confluencia m\u00edstica",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Confluenza Mistica",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Mystic+Confluence",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/mystic_confluence.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2016-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 82,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/294697",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/221074",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 296181,
+		"idMetaproduct": 203393,
+		"countReprints": 4,
+		"enName": "Homeward Path",
+		"name": "Homeward Path",
+		"localization": [{
+			"name": "Homeward Path",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Chemin du foyer",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Weg nach Hause",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Senda al hogar",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Via del Ritorno",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Homeward+Path",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/homeward_path.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-04",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 181,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/296181",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/203393",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 298738,
+		"idMetaproduct": 9359,
+		"countReprints": 2,
+		"enName": "Gaddock Teeg",
+		"name": "Gaddock Teeg",
+		"localization": [{
+			"name": "Gaddock Teeg",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Gaddock Teeg",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Gaddock Teeg",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Gaddock Teeg",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Gaddock Teeg",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Gaddock+Teeg",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/gaddock_teeg.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-03",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 127,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/298738",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/9359",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 302107,
+		"idMetaproduct": 223939,
+		"countReprints": 2,
+		"enName": "Prismatic Geoscope",
+		"name": "Prismatic Geoscope",
+		"localization": [{
+			"name": "Prismatic Geoscope",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "G\u00e9oscope prismatique",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Prismen-Geoskop",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Geoscopio prism\u00e1tico",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Geoscopio Prismatico",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Prismatic+Geoscope",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/prismatic_geoscope.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-05",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 283,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/302107",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/223939",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 296182,
+		"idMetaproduct": 205293,
+		"countReprints": 5,
+		"enName": "Avacyn, Angel of Hope",
+		"name": "Avacyn, Angel of Hope",
+		"localization": [{
+			"name": "Avacyn, Angel of Hope",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Avacyn, ange de l'espoir",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Avacyn, Engel der Hoffnung",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Avacyn, \u00e1ngel de la esperanza",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Avacyn, Angelo della Speranza",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Avacyn%2C+Angel+of+Hope",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/avacyn_angel_of_hope.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-01",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 109,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/296182",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/205293",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 302108,
+		"idMetaproduct": 819,
+		"countReprints": 2,
+		"enName": "Capture of Jingzhou",
+		"name": "Capture of Jingzhou",
+		"localization": [{
+			"name": "Capture of Jingzhou",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Capture of Jingzhou",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Capture of Jingzhou",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Capture of Jingzhou",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Capture of Jingzhou",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Capture+of+Jingzhou",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/capture_of_jingzhou.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-02",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 90,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/302108",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/819",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 302109,
+		"idMetaproduct": 9358,
+		"countReprints": 4,
+		"enName": "Doran, the Siege Tower",
+		"name": "Doran, the Siege Tower",
+		"localization": [{
+			"name": "Doran, the Siege Tower",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Doran, la Tour de si\u00e8ge",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Doran, der Belagerungsturm",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "D\u00f3ran, la torre de asedio",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Doran, la Torre d'Assedio",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Doran%2C+the+Siege+Tower",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/doran_the_siege_tower.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-05",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 180,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/302109",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/9358",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 313646,
+		"idMetaproduct": 235218,
+		"countReprints": 2,
+		"enName": "Rules Lawyer",
+		"name": "Rules Lawyer",
+		"localization": [{
+			"name": "Rules Lawyer",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Rules Lawyer",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Rules Lawyer",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Rules Lawyer",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Rules Lawyer",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Rules+Lawyer",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/rules_lawyer.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-09",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 24,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/313646",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/235218",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 315265,
+		"idMetaproduct": 202793,
+		"countReprints": 3,
+		"enName": "Spellskite",
+		"name": "Spellskite",
+		"localization": [{
+			"name": "Spellskite",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Morguesort",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Zaubermissachter",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Despreciahechizos",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Spregiamagie",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Spellskite",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/spellskite.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-07",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 122,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/315265",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/202793",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 315266,
+		"idMetaproduct": 4132,
+		"countReprints": 7,
+		"enName": "Pendelhaven",
+		"name": "Pendelhaven",
+		"localization": [{
+			"name": "Pendelhaven",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Pendelhavre",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Pendelhaven",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Pendelhaven",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Pendelhaven",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Pendelhaven",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/pendelhaven.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2017-08",
+		"rarity": "Mythic",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 140,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/315266",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/4132",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 357065,
+		"idMetaproduct": 210511,
+		"countReprints": 5,
+		"enName": "Commander's Sphere",
+		"name": "Commander's Sphere",
+		"localization": [{
+			"name": "Commander's Sphere",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Sph\u00e8re du commandant",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Sph\u00e4re des Kommandeurs",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Esfera del comandante",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Sfera del Comandante",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Commander%27s+Sphere",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/commanders_sphere.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2018-004",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 11,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/357065",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/210511",
+			"method": "GET"
+		}]
+	}, {
+		"idProduct": 357066,
+		"idMetaproduct": 3547,
+		"countReprints": 4,
+		"enName": "Merchant Scroll",
+		"name": "Merchant Scroll",
+		"localization": [{
+			"name": "Merchant Scroll",
+			"idLanguage": "1",
+			"languageName": "English"
+		}, {
+			"name": "Parchemin du marchand",
+			"idLanguage": "2",
+			"languageName": "French"
+		}, {
+			"name": "Handelsvertrag",
+			"idLanguage": "3",
+			"languageName": "German"
+		}, {
+			"name": "Pergamino mercantil",
+			"idLanguage": "4",
+			"languageName": "Spanish"
+		}, {
+			"name": "Pergamena dei Mercanti",
+			"idLanguage": "5",
+			"languageName": "Italian"
+		}],
+		"website": "\/Products\/Singles\/Judge+Rewards+Promos\/Merchant+Scroll",
+		"image": ".\/img\/cards\/Judge_Rewards_Promos\/merchant_scroll.jpg",
+		"gameName": "Magic the Gathering",
+		"categoryName": "Magic Single",
+		"idGame": "1",
+		"number": "2018-001",
+		"rarity": "Rare",
+		"expansionName": "Judge Rewards Promos",
+		"expansionIcon": 77,
+		"countArticles": 15,
+		"countFoils": 0,
+		"links": [{
+			"rel": "product",
+			"href": "\/products\/357066",
+			"method": "GET"
+		}, {
+			"rel": "metaproduct",
+			"href": "\/metaproducts\/3547",
+			"method": "GET"
+		}]
+	}]
+}

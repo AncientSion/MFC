@@ -15,8 +15,8 @@ Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK
 
 
 
-getArticleDetails(319033);
-
+//getArticleDetails(319033);
+getMKMJson("JR");
 
 function getArticleDetails($id){
 	$url = "https://www.mkmapi.eu/ws/v2.0/output.json/articles/".$id."?isFoil=1";
@@ -43,7 +43,6 @@ function getArticleDetails($id){
 
 
 function getMKMJson($code){
-	$code = "A25";
 	$set = getSetByCode($code);
 	getCardsBySetId($set);
 }

@@ -307,7 +307,7 @@ function writeBoosterInput(){
 function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $compareType){
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
-
+	
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 
 	//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);
@@ -316,6 +316,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 	//$codes = array(array("A25"));
 
+	//echo $maxPrice;
+	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		$setName = $names[$i];
 
@@ -346,9 +348,10 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			if (!$last){continue;}
 			if ($minAvail && ((!$foil && $last["baseAvail"] < $minAvail) || ($foil && $last["foilAvail"] < $minAvail))){continue;}
 			if ($maxAvail && ((!$foil && $last["baseAvail"] > $maxAvail) || ($foil && $last["foilAvail"] > $maxAvail))){continue;}
-
-			if ($minPrice && $last["foilPrice"] < $minPrice){continue;}
-			if ($maxPrice && $last["foilPrice"] > $maxPrice){continue;}
+			
+			if ($minPrice && ((!$foil && $last["basePrice"] < $minPrice) || ($foil && $last["foilPrice"] > $minPrice))){continue;}
+			if ($maxPrice && ((!$foil && $last["basePrice"] > $maxPrice) || ($foil && $last["foilPrice"] < $maxPrice))){continue;}
+			
 			$card = array(
 				"name" => $name,
 				"rarity" => $cards[$k]["rarity"],
@@ -441,36 +444,49 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 		$html .="<table class='moveTable'>";
 
 		$html .="<thead>";
-		$html .="<tr><th class='set' colSpan=10>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
+		$html .="<tr><th class='set' colSpan=11>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
 		$html .="<tr class='sort'>";
-		$html .="<th style='width: 200px'>Name</th>";
+		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
+		$html .="<th style='width: 50px'></th>";
+		$html .="<th style='width: 50px'></th>";
 		$html .="<th style='width: 60px'>Rarity</th>";
 
 		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
 		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
+		//$html .="<th style='width: 70px'>Stack</th>";
 
-		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
+	/*	$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
 		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
-		$html .="</tr></thead>";
+	*/	$html .="</tr></thead>";
 
 		$html .="<tbody>";
 
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 			$card = $allSets[$i]["shakers"][$j];
+			
 
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
-			if ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}
+			if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
+			if ($availChange > 0 && $card[$volChange][$index] < $availChange){continue;}
 
 			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
 			$mkmUrl = $mkmBaseUrl.urlencode($allSets[$i]["set"]) . "/" . urlencode($card["name"]);
 
-			$html .="<tr><td><a target='_blank' href=".$chartUrl.">".$card['name']."</a>";
-			$html .=" - ";
+			$html .="<tr>";
+			$html .="<td>";
+			$html .= "<a target='_blank' href=".$cardUrl.">".$card['name']."</a>";
+			$html .="</td>";
+			$html .="<td>";
+			$html .= "<a target='_blank' href=".$chartUrl.">"."Chart"."</a>";
+			$html .="</td>";
+			$html .="<td>";
 			$html .="<a target='_blank' href=".$mkmUrl.">MKM</a></td>";
+			$html .="</td>";
 			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
 
 			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
@@ -479,12 +495,41 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
 			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
 
-			$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
+	/*		$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
 			$html .="<td>".$card[$price][0]."</td>";
 			if ($card[$moneyChange][0] > 0){$class = "green";} else $class ="red";
 			$html .="<td class='".$class."'>".$card[$moneyChange][0]."</td>";
 			$html .="<td class='".$class."'>".$card[$moneyChange][1]." %</td>";
 			$html .="</tr>";
+	*/	
+	
+			$string = "";
+			$plus = "plus";
+			$minus = "minus";
+			
+			//var_export($card["foilAvail"]);
+			/*
+			if ($foil){
+				for ($k = sizeof($card["foilAvail"])-1; $k > 0; $k--){
+					$val = round(($card["foilAvail"][$k] - $card["foilAvail"][$k-1]) / $card["foilAvail"][$k]*100, 2)*-1;
+					if ($val > 0){
+						$string .= "<span class='".$plus."'>".$val." %</span></br>";
+					} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
+				}
+			}
+			else {
+				for ($k = sizeof($card["baseAvail"])-1; $k > 0; $k--){
+					$val = round(($card["baseAvail"][$k] - $card["baseAvail"][$k-1]) / $card["baseAvail"][$k]*100, 2)*-1;
+					
+					if ($val > 0){
+						$string .= "<span class='".$plus."'>".$val." %</span></br>";
+					} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
+				}
+			}
+			
+			$html .="<td>".$string."</td>"
+			*/
+			
 		}
 
 		$html .="</tbody></table>";

@@ -226,10 +226,10 @@ class Charter {
 
 	undrawOldCharts(){
 		if (!this.draws){$(".container").addClass("border"); return;}
-		this.foilAvailChart.destroy();
-		this.foilPriceChart.destroy();
-		this.baseAvailChart.destroy();
-		this.basePriceChart.destroy();
+		if (this.foilAvailChart){this.foilAvailChart.destroy()};
+		if (this.foilPriceChart){this.foilPriceChart.destroy()};
+		if (this.baseAvailChart){this.baseAvailChart.destroy()};
+		if (this.basePriceChart){this.basePriceChart.destroy()};
 	}
 
 	buildChart(label, dataSets, tickData){

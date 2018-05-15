@@ -4,12 +4,16 @@
 
 
 	//buildFullCardPool(); return;
+	
+	echo '<a href="shakers.php">Reload Blank</a>
+		<div id="cardDiv"></div>';
+		
+		
 
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
 
 			echo getForm($_GET);
-
 
 			$time = time();
 			$time = -microtime(true);
@@ -46,7 +50,6 @@
 		}
 
 	} else echo getForm($_GET);
-
 ?>
 
 
@@ -61,10 +64,9 @@
 	<script src='libs\jquery-ui.min.js'></script>
 	<script src='libs\datatables.min.js'></script>
 	<script src='libs\Chart.bundle.min.js'></script>
+	<script src='libs\hover.js'></script>
 </head>
 	<body>
-	<?php
-	?>
 	</body>
 </html>
 
@@ -81,9 +83,21 @@ $(document).ready(function(){
 		}
 		$(this).DataTable({
 			"paging": false,
-			"aaSorting": [[5, "asc"]]
+			"info": false,
+			"searching": false,
+			"aaSorting": [[7, "asc"]],
 			//"aaSorting": []
 		})
+		/*$(this).find("tbody").find("tr").each(function(){
+			$(this).find("td").first().hover(
+				function(){
+					console.log($(this).find("a").first().html())
+				},
+				function(){
+					console.log("out");
+				}
+			)
+		})*/
 	})
 
 	$(document).contextmenu(function(e){

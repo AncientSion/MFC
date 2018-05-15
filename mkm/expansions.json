@@ -1,1 +1,1323 @@
-{"expansions":[{"code":"MGFC","name":"Filler Cards","id":1408},{"code":"PROM","name":"Promos","id":1249},{"code":"YMGT","name":"Your Move Games Tokens","id":1281},{"code":"SCT2","name":"Starcity Games: Justin Treadway Tokens","id":1438},{"code":"MKMT","name":"Custom Tokens","id":1499},{"code":"SCT3","name":"Starcity Games: Commemorative Tokens","id":1500},{"code":"SCCC","name":"Starcity Games: Creature Collection","id":1501},{"code":"MSTK","name":"Tokens for MTG","id":1502},{"code":"TMP","name":"Tierra Media Tokens","id":1511},{"code":"SCT4","name":"Starcity Games: Kristen Plescow Tokens","id":1512},{"code":"SCT1","name":"Starcity Games: Token Series One","id":1514},{"code":"TOKY","name":"TokyoMTG Products","id":1515},{"code":"LET","name":"League Promos","id":1594},{"code":"GETC","name":"GamingEtc Tokens","id":1642},{"code":"YUM","name":"Yummy Tokens","id":1659},{"code":"GnDT","name":"GnD Cards","id":1691},{"code":"JAT","name":"Javi Alterations Tokens","id":1705},{"code":"MFMT","name":"Mezzocielo & Friends Mini Tokens","id":1765},{"code":"SSP","name":"Standard Series Promos","id":1809},{"code":"RKP","name":"Rk post Products","id":1833},{"code":"MFCT","name":"Mezzocielo & Friends Classic Tokens","id":1834},{"code":"JVT","name":"Johannes Voss Tokens","id":2114},{"code":"UPRT","name":"Ultra Pro Relic Tokens","id":2115},{"code":"LEA","name":"Alpha","id":1},{"code":"LEB","name":"Beta","id":2},{"code":"2ED","name":"Unlimited","id":3},{"code":"ARN","name":"Arabian Nights","id":4},{"code":"CED","name":"Collectors' Edition","id":61},{"code":"IED","name":"International Edition","id":77},{"code":"TDP","name":"The Duelist Promos","id":93},{"code":"ARBI","name":"Armada Comics","id":117},{"code":"MSPR","name":"Misprints","id":1367},{"code":"ATQ","name":"Antiquities","id":5},{"code":"3ED","name":"Revised","id":6},{"code":"DTL","name":"Foreign Black Bordered","id":57},{"code":"LEG","name":"Legends","id":7},{"code":"SUM","name":"Summer Magic","id":76},{"code":"DRK","name":"The Dark","id":8},{"code":"HPP","name":"Harper Prism Promos","id":71},{"code":"FEM","name":"Fallen Empires","id":9},{"code":"FEWM","name":"Fallen Empires: Wyvern Misprints","id":1638},{"code":"DTU","name":"Foreign White Bordered","id":73},{"code":"DKIT","name":"The Dark Italian","id":1837},{"code":"LEIT","name":"Legends Italian","id":1838},{"code":"4EBB","name":"Fourth Edition: Black Bordered","id":1332},{"code":"4EAT","name":"Fourth Edition: Alternate","id":1600},{"code":"4ED","name":"Fourth Edition","id":10},{"code":"ICE","name":"Ice Age","id":11},{"code":"RE","name":"Renaissance","id":60},{"code":"RI","name":"Rinascimento","id":96},{"code":"CHR","name":"Chronicles","id":12},{"code":"CHRJP","name":"Chronicles: Japanese","id":1599},{"code":"HML","name":"Homelands","id":14},{"code":"IBS","name":"Introductory Two-Player Set","id":85},{"code":"UPPC","name":"Ultra-Pro Puzzle Cards","id":1451},{"code":"ALL","name":"Alliances","id":15},{"code":"ALP","name":"Arena League Promos","id":89},{"code":"MIR","name":"Mirage","id":16},{"code":"MUL","name":"Multiverse Gift Box","id":1519},{"code":"WCD1","name":"Pro Tour 1996: Bertrand Lestree","id":121},{"code":"WCD2","name":"Pro Tour 1996: Eric Tam","id":122},{"code":"WCD3","name":"Pro Tour 1996: George Baxter","id":123},{"code":"WCD4","name":"Pro Tour 1996: Leon Lindback","id":124},{"code":"WCD5","name":"Pro Tour 1996: Mark Justice","id":125},{"code":"WCD6","name":"Pro Tour 1996: Michael Locanto","id":126},{"code":"WCD7","name":"Pro Tour 1996: Preston Poulter","id":127},{"code":"WCD8","name":"Pro Tour 1996: Shawn Regnier","id":128},{"code":"POR","name":"Portal","id":25},{"code":"OS69","name":"Oversized 6x9 Promos","id":110},{"code":"OS912","name":"Oversized 9x12 Promos","id":1639},{"code":"VIS","name":"Visions","id":17},{"code":"5ED","name":"Fifth Edition","id":23},{"code":"WTH","name":"Weatherlight","id":18},{"code":"VG","name":"Vanguard","id":69},{"code":"TP","name":"Tempest","id":19},{"code":"GDC","name":"Prerelease Promos","id":83},{"code":"APL","name":"APAC Lands","id":97},{"code":"WCD9","name":"WCD 1997: Jakub Slemr","id":1199},{"code":"WCD10","name":"WCD 1997: Janosch Kuhn","id":1200},{"code":"WCD11","name":"WCD 1997: Paul McCabe","id":1292},{"code":"WCD12","name":"WCD 1997: Svend Geertsen","id":1293},{"code":"STH","name":"Stronghold","id":20},{"code":"EXO","name":"Exodus","id":21},{"code":"P02","name":"Portal Second Age","id":24},{"code":"UGL","name":"Unglued","id":22},{"code":"USG","name":"Urza's Saga","id":26},{"code":"ATH","name":"Anthologies","id":75},{"code":"SCAA","name":"Simplified Chinese Alternate Art Cards","id":1401},{"code":"WCD13","name":"WCD 1998: Randy Buehler","id":1294},{"code":"WCD14","name":"WCD 1998: Brian Hacker","id":1295},{"code":"WCD15","name":"WCD 1998: Ben Rubin","id":1296},{"code":"WCD16","name":"WCD 1998: Brian Selden","id":1297},{"code":"ULG","name":"Urza's Legacy","id":27},{"code":"6ED","name":"Sixth Edition","id":29},{"code":"UDS","name":"Urza's Destiny","id":28},{"code":"JR","name":"Judge Rewards Promos","id":80},{"code":"PTK","name":"Portal Three Kingdoms","id":30},{"code":"S99","name":"Starter 1999","id":63},{"code":"GUL","name":"Guru Lands","id":88},{"code":"MMQ","name":"Mercadian Masques","id":31},{"code":"BRB","name":"Battle Royale","id":64},{"code":"JSS","name":"Junior Super Series Promos","id":86},{"code":"WCD17","name":"WCD 1999: Jakub \u0160lemr","id":1298},{"code":"WCD18","name":"WCD 1999: Matt Linde","id":1299},{"code":"WCD19","name":"WCD 1999: Mark Le Pine","id":1300},{"code":"WCD20","name":"WCD 1999: Kai Budde","id":1301},{"code":"DCI","name":"DCI Promos","id":66},{"code":"TDPR","name":"TopDeck Promos","id":129},{"code":"GPPR","name":"Grand Prix Promos","id":1595},{"code":"PTPR","name":"Pro Tour Promos","id":1596},{"code":"NEM","name":"Nemesis","id":32},{"code":"FNM","name":"Friday Night Magic Promos","id":72},{"code":"EL","name":"Euro Lands","id":81},{"code":"PCY","name":"Prophecy","id":33},{"code":"S00","name":"Starter 2000","id":65},{"code":"INV","name":"Invasion","id":34},{"code":"BTD","name":"Beatdown","id":62},{"code":"WCD21","name":"WCD 2000: Nicolas Labarre","id":1302},{"code":"WCD22","name":"WCD 2000: Tom Van de Logt","id":1303},{"code":"WCD23","name":"WCD 2000: Janosch K\u00fchn","id":1304},{"code":"WCD24","name":"WCD 2000: Jon Finkel","id":1305},{"code":"CDZP","name":"CardZ Promos","id":1342},{"code":"PLS","name":"Planeshift","id":35},{"code":"7ED","name":"Seventh Edition","id":37},{"code":"MPR","name":"Player Rewards Promos","id":79},{"code":"APC","name":"Apocalypse","id":36},{"code":"ODY","name":"Odyssey","id":38},{"code":"DKM","name":"Deckmasters","id":67},{"code":"WCD25","name":"WCD 2001: Jan Tomcani","id":1306},{"code":"WCD26","name":"WCD 2001: Antoine Ruel","id":1307},{"code":"WCD27","name":"WCD 2001: Alex Borteh","id":1308},{"code":"WCD28","name":"WCD 2001: Tom van de Logt","id":1309},{"code":"JH02","name":"JingHe Age: 2002 Tokens","id":1328},{"code":"TOR","name":"Torment","id":39},{"code":"JUD","name":"Judgment","id":40},{"code":"JJT","name":"Japan Junior Tournament Promos","id":87},{"code":"HJCC","name":"Hobby Japan Commemorative Promos","id":1421},{"code":"ONS","name":"Onslaught","id":41},{"code":"WCD29","name":"WCD 2002: Sim Han How","id":1310},{"code":"WCD30","name":"WCD 2002: Raphael Levy","id":1311},{"code":"WCD31","name":"WCD 2002: Brian Kibler","id":1312},{"code":"WCD32","name":"WCD 2002: Carlos Romao","id":1313},{"code":"JH03","name":"JingHe Age: MtG 10th Anniversary Tokens","id":1329},{"code":"LGN","name":"Legions","id":42},{"code":"SCG","name":"Scourge","id":43},{"code":"REL","name":"Release Promos","id":1210},{"code":"8ED","name":"Eighth Edition","id":44},{"code":"MRD","name":"Mirrodin","id":45},{"code":"OBT","name":"Oversized Box Toppers","id":111},{"code":"WCD33","name":"WCD 2003: Peer Kr\u00f6ger","id":1314},{"code":"WCD34","name":"WCD 2003: Wolfgang Eder","id":1315},{"code":"WCD35","name":"WCD 2003: Dave Humpherys","id":1316},{"code":"WCD36","name":"WCD 2003: Daniel Zink","id":1317},{"code":"DST","name":"Darksteel","id":46},{"code":"JSP","name":"Junior Series Promos","id":1361},{"code":"5DN","name":"Fifth Dawn","id":47},{"code":"CHK","name":"Champions of Kamigawa","id":48},{"code":"UNH","name":"Unhinged","id":59},{"code":"WCD37","name":"WCD 2004: Gabriel Nassif","id":1318},{"code":"WCD38","name":"WCD 2004: Manuel Bevand","id":1319},{"code":"WCD39","name":"WCD 2004: Aeo Paquette","id":1320},{"code":"WCD40","name":"WCD 2004: Julien Nuijten","id":1321},{"code":"PC05","name":"2005 Player Cards","id":1391},{"code":"SAL","name":"Salvat-Hachette","id":105},{"code":"BOK","name":"Betrayers of Kamigawa","id":51},{"code":"SOK","name":"Saviors of Kamigawa","id":50},{"code":"9ED","name":"Ninth Edition","id":49},{"code":"RAV","name":"Ravnica: City of Guilds","id":55},{"code":"GW","name":"Gateway Promos","id":78},{"code":"MPSP","name":"Magic Premiere Shop Promos","id":101},{"code":"PC06","name":"2006 Player Cards","id":1269},{"code":"RSPR","name":"Revista Serra Promos","id":1432},{"code":"JAS","name":"Junior APAC Series Promos","id":1586},{"code":"GPT","name":"Guildpact","id":54},{"code":"DIS","name":"Dissension","id":53},{"code":"CPR","name":"Champs & States Promos","id":94},{"code":"CSP","name":"Coldsnap","id":52},{"code":"CSPTD","name":"Coldsnap Theme Decks","id":82},{"code":"TSP","name":"Time Spiral","id":56},{"code":"HHPR","name":"Happy Holidays Promos","id":1247},{"code":"MSSP","name":"Magic Scholarship Series Promos","id":1360},{"code":"PC07","name":"2007 Player Cards","id":1392},{"code":"PLC","name":"Planar Chaos","id":58},{"code":"FUT","name":"Future Sight","id":70},{"code":"10E","name":"Tenth Edition","id":74},{"code":"RSP","name":"Resale Promos","id":98},{"code":"LRW","name":"Lorwyn","id":84},{"code":"EVG","name":"Duel Decks: Elves vs. Goblins","id":91},{"code":"MOR","name":"Morningtide","id":92},{"code":"SHM","name":"Shadowmoor","id":95},{"code":"EVE","name":"Eventide","id":99},{"code":"DRB","name":"From the Vault: Dragons","id":100},{"code":"ALA","name":"Shards of Alara","id":102},{"code":"DD2","name":"Duel Decks: Jace vs. Chandra","id":104},{"code":"CNPR","name":"Convention Promos","id":1597},{"code":"CON","name":"Conflux","id":106},{"code":"DDC","name":"Duel Decks: Divine vs. Demonic","id":107},{"code":"ARB","name":"Alara Reborn","id":108},{"code":"DPP","name":"Duels of the Planeswalkers Promos","id":1278},{"code":"M10","name":"Magic 2010","id":109},{"code":"BABP","name":"Buy a Box Promos","id":1198},{"code":"V09","name":"From the Vault: Exiled","id":112},{"code":"HOP","name":"Planechase","id":113},{"code":"ZEN","name":"Zendikar","id":114},{"code":"DDD","name":"Duel Decks: Garruk vs. Liliana","id":115},{"code":"DMPR","name":"Dengeki Maoh Promos","id":1248},{"code":"H09","name":"Premium Deck Series: Slivers","id":116},{"code":"GDP","name":"Game Day Promos","id":1209},{"code":"WWK","name":"Worldwake","id":118},{"code":"DDE","name":"Duel Decks: Phyrexia vs. The Coalition","id":119},{"code":"ROE","name":"Rise of the Eldrazi","id":120},{"code":"DPA","name":"Duels of the Planeswalkers Decks","id":1193},{"code":"ARC","name":"Archenemy","id":1194},{"code":"M11","name":"Magic 2011","id":1197},{"code":"V10","name":"From the Vault: Relics","id":1202},{"code":"DDF","name":"Duel Decks: Elspeth vs. Tezzeret","id":1203},{"code":"SOM","name":"Scars of Mirrodin","id":1206},{"code":"PD2","name":"Premium Deck Series: Fire & Lightning","id":1218},{"code":"IDW","name":"IDW Promos","id":1413},{"code":"SV11","name":"Salvat-Hachette 2011","id":1259},{"code":"JPT","name":"Judge Program Tokens","id":1643},{"code":"MBS","name":"Mirrodin Besieged","id":1253},{"code":"DDG","name":"Duel Decks: Knights vs. Dragons","id":1261},{"code":"NPH","name":"New Phyrexia","id":1262},{"code":"CMD","name":"Commander","id":1273},{"code":"M12","name":"Magic 2012","id":1280},{"code":"V11","name":"From the Vault: Legends","id":1286},{"code":"DDH","name":"Duel Decks: Ajani vs. Nicol Bolas","id":1288},{"code":"ISD","name":"Innistrad","id":1327},{"code":"PD3","name":"Premium Deck Series: Graveborn","id":1337},{"code":"DKA","name":"Dark Ascension","id":1345},{"code":"DDI","name":"Duel Decks: Venser vs. Koth","id":1350},{"code":"AVR","name":"Avacyn Restored","id":1358},{"code":"PC2","name":"Planechase 2012","id":1369},{"code":"M13","name":"Magic 2013","id":1388},{"code":"V12","name":"From the Vault: Realms","id":1397},{"code":"DDJ","name":"Duel Decks: Izzet vs. Golgari","id":1398},{"code":"RTR","name":"Return to Ravnica","id":1389},{"code":"CM1","name":"Commander's Arsenal","id":1418},{"code":"GTC","name":"Gatecrash","id":1424},{"code":"DDK","name":"Duel Decks: Sorin vs. Tibalt","id":1430},{"code":"DGM","name":"Dragon's Maze","id":1435},{"code":"MMA","name":"Modern Masters","id":1444},{"code":"M14","name":"Magic 2014","id":1449},{"code":"CC13","name":"San Diego Comic-Con 2013 Promos","id":1454},{"code":"V13","name":"From the Vault: Twenty","id":1455},{"code":"DDL","name":"Duel Decks: Heroes vs. Monsters","id":1456},{"code":"THS","name":"Theros","id":1457},{"code":"C13","name":"Commander 2013","id":1464},{"code":"BNG","name":"Born of the Gods","id":1469},{"code":"DDM","name":"Duel Decks: Jace vs. Vraska","id":1477},{"code":"JOU","name":"Journey into Nyx","id":1481},{"code":"MD1","name":"Modern Event Deck 2014","id":1484},{"code":"CNS","name":"Conspiracy","id":1483},{"code":"M15","name":"Magic 2015","id":1485},{"code":"CPP","name":"Clash Pack Promos","id":1490},{"code":"CC14","name":"San Diego Comic-Con 2014 Promos","id":1491},{"code":"V14","name":"From the Vault: Annihilation","id":1494},{"code":"DDN","name":"Duel Decks: Speed vs. Cunning","id":1496},{"code":"PKTK","name":"Khans of Tarkir: Promos","id":1588},{"code":"KTK","name":"Khans of Tarkir","id":1495},{"code":"C14","name":"Commander 2014","id":1513},{"code":"DD3","name":"Duel Decks: Anthology","id":1509},{"code":"UGFP","name":"Ugin's Fate Promos","id":1587},{"code":"PFRF","name":"Fate Reforged: Promos","id":1589},{"code":"FRF","name":"Fate Reforged","id":1522},{"code":"DDO","name":"Duel Decks: Elspeth vs. Kiora","id":1593},{"code":"PDTK","name":"Dragons Of Tarkir: Promos","id":1602},{"code":"DTK","name":"Dragons of Tarkir","id":1601},{"code":"MM2","name":"Modern Masters 2015","id":1641},{"code":"CC15","name":"San Diego Comic-Con 2015 Promos","id":1658},{"code":"PORI","name":"Magic Origins: Promos","id":1655},{"code":"ORI","name":"Magic Origins","id":1652},{"code":"MKM1","name":"MKM Products","id":1662},{"code":"V15","name":"From the Vault: Angels","id":1661},{"code":"MKMS","name":"MKM Series","id":1665},{"code":"DDP","name":"Duel Decks: Zendikar vs. Eldrazi","id":1663},{"code":"PBFZ","name":"Battle for Zendikar: Promos","id":1670},{"code":"BFZ","name":"Battle for Zendikar","id":1668},{"code":"ZEX","name":"Zendikar Expeditions","id":1669},{"code":"C15","name":"Commander 2015","id":1679},{"code":"POGW","name":"Oath of the Gatewatch: Promos","id":1686},{"code":"OGW","name":"Oath of the Gatewatch","id":1676},{"code":"DDQ","name":"Duel Decks: Blessed vs. Cursed","id":1692},{"code":"PSOI","name":"Shadows over Innistrad: Promos","id":1704},{"code":"SOI","name":"Shadows over Innistrad","id":1694},{"code":"W16","name":"Welcome Deck 2016","id":1710},{"code":"EMA","name":"Eternal Masters","id":1696},{"code":"EMNP","name":"Eldritch Moon: Promos","id":1723},{"code":"EMN","name":"Eldritch Moon","id":1695},{"code":"CC16","name":"San Diego Comic-Con 2016 Promos","id":1725},{"code":"V16","name":"From the Vault: Lore","id":1703},{"code":"CN2","name":"Conspiracy: Take the Crown","id":1702},{"code":"DDR","name":"Duel Decks: Nissa vs. Ob Nixilis","id":1720},{"code":"PKLD","name":"Kaladesh: Promos","id":1726},{"code":"KLD","name":"Kaladesh","id":1717},{"code":"KLDS","name":"Kaladesh Inventions","id":1733},{"code":"C16","name":"Commander 2016","id":1719},{"code":"PCA","name":"Planechase Anthology","id":1722},{"code":"PAER","name":"Aether Revolt: Promos","id":1750},{"code":"AER","name":"Aether Revolt","id":1718},{"code":"MM3","name":"Modern Masters 2017","id":1727},{"code":"DDS","name":"Duel Decks: Mind vs. Might","id":1728},{"code":"W17","name":"Welcome Deck 2017","id":1802},{"code":"PAKH","name":"Amonkhet: Promos","id":1803},{"code":"AKHI","name":"Amonkhet Invocations","id":1798},{"code":"AKH","name":"Amonkhet","id":1729},{"code":"CMA","name":"Commander Anthology","id":1732},{"code":"E01","name":"Archenemy: Nicol Bolas","id":1730},{"code":"PHOU","name":"Hour of Devastation: Promos","id":1825},{"code":"HOU","name":"Hour of Devastation","id":1731},{"code":"CC17","name":"San Diego Comic-Con 2017 Promos","id":1828},{"code":"C17","name":"Commander 2017","id":1813},{"code":"H17","name":"Hascon 2017 Promos","id":1841},{"code":"OH","name":"Open House Promos","id":1844},{"code":"XLNP","name": "Ixalan: Promos","id":1847},{"code":"XLN","name":"Ixalan","id":1812},{"code":"SSP2","name":"Standard Showdown Promos","id":1836},{"code":"DDT","name":"Duel Decks: Merfolk vs. Goblins","id":1818},{"code":"IMA","name":"Iconic Masters","id":1811},{"code":"V17","name":"From the Vault: Transform","id":1819},{"code":"E02","name":"Explorers of Ixalan","id":1830},{"code":"UST","name":"Unstable","id":1821},{"code":"SCH","name":"Store Championship Promos","id":2023},{"code":"RIXP","name":"Rivals of Ixalan: Promos","id":2063},{"code":"RIX","name":"Rivals of Ixalan","id":1829},{"code":"A25","name":"Masters 25","id":1820},{"code":"DDU","name":"Duel Decks: Elves vs. Inventors","id":2068},{"code":"DOM","name":"Dominaria","id":1822},{"code":"SS1","name":"Signature Spellbook: Jace","id":2103}]}
+{
+	"expansions": [{
+		"code": "MGFC",
+		"name": "Filler Cards",
+		"id": 1408
+	}, {
+		"code": "PROM",
+		"name": "Promos",
+		"id": 1249
+	}, {
+		"code": "YMGT",
+		"name": "Your Move Games Tokens",
+		"id": 1281
+	}, {
+		"code": "SCT2",
+		"name": "Starcity Games: Justin Treadway Tokens",
+		"id": 1438
+	}, {
+		"code": "MKMT",
+		"name": "Custom Tokens",
+		"id": 1499
+	}, {
+		"code": "SCT3",
+		"name": "Starcity Games: Commemorative Tokens",
+		"id": 1500
+	}, {
+		"code": "SCCC",
+		"name": "Starcity Games: Creature Collection",
+		"id": 1501
+	}, {
+		"code": "MSTK",
+		"name": "Tokens for MTG",
+		"id": 1502
+	}, {
+		"code": "TMP",
+		"name": "Tierra Media Tokens",
+		"id": 1511
+	}, {
+		"code": "SCT4",
+		"name": "Starcity Games: Kristen Plescow Tokens",
+		"id": 1512
+	}, {
+		"code": "SCT1",
+		"name": "Starcity Games: Token Series One",
+		"id": 1514
+	}, {
+		"code": "TOKY",
+		"name": "TokyoMTG Products",
+		"id": 1515
+	}, {
+		"code": "LET",
+		"name": "League Promos",
+		"id": 1594
+	}, {
+		"code": "GETC",
+		"name": "GamingEtc Tokens",
+		"id": 1642
+	}, {
+		"code": "YUM",
+		"name": "Yummy Tokens",
+		"id": 1659
+	}, {
+		"code": "GnDT",
+		"name": "GnD Cards",
+		"id": 1691
+	}, {
+		"code": "JAT",
+		"name": "Javi Alterations Tokens",
+		"id": 1705
+	}, {
+		"code": "MFMT",
+		"name": "Mezzocielo & Friends Mini Tokens",
+		"id": 1765
+	}, {
+		"code": "SSP",
+		"name": "Standard Series Promos",
+		"id": 1809
+	}, {
+		"code": "RKP",
+		"name": "Rk post Products",
+		"id": 1833
+	}, {
+		"code": "MFCT",
+		"name": "Mezzocielo & Friends Classic Tokens",
+		"id": 1834
+	}, {
+		"code": "JVT",
+		"name": "Johannes Voss Tokens",
+		"id": 2114
+	}, {
+		"code": "UPRT",
+		"name": "Ultra Pro Relic Tokens",
+		"id": 2115
+	}, {
+		"code": "LEA",
+		"name": "Alpha",
+		"id": 1
+	}, {
+		"code": "LEB",
+		"name": "Beta",
+		"id": 2
+	}, {
+		"code": "2ED",
+		"name": "Unlimited",
+		"id": 3
+	}, {
+		"code": "ARN",
+		"name": "Arabian Nights",
+		"id": 4
+	}, {
+		"code": "CED",
+		"name": "Collectors' Edition",
+		"id": 61
+	}, {
+		"code": "IED",
+		"name": "International Edition",
+		"id": 77
+	}, {
+		"code": "TDP",
+		"name": "The Duelist Promos",
+		"id": 93
+	}, {
+		"code": "ARBI",
+		"name": "Armada Comics",
+		"id": 117
+	}, {
+		"code": "MSPR",
+		"name": "Misprints",
+		"id": 1367
+	}, {
+		"code": "ATQ",
+		"name": "Antiquities",
+		"id": 5
+	}, {
+		"code": "3ED",
+		"name": "Revised",
+		"id": 6
+	}, {
+		"code": "DTL",
+		"name": "Foreign Black Bordered",
+		"id": 57
+	}, {
+		"code": "LEG",
+		"name": "Legends",
+		"id": 7
+	}, {
+		"code": "SUM",
+		"name": "Summer Magic",
+		"id": 76
+	}, {
+		"code": "DRK",
+		"name": "The Dark",
+		"id": 8
+	}, {
+		"code": "HPP",
+		"name": "Harper Prism Promos",
+		"id": 71
+	}, {
+		"code": "FEM",
+		"name": "Fallen Empires",
+		"id": 9
+	}, {
+		"code": "FEWM",
+		"name": "Fallen Empires: Wyvern Misprints",
+		"id": 1638
+	}, {
+		"code": "DTU",
+		"name": "Foreign White Bordered",
+		"id": 73
+	}, {
+		"code": "DKIT",
+		"name": "The Dark Italian",
+		"id": 1837
+	}, {
+		"code": "LEIT",
+		"name": "Legends Italian",
+		"id": 1838
+	}, {
+		"code": "4EBB",
+		"name": "Fourth Edition: Black Bordered",
+		"id": 1332
+	}, {
+		"code": "4EAT",
+		"name": "Fourth Edition: Alternate",
+		"id": 1600
+	}, {
+		"code": "4ED",
+		"name": "Fourth Edition",
+		"id": 10
+	}, {
+		"code": "ICE",
+		"name": "Ice Age",
+		"id": 11
+	}, {
+		"code": "RE",
+		"name": "Renaissance",
+		"id": 60
+	}, {
+		"code": "RI",
+		"name": "Rinascimento",
+		"id": 96
+	}, {
+		"code": "CHR",
+		"name": "Chronicles",
+		"id": 12
+	}, {
+		"code": "CHRJP",
+		"name": "Chronicles: Japanese",
+		"id": 1599
+	}, {
+		"code": "HML",
+		"name": "Homelands",
+		"id": 14
+	}, {
+		"code": "IBS",
+		"name": "Introductory Two-Player Set",
+		"id": 85
+	}, {
+		"code": "UPPC",
+		"name": "Ultra-Pro Puzzle Cards",
+		"id": 1451
+	}, {
+		"code": "ALL",
+		"name": "Alliances",
+		"id": 15
+	}, {
+		"code": "ALP",
+		"name": "Arena League Promos",
+		"id": 89
+	}, {
+		"code": "MIR",
+		"name": "Mirage",
+		"id": 16
+	}, {
+		"code": "MUL",
+		"name": "Multiverse Gift Box",
+		"id": 1519
+	}, {
+		"code": "WCD1",
+		"name": "Pro Tour 1996: Bertrand Lestree",
+		"id": 121
+	}, {
+		"code": "WCD2",
+		"name": "Pro Tour 1996: Eric Tam",
+		"id": 122
+	}, {
+		"code": "WCD3",
+		"name": "Pro Tour 1996: George Baxter",
+		"id": 123
+	}, {
+		"code": "WCD4",
+		"name": "Pro Tour 1996: Leon Lindback",
+		"id": 124
+	}, {
+		"code": "WCD5",
+		"name": "Pro Tour 1996: Mark Justice",
+		"id": 125
+	}, {
+		"code": "WCD6",
+		"name": "Pro Tour 1996: Michael Locanto",
+		"id": 126
+	}, {
+		"code": "WCD7",
+		"name": "Pro Tour 1996: Preston Poulter",
+		"id": 127
+	}, {
+		"code": "WCD8",
+		"name": "Pro Tour 1996: Shawn Regnier",
+		"id": 128
+	}, {
+		"code": "POR",
+		"name": "Portal",
+		"id": 25
+	}, {
+		"code": "OS69",
+		"name": "Oversized 6x9 Promos",
+		"id": 110
+	}, {
+		"code": "OS912",
+		"name": "Oversized 9x12 Promos",
+		"id": 1639
+	}, {
+		"code": "VIS",
+		"name": "Visions",
+		"id": 17
+	}, {
+		"code": "5ED",
+		"name": "Fifth Edition",
+		"id": 23
+	}, {
+		"code": "WTH",
+		"name": "Weatherlight",
+		"id": 18
+	}, {
+		"code": "VG",
+		"name": "Vanguard",
+		"id": 69
+	}, {
+		"code": "TP",
+		"name": "Tempest",
+		"id": 19
+	}, {
+		"code": "GDC",
+		"name": "Prerelease Promos",
+		"id": 83
+	}, {
+		"code": "APL",
+		"name": "APAC Lands",
+		"id": 97
+	}, {
+		"code": "WCD9",
+		"name": "WCD 1997: Jakub Slemr",
+		"id": 1199
+	}, {
+		"code": "WCD10",
+		"name": "WCD 1997: Janosch Kuhn",
+		"id": 1200
+	}, {
+		"code": "WCD11",
+		"name": "WCD 1997: Paul McCabe",
+		"id": 1292
+	}, {
+		"code": "WCD12",
+		"name": "WCD 1997: Svend Geertsen",
+		"id": 1293
+	}, {
+		"code": "STH",
+		"name": "Stronghold",
+		"id": 20
+	}, {
+		"code": "EXO",
+		"name": "Exodus",
+		"id": 21
+	}, {
+		"code": "P02",
+		"name": "Portal Second Age",
+		"id": 24
+	}, {
+		"code": "UGL",
+		"name": "Unglued",
+		"id": 22
+	}, {
+		"code": "USG",
+		"name": "Urza's Saga",
+		"id": 26
+	}, {
+		"code": "ATH",
+		"name": "Anthologies",
+		"id": 75
+	}, {
+		"code": "SCAA",
+		"name": "Simplified Chinese Alternate Art Cards",
+		"id": 1401
+	}, {
+		"code": "WCD13",
+		"name": "WCD 1998: Randy Buehler",
+		"id": 1294
+	}, {
+		"code": "WCD14",
+		"name": "WCD 1998: Brian Hacker",
+		"id": 1295
+	}, {
+		"code": "WCD15",
+		"name": "WCD 1998: Ben Rubin",
+		"id": 1296
+	}, {
+		"code": "WCD16",
+		"name": "WCD 1998: Brian Selden",
+		"id": 1297
+	}, {
+		"code": "ULG",
+		"name": "Urza's Legacy",
+		"id": 27
+	}, {
+		"code": "6ED",
+		"name": "Sixth Edition",
+		"id": 29
+	}, {
+		"code": "UDS",
+		"name": "Urza's Destiny",
+		"id": 28
+	}, {
+		"code": "JR",
+		"name": "Judge Rewards Promos",
+		"id": 80
+	}, {
+		"code": "PTK",
+		"name": "Portal Three Kingdoms",
+		"id": 30
+	}, {
+		"code": "S99",
+		"name": "Starter 1999",
+		"id": 63
+	}, {
+		"code": "GUL",
+		"name": "Guru Lands",
+		"id": 88
+	}, {
+		"code": "MMQ",
+		"name": "Mercadian Masques",
+		"id": 31
+	}, {
+		"code": "BRB",
+		"name": "Battle Royale",
+		"id": 64
+	}, {
+		"code": "JSS",
+		"name": "Junior Super Series Promos",
+		"id": 86
+	}, {
+		"code": "WCD17",
+		"name": "WCD 1999: Jakub \u0160lemr",
+		"id": 1298
+	}, {
+		"code": "WCD18",
+		"name": "WCD 1999: Matt Linde",
+		"id": 1299
+	}, {
+		"code": "WCD19",
+		"name": "WCD 1999: Mark Le Pine",
+		"id": 1300
+	}, {
+		"code": "WCD20",
+		"name": "WCD 1999: Kai Budde",
+		"id": 1301
+	}, {
+		"code": "DCI",
+		"name": "DCI Promos",
+		"id": 66
+	}, {
+		"code": "TDPR",
+		"name": "TopDeck Promos",
+		"id": 129
+	}, {
+		"code": "GPPR",
+		"name": "Grand Prix Promos",
+		"id": 1595
+	}, {
+		"code": "PTPR",
+		"name": "Pro Tour Promos",
+		"id": 1596
+	}, {
+		"code": "NEM",
+		"name": "Nemesis",
+		"id": 32
+	}, {
+		"code": "FNM",
+		"name": "Friday Night Magic Promos",
+		"id": 72
+	}, {
+		"code": "EL",
+		"name": "Euro Lands",
+		"id": 81
+	}, {
+		"code": "PCY",
+		"name": "Prophecy",
+		"id": 33
+	}, {
+		"code": "S00",
+		"name": "Starter 2000",
+		"id": 65
+	}, {
+		"code": "INV",
+		"name": "Invasion",
+		"id": 34
+	}, {
+		"code": "BTD",
+		"name": "Beatdown",
+		"id": 62
+	}, {
+		"code": "WCD21",
+		"name": "WCD 2000: Nicolas Labarre",
+		"id": 1302
+	}, {
+		"code": "WCD22",
+		"name": "WCD 2000: Tom Van de Logt",
+		"id": 1303
+	}, {
+		"code": "WCD23",
+		"name": "WCD 2000: Janosch K\u00fchn",
+		"id": 1304
+	}, {
+		"code": "WCD24",
+		"name": "WCD 2000: Jon Finkel",
+		"id": 1305
+	}, {
+		"code": "CDZP",
+		"name": "CardZ Promos",
+		"id": 1342
+	}, {
+		"code": "PLS",
+		"name": "Planeshift",
+		"id": 35
+	}, {
+		"code": "7ED",
+		"name": "Seventh Edition",
+		"id": 37
+	}, {
+		"code": "MPR",
+		"name": "Player Rewards Promos",
+		"id": 79
+	}, {
+		"code": "APC",
+		"name": "Apocalypse",
+		"id": 36
+	}, {
+		"code": "ODY",
+		"name": "Odyssey",
+		"id": 38
+	}, {
+		"code": "DKM",
+		"name": "Deckmasters",
+		"id": 67
+	}, {
+		"code": "WCD25",
+		"name": "WCD 2001: Jan Tomcani",
+		"id": 1306
+	}, {
+		"code": "WCD26",
+		"name": "WCD 2001: Antoine Ruel",
+		"id": 1307
+	}, {
+		"code": "WCD27",
+		"name": "WCD 2001: Alex Borteh",
+		"id": 1308
+	}, {
+		"code": "WCD28",
+		"name": "WCD 2001: Tom van de Logt",
+		"id": 1309
+	}, {
+		"code": "JH02",
+		"name": "JingHe Age: 2002 Tokens",
+		"id": 1328
+	}, {
+		"code": "TOR",
+		"name": "Torment",
+		"id": 39
+	}, {
+		"code": "JUD",
+		"name": "Judgment",
+		"id": 40
+	}, {
+		"code": "JJT",
+		"name": "Japan Junior Tournament Promos",
+		"id": 87
+	}, {
+		"code": "HJCC",
+		"name": "Hobby Japan Commemorative Promos",
+		"id": 1421
+	}, {
+		"code": "ONS",
+		"name": "Onslaught",
+		"id": 41
+	}, {
+		"code": "WCD29",
+		"name": "WCD 2002: Sim Han How",
+		"id": 1310
+	}, {
+		"code": "WCD30",
+		"name": "WCD 2002: Raphael Levy",
+		"id": 1311
+	}, {
+		"code": "WCD31",
+		"name": "WCD 2002: Brian Kibler",
+		"id": 1312
+	}, {
+		"code": "WCD32",
+		"name": "WCD 2002: Carlos Romao",
+		"id": 1313
+	}, {
+		"code": "JH03",
+		"name": "JingHe Age: MtG 10th Anniversary Tokens",
+		"id": 1329
+	}, {
+		"code": "LGN",
+		"name": "Legions",
+		"id": 42
+	}, {
+		"code": "SCG",
+		"name": "Scourge",
+		"id": 43
+	}, {
+		"code": "REL",
+		"name": "Release Promos",
+		"id": 1210
+	}, {
+		"code": "8ED",
+		"name": "Eighth Edition",
+		"id": 44
+	}, {
+		"code": "MRD",
+		"name": "Mirrodin",
+		"id": 45
+	}, {
+		"code": "OBT",
+		"name": "Oversized Box Toppers",
+		"id": 111
+	}, {
+		"code": "WCD33",
+		"name": "WCD 2003: Peer Kr\u00f6ger",
+		"id": 1314
+	}, {
+		"code": "WCD34",
+		"name": "WCD 2003: Wolfgang Eder",
+		"id": 1315
+	}, {
+		"code": "WCD35",
+		"name": "WCD 2003: Dave Humpherys",
+		"id": 1316
+	}, {
+		"code": "WCD36",
+		"name": "WCD 2003: Daniel Zink",
+		"id": 1317
+	}, {
+		"code": "DST",
+		"name": "Darksteel",
+		"id": 46
+	}, {
+		"code": "JSP",
+		"name": "Junior Series Promos",
+		"id": 1361
+	}, {
+		"code": "5DN",
+		"name": "Fifth Dawn",
+		"id": 47
+	}, {
+		"code": "CHK",
+		"name": "Champions of Kamigawa",
+		"id": 48
+	}, {
+		"code": "UNH",
+		"name": "Unhinged",
+		"id": 59
+	}, {
+		"code": "WCD37",
+		"name": "WCD 2004: Gabriel Nassif",
+		"id": 1318
+	}, {
+		"code": "WCD38",
+		"name": "WCD 2004: Manuel Bevand",
+		"id": 1319
+	}, {
+		"code": "WCD39",
+		"name": "WCD 2004: Aeo Paquette",
+		"id": 1320
+	}, {
+		"code": "WCD40",
+		"name": "WCD 2004: Julien Nuijten",
+		"id": 1321
+	}, {
+		"code": "PC05",
+		"name": "2005 Player Cards",
+		"id": 1391
+	}, {
+		"code": "SAL",
+		"name": "Salvat-Hachette",
+		"id": 105
+	}, {
+		"code": "BOK",
+		"name": "Betrayers of Kamigawa",
+		"id": 51
+	}, {
+		"code": "SOK",
+		"name": "Saviors of Kamigawa",
+		"id": 50
+	}, {
+		"code": "9ED",
+		"name": "Ninth Edition",
+		"id": 49
+	}, {
+		"code": "RAV",
+		"name": "Ravnica: City of Guilds",
+		"id": 55
+	}, {
+		"code": "GW",
+		"name": "Gateway Promos",
+		"id": 78
+	}, {
+		"code": "MPSP",
+		"name": "Magic Premiere Shop Promos",
+		"id": 101
+	}, {
+		"code": "PC06",
+		"name": "2006 Player Cards",
+		"id": 1269
+	}, {
+		"code": "RSPR",
+		"name": "Revista Serra Promos",
+		"id": 1432
+	}, {
+		"code": "JAS",
+		"name": "Junior APAC Series Promos",
+		"id": 1586
+	}, {
+		"code": "GPT",
+		"name": "Guildpact",
+		"id": 54
+	}, {
+		"code": "DIS",
+		"name": "Dissension",
+		"id": 53
+	}, {
+		"code": "CPR",
+		"name": "Champs & States Promos",
+		"id": 94
+	}, {
+		"code": "CSP",
+		"name": "Coldsnap",
+		"id": 52
+	}, {
+		"code": "CSPTD",
+		"name": "Coldsnap Theme Decks",
+		"id": 82
+	}, {
+		"code": "TSP",
+		"name": "Time Spiral",
+		"id": 56
+	}, {
+		"code": "HHPR",
+		"name": "Happy Holidays Promos",
+		"id": 1247
+	}, {
+		"code": "MSSP",
+		"name": "Magic Scholarship Series Promos",
+		"id": 1360
+	}, {
+		"code": "PC07",
+		"name": "2007 Player Cards",
+		"id": 1392
+	}, {
+		"code": "PLC",
+		"name": "Planar Chaos",
+		"id": 58
+	}, {
+		"code": "FUT",
+		"name": "Future Sight",
+		"id": 70
+	}, {
+		"code": "10E",
+		"name": "Tenth Edition",
+		"id": 74
+	}, {
+		"code": "RSP",
+		"name": "Resale Promos",
+		"id": 98
+	}, {
+		"code": "LRW",
+		"name": "Lorwyn",
+		"id": 84
+	}, {
+		"code": "EVG",
+		"name": "Duel Decks: Elves vs. Goblins",
+		"id": 91
+	}, {
+		"code": "MOR",
+		"name": "Morningtide",
+		"id": 92
+	}, {
+		"code": "SHM",
+		"name": "Shadowmoor",
+		"id": 95
+	}, {
+		"code": "EVE",
+		"name": "Eventide",
+		"id": 99
+	}, {
+		"code": "DRB",
+		"name": "From the Vault: Dragons",
+		"id": 100
+	}, {
+		"code": "ALA",
+		"name": "Shards of Alara",
+		"id": 102
+	}, {
+		"code": "DD2",
+		"name": "Duel Decks: Jace vs. Chandra",
+		"id": 104
+	}, {
+		"code": "CNPR",
+		"name": "Convention Promos",
+		"id": 1597
+	}, {
+		"code": "CON",
+		"name": "Conflux",
+		"id": 106
+	}, {
+		"code": "DDC",
+		"name": "Duel Decks: Divine vs. Demonic",
+		"id": 107
+	}, {
+		"code": "ARB",
+		"name": "Alara Reborn",
+		"id": 108
+	}, {
+		"code": "DPP",
+		"name": "Duels of the Planeswalkers Promos",
+		"id": 1278
+	}, {
+		"code": "M10",
+		"name": "Magic 2010",
+		"id": 109
+	}, {
+		"code": "BABP",
+		"name": "Buy a Box Promos",
+		"id": 1198
+	}, {
+		"code": "V09",
+		"name": "From the Vault: Exiled",
+		"id": 112
+	}, {
+		"code": "HOP",
+		"name": "Planechase",
+		"id": 113
+	}, {
+		"code": "ZEN",
+		"name": "Zendikar",
+		"id": 114
+	}, {
+		"code": "DDD",
+		"name": "Duel Decks: Garruk vs. Liliana",
+		"id": 115
+	}, {
+		"code": "DMPR",
+		"name": "Dengeki Maoh Promos",
+		"id": 1248
+	}, {
+		"code": "H09",
+		"name": "Premium Deck Series: Slivers",
+		"id": 116
+	}, {
+		"code": "GDP",
+		"name": "Game Day Promos",
+		"id": 1209
+	}, {
+		"code": "WWK",
+		"name": "Worldwake",
+		"id": 118
+	}, {
+		"code": "DDE",
+		"name": "Duel Decks: Phyrexia vs. The Coalition",
+		"id": 119
+	}, {
+		"code": "ROE",
+		"name": "Rise of the Eldrazi",
+		"id": 120
+	}, {
+		"code": "DPA",
+		"name": "Duels of the Planeswalkers Decks",
+		"id": 1193
+	}, {
+		"code": "ARC",
+		"name": "Archenemy",
+		"id": 1194
+	}, {
+		"code": "M11",
+		"name": "Magic 2011",
+		"id": 1197
+	}, {
+		"code": "V10",
+		"name": "From the Vault: Relics",
+		"id": 1202
+	}, {
+		"code": "DDF",
+		"name": "Duel Decks: Elspeth vs. Tezzeret",
+		"id": 1203
+	}, {
+		"code": "SOM",
+		"name": "Scars of Mirrodin",
+		"id": 1206
+	}, {
+		"code": "PD2",
+		"name": "Premium Deck Series: Fire & Lightning",
+		"id": 1218
+	}, {
+		"code": "IDW",
+		"name": "IDW Promos",
+		"id": 1413
+	}, {
+		"code": "SV11",
+		"name": "Salvat-Hachette 2011",
+		"id": 1259
+	}, {
+		"code": "JPT",
+		"name": "Judge Program Tokens",
+		"id": 1643
+	}, {
+		"code": "MBS",
+		"name": "Mirrodin Besieged",
+		"id": 1253
+	}, {
+		"code": "DDG",
+		"name": "Duel Decks: Knights vs. Dragons",
+		"id": 1261
+	}, {
+		"code": "NPH",
+		"name": "New Phyrexia",
+		"id": 1262
+	}, {
+		"code": "CMD",
+		"name": "Commander",
+		"id": 1273
+	}, {
+		"code": "M12",
+		"name": "Magic 2012",
+		"id": 1280
+	}, {
+		"code": "V11",
+		"name": "From the Vault: Legends",
+		"id": 1286
+	}, {
+		"code": "DDH",
+		"name": "Duel Decks: Ajani vs. Nicol Bolas",
+		"id": 1288
+	}, {
+		"code": "ISD",
+		"name": "Innistrad",
+		"id": 1327
+	}, {
+		"code": "PD3",
+		"name": "Premium Deck Series: Graveborn",
+		"id": 1337
+	}, {
+		"code": "DKA",
+		"name": "Dark Ascension",
+		"id": 1345
+	}, {
+		"code": "DDI",
+		"name": "Duel Decks: Venser vs. Koth",
+		"id": 1350
+	}, {
+		"code": "AVR",
+		"name": "Avacyn Restored",
+		"id": 1358
+	}, {
+		"code": "PC2",
+		"name": "Planechase 2012",
+		"id": 1369
+	}, {
+		"code": "M13",
+		"name": "Magic 2013",
+		"id": 1388
+	}, {
+		"code": "V12",
+		"name": "From the Vault: Realms",
+		"id": 1397
+	}, {
+		"code": "DDJ",
+		"name": "Duel Decks: Izzet vs. Golgari",
+		"id": 1398
+	}, {
+		"code": "RTR",
+		"name": "Return to Ravnica",
+		"id": 1389
+	}, {
+		"code": "CM1",
+		"name": "Commander's Arsenal",
+		"id": 1418
+	}, {
+		"code": "GTC",
+		"name": "Gatecrash",
+		"id": 1424
+	}, {
+		"code": "DDK",
+		"name": "Duel Decks: Sorin vs. Tibalt",
+		"id": 1430
+	}, {
+		"code": "DGM",
+		"name": "Dragon's Maze",
+		"id": 1435
+	}, {
+		"code": "MMA",
+		"name": "Modern Masters",
+		"id": 1444
+	}, {
+		"code": "M14",
+		"name": "Magic 2014",
+		"id": 1449
+	}, {
+		"code": "CC13",
+		"name": "San Diego Comic-Con 2013 Promos",
+		"id": 1454
+	}, {
+		"code": "V13",
+		"name": "From the Vault: Twenty",
+		"id": 1455
+	}, {
+		"code": "DDL",
+		"name": "Duel Decks: Heroes vs. Monsters",
+		"id": 1456
+	}, {
+		"code": "THS",
+		"name": "Theros",
+		"id": 1457
+	}, {
+		"code": "C13",
+		"name": "Commander 2013",
+		"id": 1464
+	}, {
+		"code": "BNG",
+		"name": "Born of the Gods",
+		"id": 1469
+	}, {
+		"code": "DDM",
+		"name": "Duel Decks: Jace vs. Vraska",
+		"id": 1477
+	}, {
+		"code": "JOU",
+		"name": "Journey into Nyx",
+		"id": 1481
+	}, {
+		"code": "MD1",
+		"name": "Modern Event Deck 2014",
+		"id": 1484
+	}, {
+		"code": "CNS",
+		"name": "Conspiracy",
+		"id": 1483
+	}, {
+		"code": "M15",
+		"name": "Magic 2015",
+		"id": 1485
+	}, {
+		"code": "CPP",
+		"name": "Clash Pack Promos",
+		"id": 1490
+	}, {
+		"code": "CC14",
+		"name": "San Diego Comic-Con 2014 Promos",
+		"id": 1491
+	}, {
+		"code": "V14",
+		"name": "From the Vault: Annihilation",
+		"id": 1494
+	}, {
+		"code": "DDN",
+		"name": "Duel Decks: Speed vs. Cunning",
+		"id": 1496
+	}, {
+		"code": "PKTK",
+		"name": "Khans of Tarkir: Promos",
+		"id": 1588
+	}, {
+		"code": "KTK",
+		"name": "Khans of Tarkir",
+		"id": 1495
+	}, {
+		"code": "C14",
+		"name": "Commander 2014",
+		"id": 1513
+	}, {
+		"code": "DD3",
+		"name": "Duel Decks: Anthology",
+		"id": 1509
+	}, {
+		"code": "UGFP",
+		"name": "Ugin's Fate Promos",
+		"id": 1587
+	}, {
+		"code": "PFRF",
+		"name": "Fate Reforged: Promos",
+		"id": 1589
+	}, {
+		"code": "FRF",
+		"name": "Fate Reforged",
+		"id": 1522
+	}, {
+		"code": "DDO",
+		"name": "Duel Decks: Elspeth vs. Kiora",
+		"id": 1593
+	}, {
+		"code": "PDTK",
+		"name": "Dragons Of Tarkir: Promos",
+		"id": 1602
+	}, {
+		"code": "DTK",
+		"name": "Dragons of Tarkir",
+		"id": 1601
+	}, {
+		"code": "MM2",
+		"name": "Modern Masters 2015",
+		"id": 1641
+	}, {
+		"code": "CC15",
+		"name": "San Diego Comic-Con 2015 Promos",
+		"id": 1658
+	}, {
+		"code": "PORI",
+		"name": "Magic Origins: Promos",
+		"id": 1655
+	}, {
+		"code": "ORI",
+		"name": "Magic Origins",
+		"id": 1652
+	}, {
+		"code": "MKM1",
+		"name": "MKM Products",
+		"id": 1662
+	}, {
+		"code": "V15",
+		"name": "From the Vault: Angels",
+		"id": 1661
+	}, {
+		"code": "MKMS",
+		"name": "MKM Series",
+		"id": 1665
+	}, {
+		"code": "DDP",
+		"name": "Duel Decks: Zendikar vs. Eldrazi",
+		"id": 1663
+	}, {
+		"code": "PBFZ",
+		"name": "Battle for Zendikar: Promos",
+		"id": 1670
+	}, {
+		"code": "BFZ",
+		"name": "Battle for Zendikar",
+		"id": 1668
+	}, {
+		"code": "ZEX",
+		"name": "Zendikar Expeditions",
+		"id": 1669
+	}, {
+		"code": "C15",
+		"name": "Commander 2015",
+		"id": 1679
+	}, {
+		"code": "POGW",
+		"name": "Oath of the Gatewatch: Promos",
+		"id": 1686
+	}, {
+		"code": "OGW",
+		"name": "Oath of the Gatewatch",
+		"id": 1676
+	}, {
+		"code": "DDQ",
+		"name": "Duel Decks: Blessed vs. Cursed",
+		"id": 1692
+	}, {
+		"code": "PSOI",
+		"name": "Shadows over Innistrad: Promos",
+		"id": 1704
+	}, {
+		"code": "SOI",
+		"name": "Shadows over Innistrad",
+		"id": 1694
+	}, {
+		"code": "W16",
+		"name": "Welcome Deck 2016",
+		"id": 1710
+	}, {
+		"code": "EMA",
+		"name": "Eternal Masters",
+		"id": 1696
+	}, {
+		"code": "EMNP",
+		"name": "Eldritch Moon: Promos",
+		"id": 1723
+	}, {
+		"code": "EMN",
+		"name": "Eldritch Moon",
+		"id": 1695
+	}, {
+		"code": "CC16",
+		"name": "San Diego Comic-Con 2016 Promos",
+		"id": 1725
+	}, {
+		"code": "V16",
+		"name": "From the Vault: Lore",
+		"id": 1703
+	}, {
+		"code": "CN2",
+		"name": "Conspiracy: Take the Crown",
+		"id": 1702
+	}, {
+		"code": "DDR",
+		"name": "Duel Decks: Nissa vs. Ob Nixilis",
+		"id": 1720
+	}, {
+		"code": "PKLD",
+		"name": "Kaladesh: Promos",
+		"id": 1726
+	}, {
+		"code": "KLD",
+		"name": "Kaladesh",
+		"id": 1717
+	}, {
+		"code": "KLDS",
+		"name": "Kaladesh Inventions",
+		"id": 1733
+	}, {
+		"code": "C16",
+		"name": "Commander 2016",
+		"id": 1719
+	}, {
+		"code": "PCA",
+		"name": "Planechase Anthology",
+		"id": 1722
+	}, {
+		"code": "PAER",
+		"name": "Aether Revolt: Promos",
+		"id": 1750
+	}, {
+		"code": "AER",
+		"name": "Aether Revolt",
+		"id": 1718
+	}, {
+		"code": "MM3",
+		"name": "Modern Masters 2017",
+		"id": 1727
+	}, {
+		"code": "DDS",
+		"name": "Duel Decks: Mind vs. Might",
+		"id": 1728
+	}, {
+		"code": "W17",
+		"name": "Welcome Deck 2017",
+		"id": 1802
+	}, {
+		"code": "PAKH",
+		"name": "Amonkhet: Promos",
+		"id": 1803
+	}, {
+		"code": "AKHI",
+		"name": "Amonkhet Invocations",
+		"id": 1798
+	}, {
+		"code": "AKH",
+		"name": "Amonkhet",
+		"id": 1729
+	}, {
+		"code": "CMA",
+		"name": "Commander Anthology",
+		"id": 1732
+	}, {
+		"code": "E01",
+		"name": "Archenemy: Nicol Bolas",
+		"id": 1730
+	}, {
+		"code": "PHOU",
+		"name": "Hour of Devastation: Promos",
+		"id": 1825
+	}, {
+		"code": "HOU",
+		"name": "Hour of Devastation",
+		"id": 1731
+	}, {
+		"code": "CC17",
+		"name": "San Diego Comic-Con 2017 Promos",
+		"id": 1828
+	}, {
+		"code": "C17",
+		"name": "Commander 2017",
+		"id": 1813
+	}, {
+		"code": "H17",
+		"name": "Hascon 2017 Promos",
+		"id": 1841
+	}, {
+		"code": "OH",
+		"name": "Open House Promos",
+		"id": 1844
+	}, {
+		"code": "XLNP",
+		"name": "Ixalan: Promos",
+		"id": 1847
+	}, {
+		"code": "XLN",
+		"name": "Ixalan",
+		"id": 1812
+	}, {
+		"code": "SSP2",
+		"name": "Standard Showdown Promos",
+		"id": 1836
+	}, {
+		"code": "DDT",
+		"name": "Duel Decks: Merfolk vs. Goblins",
+		"id": 1818
+	}, {
+		"code": "IMA",
+		"name": "Iconic Masters",
+		"id": 1811
+	}, {
+		"code": "V17",
+		"name": "From the Vault: Transform",
+		"id": 1819
+	}, {
+		"code": "E02",
+		"name": "Explorers of Ixalan",
+		"id": 1830
+	}, {
+		"code": "UST",
+		"name": "Unstable",
+		"id": 1821
+	}, {
+		"code": "SCH",
+		"name": "Store Championship Promos",
+		"id": 2023
+	}, {
+		"code": "RIXP",
+		"name": "Rivals of Ixalan: Promos",
+		"id": 2063
+	}, {
+		"code": "RIX",
+		"name": "Rivals of Ixalan",
+		"id": 1829
+	}, {
+		"code": "A25",
+		"name": "Masters 25",
+		"id": 1820
+	}, {
+		"code": "DDU",
+		"name": "Duel Decks: Elves vs. Inventors",
+		"id": 2068
+	}, {
+		"code": "DOM",
+		"name": "Dominaria",
+		"id": 1822
+	}, {
+		"code": "SS1",
+		"name": "Signature Spellbook: Jace",
+		"id": 2103
+	}]
+}
