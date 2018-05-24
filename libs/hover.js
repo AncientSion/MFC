@@ -279,7 +279,7 @@ Deckbox._ = {
         img.style.height = "310px";
 
         setTimeout(function() {
-            if (el._shown) Deckbox._.tooltip('image').showImage(posX-400, posY, img);
+            if (el._shown) Deckbox._.tooltip('image').showImage(posX-400, posY-200, img);
         }, 200);
     }
 

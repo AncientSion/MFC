@@ -21,8 +21,7 @@ function getCardDataSet($name, $data){
 
 function addCardDataPoint(&$currentSet, $point){
 	//echo "</br>adding point</br>";
-	//var_export($point);
-	//echo "</br>";
+	//var_export($point); echo "</br>";
 
 	if (!isset($point["baseAvail"])){$point["baseAvail"] = 0;}
 	if (!isset($point["basePrice"])){$point["basePrice"] = 0;}//echo $point["name"];}
@@ -153,12 +152,12 @@ function getForm($get){
 
 	//$html .="<div class='checkWrapper'>";
 
-	$depth = 1;
+	$depth = 0;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>Depths</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='1' max='50' value='".$depth."' name='depth'>";
+	$html .= "<input type='number' min='0' max='50' value='".$depth."' name='depth'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -207,7 +206,18 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-
+	
+	$stackDisplay = "";
+	$checked = "";
+	//var_export($get);
+	if (sizeof($get) && isset($get["stackDisplay"])){
+		$checked = "checked='checked'";
+	}
+	$html .="<div class='checkContainer'>";
+	$html .= "<input type='checkbox' value='1' name='stackDisplay' checked='".$checked."'>";
+	$html .= "stack</div>";
+	
+	
 	$pctChecked = "";
 	$absChecked = "";
 	if (sizeof($get)){
@@ -304,7 +314,7 @@ function writeBoosterInput(){
 
 
 
-function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $compareType){
+function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
 	
@@ -318,6 +328,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 	//echo $maxPrice;
 	
+	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		$setName = $names[$i];
 
@@ -326,14 +337,23 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
 		$points = $points["content"];
 		if (!$points){continue;}
+		
+		$delve = $depth;
+		if ($delve){
+			$delve = max(0, (sizeof($points)-1 -$depth));
+		} else $delve = 0;
+	
+	
 		$extract = array(
 			"set" => $setName,
 			"code" => $codes[$i],
-			"compareDate" => $points[max(0, (sizeof($points)-1 -$depth))]["date"],
+			"compareDate" => $points[$delve]["date"],
 			"lastDate" => $points[sizeof($points)-1]["date"],
 			"shakers" => array()
 		);
 
+		//var_export($extract);
+		
 		for ($k = 0; $k < sizeof($cards); $k++){
 
 			$skip = true;
@@ -365,8 +385,12 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 				"foilPriceChange" => array()
 			);
 
-
-			for ($l = sizeof($points)-1; $l >= max(0, (sizeof($points)-1 -$depth)); $l--){
+			$amountData = sizeof($points)-1;
+			//$limit = max(0, (sizeof($points)-1 -$delve));
+			//echo $delve; echo "</br>";
+			//echo $limit; echo "</br>";
+			
+			for ($l = $amountData; $l >= $delve; $l--){
 				addCardDataPoint($card, getCardDataSet($name, $points[$l]["data"]));
 			}
 			$extract["shakers"][] = $card;
@@ -386,8 +410,10 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		}
 	}
 	
+	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
+	
 	//echo $html;
-	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice);
+	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay);
 
 }
 
@@ -400,7 +426,7 @@ function setChangeValue(&$card, $attr){
 }
 
 
-function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
+function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay){
 	//var_export($allSets);
 
 	//echo $availChange;
@@ -438,13 +464,16 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 		$index = 0;
 	} else $index = 1;
 
+	$colSpan = 8;
+	if ($stackDisplay){$colSpan = 9;}
+	
 	$mkmBaseUrl = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		$html .="<table class='moveTable'>";
 
 		$html .="<thead>";
-		$html .="<tr><th class='set' colSpan=11>".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
+		$html .="<tr><th class='set' colSpan=".$colSpan.">".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
 		$html .="<th style='width: 50px'></th>";
@@ -455,14 +484,19 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
-		//$html .="<th style='width: 70px'>Stack</th>";
-
-	/*	$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
+		
+		if ($stackDisplay){
+			$html .="<th style='width: 70px'>Stack</th>";			
+		}
+	
+		/*
+		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
 		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["lastDate"]."</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
-	*/	$html .="</tr></thead>";
-
+		$html .="</tr></thead>";
+		*/
+		
 		$html .="<tbody>";
 
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
@@ -494,42 +528,44 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){
 			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
 			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
 			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
-
-	/*		$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
+			
+			/*
+			$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
 			$html .="<td>".$card[$price][0]."</td>";
 			if ($card[$moneyChange][0] > 0){$class = "green";} else $class ="red";
 			$html .="<td class='".$class."'>".$card[$moneyChange][0]."</td>";
 			$html .="<td class='".$class."'>".$card[$moneyChange][1]." %</td>";
 			$html .="</tr>";
-	*/	
-	
-			$string = "";
-			$plus = "plus";
-			$minus = "minus";
-			
-			//var_export($card["foilAvail"]);
-			/*
-			if ($foil){
-				for ($k = sizeof($card["foilAvail"])-1; $k > 0; $k--){
-					$val = round(($card["foilAvail"][$k] - $card["foilAvail"][$k-1]) / $card["foilAvail"][$k]*100, 2)*-1;
-					if ($val > 0){
-						$string .= "<span class='".$plus."'>".$val." %</span></br>";
-					} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
-				}
-			}
-			else {
-				for ($k = sizeof($card["baseAvail"])-1; $k > 0; $k--){
-					$val = round(($card["baseAvail"][$k] - $card["baseAvail"][$k-1]) / $card["baseAvail"][$k]*100, 2)*-1;
-					
-					if ($val > 0){
-						$string .= "<span class='".$plus."'>".$val." %</span></br>";
-					} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
-				}
-			}
-			
-			$html .="<td>".$string."</td>"
 			*/
 			
+			if ($stackDisplay){
+	
+				$string = "";
+				$plus = "plus";
+				$minus = "minus";
+				
+				if ($foil){
+					for ($k = 0; $k < sizeof($card["foilAvail"])-1; $k++){
+						$val = round(($card["foilAvail"][$k] - $card["foilAvail"][$k+1]) / $card["foilAvail"][$k+1]*100, 2);
+						if ($val > 0){
+							$string .= "<span class='".$plus."'>".$val." %</span></br>";
+						} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
+					}
+				}
+				else {
+					for ($k = 0; $k < sizeof($card["foilAvail"]); $k++){
+						$val = round(($card["baseAvail"][$k] - $card["baseAvail"][$k-1]) / $card["baseAvail"][$k]*100, 2)*-1;
+						
+						if ($val > 0){
+							$string .= "<span class='".$plus."'>".$val." %</span></br>";
+						} else $string .= "<span class='".$minus."'>".$val." %</span></br>";
+					}
+				}
+				
+				$html .="<td>".$string."</td>";
+			
+			
+			}			
 		}
 
 		$html .="</tbody></table>";

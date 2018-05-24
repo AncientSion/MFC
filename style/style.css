@@ -8,6 +8,11 @@ input[type=checkbox], input[type=radio] {
   transform: scale(1.5);
 }
 
+form {
+	margin: auto;
+	width: 1100px
+	}
+
 a:link, a:visited {
     color: #6ceeff;
     text-decoration: none;
@@ -94,7 +99,7 @@ div > input, div > span{
 }
 
 .checkWrapper {
-	width: 1000px;
+	width: 1100px;
 	border: 1px solid white;
 	padding: 10px;
 }
