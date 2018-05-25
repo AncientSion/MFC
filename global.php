@@ -391,7 +391,9 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			//echo $limit; echo "</br>";
 			
 			for ($l = $amountData; $l >= $delve; $l--){
-				addCardDataPoint($card, getCardDataSet($name, $points[$l]["data"]));
+				$dataPoint = getCardDataSet($name, $points[$l]["data"]);
+				if (!$dataPoint){break;}
+				addCardDataPoint($card, $dataPoint);
 			}
 			$extract["shakers"][] = $card;
 		}
