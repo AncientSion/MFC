@@ -475,7 +475,10 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 		$html .="<table class='moveTable'>";
 
 		$html .="<thead>";
-		$html .="<tr><th class='set' colSpan=".$colSpan.">".$allSets[$i]["set"]." - ".$allSets[$i]["code"]."</th></tr>";
+		$html .="<tr><th class='set' colSpan=".$colSpan.">";
+		$html .="<span>".$allSets[$i]["set"]."</span>";
+		$html .="<span> - ".$allSets[$i]["code"]."</span>";
+		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
 		$html .="<th style='width: 50px'></th>";
@@ -546,6 +549,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 				$plus = "plus";
 				$minus = "minus";
 				
+				//var_export($card["baseAvail"]);
+				
 				if ($foil){
 					for ($k = 0; $k < sizeof($card["foilAvail"])-1; $k++){
 						$val = round(($card["foilAvail"][$k] - $card["foilAvail"][$k+1]) / $card["foilAvail"][$k+1]*100, 2);
@@ -555,8 +560,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 					}
 				}
 				else {
-					for ($k = 0; $k < sizeof($card["foilAvail"]); $k++){
-						$val = round(($card["baseAvail"][$k] - $card["baseAvail"][$k-1]) / $card["baseAvail"][$k]*100, 2)*-1;
+					for ($k = 0; $k < sizeof($card["foilAvail"])-1; $k++){
+						$val = round(($card["baseAvail"][$k+1] - $card["baseAvail"][$k]) / $card["baseAvail"][$k]*100, 2)*-1;
 						
 						if ($val > 0){
 							$string .= "<span class='".$plus."'>".$val." %</span></br>";

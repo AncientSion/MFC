@@ -67,76 +67,8 @@
 	<script src='libs\datatables.min.js'></script>
 	<script src='libs\Chart.bundle.min.js'></script>
 	<script src='libs\hover.js'></script>
+	<script src='localChart.js'></script>
 </head>
 	<body>
 	</body>
 </html>
-
-<script>
-$(document).ready(function(){
-	window.options = {
-		setAll: 0,
-		rarityAll: 0
-	}
-
-	$(".moveTable").each(function(){
-		if (!this.childNodes[1].childNodes.length){
-			$(this).remove();// return;
-		}
-		$(this).DataTable({
-			"paging": false,
-			"info": false,
-			"searching": false,
-			"aaSorting": [[7, "asc"]],
-			//"aaSorting": []
-		})
-		/*$(this).find("tbody").find("tr").each(function(){
-			$(this).find("td").first().hover(
-				function(){
-					console.log($(this).find("a").first().html())
-				},
-				function(){
-					console.log("out");
-				}
-			)
-		})*/
-	})
-
-	$(document).contextmenu(function(e){
-		//e.preventDefault(); e.stopPropagation();
-	})
-
-
-	$("#rarity").contextmenu(function(e){
-		e.preventDefault(); e.stopPropagation();
-		if (options.rarityAll){
-			options.rarityAll = 0;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.rarityAll);
-			})
-		}
-		else {
-			options.rarityAll = 1;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.rarityAll);
-			})
-		}
-	})
-
-	$("#set").contextmenu(function(e){
-		e.preventDefault(); e.stopPropagation();
-		if (options.setAll){
-			options.setAll = 0;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.setAll);
-			})
-		}
-		else {
-			options.setAll = 1;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.setAll);
-			})
-		}
-	})
-})
-</script>
