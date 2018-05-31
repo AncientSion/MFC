@@ -2,14 +2,14 @@
 	"codes": [
 		["LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "TMP", "STH", "MIR", "VIS", "EXO", "ALL", "WTH"],
 		["EXP", "MPS", "MPS_AKH", "FNM", "BABP", "GDP", "JR"],
-		["CHK", "BOK", "SOK", "TSP", "PLC", "FUT", "A25", "EMA", "CSP", "INV", "ONS", "APC", "M10", "M11", "M12", "M13", "M14", "M15", "10E", "PLS", "ALA", "_CON", "ARB", "LRW", "MOR", "SHM", "EVE", "RAV", "DIS", "RTR", "GTC", "DGM", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "ISD", "DKA", "AVR", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM"],
+		["CHK", "BOK", "SOK", "TSP", "PLC", "FUT", "A25", "EMA", "CSP", "INV", "ONS", "APC", "M10", "M11", "M12", "M13", "M14", "M15", "10E", "PLS", "ALA", "_CON", "ARB", "LRW", "MOR", "SHM", "EVE", "RAV", "DIS", "RTR", "GTC", "DGM", "ZEN", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "ISD", "DKA", "AVR", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM"],
 		["BOXES"]
 	],
 	"names":
 	[
 		["Beta", "Unlimited", "Revised", "Legends", "Arabian Nights", "Antiquities", "Tempest", "Stronghold", "Mirage", "Visions", "Exodus", "Alliances", "Weatherlight"],
 		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations", "Friday Night Magic Promos", "Buy a Box Promos", "Game Day Promos", "Judge Rewards Promos"],
-		["Champions of Kamigawa", "Betrayers of Kamigawa", "Saviors of Kamigawa", "Time Spiral", "Planar Chaos", "Future Sight", "Masters 25", "Eternal Masters", "Coldsnap", "Invasion", "Onslaught", "Apocalypse", "Magic 2010", "Magic 2011", "Magic 2012", "Magic 2013", "Magic 2014",  "Magic 2015", "Tenth Edition", "Planeshift", "Shards of Alara", "Conflux", "Alara Reborn", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Dissension", "Return to Ravnica", "Gatecrash", "Dragon's Maze", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "Innistrad", "Dark Ascension", "Avacyn Restored", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria"],
+		["Champions of Kamigawa", "Betrayers of Kamigawa", "Saviors of Kamigawa", "Time Spiral", "Planar Chaos", "Future Sight", "Masters 25", "Eternal Masters", "Coldsnap", "Invasion", "Onslaught", "Apocalypse", "Magic 2010", "Magic 2011", "Magic 2012", "Magic 2013", "Magic 2014",  "Magic 2015", "Tenth Edition", "Planeshift", "Shards of Alara", "Conflux", "Alara Reborn", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Dissension", "Return to Ravnica", "Gatecrash", "Dragon's Maze", "Zendikar", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "Innistrad", "Dark Ascension", "Avacyn Restored", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria"],
 		["Booster Boxes"]
 	]
 }
