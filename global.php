@@ -278,6 +278,13 @@ function getForm($get){
 	*/
 	$html .="</div>";
 	$html .="</br>";
+	
+	$html .="<div>";
+	$preset = json_encode(array(['R', 'M', 'S'], ['LEB', '2ED']), true);
+	$html .="<input type='button' style='width: 200px; font-size: 26px' value='Preset 1' onclick='preset(".$preset.")'></input>";
+	$html .="</div>";
+	
+	$html .="</br>";
 	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
 	$html .="</form>";
 
@@ -320,7 +327,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 
-	//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);
 	$names = getSetNamesByCodes($codes);
 	$allSets = array();
 

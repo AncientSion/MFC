@@ -72,3 +72,9 @@
 	<body>
 	</body>
 </html>
+<script>
+	function preset(arg){
+		console.log("preset!");
+		console.log(arguments);
+	}
+</script>
