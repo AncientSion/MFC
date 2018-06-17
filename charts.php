@@ -65,11 +65,9 @@
 							$set = $_GET["set"];
 							$card = $_GET["card"];
 							echo "<script>window.remote = 1</script>";
-						} else "<script>window.remote = 0</script>";
+						} else echo "<script>window.remote = 0</script>";
 
-						echo "<input type='form' id='setSearch' value='".$set."'>";
-
-						//$card = "Inventor's Fair";
+						echo '<input type="form" id="setSearch" value="'.$set.'">';
 						echo '<input type="form" id="cardSearch" value="'.$card.'">';
 
 

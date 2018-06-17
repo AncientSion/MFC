@@ -1,0 +1,208 @@
+{
+  "name": "Signature Spellbook: Jace",
+  "mkm_name": "Signature Spellbook: Jace",
+  "code": "SS1",
+  "releaseDate": "2018-06-15",
+  "border": "black",
+  "type": "signature spellbook",
+  "cards": [
+    {
+      "artist": "Aleksi Briclot",
+      "cmc": 3,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "id": "1c8855a7a267251458a330598aab6db9a4933830",
+      "imageName": "jace beleren",
+      "layout": "normal",
+      "loyalty": 3,
+      "manaCost": "{1}{U}{U}",
+      "multiverseid": 447129,
+      "name": "Jace Beleren",
+      "number": "1",
+      "rarity": "Mythic Rare",
+      "subtypes": [
+        "Jace"
+      ],
+      "supertypes": [
+        "Legendary"
+      ],
+      "text": "+2: Each player draws a card.\n−1: Target player draws a card.\n−10: Target player puts the top twenty cards of their library into their graveyard.",
+      "type": "Legendary Planeswalker — Jace",
+      "types": [
+        "Planeswalker"
+      ]
+    },
+    {
+      "artist": "Slawomir Maniak",
+      "cmc": 1,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "flavor": "\"Contrary to popular wisdom, I find it's best to fight fire with its opposite.\"",
+      "id": "d3b3bf12f39c7f09efa0e177673d84e8353d15d4",
+      "imageName": "blue elemental blast",
+      "layout": "normal",
+      "manaCost": "{U}",
+      "multiverseid": 447130,
+      "name": "Blue Elemental Blast",
+      "number": "2",
+      "rarity": "Rare",
+      "text": "Choose one —\n• Counter target red spell.\n• Destroy target red permanent.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Daarken",
+      "cmc": 1,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "flavor": "\"I have a plan. Actually, I have three.\"",
+      "id": "5c6f6a0860bbfa4a09ce3f9218981633fa3a4cf8",
+      "imageName": "brainstorm",
+      "layout": "normal",
+      "manaCost": "{U}",
+      "multiverseid": 447131,
+      "name": "Brainstorm",
+      "number": "3",
+      "rarity": "Rare",
+      "text": "Draw three cards, then put two cards from your hand on top of your library in any order.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Jason Chan",
+      "cmc": 2,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "id": "216f7ed254b4a4467cecb098bc7454fe5aaede6a",
+      "imageName": "counterspell",
+      "layout": "normal",
+      "manaCost": "{U}{U}",
+      "multiverseid": 447132,
+      "name": "Counterspell",
+      "number": "4",
+      "rarity": "Rare",
+      "text": "Counter target spell.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Chris Rallis",
+      "cmc": 4,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "id": "9716e5a51dfae9c8d85be60ab449bc3f61bffe4c",
+      "imageName": "gifts ungiven",
+      "layout": "normal",
+      "manaCost": "{3}{U}",
+      "multiverseid": 447133,
+      "name": "Gifts Ungiven",
+      "number": "5",
+      "rarity": "Rare",
+      "text": "Search your library for up to four cards with different names and reveal them. Target opponent chooses two of those cards. Put the chosen cards into your graveyard and the rest into your hand. Then shuffle your library.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Yongjae Choi",
+      "cmc": 1,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "flavor": "\"It's not just what you know. It's knowing where to find what you don't.\"",
+      "id": "c90927b273094792eeb392c2008fc4e1c0eae0b8",
+      "imageName": "mystical tutor",
+      "layout": "normal",
+      "manaCost": "{U}",
+      "multiverseid": 447134,
+      "name": "Mystical Tutor",
+      "number": "6",
+      "rarity": "Rare",
+      "text": "Search your library for an instant or sorcery card and reveal that card. Shuffle your library, then put the card on top of it.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Jason Rainville",
+      "cmc": 2,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "id": "ae8708a5481a173c2dec192ab626933874a65dae",
+      "imageName": "negate",
+      "layout": "normal",
+      "manaCost": "{1}{U}",
+      "multiverseid": 447135,
+      "name": "Negate",
+      "number": "7",
+      "rarity": "Rare",
+      "text": "Counter target noncreature spell.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+    {
+      "artist": "Tyler Jacobson",
+      "cmc": 3,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "flavor": "\"Every thought is a string. You just have to find the right ones to pull.\"",
+      "id": "4e1d49df2e05fb9b1d8845ccea3af2f7f03025f7",
+      "imageName": "threads of disloyalty",
+      "layout": "normal",
+      "manaCost": "{1}{U}{U}",
+      "multiverseid": 447136,
+      "name": "Threads of Disloyalty",
+      "number": "8",
+      "rarity": "Rare",
+      "subtypes": [
+        "Aura"
+      ],
+      "text": "Enchant creature with converted mana cost 2 or less\nYou control enchanted creature.",
+      "type": "Enchantment — Aura",
+      "types": [
+        "Enchantment"
+      ]
+    }
+  ]
+}
