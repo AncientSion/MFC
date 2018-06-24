@@ -5,7 +5,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include(__DIR__."/debug.php");
 include(__DIR__."/simple_html_dom.php");
 
 
@@ -321,10 +320,22 @@ function writeBoosterInput(){
 }
 
 
+function logSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
+	$search = array(
+		"type" => "search",
+		"options" => array(
+			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType
+		)
+	);
+
+	file_put_contents(__DIR__."/search.log", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
+}
 
 function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
+
+	logSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);
 	
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 

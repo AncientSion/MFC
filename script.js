@@ -5,7 +5,7 @@ window.onload = function(){
 	timeout = false;
 
 	$("#cardSearch").focus(function(){
-		console.log("ding");
+		//console.log("ding");
 		charter.isValidSetSelected();
 	})
 
@@ -63,11 +63,11 @@ class Charter {
 			for (let j = 0; j < this.data[i].cards.length; j++){
 				suggest.push(this.data[i].cards[j].name);
 			}
-			console.log("init");
+			//console.log("init");
 			$("#cardSearch").autocomplete({source: suggest});
 		}
 		else {
-			console.log("destroy");
+			//console.log("destroy");
 			$("#cardSearch").autocomplete("destroy");
 		}
 	}
@@ -168,7 +168,7 @@ class Charter {
 				}
 			}
 			
-			console.log("min: " + min + ", max: " + max);
+			//console.log("min: " + min + ", max: " + max);
 			ret.push({suggestedMin: Math.floor(min - min*0.05), suggestedMax: Math.ceil(max + max*0.05), fontColor: "white"});
 		}
 		return ret;
