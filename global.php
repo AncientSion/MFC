@@ -320,13 +320,13 @@ function writeBoosterInput(){
 }
 
 function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
-	$date = time();
+	$stamp = time();
 
 	$search = array(
 		"type" => "compare",
-		"stamp" => $date,
-		"date" => date('d.m.Y', $time),
-		"time" => date('H:i:s', $time),
+		"stamp" => $stamp,
+		"date" => date('d.m.Y', $stamp),
+		"time" => date('H:i:s', $stamp),
 		"options" => array(
 			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType
 		)
@@ -336,13 +336,13 @@ function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $min
 }
 
 function logChart($set, $card){
-	$date = time();
+	$stamp = time();
 
 	$search = array(
 		"type" => "chart",
-		"stamp" => $date,
-		"date" => date('d.m.Y', $time),
-		"time" => date('H:i:s', $time),
+		"stamp" => $stamp,
+		"date" => date('d.m.Y', $stamp),
+		"time" => date('H:i:s', $stamp),
 		"set" => $set,
 		"card" => $card
 	);
