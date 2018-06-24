@@ -15,6 +15,7 @@
 
 			//echo $set; echo $card;
 
+			$logChart($set, $card);
 			$dataPoints = array();
 			$file = file_get_contents(__DIR__."/output/".$set.".json");
 			$json = json_decode($file);

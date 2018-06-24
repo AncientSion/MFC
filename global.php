@@ -319,13 +319,32 @@ function writeBoosterInput(){
 	fclose($file);
 }
 
+function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
+	$date = time();
 
-function logSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
 	$search = array(
-		"type" => "search",
+		"type" => "compare",
+		"stamp" => $date,
+		"date" => date('d.m.Y', $time),
+		"time" => date('H:i:s', $time),
 		"options" => array(
 			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType
 		)
+	);
+
+	file_put_contents(__DIR__."/search.log", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
+}
+
+function logChart($set, $card){
+	$date = time();
+
+	$search = array(
+		"type" => "chart",
+		"stamp" => $date,
+		"date" => date('d.m.Y', $time),
+		"time" => date('H:i:s', $time),
+		"set" => $set,
+		"card" => $card
 	);
 
 	file_put_contents(__DIR__."/search.log", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
@@ -335,7 +354,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
 
-	logSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);
+	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);
 	
 	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
 

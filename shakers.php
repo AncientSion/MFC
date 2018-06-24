@@ -5,8 +5,8 @@
 
 	//buildFullCardPool(); return;
 	
-	echo '<a href="shakers.php">Reload Blank</a>
-		<div id="cardDiv"></div>';
+	echo '<a href="shakers.php">Reload Blank</a>';
+	echo '<a style="margin-left: 100px;;" href="charts.php">Go to card lookup</a>';
 		
 		
 
