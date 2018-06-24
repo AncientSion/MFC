@@ -1,5 +1,5 @@
 <?php
-
+return;
 include_once(__DIR__."\global.php");
 
 

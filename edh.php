@@ -1,8 +1,8 @@
 <?php
 
-include_once(__DIR__."\global.php");
-
 return;
+
+include_once(__DIR__."\global.php");
 
 
 $time = time();
