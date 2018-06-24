@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include(__DIR__."/debug.php");
-include(__DIR__."\simple_html_dom.php");
+include(__DIR__."/simple_html_dom.php");
 
 
 
@@ -209,12 +209,13 @@ function getForm($get){
 	
 	$stackDisplay = "";
 	$checked = "";
+	$value = "";
 	//var_export($get);
 	if (sizeof($get) && isset($get["stackDisplay"])){
 		$checked = "checked='checked'";
 	}
 	$html .="<div class='checkContainer'>";
-	$html .= "<input type='checkbox' value='1' name='stackDisplay' checked='".$checked."'>";
+	$html .= "<input type='checkbox' name='stackDisplay' value='1'".$checked."'>";
 	$html .= "stack</div>";
 	
 	

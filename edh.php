@@ -2,11 +2,12 @@
 
 include_once(__DIR__."\global.php");
 
-
+return;
 
 
 $time = time();
 $date = date('d.m.Y', $time);
+
 $time = -microtime(true);
 $GLOBALS["cards"] = 0;
 $GLOBALS["requests"] = 0;
@@ -20,8 +21,8 @@ echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)
 
 function fetchAll($day){
 	
-	//getEDH($day);
-	//getBoxPrices($day);
+	getEDH($day);
+	getBoxPrices($day);
 
 	$context = stream_context_create(
 	    array(
@@ -37,8 +38,8 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];	
 
-	//nonFoil($day, $codes[0], $names[0], $context);
-	//foil($day, $codes[1], $names[1], $context);
+	nonFoil($day, $codes[0], $names[0], $context);
+	foil($day, $codes[1], $names[1], $context);
 	mixed($day, $codes[2], $names[2], $context);
 	
 	echo "\n\n";
@@ -201,9 +202,7 @@ function foil($date, $codes, $names, $context){
 }
 
 function mixed($date, $codes, $names, $context){
-	$codes = array("SS1");
-	$names = array("Signature Spellbook: Jace");
-
+	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";
 
