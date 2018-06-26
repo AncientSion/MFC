@@ -154,7 +154,7 @@ function getForm($get){
 	$depth = 0;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='depth'>Depths</div>";
+	$html .="<div id='depth'>Days</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min='0' max='50' value='".$depth."' name='depth'>";
 	$html .= "</div>";
