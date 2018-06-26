@@ -523,7 +523,7 @@
 			"file": "crawl.php",
 			"settings":
 			{
-				"buffer_size": 12209,
+				"buffer_size": 12216,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,7 @@
 			"file": "edh.php",
 			"settings":
 			{
-				"buffer_size": 11116,
+				"buffer_size": 11086,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +541,7 @@
 			"file": "api.php",
 			"settings":
 			{
-				"buffer_size": 5713,
+				"buffer_size": 5712,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,7 @@
 			"file": "shakers.php",
 			"settings":
 			{
-				"buffer_size": 2933,
+				"buffer_size": 1882,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,16 +559,26 @@
 			"file": "global.php",
 			"settings":
 			{
-				"buffer_size": 17393,
+				"buffer_size": 20719,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 10 files for \"reload bl\"\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n    6  \t//buildFullCardPool(); return;\n    7  \t\n    8: \techo '<a href=\"shakers.php\">Reload Blank</a>\n    9  \t\t<div id=\"cardDiv\"></div>';\n   10  \t\t\n\n1 match in 1 file\n\n\nSearching 10 files for \"dolog\"\n\n0 matches\n\nSearching 10 files for \"logse\"\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n  321  \n  322  \n  323: function logSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){\n  324  \t$search = array(\n  325  \t\t\"type\" => \"search\",\n  ...\n  336  \t//echo $minAvail; echo $maxAvail;\n  337  \n  338: \tlogSearch($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);\n  339  \t\n  340  \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n\n2 matches in 1 file\n\n\nSearching 10 files for \"go to \"\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n    7  \t\n    8  \techo '<a href=\"shakers.php\">Reload Blank</a>';\n    9: \techo '<a style=\"margin-left: 100px;;\" href=\"charts.php\">Go to card lookup</a>';\n   10  \t\t\n   11  \t\t\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1136,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
 			"file": "style/style.css",
 			"settings":
 			{
-				"buffer_size": 1599,
+				"buffer_size": 1784,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,44 +587,25 @@
 			"file": "style/datatables.min.css",
 			"settings":
 			{
-				"buffer_size": 14338,
+				"buffer_size": 14337,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "charts.php",
 			"settings":
 			{
-				"buffer_size": 2324,
+				"buffer_size": 2319,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 11 files for \"avail\"\n\nC:\\xampp\\htdocs\\crawl\\charts.php:\n   50  \t\t<div class=\"mainContainer\">\n   51  \t\t\t<div class=\"container\">\n   52: \t\t\t\t<canvas id=\"foilAvailCanvas\"</canvas>\n   53  \t\t\t</div>\n   54  \t\t\t<div class=\"container\">\n   ..\n   81  \t\t\t</div>\n   82  \t\t\t<div class=\"container\" style=\"margin-top: 50px\">\n   83: \t\t\t\t<canvas id=\"baseAvailCanvas\"</canvas>\n   84  \t\t\t</div>\n   85  \t\t\t<div class=\"container\">\n\nC:\\xampp\\htdocs\\crawl\\crawl.php:\n   85  \t\t\t$url = $baseUrl . urlencode($setName) . \"/\" . urlencode($cards[$j][\"name\"]);\n   86  \t\t\t$html = file_get_html($url, false, $context);\n   87: \t\t\t$table = $html->find(\".availTable\", 0);\n   88  \n   89  \t\t\tif (!$table){echo \"___________________lacking TABLE CONTINUE \\n\"; continue;}\n   ..\n   95  \t\t\tif (!$base || !$foil){echo \"___________________lacking TR CONTINUE \\n\"; continue;}\n   96  \n   97: \t\t\t$baseAvail = $base->children(1)->children(0)->innertext;\n   98  \t\t\t$basePrice = $table->children(1)->children(1)->children(0)->innertext;\n   99  \t\t\t$basePrice = str_replace(\",\", \".\", $basePrice);\n  100  \n  101: \t\t\t$foilAvail = $foil->children(1)->innertext;\n  102  \n  103  \t\t\t$offers = $html->find(\"#articlesTable\", 0);\n  ...\n  121  \t\t\t\t\"name\" => $cards[$j][\"name\"], \n  122  \t\t\t\t\"rarity\" => $cards[$j][\"rarity\"], \n  123: \t\t\t\t\"baseAvail\" => intval($baseAvail),\n  124  \t\t\t\t\"basePrice\" => floatval($basePrice),\n  125: \t\t\t\t\"foilAvail\" => intval($foilAvail),\n  126  \t\t\t\t\"foilPrice\" => floatval($foilPrice)\n  127  \t\t\t);\n  ...\n  154  \t\t\t$url = $baseUrl . urlencode($setName) . \"/\" . urlencode($cards[$j][\"name\"]);\n  155  \t\t\t$html = file_get_html($url, false, $context);\n  156: \t\t\t$table = $html->find(\".availTable\", 0);\n  157  \t\t\t//echo $table;\n  158  \n  159  \t\t\tif (!$table){echo \"lacking TABLE CONTINUE \\n\"; continue;}\n  160  \n  161: \t\t\t$availTR = $table->children(0)->children(0);\n  162  \t\t\t$priceTR = $table->children(0)->children(1);\n  163  \n  164: \t\t\tif (!$availTR){echo \"NO STOCK \\n\"; continue;}\n  165  \t\t\tif (!$priceTR){echo \"NO PRICE \\n\"; continue;}\n  166  \n  167: \t\t\t$availTR = $availTR->children(1)->children(0)->innertext;\n  168  \t\t\t$priceTR = $priceTR->children(1)->children(0)->innertext;\n  169  \n  ...\n  174  \t\t\t\t\"name\" => $cards[$j][\"name\"], \n  175  \t\t\t\t\"rarity\" => $cards[$j][\"rarity\"], \n  176: \t\t\t\t\"baseAvail\" => intval($availTR),\n  177  \t\t\t\t\"basePrice\" => floatval($basePrice),\n  178: \t\t\t\t\"foilAvail\" => intval(0),\n  179  \t\t\t\t\"foilPrice\" => floatval(0)\n  180  \t\t\t);\n  ...\n  209  \t\t\t$html = file_get_html($url, false, $context);\n  210  \t\t\tif (!$html){echo \"no HTML! \\n\";}\n  211: \t\t\t$table = $html->find(\".availTable\", 0);\n  212  \t\t\t//echo $table;\n  213  \n  214  \t\t\tif (!$table){echo \"lacking TABLE CONTINUE \\n\"; continue;}\n  215  \n  216: \t\t\t$availTR = $table->children(0)->children(0);\n  217  \t\t\t$priceTR = $table->children(0)->children(1);\n  218  \n  219: \t\t\tif (!$availTR){echo \"NO STOCK \\n\"; continue;}\n  220  \t\t\tif (!$priceTR){echo \"NO PRICE \\n\"; continue;}\n  221  \n  222: \t\t\t$availTR = $availTR->children(1)->children(0)->innertext;\n  223  \t\t\t$priceTR = $priceTR->children(1)->children(0)->innertext;\n  224  \n  ...\n  229  \t\t\t\t\"name\" => $cards[$j][\"name\"], \n  230  \t\t\t\t\"rarity\" => $cards[$j][\"rarity\"], \n  231: \t\t\t\t\"baseAvail\" => intval($availTR),\n  232  \t\t\t\t\"basePrice\" => floatval($basePrice),\n  233: \t\t\t\t\"foilAvail\" => intval(0),\n  234  \t\t\t\t\"foilPrice\" => floatval(0)\n  235  \t\t\t);\n  ...\n  263  \t\t\t$url = $baseUrl . urlencode($setName) . \"/\" . urlencode($cards[$j][\"name\"]);\n  264  \t\t\t$html = file_get_html($url, false, $context);\n  265: \t\t\t$table = $html->find(\".availTable\", 0);\n  266  \n  267  \t\t\tif (!$table){echo \"___________________lacking TABLE CONTINUE \\n\"; continue;}\n  ...\n  273  \t\t\tif (!$base || !$foil){echo \"___________________lacking TR CONTINUE \\n\"; continue;}\n  274  \n  275: \t\t\t$baseAvail = $base->children(1)->children(0)->innertext;\n  276  \t\t\t$basePrice = $table->children(1)->children(1)->children(0)->innertext;\n  277  \t\t\t$basePrice = str_replace(\",\", \".\", $basePrice);\n  278  \n  279: \t\t\t$foilAvail = $foil->children(1)->innertext;\n  280  \t\t\t$offers = $html->find(\"#articlesTable\", 0);\n  281  \t\t\t$start = 0;\n  ...\n  294  \t\t\t\t\"name\" => $cards[$j][\"name\"], \n  295  \t\t\t\t\"rarity\" => $cards[$j][\"rarity\"], \n  296: \t\t\t\t\"baseAvail\" => intval($baseAvail),\n  297  \t\t\t\t\"basePrice\" => floatval($basePrice),\n  298: \t\t\t\t\"foilAvail\" => intval($foilAvail),\n  299  \t\t\t\t\"foilPrice\" => floatval($foilPrice)\n  300  \t\t\t);\t\t\t\n  ...\n  326  \t\t\t$url = $baseUrl . urlencode($setName) . \"/\" . urlencode($cards[$j][\"name\"]);\n  327  \t\t\t$html = file_get_html($url, false, $context);\n  328: \t\t\t$box = $html->find(\".availTable\", 0);\n  329  \n  330  \t\t\tif (!$box){echo \"___________________lacking TABLE CONTINUE \\n\"; continue;}\n  ...\n  337  \t\t\t\t\"name\" => $cards[$j][\"name\"], \n  338  \t\t\t\t\"rarity\" => $cards[$j][\"rarity\"], \n  339: \t\t\t\t\"baseAvail\" => intval(0),\n  340  \t\t\t\t\"basePrice\" => floatval(0),\n  341: \t\t\t\t\"foilAvail\" => intval($foilAmount),\n  342  \t\t\t\t\"foilPrice\" => floatval($foilPrice)\n  343  \t\t\t);\n  ...\n  363  \n  364  \tfor ($i = 0; $i < 5; $i++){\n  365: \t\t$url = \"https://www.cardmarket.com/en/Magic/Products/Booster+Boxes?name=&idExpansion=0&onlyAvailable=&sortBy=englishName&sortDir=asc&view=list\";\n  366  \n  367  \t\tif ($i){$url .= \"&resultsPage=\".$i;}\n  ...\n  373  \t\tfor ($j = 0; $j < sizeof($rows); $j++){\n  374  \t\t\t$name = $rows[$j]->children(2)->children(0)->innertext;\n  375: \t\t\t$baseAvail = $rows[$j]->children(3)->children(0)->innertext;\n  376  \t\t\t$basePrice = 0.00;\n  377: \t\t\tif ($baseAvail){\n  378  \t\t\t\t$basePrice = $rows[$j]->children(4)->children(0)->innertext;\n  379  \t\t\t\t$basePrice = str_replace(\",\", \".\", $basePrice);\n  ...\n  381  \t\t\t}\n  382  \n  383: \t\t\t$set[\"data\"][] = array(\"name\" => $name, \"baseAvail\" => intval($baseAvail), \"basePrice\" => floatval($basePrice), \"foilAvail\" => intval(0), \"foilPrice\" => floatval(0));\n  384  \t\t}\n  385  \t}\n\nC:\\xampp\\htdocs\\crawl\\edh.php:\n   60  \t\t\t//var_export($cards->cardviews[0]->label);\n   61  \n   62: \t\t\t//$avail = str_replace(\",\", \".\", substr($foilPrice, $start, strpos($foilPrice, \" \")))\n   63  \t\t\t$label = $cards->cardviews[$j]->label;\n   64  \t\t\t$pos =  strpos($label, \">\");\n   65: \t\t\t$baseAvail = substr($label, 3, strpos($label, \" \", 4)-3);\n   66: \t\t\t$foilAvail = substr($label, $pos+1, strpos($label, \"%\") - $pos-1);\n   67  \n   68  \t\t\t\n   ..\n   70  \t\t\t$write[\"data\"][] = array(\n   71  \t\t\t\t\"name\" => $cards->cardviews[$j]->name,\n   72: \t\t\t\t\"baseAvail\" => floor($baseAvail),\n   73: \t\t\t\t\"foilAvail\" => floor($foilAvail)\n   74  \t\t\t);\n   75  \t\t}\n   ..\n  128  \t\t\t\t$name = $rows[$k]->children(2)->plaintext;\n  129  \n  130: \t\t\t\t$baseAvail = $rows[$k]->children(4)->plaintext;\n  131  \t\t\t\t$basePrice = $rows[$k]->children(5)->plaintext;\n  132  \t\t\t\t$basePrice = str_replace(\",\", \".\", substr($basePrice, 0, strlen($basePrice)-9));\n  133  \n  134: \t\t\t\t$foilAvail = 0;\n  135  \t\t\t\t$foilPrice = 0.00;\n  136  \n  137: \t\t\t\tdoAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);\n  138  \t\t\t}\n  139  \n  ...\n  171  \t\t\t\t$name = $rows[$k]->children(2)->plaintext;\n  172  \n  173: \t\t\t\t$baseAvail = 0;\n  174  \t\t\t\t$basePrice = 0.00;\n  175  \n  176: \t\t\t\t$foilAvail = $rows[$k]->children(4)->plaintext;\n  177  \t\t\t\t$foilPrice = $rows[$k]->children(5)->plaintext;\n  178  \t\t\t\t$foilPrice = str_replace(\",\", \".\", substr($foilPrice, 0, strlen($foilPrice)-9));\n  179  \n  180: \t\t\t\tdoAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);\n  181  \t\t\t}\n  182  \n  ...\n  217  \t\t\t\t//echo $name.\"\\n\";\n  218  \n  219: \t\t\t\t$baseAvail = $rows[$k]->children(4)->plaintext;\n  220  \t\t\t\t$basePrice = $rows[$k]->children(5)->plaintext;\n  221  \t\t\t\t$basePrice = str_replace(\",\", \".\", substr($basePrice, 0, strlen($basePrice)-9));\n  222  \n  223: \t\t\t\t$foilAvail = $rows[$k]->children(6)->plaintext;\n  224  \t\t\t\t$foilPrice = $rows[$k]->children(7)->plaintext;\n  225  \t\t\t\t$foilPrice = str_replace(\",\", \".\", substr($foilPrice, 0, strlen($foilPrice)-9));\n  226  \n  227: \t\t\t\tdoAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);\n  228  \t\t\t}\n  229  \n  ...\n  237  }\n  238  \n  239: function doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){\n  240  \t$set[\"data\"][] = array(\n  241  \t\t\"name\" => $name, \n  242  \t\t\"rarity\" => \"Special\", \n  243: \t\t\"baseAvail\" => intval($baseAvail),\n  244  \t\t\"basePrice\" => floatval($basePrice),\n  245: \t\t\"foilAvail\" => intval($foilAvail),\n  246  \t\t\"foilPrice\" => floatval($foilPrice)\n  247  \t);\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n   25  \t//echo \"</br>\";\n   26  \n   27: \tif (!isset($point[\"baseAvail\"])){$point[\"baseAvail\"] = 0;}\n   28  \tif (!isset($point[\"basePrice\"])){$point[\"basePrice\"] = 0;}//echo $point[\"name\"];}\n   29: \tif (!isset($point[\"foilAvail\"])){$point[\"foilAvail\"] = 0;}//echo $point[\"name\"];}\n   30  \tif (!isset($point[\"foilPrice\"])){$point[\"foilPrice\"] = 0;}//echo $point[\"name\"];}\n   31: \t$currentSet[\"baseAvail\"][] = $point[\"baseAvail\"];\n   32  \t$currentSet[\"basePrice\"][] = $point[\"basePrice\"];\n   33: \t$currentSet[\"foilAvail\"][] = $point[\"foilAvail\"];\n   34  \t$currentSet[\"foilPrice\"][] = $point[\"foilPrice\"];\n   35  \n   ..\n   46  \t\n   47  function buildFullCardPool(){\n   48: \t$sets = file_get_contents(__DIR__.\"/input/avail.json\");\n   49  \t$sets = json_decode($sets);\n   50  \n   ..\n   83  \n   84  function getSetNamesByCodes($data){\n   85: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n   86  \n   87  \t//var_export($data);\n   ..\n  173  \t$html .= \"</div>\";\n  174  \n  175: \t$minAvail = 0;\n  176: \tif (sizeof($get)){$minAvail = $get[\"minAvail\"];}\n  177  \t$html .=\"<div class='inputContainer'>\";\n  178: \t$html .=\"<div id='depth'>Min Avail (n)</div>\";\n  179  \t$html .=\"<div class=''>\";\n  180: \t$html .= \"<input type='number' min='0' max='10000' value='\".$minAvail.\"' name='minAvail'>\";\n  181  \t$html .= \"</div>\";\n  182  \t$html .= \"</div>\";\n  183  \n  184: \t$maxAvail = 0;\n  185: \tif (sizeof($get)){$maxAvail = $get[\"maxAvail\"];}\n  186  \t$html .=\"<div class='inputContainer'>\";\n  187: \t$html .=\"<div id='depth'>Max Avail (n)</div>\";\n  188  \t$html .=\"<div class=''>\";\n  189: \t$html .= \"<input type='number' min='0' max='10000' value='\".$maxAvail.\"' name='maxAvail'>\";\n  190  \t$html .= \"</div>\";\n  191  \t$html .= \"</div>\";\n  ...\n  209  \t$html .= \"</div>\";\n  210  \n  211: \t$availChange = -1;\n  212: \tif (sizeof($get)){$availChange = $get[\"availChange\"];}\n  213  \t$html .=\"<div class='inputContainer'>\";\n  214: \t$html .=\"<div id='availChange'>Supply Change</div>\";\n  215  \t$html .=\"<div class=''>\";\n  216: \t$html .= \"<input type='number'min='-100' max='100' value='\".$availChange.\"' name='availChange'>\";\n  217  \t$html .= \"</div>\";\n  218  \t$html .= \"</div>\";\n  ...\n  243  \n  244  \n  245: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  246  \t$codes = $sets[\"codes\"];\n  247  \t$names = $sets[\"codes\"];\n  ...\n  315  \n  316  \n  317: function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $compareType){\n  318  \t//var_export(func_get_args());\n  319: \t//echo $minAvail; echo $maxAvail;\n  320  \n  321: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  322  \n  323: \t//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);\n  324  \t$names = getSetNamesByCodes($codes);\n  325  \t$allSets = array();\n  ...\n  355  \t\t\t$last = getCardDataSet($name, $points[sizeof($points)-1][\"data\"]);\n  356  \t\t\tif (!$last){continue;}\n  357: \t\t\tif ($minAvail && ((!$foil && $last[\"baseAvail\"] < $minAvail) || ($foil && $last[\"foilAvail\"] < $minAvail))){continue;}\n  358: \t\t\tif ($maxAvail && ((!$foil && $last[\"baseAvail\"] > $maxAvail) || ($foil && $last[\"foilAvail\"] > $maxAvail))){continue;}\n  359  \n  360  \t\t\tif ($minPrice && $last[\"foilPrice\"] < $minPrice){continue;}\n  ...\n  363  \t\t\t\t\"name\" => $name,\n  364  \t\t\t\t\"rarity\" => $cards[$k][\"rarity\"],\n  365: \t\t\t\t\"baseAvail\" => array(),\n  366  \t\t\t\t\"basePrice\" => array(),\n  367: \t\t\t\t\"foilAvail\" => array(),\n  368  \t\t\t\t\"foilPrice\" => array(),\n  369: \t\t\t\t\"baseAvailChange\" => array(),\n  370  \t\t\t\t\"basePriceChange\" => array(),\n  371: \t\t\t\t\"foilAvailChange\" => array(),\n  372  \t\t\t\t\"foilPriceChange\" => array()\n  373  \t\t\t);\n  ...\n  387  \tfor ($i = 0; $i < sizeof($allSets); $i++){\n  388  \t\tfor ($j = 0; $j < sizeof($allSets[$i][\"shakers\"]); $j++){\n  389: \t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"baseAvail\");\n  390  \t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"basePrice\");\n  391: \t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"foilAvail\");\n  392  \t\t\tsetChangeValue($allSets[$i][\"shakers\"][$j], \"foilPrice\");\n  393  \t\t}\n  ...\n  395  \t\n  396  \t//echo $html;\n  397: \techo buildTables($allSets, $foil, $compareType, $availChange, $minPrice);\n  398  \n  399  }\n  ...\n  408  \n  409  \n  410: function buildTables($allSets, $foil, $compareType, $availChange, $minPrice){\n  411  \t//var_export($allSets);\n  412  \n  413: \t//echo $availChange;\n  414  \t/*var_export(func_get_arg(1));\n  415  \t\t\techo \"</br></br>\";\n  ...\n  421  \t\t\techo \"</br></br>\";\n  422  \t*/\n  423: \t$avail = \"\";\n  424  \t$change = \"\";\n  425  \t$price = \"\";\n  426: \t$html = \"<span style='color: red'>NOTE: Prefer the # (available stock) columns, price is biased because of 'cheap' foreign foils</span>\";\n  427  \t$html = \"\";\n  428  \t$html .= \"</br>\";\n  ...\n  430  \n  431  \tif ($foil == \"Non Foil\"){\n  432: \t\t$avail = \"baseAvail\";\n  433  \t\t$price = \"basePrice\";\n  434: \t\t$volChange = \"baseAvailChange\";\n  435  \t\t$moneyChange = \"basePriceChange\";\n  436  \t}\n  437  \telse {\n  438: \t\t$avail = \"foilAvail\";\n  439  \t\t$price = \"foilPrice\";\n  440: \t\t$volChange = \"foilAvailChange\";\n  441  \t\t$moneyChange = \"foilPriceChange\";\n  442  \t}\n  ...\n  474  \n  475  \t\t\tif ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}\n  476: \t\t\tif ($availChange != 0 && $card[$volChange][$index] > $availChange){continue;}\n  477  \n  478  \t\t\t$chartUrl = \"charts.php?type=preset&set=\".urlencode($allSets[$i][\"set\"]).\"&card=\".urlencode($card[\"name\"]);\n  ...\n  484  \t\t\t$html .=\"<td>\".substr($card[\"rarity\"], 0, 1).\"</td>\";\n  485  \n  486: \t\t\t$html .=\"<td>\".$card[$avail][sizeof($card[$avail])-1].\"</td>\";\n  487: \t\t\t$html .=\"<td>\".$card[$avail][0].\"</td>\";\n  488  \t\t\tif ($card[$volChange][0] > 0){$class = \"green\";} else $class =\"red\";\n  489  \t\t\t$html .=\"<td class='\".$class.\"'>\".$card[$volChange][0].\"</td>\";\n  ...\n  516  \n  517  function fixOutputSets(){\n  518: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  519  \t$codes = $sets[\"codes\"];\n  520  \t$names = $sets[\"names\"];\n  ...\n  549  \t\t\t\t\t$data[\"content\"][$k][\"code\"] = $codes[$i][$j];\n  550  \n  551: \t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"baseAvail\"])){$data[\"content\"][$k][\"data\"][$l][\"baseAvail\"] = 0;$errorA++;}\n  552  \t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"basePrice\"])){$data[\"content\"][$k][\"data\"][$l][\"basePrice\"] = 0;$errorB++;}\n  553: \t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"foilAvail\"])){$data[\"content\"][$k][\"data\"][$l][\"foilAvail\"] = 0;$errorC++;}\n  554  \t\t\t\t\tif (!isset($data[\"content\"][$k][\"data\"][$l][\"foilPrice\"])){$data[\"content\"][$k][\"data\"][$l][\"foilPrice\"] = 0;$errorD++;}\n  555  \t\t\t\t}\n\nC:\\xampp\\htdocs\\crawl\\script.js:\n   23  \t\tthis.time = time;\n   24  \t\tthis.name = data.name;\n   25: \t\tthis.baseAvail = data.baseAvail || 0;\n   26  \t\tthis.basePrice = data.basePrice || 0;\n   27: \t\tthis.foilAvail = data.foilAvail || 0;\n   28  \t\tthis.foilPrice = data.foilPrice || 0;\n   29  \t}\n   ..\n   34  \tconstructor(){\n   35  \t\tthis.foilPriceChart;\n   36: \t\tthis.foilAvailChart;\n   37  \t\tthis.basePriceChart;\n   38: \t\tthis.baseAvailChart;\n   39  \t\tthis.data;\n   40  \t\tthis.sets = [];\n   ..\n   42  \t\tthis.draws = 0;\n   43  \t\tthis.foilPriceCtx = document.getElementById(\"foilPriceCanvas\").getContext(\"2d\");\n   44: \t\tthis.foilAvailCtx = document.getElementById(\"foilAvailCanvas\").getContext(\"2d\");\n   45  \t\tthis.basePriceCtx = document.getElementById(\"basePriceCanvas\").getContext(\"2d\");\n   46: \t\tthis.baseAvailCtx = document.getElementById(\"baseAvailCanvas\").getContext(\"2d\");\n   47  \n   48  \t\tthis.getData(this, \"cardList\", \"addCards\");\n   ..\n  121  \t\tvar sets = [[], [], [], []];\n  122  \t\tvar labels = [\"Foil Stock\", \"Foil Price\", \"Base Stock\", \"Base Price\"];\n  123: \t\tvar ref = [\"foilAvail\", \"foilPrice\", \"baseAvail\", \"basePrice\"];\n  124  \t\tvar colors = [\"rgba(0,255,0,1)\", \"rgba(0,255,0,1)\", \"rgba(0,255,255,1)\", \"rgba(0,255,255,1)\"];\n  125  \t\tvar title = card + \" - \" + set;\n  126: \t\tvar foilAvail = [];\n  127  \t\tvar foilPrice = [];\n  128: \t\tvar baseAvail = [];\n  129  \t\tvar basePrice = [];\n  130  \n  131  \t\tfor (let i = 0; i < points.length; i++){\n  132: \t\t\tsets[0].push(points[i].data.foilAvail || 0);\n  133  \t\t\tsets[1].push(points[i].data.foilPrice || 0);\n  134: \t\t\tsets[2].push(points[i].data.baseAvail || 0);\n  135  \t\t\tsets[3].push(points[i].data.basePrice || 0);\n  136  \t\t\t//min = Math.min(min, ret[ret.length-1]);\n  ...\n  190  \t\t//}\n  191  \t\t/*\n  192: \t\tvar foilAvail = this.getfoilAvailData(data);\n  193  \t\tvar foilPrice = this.getFoilPriceData(data);\n  194: \t\tvar baseAvail = this.getbaseAvailData(data);\n  195  \t\tvar basePrice = this.getbasePriceData(data);\n  196  \n  197  \n  198: \t\tif (foilAvail[0].data.length){this.buildChart(card, set, label, \"Available Stock\", foilAvail, \"foilAvailChart\", this.foilAvailCtx);}\n  199  \t\tif (foilPrice[0].data.length){this.buildChart(card, set, label, \"Low. Price\", foilPrice, \"foilPriceChart\", this.foilPriceCtx);}\n  200: \t\tif (baseAvail[0].data.length){this.buildChart(card, set, label, \"Available Stock\", baseAvail, \"baseAvailChart\", this.baseAvailCtx);}\n  201  \t\tif (basePrice[0].data.length){this.buildChart(card, set, label, \"Low. Price\", basePrice, \"basePriceChart\", this.basePriceCtx);}\n  202  \t\t*/\n  ...\n  227  \tundrawOldCharts(){\n  228  \t\tif (!this.draws){$(\".container\").addClass(\"border\"); return;}\n  229: \t\tthis.foilAvailChart.destroy();\n  230  \t\tthis.foilPriceChart.destroy();\n  231: \t\tthis.baseAvailChart.destroy();\n  232  \t\tthis.basePriceChart.destroy();\n  233  \t}\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n   16  \n   17  \t\t\t$depth = $_GET[\"depth\"];\n   18: \t\t\t$minAvail = $_GET[\"minAvail\"];\n   19: \t\t\t$maxAvail = $_GET[\"maxAvail\"];\n   20  \t\t\t$minPrice = $_GET[\"minPrice\"];\n   21  \t\t\t$maxPrice = $_GET[\"maxPrice\"];\n   22: \t\t\t$availChange = $_GET[\"availChange\"];\n   23  \t\t\t$type = $_GET[\"compareType\"];\n   24  \t\t\t$foil = 0; if ($_GET[\"foil\"] == \"Foil\"){$foil = 1;}\n   ..\n   29  \t\t\t\t$foil,\n   30  \t\t\t\t$depth,\n   31: \t\t\t\t$minAvail,\n   32: \t\t\t\t$maxAvail,\n   33  \t\t\t\t$minPrice,\n   34  \t\t\t\t$maxPrice,\n   35: \t\t\t\t$availChange,\n   36  \t\t\t\t$type\n   37  \t\t\t);\n\nC:\\xampp\\htdocs\\crawl\\style\\style.css:\n  104  }\n  105  \n  106: #set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChange {\n  107  \ttext-align: center;\n  108  \tdisplay: block;\n\n181 matches across 7 files\n\n\nSearching 11 files for \"avail.\"\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n   46  \t\n   47  function buildFullCardPool(){\n   48: \t$sets = file_get_contents(__DIR__.\"/input/avail.json\");\n   49  \t$sets = json_decode($sets);\n   50  \n   ..\n   83  \n   84  function getSetNamesByCodes($data){\n   85: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n   86  \n   87  \t//var_export($data);\n   ..\n  178  \t$html .=\"<div id='depth'>Min Avail (n)</div>\";\n  179  \t$html .=\"<div class=''>\";\n  180: \t$html .= \"<input type='number' min='0' max='10000' value='\".$minAvail.\"' name='minAvail'>\";\n  181  \t$html .= \"</div>\";\n  182  \t$html .= \"</div>\";\n  ...\n  187  \t$html .=\"<div id='depth'>Max Avail (n)</div>\";\n  188  \t$html .=\"<div class=''>\";\n  189: \t$html .= \"<input type='number' min='0' max='10000' value='\".$maxAvail.\"' name='maxAvail'>\";\n  190  \t$html .= \"</div>\";\n  191  \t$html .= \"</div>\";\n  ...\n  243  \n  244  \n  245: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  246  \t$codes = $sets[\"codes\"];\n  247  \t$names = $sets[\"codes\"];\n  ...\n  319  \t//echo $minAvail; echo $maxAvail;\n  320  \n  321: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  322  \n  323  \t//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);\n  ...\n  516  \n  517  function fixOutputSets(){\n  518: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  519  \t$codes = $sets[\"codes\"];\n  520  \t$names = $sets[\"names\"];\n\n7 matches in 1 file\n\n\nSearching 11 files for \"avai.\"\n\n0 matches\n\nSearching 11 files for \"avail.\"\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n   74  \n   75  function getSetNamesByCodes($data){\n   76: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n   77  \n   78  \t//var_export($data);\n   ..\n  169  \t$html .=\"<div id='depth'>Min Avail (n)</div>\";\n  170  \t$html .=\"<div class=''>\";\n  171: \t$html .= \"<input type='number' min='0' max='10000' value='\".$minAvail.\"' name='minAvail'>\";\n  172  \t$html .= \"</div>\";\n  173  \t$html .= \"</div>\";\n  ...\n  178  \t$html .=\"<div id='depth'>Max Avail (n)</div>\";\n  179  \t$html .=\"<div class=''>\";\n  180: \t$html .= \"<input type='number' min='0' max='10000' value='\".$maxAvail.\"' name='maxAvail'>\";\n  181  \t$html .= \"</div>\";\n  182  \t$html .= \"</div>\";\n  ...\n  234  \n  235  \n  236: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  237  \t$codes = $sets[\"codes\"];\n  238  \t$names = $sets[\"codes\"];\n  ...\n  310  \t//echo $minAvail; echo $maxAvail;\n  311  \n  312: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  313  \n  314  \t//logSearch($codes, $includes, $foil, $depth, $minPrice, $maxPrice, $availChange, $compareType);\n  ...\n  507  \n  508  function fixOutputSets(){\n  509: \t$sets = json_decode(file_get_contents(__DIR__.\"/input/avail.json\"), TRUE);\n  510  \t$codes = $sets[\"codes\"];\n  511  \t$names = $sets[\"names\"];\n\n6 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 21598,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
 			}
 		},
 		{
 			"file": "script.js",
 			"settings":
 			{
-				"buffer_size": 9854,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "output/cardlist.json",
-			"settings":
-			{
-				"buffer_size": 782047,
+				"buffer_size": 9966,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -623,7 +614,7 @@
 			"file": "input/avail.json",
 			"settings":
 			{
-				"buffer_size": 1525,
+				"buffer_size": 2024,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -690,6 +681,8 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/crawl/debug.php",
+		"/C/xampp/htdocs/crawl/output/cardlist.json",
 		"/C/xampp/htdocs/crawl/output/BOXES.json",
 		"/C/xampp/htdocs/crawl/output/LEB.json",
 		"/C/xampp/htdocs/crawl/test.php",
@@ -726,7 +719,6 @@
 		"/C/xampp/htdocs/crawl/index.php",
 		"/C/xampp/htdocs/crawl/input/A25.json",
 		"/C/xampp/htdocs/crawl/input/WWK.json",
-		"/C/xampp/htdocs/crawl/output/cardlist.json",
 		"/C/xampp/htdocs/crawl/input/SOM.json",
 		"/C/xampp/htdocs/crawl/script.js",
 		"/C/xampp/htdocs/crawl/output/LEG.json",
@@ -816,12 +808,11 @@
 		"/C/xampp/htdocs/fire/mathLib.js",
 		"/C/xampp/htdocs/fire/squadron.js",
 		"/C/xampp/htdocs/fire/shipclasses.js",
-		"/C/xampp/htdocs/fire/server/systems/system.php",
-		"/C/xampp/htdocs/fire/server/systems/weapons/em.php"
+		"/C/xampp/htdocs/fire/server/systems/system.php"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -963,6 +954,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"go to ",
+			"logse",
+			"dolog",
+			"reload bl",
+			"right cl",
+			"debug",
+			"logSearch",
+			"log",
 			"echo ",
 			"requestshak",
 			"avail.",
@@ -1082,15 +1081,7 @@
 			"Unexpectedly Abse",
 			"$offers",
 			"mag",
-			"table",
-			"#cardName",
-			"#",
-			"articlesta",
-			"file_get_d",
-			"ren(0)->find",
-			"limited e",
-			"var_",
-			"var_export($c"
+			"table"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1236,7 +1227,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1245,15 +1236,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12209,
+						"buffer_size": 12216,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1358,
-								1358
+								265,
+								295
 							]
 						],
 						"settings":
@@ -1261,41 +1252,31 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1306,25 +1287,35 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 661.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1333,7 +1324,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11116,
+						"buffer_size": 11086,
 						"regions":
 						{
 						},
@@ -1349,21 +1340,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1379,40 +1365,45 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 719.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1421,7 +1412,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5713,
+						"buffer_size": 5712,
 						"regions":
 						{
 						},
@@ -1441,7 +1432,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1450,15 +1441,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2933,
+						"buffer_size": 1882,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1520,
-								1520
+								179,
+								179
 							]
 						],
 						"settings":
@@ -1466,41 +1457,31 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1511,25 +1492,35 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 594.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1538,15 +1529,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17393,
+						"buffer_size": 20719,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1049,
-								1049
+								9316,
+								9316
 							]
 						],
 						"settings":
@@ -1554,149 +1545,266 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 182.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "style/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1599,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								173,
-								173
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5802.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1136,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										155,
+										164
+									],
+									[
+										380,
+										385
+									],
+									[
+										630,
+										635
+									],
+									[
+										1073,
+										1079
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1079,
+								1079
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "style/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179,
+								179
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
@@ -1705,24 +1813,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "style/datatables.min.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14338,
+						"buffer_size": 14337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14157,
-								14157
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1796,20 +1904,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "charts.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2324,
+						"buffer_size": 2319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								662,
-								662
+								607,
+								607
 							]
 						],
 						"settings":
@@ -1817,61 +1925,61 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
@@ -1880,890 +1988,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21598,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										164,
-										169
-									],
-									[
-										346,
-										351
-									],
-									[
-										629,
-										634
-									],
-									[
-										863,
-										868
-									],
-									[
-										1077,
-										1082
-									],
-									[
-										1288,
-										1293
-									],
-									[
-										1310,
-										1315
-									],
-									[
-										1382,
-										1387
-									],
-									[
-										1404,
-										1409
-									],
-									[
-										1654,
-										1659
-									],
-									[
-										1791,
-										1796
-									],
-									[
-										1914,
-										1919
-									],
-									[
-										2029,
-										2034
-									],
-									[
-										2040,
-										2045
-									],
-									[
-										2272,
-										2277
-									],
-									[
-										2290,
-										2295
-									],
-									[
-										2364,
-										2369
-									],
-									[
-										2574,
-										2579
-									],
-									[
-										2711,
-										2716
-									],
-									[
-										2834,
-										2839
-									],
-									[
-										2949,
-										2954
-									],
-									[
-										2960,
-										2965
-									],
-									[
-										3192,
-										3197
-									],
-									[
-										3210,
-										3215
-									],
-									[
-										3284,
-										3289
-									],
-									[
-										3538,
-										3543
-									],
-									[
-										3772,
-										3777
-									],
-									[
-										3986,
-										3991
-									],
-									[
-										4211,
-										4216
-									],
-									[
-										4233,
-										4238
-									],
-									[
-										4305,
-										4310
-									],
-									[
-										4327,
-										4332
-									],
-									[
-										4578,
-										4583
-									],
-									[
-										4798,
-										4803
-									],
-									[
-										4874,
-										4879
-									],
-									[
-										5115,
-										5120
-									],
-									[
-										5359,
-										5364
-									],
-									[
-										5463,
-										5468
-									],
-									[
-										5683,
-										5688
-									],
-									[
-										5705,
-										5710
-									],
-									[
-										5755,
-										5760
-									],
-									[
-										5932,
-										5937
-									],
-									[
-										6118,
-										6123
-									],
-									[
-										6186,
-										6191
-									],
-									[
-										6375,
-										6380
-									],
-									[
-										6396,
-										6401
-									],
-									[
-										6420,
-										6425
-									],
-									[
-										6441,
-										6446
-									],
-									[
-										6556,
-										6561
-									],
-									[
-										6774,
-										6779
-									],
-									[
-										6852,
-										6857
-									],
-									[
-										6876,
-										6881
-									],
-									[
-										7006,
-										7011
-									],
-									[
-										7071,
-										7076
-									],
-									[
-										7302,
-										7307
-									],
-									[
-										7326,
-										7331
-									],
-									[
-										7432,
-										7437
-									],
-									[
-										7650,
-										7655
-									],
-									[
-										7881,
-										7886
-									],
-									[
-										7905,
-										7910
-									],
-									[
-										8008,
-										8013
-									],
-									[
-										8032,
-										8037
-									],
-									[
-										8165,
-										8170
-									],
-									[
-										8187,
-										8192
-									],
-									[
-										8255,
-										8260
-									],
-									[
-										8277,
-										8282
-									],
-									[
-										8439,
-										8444
-									],
-									[
-										8461,
-										8466
-									],
-									[
-										8596,
-										8601
-									],
-									[
-										8618,
-										8623
-									],
-									[
-										8770,
-										8775
-									],
-									[
-										8794,
-										8799
-									],
-									[
-										8886,
-										8891
-									],
-									[
-										8910,
-										8915
-									],
-									[
-										9087,
-										9092
-									],
-									[
-										9264,
-										9269
-									],
-									[
-										9375,
-										9380
-									],
-									[
-										9416,
-										9421
-									],
-									[
-										9433,
-										9438
-									],
-									[
-										9528,
-										9533
-									],
-									[
-										9652,
-										9657
-									],
-									[
-										9670,
-										9675
-									],
-									[
-										9754,
-										9759
-									],
-									[
-										9795,
-										9800
-									],
-									[
-										9812,
-										9817
-									],
-									[
-										9907,
-										9912
-									],
-									[
-										10031,
-										10036
-									],
-									[
-										10049,
-										10054
-									],
-									[
-										10163,
-										10168
-									],
-									[
-										10208,
-										10213
-									],
-									[
-										10228,
-										10233
-									],
-									[
-										10318,
-										10323
-									],
-									[
-										10456,
-										10461
-									],
-									[
-										10477,
-										10482
-									],
-									[
-										10631,
-										10636
-									],
-									[
-										10809,
-										10814
-									],
-									[
-										10820,
-										10825
-									],
-									[
-										10850,
-										10855
-									],
-									[
-										10936,
-										10941
-									],
-									[
-										10952,
-										10957
-									],
-									[
-										11029,
-										11034
-									],
-									[
-										11135,
-										11140
-									],
-									[
-										11370,
-										11375
-									],
-									[
-										11402,
-										11407
-									],
-									[
-										11416,
-										11421
-									],
-									[
-										11447,
-										11452
-									],
-									[
-										11461,
-										11466
-									],
-									[
-										11499,
-										11504
-									],
-									[
-										11531,
-										11536
-									],
-									[
-										11545,
-										11550
-									],
-									[
-										11576,
-										11581
-									],
-									[
-										11590,
-										11595
-									],
-									[
-										11783,
-										11788
-									],
-									[
-										11853,
-										11858
-									],
-									[
-										11923,
-										11928
-									],
-									[
-										12005,
-										12010
-									],
-									[
-										12266,
-										12271
-									],
-									[
-										12402,
-										12407
-									],
-									[
-										12584,
-										12589
-									],
-									[
-										12708,
-										12713
-									],
-									[
-										12789,
-										12794
-									],
-									[
-										12925,
-										12930
-									],
-									[
-										13042,
-										13047
-									],
-									[
-										13230,
-										13235
-									],
-									[
-										13243,
-										13248
-									],
-									[
-										13309,
-										13314
-									],
-									[
-										13401,
-										13406
-									],
-									[
-										13414,
-										13419
-									],
-									[
-										13480,
-										13485
-									],
-									[
-										13650,
-										13655
-									],
-									[
-										13699,
-										13704
-									],
-									[
-										13959,
-										13964
-									],
-									[
-										13980,
-										13985
-									],
-									[
-										14032,
-										14037
-									],
-									[
-										14313,
-										14318
-									],
-									[
-										14534,
-										14539
-									],
-									[
-										14582,
-										14587
-									],
-									[
-										14800,
-										14805
-									],
-									[
-										14848,
-										14853
-									],
-									[
-										15129,
-										15134
-									],
-									[
-										15146,
-										15151
-									],
-									[
-										15223,
-										15228
-									],
-									[
-										15240,
-										15245
-									],
-									[
-										15386,
-										15391
-									],
-									[
-										15446,
-										15451
-									],
-									[
-										15642,
-										15647
-									],
-									[
-										15682,
-										15687
-									],
-									[
-										15822,
-										15827
-									],
-									[
-										15862,
-										15867
-									],
-									[
-										16104,
-										16109
-									],
-									[
-										16130,
-										16135
-									],
-									[
-										16314,
-										16319
-									],
-									[
-										16372,
-										16377
-									],
-									[
-										16513,
-										16518
-									],
-									[
-										16623,
-										16628
-									],
-									[
-										16791,
-										16796
-									],
-									[
-										16811,
-										16816
-									],
-									[
-										16899,
-										16904
-									],
-									[
-										16919,
-										16924
-									],
-									[
-										17023,
-										17028
-									],
-									[
-										17080,
-										17085
-									],
-									[
-										17102,
-										17107
-									],
-									[
-										17114,
-										17119
-									],
-									[
-										17136,
-										17141
-									],
-									[
-										17302,
-										17307
-									],
-									[
-										17359,
-										17364
-									],
-									[
-										17381,
-										17386
-									],
-									[
-										17393,
-										17398
-									],
-									[
-										17415,
-										17420
-									],
-									[
-										17698,
-										17703
-									],
-									[
-										17778,
-										17783
-									],
-									[
-										17943,
-										17948
-									],
-									[
-										17961,
-										17966
-									],
-									[
-										17984,
-										17989
-									],
-									[
-										18002,
-										18007
-									],
-									[
-										18104,
-										18109
-									],
-									[
-										18125,
-										18130
-									],
-									[
-										18300,
-										18305
-									],
-									[
-										18322,
-										18327
-									],
-									[
-										18385,
-										18390
-									],
-									[
-										18545,
-										18550
-									],
-									[
-										18804,
-										18810
-									],
-									[
-										18981,
-										18987
-									],
-									[
-										19206,
-										19212
-									],
-									[
-										19455,
-										19461
-									],
-									[
-										19621,
-										19627
-									],
-									[
-										19826,
-										19832
-									],
-									[
-										20069,
-										20075
-									],
-									[
-										20402,
-										20408
-									],
-									[
-										20627,
-										20633
-									],
-									[
-										20876,
-										20882
-									],
-									[
-										21042,
-										21048
-									],
-									[
-										21247,
-										21253
-									],
-									[
-										21490,
-										21496
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								21250,
-								21250
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 4,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1044.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -2772,7 +2003,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17393,
+						"buffer_size": 20719,
 						"regions":
 						{
 						},
@@ -2851,7 +2082,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -2860,15 +2091,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9854,
+						"buffer_size": 9966,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								180
+								1765,
+								1765
 							]
 						],
 						"settings":
@@ -2876,167 +2107,79 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "output/cardlist.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 782047,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_round_content"
 							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1177.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "input/avail.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1525,
+						"buffer_size": 2024,
 						"regions":
 						{
 						},
@@ -3115,7 +2258,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -3149,7 +2292,7 @@
 		"cols":
 		[
 			0.0,
-			0.772948680145,
+			0.470045861466,
 			1.0
 		],
 		"rows":
@@ -3179,6 +2322,18 @@
 			[
 				"gl",
 				"C:\\xampp\\htdocs\\crawl\\global.php"
+			],
+			[
+				"char",
+				"C:\\xampp\\htdocs\\crawl\\charts.php"
+			],
+			[
+				"cra",
+				"C:\\xampp\\htdocs\\crawl\\crawl.php"
+			],
+			[
+				"sty",
+				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
 			],
 			[
 				"glob",
@@ -3245,10 +2400,6 @@
 				"C:\\xampp\\htdocs\\crawl\\output\\cardlist.json"
 			],
 			[
-				"char",
-				"C:\\xampp\\htdocs\\crawl\\charts.php"
-			],
-			[
 				"kt",
 				"C:\\xampp\\htdocs\\crawl\\output\\KTK.json"
 			],
@@ -3270,10 +2421,6 @@
 			],
 			[
 				"crawl",
-				"C:\\xampp\\htdocs\\crawl\\crawl.php"
-			],
-			[
-				"cra",
 				"C:\\xampp\\htdocs\\crawl\\crawl.php"
 			],
 			[
@@ -3363,10 +2510,6 @@
 			[
 				"log",
 				"C:\\xampp\\htdocs\\crawl\\global.php"
-			],
-			[
-				"sty",
-				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
 			],
 			[
 				"inde",
