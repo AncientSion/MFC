@@ -68,8 +68,10 @@
 	<script src='libs\Chart.bundle.min.js'></script>
 	<script src='libs\hover.js'></script>
 	<script src='localChart.js'></script>
+	<script src='script.js'></script>
 </head>
 	<body>
+		<echo 
 	</body>
 </html>
 <script>

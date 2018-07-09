@@ -130,7 +130,7 @@ function nonFoil($date, $codes, $names, $context){
 			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . urlencode($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
 			if ($page){$url .= "&resultsPage=".$page;}
 
-			echo "URL: ".$url."\n";
+			//echo "URL: ".$url."\n";
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
 			$rows = $html->find(".MKMTable", 0)->find("tr");
 

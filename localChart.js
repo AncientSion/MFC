@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	window.options = {
 		setAll: 0,
-		rarityAll: 0
+		rarityAll: 0,
+		//charter: new Charter()
 	}
 
 	$(".moveTable").each(function(){
@@ -15,39 +16,26 @@ $(document).ready(function(){
 			"aaSorting": [[7, "asc"]],
 			//"aaSorting": []
 		})
-		/*
-		$(this).find("tbody").find("tr").each(function(){
+		
+		/*$(this).find("tbody").find("tr").each(function(){
 			$(this).find("td").first().hover(
 				function(){
-					console.log($(this).find("a").first().html())
+					showChart(
+						$(this).parent().parent().parent().children().first().children().first().children().first().children().last().html(),
+						$(this).find("a").first().html()
+					)
 				},
 				function(){
 					console.log("out");
 				}
 			)
-		})
-		*/
-		
-		/*
-		$(this).find("tbody tr").each(function(){
-			$($(this).children()[1])
-			.hover(
-				function(){
-				showChart($(this).parent().children()[0].childNodes[0].innerHTML, $(this).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].innerHTML);
-					//console.log("in");
-				},
-				function(){
-					hideChart()
-					//console.log("out");
-				}
-			)
-		})
-		*/
+		})*/
 	})
 	
 	function showChart(set, name){
-		console.log(arguments);
 		//console.log("showChart");
+		console.log(set);
+		console.log(name);
 	}
 	function hideChart(){
 		//console.log("hideChart");
@@ -74,9 +62,20 @@ $(document).ready(function(){
 		}
 	})
 
-	$("#set").contextmenu(function(e){
+	$(".setDivider").contextmenu(function(e){
 		e.preventDefault(); e.stopPropagation();
-		if (options.setAll){
+		/*	var boxes = $(this).find("input");
+			
+			boxes.each(function(){
+				console.log($(this).prop("checked"));
+				$(this).prop("checked", !($(this).prop("checked")))
+			})
+		*/
+		
+		$(this).find("input").each(function(){
+			$(this).prop("checked", !($(this).prop("checked")))
+		})
+		/*if (options.setAll){
 			options.setAll = 0;
 			$(this).parent().find("input").each(function(){
 				$(this).prop("checked", options.setAll);
@@ -87,7 +86,7 @@ $(document).ready(function(){
 			$(this).parent().find("input").each(function(){
 				$(this).prop("checked", options.setAll);
 			})
-		}
+		}*/
 	})
 	
 })

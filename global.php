@@ -156,7 +156,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>Days</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='50' value='".$depth."' name='depth'>";
+	$html .= "<input type='number' min='0' max='999' value='".$depth."' name='depth'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -251,6 +251,7 @@ function getForm($get){
 	//var_export($get["sets"]);
 
 	for ($i = 0; $i < sizeof($codes); $i++){
+		$html .= "<div class='setDivider'>";
 		for ($j = 0; $j < sizeof($codes[$i]); $j++){
 
 			$checked = "";
@@ -267,6 +268,7 @@ function getForm($get){
 			$html .="<span>".$codes[$i][$j]."</span>";
 			$html .="</div>";
 		}
+		$html .= "</div>";
 		//$html .="</br>";
 	}
 
@@ -514,7 +516,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 		$html .="<thead>";
 		$html .="<tr><th class='set' colSpan=".$colSpan.">";
 		$html .="<span>".$allSets[$i]["set"]."</span>";
-		$html .="<span> - ".$allSets[$i]["code"]."</span>";
+		$html .="<span> - </span>";
+		$html .="<span>".$allSets[$i]["code"]."</span>";
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 200px'>Name</th>";

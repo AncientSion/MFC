@@ -1,22 +1,5 @@
-remote = 0;
 
-window.onload = function(){
-	charter = new Charter();
-	timeout = false;
 
-	$("#cardSearch").focus(function(){
-		//console.log("ding");
-		charter.isValidSetSelected();
-	})
-
-	$(".ui").removeClass("disabled");
-
-	if (remote){
-		timeout = setTimeout(function(){
-			charter.getCardData()
-		}, 300);
-	}
-}
 
 class Entry {
 	constructor(time, data){
