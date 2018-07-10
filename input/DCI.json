@@ -8,7 +8,7 @@
 			"idMetaproduct": 416,
 			"countReprints": 7,
 			"enName": "Balduvian Horde",
-			"locName": "Balduvian Horde",
+			"name": "Balduvian Horde",
 			"localization": [{
 				"name": "Balduvian Horde",
 				"idLanguage": "1",
@@ -55,7 +55,7 @@
 			"idMetaproduct": 7904,
 			"countReprints": 3,
 			"enName": "Char",
-			"locName": "Char",
+			"name": "Char",
 			"localization": [{
 				"name": "Char",
 				"idLanguage": "1",
@@ -102,7 +102,7 @@
 			"idMetaproduct": 4613,
 			"countReprints": 6,
 			"enName": "Relentless Rats",
-			"locName": "Relentless Rats",
+			"name": "Relentless Rats",
 			"localization": [{
 				"name": "Relentless Rats",
 				"idLanguage": "1",
@@ -149,7 +149,7 @@
 			"idMetaproduct": 6216,
 			"countReprints": 10,
 			"enName": "Underworld Dreams",
-			"locName": "Underworld Dreams",
+			"name": "Underworld Dreams",
 			"localization": [{
 				"name": "Underworld Dreams",
 				"idLanguage": "1",
@@ -196,7 +196,7 @@
 			"idMetaproduct": 9183,
 			"countReprints": 8,
 			"enName": "Jace Beleren",
-			"locName": "Jace Beleren",
+			"name": "Jace Beleren",
 			"localization": [{
 				"name": "Jace Beleren",
 				"idLanguage": "1",
@@ -243,7 +243,7 @@
 			"idMetaproduct": 11174,
 			"countReprints": 2,
 			"enName": "Vengevine",
-			"locName": "Vengevine",
+			"name": "Vengevine",
 			"localization": [{
 				"name": "Vengevine",
 				"idLanguage": "1",
@@ -290,7 +290,7 @@
 			"idMetaproduct": 2843,
 			"countReprints": 21,
 			"enName": "Incinerate",
-			"locName": "Incinerate",
+			"name": "Incinerate",
 			"localization": [{
 				"name": "Incinerate",
 				"idLanguage": "1",
@@ -337,7 +337,7 @@
 			"idMetaproduct": 5066,
 			"countReprints": 42,
 			"enName": "Serra Angel",
-			"locName": "Serra Angel",
+			"name": "Serra Angel",
 			"localization": [{
 				"name": "Serra Angel",
 				"idLanguage": "1",
@@ -384,7 +384,7 @@
 			"idMetaproduct": 1158,
 			"countReprints": 41,
 			"enName": "Counterspell",
-			"locName": "Counterspell",
+			"name": "Counterspell",
 			"localization": [{
 				"name": "Counterspell",
 				"idLanguage": "1",
@@ -431,7 +431,7 @@
 			"idMetaproduct": 3015,
 			"countReprints": 8,
 			"enName": "Kamahl, Pit Fighter",
-			"locName": "Kamahl, Pit Fighter",
+			"name": "Kamahl, Pit Fighter",
 			"localization": [{
 				"name": "Kamahl, Pit Fighter",
 				"idLanguage": "1",
@@ -478,7 +478,7 @@
 			"idMetaproduct": 203981,
 			"countReprints": 3,
 			"enName": "Liliana of the Veil",
-			"locName": "Liliana of the Veil",
+			"name": "Liliana of the Veil",
 			"localization": [{
 				"name": "Liliana of the Veil",
 				"idLanguage": "1",
@@ -525,7 +525,7 @@
 			"idMetaproduct": 204745,
 			"countReprints": 3,
 			"enName": "Thalia, Guardian of Thraben",
-			"locName": "Thalia, Guardian of Thraben",
+			"name": "Thalia, Guardian of Thraben",
 			"localization": [{
 				"name": "Thalia, Guardian of Thraben",
 				"idLanguage": "1",
@@ -572,7 +572,7 @@
 			"idMetaproduct": 204003,
 			"countReprints": 3,
 			"enName": "Snapcaster Mage",
-			"locName": "Snapcaster Mage",
+			"name": "Snapcaster Mage",
 			"localization": [{
 				"name": "Snapcaster Mage",
 				"idLanguage": "1",
@@ -619,7 +619,7 @@
 			"idMetaproduct": 206465,
 			"countReprints": 3,
 			"enName": "Abrupt Decay",
-			"locName": "Abrupt Decay",
+			"name": "Abrupt Decay",
 			"localization": [{
 				"name": "Abrupt Decay",
 				"idLanguage": "1",
@@ -666,7 +666,7 @@
 			"idMetaproduct": 11139,
 			"countReprints": 5,
 			"enName": "Emrakul, the Aeons Torn",
-			"locName": "Emrakul, the Aeons Torn",
+			"name": "Emrakul, the Aeons Torn",
 			"localization": [{
 				"name": "Emrakul, the Aeons Torn",
 				"idLanguage": "1",
@@ -713,7 +713,7 @@
 			"idMetaproduct": 202422,
 			"countReprints": 2,
 			"enName": "Inkmoth Nexus",
-			"locName": "Inkmoth Nexus",
+			"name": "Inkmoth Nexus",
 			"localization": [{
 				"name": "Inkmoth Nexus",
 				"idLanguage": "1",
@@ -760,7 +760,7 @@
 			"idMetaproduct": 2116,
 			"countReprints": 7,
 			"enName": "Flooded Strand",
-			"locName": "Flooded Strand",
+			"name": "Flooded Strand",
 			"localization": [{
 				"name": "Flooded Strand",
 				"idLanguage": "1",
@@ -807,7 +807,7 @@
 			"idMetaproduct": 10355,
 			"countReprints": 4,
 			"enName": "Noble Hierarch",
-			"locName": "Noble Hierarch",
+			"name": "Noble Hierarch",
 			"localization": [{
 				"name": "Noble Hierarch",
 				"idLanguage": "1",

@@ -401,6 +401,10 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			}
 
 			if ($skip){continue;}
+			
+			if (!(isset($cards[$k]["name"]))){
+				echo "error: ".$codes[$i];
+			}
 
 			$name = $cards[$k]["name"];
 			$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
