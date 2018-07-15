@@ -16,7 +16,7 @@ Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK
 
 
 //getArticleDetails(319033);
-getMKMJson("DCI");
+getMKMJson("ALP");
 
 function getArticleDetails($id){
 	$url = "https://www.mkmapi.eu/ws/v2.0/output.json/articles/".$id."?isFoil=1";

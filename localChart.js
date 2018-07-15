@@ -2,8 +2,9 @@ $(document).ready(function(){
 	window.options = {
 		setAll: 0,
 		rarityAll: 0,
-		//charter: new Charter()
 	}
+
+	window.charter = new Charter();
 
 	$(".moveTable").each(function(){
 		if (!this.childNodes[1].childNodes.length){
@@ -13,11 +14,11 @@ $(document).ready(function(){
 			"paging": false,
 			"info": false,
 			"searching": false,
-			"aaSorting": [[7, "asc"]],
+			"aaSorting": [[1, "asc"]],
 			//"aaSorting": []
 		})
 		
-		/*$(this).find("tbody").find("tr").each(function(){
+		$(this).find("tbody").find("tr").each(function(){
 			$(this).find("td").first().hover(
 				function(){
 					showChart(
@@ -26,67 +27,47 @@ $(document).ready(function(){
 					)
 				},
 				function(){
-					console.log("out");
+					hideChart();
 				}
 			)
-		})*/
-	})
-	
-	function showChart(set, name){
-		//console.log("showChart");
-		console.log(set);
-		console.log(name);
-	}
-	function hideChart(){
-		//console.log("hideChart");
-	}
-
-	$(document).contextmenu(function(e){
-		//e.preventDefault(); e.stopPropagation();
-	})
-
-
-	$("#rarity").contextmenu(function(e){
-		e.preventDefault(); e.stopPropagation();
-		if (options.rarityAll){
-			options.rarityAll = 0;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.rarityAll);
-			})
-		}
-		else {
-			options.rarityAll = 1;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.rarityAll);
-			})
-		}
-	})
-
-	$(".setDivider").contextmenu(function(e){
-		e.preventDefault(); e.stopPropagation();
-		/*	var boxes = $(this).find("input");
-			
-			boxes.each(function(){
-				console.log($(this).prop("checked"));
-				$(this).prop("checked", !($(this).prop("checked")))
-			})
-		*/
-		
-		$(this).find("input").each(function(){
-			$(this).prop("checked", !($(this).prop("checked")))
 		})
-		/*if (options.setAll){
-			options.setAll = 0;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.setAll);
-			})
-		}
-		else {
-			options.setAll = 1;
-			$(this).parent().find("input").each(function(){
-				$(this).prop("checked", options.setAll);
-			})
-		}*/
 	})
-	
 })
+	
+	
+function showChart(set, card){
+	//console.log("showChart");
+	//console.log(set + " / " + card);
+	charter.getCardData(set, card)
+}
+
+function hideChart(){
+	//console.log("hideChart");
+	//console.log("out");
+}
+
+$(document).contextmenu(function(e){
+	//e.preventDefault(); e.stopPropagation();
+})
+
+
+$(".setDivider").contextmenu(function(e){
+	e.preventDefault(); e.stopPropagation();
+	
+	$(this).find("input").each(function(){
+		$(this).prop("checked", !($(this).prop("checked")))
+	})
+})
+
+$("form").find("input").click(function(){
+	$(this).parent().find(".checkWrapper").toggleClass("disabled");
+	setRes();
+})
+
+function setRes(){
+	var resY = window.innerHeight;
+	var formHeight = $("form").height();
+	var chartHeight = $(".mainContainer").height();
+	var rem = (resY - formHeight - chartHeight -100);
+	$(".scrollWrapper").css("max-height", rem).css("height", rem);
+}

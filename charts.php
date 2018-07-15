@@ -74,11 +74,11 @@
 
 					?>
 					
-					<input type="button" style="font-size: 20px" onclick="charter.getCardData()" value="Search">
+					<input type="button" style="font-size: 20px" onclick="charter.getCardData($('#setSearch').val(), $('#cardSearch').val())" value="Search">
 					<div id="cardName"></div>
 				</div>
 			</div>
-			<div class="container" style="margin-top: 50px">
+			<div class="container">
 				<canvas id="baseAvailCanvas"</canvas>
 			</div>
 			<div class="container">
@@ -103,7 +103,7 @@
 
 		if (remote){
 			timeout = setTimeout(function(){
-				charter.getCardData()
+				charter.getCardData($("#setSearch").val(), $("#cardSearch").val())
 			}, 300);
 		}
 }

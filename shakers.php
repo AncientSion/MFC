@@ -28,6 +28,18 @@
 			$type = $_GET["compareType"];
 			$foil = 0; if ($_GET["foil"] == "Foil"){$foil = 1;}
 
+
+		echo "<div class='mainContainer'>
+			<div class='container'>
+				<canvas id='foilAvailCanvas'</canvas>
+			</div>
+			<div id='card'></div>
+			<div class='container'>
+				<canvas id='baseAvailCanvas'</canvas>
+			</div>
+		</div>";
+
+			echo "<div class='scrollWrapper'>";
 			echo requestShakers(
 				$_GET["sets"],
 				$_GET["rarities"],
@@ -41,10 +53,11 @@
 				$stackDisplay,
 				$type
 			);
+			echo "</div>";
 
 
 			$time += microtime(true);
-			echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
+			//echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
 		}
 		else {
 			echo "<div style='color: red; font-size: 30px'>Brah, no sets -> no results ... !</div>";
@@ -71,12 +84,18 @@
 	<script src='script.js'></script>
 </head>
 	<body>
-		<echo 
 	</body>
 </html>
 <script>
-	function preset(arg){
-		console.log("preset!");
-		console.log(arguments);
-	}
 </script>
+<style>
+	body {
+		font-size: 12px;
+	}
+	
+	.mainContainer {
+		margin: auto;
+		height: auto;
+		margin-bottom: 30px
+	}
+</style>

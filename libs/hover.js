@@ -7,11 +7,12 @@ Deckbox.ui = Deckbox.ui || {};
  * Main tooltip type. Will be initialized for both the image tooltips and for the wow tooltips, or simple text tooltips.
  */
 Deckbox.ui.Tooltip = function(className, type) {
-    this.el = document.createElement('div');
+    console.log("ding");
+    this.el = document.getElementById("card")
     this.el.className = className + ' ' + type;
     this.type = type;
     this.el.style.display = 'none';
-    document.body.appendChild(this.el);
+    //document.body.appendChild(this.el);
     this.tooltips = {};
 };
 
@@ -73,6 +74,7 @@ Deckbox.ui.Tooltip.prototype = {
     },
 
     move: function(posX, posY) {
+        return;
         // The tooltip should be offset to the right so that it's not exactly next to the mouse.
         posX += 15;
         posY -= this.el.offsetHeight / 3;
@@ -233,7 +235,7 @@ Deckbox._ = {
         var href;
         if (!el || !(el.tagName == 'A') || !(href = el.getAttribute('href'))) return false;
         if (el.className.match('no_tooltip')) return false;
-        return href.match(/^https?:\/\/[^\/]*\/(mtg|wow|whi)\/.+/);
+        return href.match(/^https?:\/\/[^\/]*\/(mtg)\/.+/);
     },
 
     tooltip: function(which)  {
@@ -276,10 +278,17 @@ Deckbox._ = {
         var img = document.createElement('img');
         url = url.replace(/\?/g, ""); /* Problematic with routes on server. */
         img.src = url;
-        img.style.height = "310px";
+        img.style.height = "100%";
 
         setTimeout(function() {
-            if (el._shown) Deckbox._.tooltip('image').showImage(posX-400, posY-200, img);
+            $("#card").empty().append(img), 200})
+        return;
+
+
+
+
+        setTimeout(function() {
+            if (el._shown) Deckbox._.tooltip('image').showImage(posX-420, posY-20, img);
         }, 200);
     }
 
@@ -293,6 +302,7 @@ Deckbox._ = {
     }
 
     function onmouseout(event) {
+        return;
         var el = Deckbox._.target(event);
         if (Deckbox._.needsTooltip(el)) {
             el._shown = false;
@@ -307,9 +317,9 @@ Deckbox._ = {
     }
 
     Deckbox._.addEvent(document, 'mouseover', onmouseover);
-    Deckbox._.addEvent(document, 'mousemove', onmousemove);
-    Deckbox._.addEvent(document, 'mouseout', onmouseout);
-    Deckbox._.addEvent(document, 'click', click);
+     Deckbox._.addEvent(document, 'mousemove', onmousemove);
+    //Deckbox._.addEvent(document, 'mouseout', onmouseout);
+   // Deckbox._.addEvent(document, 'click', click);
 
     var protocol = (document.location.protocol == 'https:') ? 'https:' : 'http:';
     Deckbox._.loadCSS(protocol + '//deckbox.org/assets/external/deckbox_tooltip.css');

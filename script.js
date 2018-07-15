@@ -1,6 +1,3 @@
-
-
-
 class Entry {
 	constructor(time, data){
 		this.time = time;
@@ -15,18 +12,14 @@ class Entry {
 class Charter {
 	
 	constructor(){
-		this.foilPriceChart;
-		this.foilAvailChart;
-		this.basePriceChart;
-		this.baseAvailChart;
 		this.data;
 		this.sets = [];
 		this.content;
 		this.draws = 0;
-		this.foilPriceCtx = document.getElementById("foilPriceCanvas").getContext("2d");
-		this.foilAvailCtx = document.getElementById("foilAvailCanvas").getContext("2d");
-		this.basePriceCtx = document.getElementById("basePriceCanvas").getContext("2d");
-		this.baseAvailCtx = document.getElementById("baseAvailCanvas").getContext("2d");
+		this.foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
+		this.foilAvailCtx = document.getElementById("foilAvailCanvas") ? document.getElementById("foilAvailCanvas").getContext("2d") : false;
+		this.basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
+		this.baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
 
 		this.getData(this, "cardList", "addCards");
 	};
@@ -55,23 +48,34 @@ class Charter {
 		}
 	}
 
-	getCardData(){
-		var setName = $("#setSearch").val();
-		var cardName =  $("#cardSearch").val();
+	getCardData(setName, cardName){
+		if (!setName || !cardName){return;}
 
-		if (setName && cardName){
-			for (let i = 0; i < this.data.length; i++){
-				if (this.data[i].name == setName){
-					for (let j = 0; j < this.data[i].cards.length; j++){
-						if (this.data[i].cards[j].name == cardName){
-							console.log("valid, setName: " + setName + ", cardName: " + cardName);
-							this.getPriceData(this, this.data[i].code, this.data[i].cards[j].name, "buildAllCards");
-							return;
-						}
-					}
-				}
+		var set = this.getSet(setName);
+		var card = this.getCardName(set, cardName)
+
+		if (!set || !card){return;}
+
+		//console.log("valid, setName: " + setName + ", cardName: " + cardName);
+		this.getPriceData(this, set.code, card, "buildAllCards");
+	}
+
+	getSet(search){
+		for (let i = 0; i < this.data.length; i++){
+			if (this.data[i].name == search || this.data[i].code == search){
+				return this.data[i];
 			}
 		}
+		return false;
+	}
+
+	getCardName(set, cardName){
+		for (var i = 0; i < set.cards.length; i++){
+			if (set.cards[i].name == cardName){
+				return set.cards[i].name;
+			}
+		}
+		return false;
 	}
 
 	getPriceData(ref, set, card, callback){
@@ -195,10 +199,10 @@ class Charter {
 
 		//$("#cardName").html(card + " - " + set);
 
-		if (this.isValidData(cardData[0][0])){this.buildChart(label, cardData[0], tickData[0]);}
-		if (this.isValidData(cardData[1][0])){this.buildChart(label, cardData[1], tickData[1]);}
-		if (this.isValidData(cardData[2][0])){this.buildChart(label, cardData[2], tickData[2]);}
-		if (this.isValidData(cardData[3][0])){this.buildChart(label, cardData[3], tickData[3]);}		
+		if (this.foilAvailCtx && this.isValidData(cardData[0][0])){this.buildChart(label, cardData[0], tickData[0]);}
+		if (this.foilPriceCtx && this.isValidData(cardData[1][0])){this.buildChart(label, cardData[1], tickData[1]);}
+		if (this.baseAvailCtx && this.isValidData(cardData[2][0])){this.buildChart(label, cardData[2], tickData[2]);}
+		if (this.basePriceCtx && this.isValidData(cardData[3][0])){this.buildChart(label, cardData[3], tickData[3]);}		
 	}
 
 	isValidData(points){
@@ -216,6 +220,8 @@ class Charter {
 	}
 
 	buildChart(label, dataSets, tickData){
+
+		//console.log(this[(dataSets[0].ref) + "Chart"]);
 
 		var chartData = {
 				type: 'line',

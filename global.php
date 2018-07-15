@@ -100,13 +100,14 @@ function getForm($get){
 	$html = "";
 
 	$html .="<form method='get'>";
+	$html .="<input type='button' value='hide'>";
 
 	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
 	$rarity = array("C", "U", "R", "M", "S");
 	$preset = array('', '', "checked='checked'", "checked='checked'", "checked='checked'");
 
 	$html .="<div class='checkWrapper'>";
-	$html .="<div id='rarity' class='toggle'>Rarities to include (right-click, toggle all)</div>";
+	$html .="<div id='rarity'>Rarities to include (right-click, toggle all)</div>";
 
 
 	if (sizeof($get) && $get["rarities"]){
@@ -151,7 +152,7 @@ function getForm($get){
 
 	//$html .="<div class='checkWrapper'>";
 
-	$depth = 0;
+	$depth = 1;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>Days</div>";
@@ -196,7 +197,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChange = -1;
+	$availChange = -4;
 	if (sizeof($get)){$availChange = $get["availChange"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
@@ -238,7 +239,7 @@ function getForm($get){
 	$html .= "</div>";
 
 	$html .="<div class='checkWrapper'>";
-	$html .="<div id='set' class='toggle'>Sets to include (right-click, toggle all)</div>";
+	$html .="<div id='set' class='toggle'>Sets to include</div>";
 
 
 
@@ -278,16 +279,15 @@ function getForm($get){
 	$html .="<span>BOXES</span>";
 	$html .="</div>";
 	*/
-	$html .="</div>";
-	$html .="</br>";
+	//$html .="</br>";
 	
-	$html .="<div>";
+	$html .="<div style='display: inline'>";
 	$preset = json_encode(array(['R', 'M', 'S'], ['LEB', '2ED']), true);
 	$html .="<input type='button' style='width: 200px; font-size: 26px' value='Preset 1' onclick='preset(".$preset.")'></input>";
 	$html .="</div>";
 	
-	$html .="</br>";
 	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
+	$html .="</div>";
 	$html .="</form>";
 
 	return $html;
@@ -525,18 +525,18 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
-		$html .="<th style='width: 50px'></th>";
-		$html .="<th style='width: 50px'></th>";
-		$html .="<th style='width: 60px'>Rarity</th>";
-
-		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 100px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
-		$html .="<th style='width: 70px'>ABS</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
+		$html .="<th style='width: 70px'>ABS</th>";
 		
 		if ($stackDisplay){
 			$html .="<th style='width: 70px'>Stack</th>";			
 		}
+		$html .="<th style='width: 50px'></th>";
+		$html .="<th style='width: 50px'></th>";
+		$html .="<th style='width: 60px'>Rarity</th>";
+
+		$html .="<th style='width: 80px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
+		$html .="<th style='width: 80px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
 	
 		/*
 		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
@@ -550,6 +550,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 			$card = $allSets[$i]["shakers"][$j];
+			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
 			
 
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
@@ -564,19 +565,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 			$html .="<td>";
 			$html .= "<a target='_blank' href=".$cardUrl.">".$card['name']."</a>";
 			$html .="</td>";
-			$html .="<td>";
-			$html .= "<a target='_blank' href=".$chartUrl.">"."Chart"."</a>";
-			$html .="</td>";
-			$html .="<td>";
-			$html .="<a target='_blank' href=".$mkmUrl.">MKM</a></td>";
-			$html .="</td>";
-			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
-
-			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
-			$html .="<td>".$card[$avail][0]."</td>";
-			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
-			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
 			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
+			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
 			
 			/*
 			$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
@@ -614,9 +604,17 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 				}
 				
 				$html .="<td>".$string."</td>";
-			
-			
-			}			
+			}	
+			$html .="<td>";
+			$html .= "<a target='_blank' href=".$chartUrl.">"."Chart"."</a>";
+			$html .="</td>";
+			$html .="<td>";
+			$html .="<a target='_blank' href=".$mkmUrl.">MKM</a></td>";
+			$html .="</td>";
+			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
+
+			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
+			$html .="<td>".$card[$avail][0]."</td>";		
 		}
 
 		$html .="</tbody></table>";

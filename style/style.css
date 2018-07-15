@@ -11,7 +11,7 @@ input[type=checkbox], input[type=radio] {
 form {
 	margin: auto;
 	width: 1200px;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 
 a:link, a:visited {
@@ -23,18 +23,28 @@ a:link, a:visited {
 	margin-bottom: 20px;
 }
 
+#card {
+	height: 300px;
+}
+
 .container {
 	display: inline-block;
 	position: relative;
-	width: 48%;
-	margin-right: 20px;
-	height: 340px;
+	width: 580px;
+}
+
+.scrollWrapper {
+	overflow: auto;
 }
 
 .mainContainer {
-	height: 750px;
-	width: 1400px;
 	padding: 5px;
+	width: 1400px;
+	margin: auto;
+}
+
+.mainContainer > div {
+	display: inline-block;
 }
 
 .border {
@@ -50,8 +60,7 @@ a:link, a:visited {
 }
 
 .ui {
-	position: absolute;
-	top: 365px;
+	padding: 20px;
 }
 
 .disabled {
@@ -61,8 +70,12 @@ a:link, a:visited {
 canvas {
 }
 
+td {
+	font-size: 16px;
+}
+
 div > input, div > span{
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .red {
@@ -100,7 +113,7 @@ div > input, div > span{
 }
 
 .moveTable .set {
-	font-size: 20px;
+	font-size: 14px;
 }
 
 .checkWrapper {
@@ -131,9 +144,6 @@ div > input, div > span{
 	margin-bottom: 10px;
 }
 
-.toggle:hover {
-	cursor: pointer;
-}
 
 #depth, #minPrice, #maxPrice {
 	font-size: 18px;
