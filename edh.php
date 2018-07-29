@@ -202,6 +202,9 @@ function foil($date, $codes, $names, $context){
 
 function mixed($date, $codes, $names, $context){
 	
+	//$codes = array("ODY", "JUD");
+	//$names = array("Odyssey", "Judgment");
+	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";
 

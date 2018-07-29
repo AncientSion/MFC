@@ -12086,6 +12086,1310 @@
 		"rarity": "Rare"
 	}]
 }, {
+	"code": "CNS",
+	"name": "Conspiracy",
+	"cards": [{
+		"name": "Advantageous Proclamation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Backup Plan",
+		"rarity": "Rare"
+	}, {
+		"name": "Brago's Favor",
+		"rarity": "Common"
+	}, {
+		"name": "Double Stroke",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Immediate Action",
+		"rarity": "Common"
+	}, {
+		"name": "Iterative Analysis",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Muzzio's Preparations",
+		"rarity": "Common"
+	}, {
+		"name": "Power Play",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Secret Summoning",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Secrets of Paradise",
+		"rarity": "Common"
+	}, {
+		"name": "Sentinel Dispatch",
+		"rarity": "Common"
+	}, {
+		"name": "Unexpected Potential",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Worldknit",
+		"rarity": "Rare"
+	}, {
+		"name": "Brago's Representative",
+		"rarity": "Common"
+	}, {
+		"name": "Council Guardian",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Council's Judgment",
+		"rarity": "Rare"
+	}, {
+		"name": "Custodi Soulbinders",
+		"rarity": "Rare"
+	}, {
+		"name": "Custodi Squire",
+		"rarity": "Common"
+	}, {
+		"name": "Rousing of Souls",
+		"rarity": "Common"
+	}, {
+		"name": "Academy Elite",
+		"rarity": "Rare"
+	}, {
+		"name": "Marchesa's Emissary",
+		"rarity": "Common"
+	}, {
+		"name": "Marchesa's Infiltrator",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Muzzio, Visionary Architect",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Plea for Power",
+		"rarity": "Rare"
+	}, {
+		"name": "Split Decision",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Bite of the Black Rose",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Drakestown Forgotten",
+		"rarity": "Rare"
+	}, {
+		"name": "Grudge Keeper",
+		"rarity": "Common"
+	}, {
+		"name": "Reign of the Pit",
+		"rarity": "Rare"
+	}, {
+		"name": "Tyrant's Choice",
+		"rarity": "Common"
+	}, {
+		"name": "Enraged Revolutionary",
+		"rarity": "Common"
+	}, {
+		"name": "Grenzo's Cutthroat",
+		"rarity": "Common"
+	}, {
+		"name": "Grenzo's Rebuttal",
+		"rarity": "Rare"
+	}, {
+		"name": "Ignition Team",
+		"rarity": "Rare"
+	}, {
+		"name": "Scourge of the Throne",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Treasonous Ogre",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Predator's Howl",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Realm Seekers",
+		"rarity": "Rare"
+	}, {
+		"name": "Selvala's Charge",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Selvala's Enforcer",
+		"rarity": "Common"
+	}, {
+		"name": "Brago, King Eternal",
+		"rarity": "Rare"
+	}, {
+		"name": "Dack Fayden",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Dack's Duplicate",
+		"rarity": "Rare"
+	}, {
+		"name": "Deathreap Ritual",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Extract from Darkness",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Flamewright",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Grenzo, Dungeon Warden",
+		"rarity": "Rare"
+	}, {
+		"name": "Magister of Worth",
+		"rarity": "Rare"
+	}, {
+		"name": "Marchesa, the Black Rose",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Marchesa's Smuggler",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Selvala, Explorer Returned",
+		"rarity": "Rare"
+	}, {
+		"name": "Woodvine Elemental",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aether Searcher",
+		"rarity": "Rare"
+	}, {
+		"name": "Agent of Acquisitions",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Canal Dredger",
+		"rarity": "Rare"
+	}, {
+		"name": "Coercive Portal",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Cogwork Grinder",
+		"rarity": "Rare"
+	}, {
+		"name": "Cogwork Librarian",
+		"rarity": "Common"
+	}, {
+		"name": "Cogwork Spy",
+		"rarity": "Common"
+	}, {
+		"name": "Cogwork Tracker",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Deal Broker",
+		"rarity": "Rare"
+	}, {
+		"name": "Lore Seeker",
+		"rarity": "Rare"
+	}, {
+		"name": "Lurking Automaton",
+		"rarity": "Common"
+	}, {
+		"name": "Whispergear Sneak",
+		"rarity": "Common"
+	}, {
+		"name": "Paliano, the High City",
+		"rarity": "Rare"
+	}, {
+		"name": "Ajani's Sunstriker",
+		"rarity": "Common"
+	}, {
+		"name": "Apex Hawks",
+		"rarity": "Common"
+	}, {
+		"name": "Courier Hawk",
+		"rarity": "Common"
+	}, {
+		"name": "Doomed Traveler",
+		"rarity": "Common"
+	}, {
+		"name": "Glimmerpoint Stag",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Guardian Zendikon",
+		"rarity": "Common"
+	}, {
+		"name": "Intangible Virtue",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Kor Chant",
+		"rarity": "Common"
+	}, {
+		"name": "Moment of Heroism",
+		"rarity": "Common"
+	}, {
+		"name": "Noble Templar",
+		"rarity": "Common"
+	}, {
+		"name": "Pillarfield Ox",
+		"rarity": "Common"
+	}, {
+		"name": "Pride Guardian",
+		"rarity": "Common"
+	}, {
+		"name": "Pristine Angel",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Reya Dawnbringer",
+		"rarity": "Rare"
+	}, {
+		"name": "Rout",
+		"rarity": "Rare"
+	}, {
+		"name": "Silverchase Fox",
+		"rarity": "Common"
+	}, {
+		"name": "Soulcatcher",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stave Off",
+		"rarity": "Common"
+	}, {
+		"name": "Swords to Plowshares",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Unquestioned Authority",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Valor Made Real",
+		"rarity": "Common"
+	}, {
+		"name": "Vow of Duty",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wakestone Gargoyle",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aether Tradewinds",
+		"rarity": "Common"
+	}, {
+		"name": "Air Servant",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Brainstorm",
+		"rarity": "Common"
+	}, {
+		"name": "Breakthrough",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Compulsive Research",
+		"rarity": "Common"
+	}, {
+		"name": "Crookclaw Transmuter",
+		"rarity": "Common"
+	}, {
+		"name": "Dream Fracture",
+		"rarity": "Common"
+	}, {
+		"name": "Enclave Elite",
+		"rarity": "Common"
+	}, {
+		"name": "Fact or Fiction",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Favorable Winds",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Grixis Illusionist",
+		"rarity": "Common"
+	}, {
+		"name": "Jetting Glasskite",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Minamo Scrollkeeper",
+		"rarity": "Common"
+	}, {
+		"name": "Misdirection",
+		"rarity": "Rare"
+	}, {
+		"name": "Plated Seastrider",
+		"rarity": "Common"
+	}, {
+		"name": "Reckless Scholar",
+		"rarity": "Common"
+	}, {
+		"name": "Screaming Seahawk",
+		"rarity": "Common"
+	}, {
+		"name": "Shoreline Ranger",
+		"rarity": "Common"
+	}, {
+		"name": "Stasis Cell",
+		"rarity": "Common"
+	}, {
+		"name": "Stifle",
+		"rarity": "Rare"
+	}, {
+		"name": "Traveler's Cloak",
+		"rarity": "Common"
+	}, {
+		"name": "Turn the Tide",
+		"rarity": "Common"
+	}, {
+		"name": "Wind Dancer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Altar's Reap",
+		"rarity": "Common"
+	}, {
+		"name": "Assassinate",
+		"rarity": "Common"
+	}, {
+		"name": "Ill-Gotten Gains",
+		"rarity": "Rare"
+	}, {
+		"name": "Infectious Horror",
+		"rarity": "Common"
+	}, {
+		"name": "Liliana's Specter",
+		"rarity": "Common"
+	}, {
+		"name": "Magus of the Mirror",
+		"rarity": "Rare"
+	}, {
+		"name": "Morkrut Banshee",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Necromantic Thirst",
+		"rarity": "Common"
+	}, {
+		"name": "Phage the Untouchable",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Plagued Rusalka",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Quag Vampires",
+		"rarity": "Common"
+	}, {
+		"name": "Reckless Spite",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Skeletal Scrying",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Smallpox",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stronghold Discipline",
+		"rarity": "Common"
+	}, {
+		"name": "Syphon Soul",
+		"rarity": "Common"
+	}, {
+		"name": "Tragic Slip",
+		"rarity": "Common"
+	}, {
+		"name": "Twisted Abomination",
+		"rarity": "Common"
+	}, {
+		"name": "Typhoid Rats",
+		"rarity": "Common"
+	}, {
+		"name": "Unhallowed Pact",
+		"rarity": "Common"
+	}, {
+		"name": "Vampire Hexmage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Victimize",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wakedancer",
+		"rarity": "Common"
+	}, {
+		"name": "Zombie Goliath",
+		"rarity": "Common"
+	}, {
+		"name": "Barbed Shocker",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Boldwyr Intimidator",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Brimstone Volley",
+		"rarity": "Common"
+	}, {
+		"name": "Chartooth Cougar",
+		"rarity": "Common"
+	}, {
+		"name": "Cinder Wall",
+		"rarity": "Common"
+	}, {
+		"name": "Deathforge Shaman",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Flaring Flame-Kin",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Flowstone Blade",
+		"rarity": "Common"
+	}, {
+		"name": "Heartless Hidetsugu",
+		"rarity": "Rare"
+	}, {
+		"name": "Heckling Fiends",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Lizard Warrior",
+		"rarity": "Common"
+	}, {
+		"name": "Mana Geyser",
+		"rarity": "Common"
+	}, {
+		"name": "Orcish Cannonade",
+		"rarity": "Common"
+	}, {
+		"name": "Pitchburn Devils",
+		"rarity": "Common"
+	}, {
+		"name": "Power of Fire",
+		"rarity": "Common"
+	}, {
+		"name": "Skitter of Lizards",
+		"rarity": "Common"
+	}, {
+		"name": "Sulfuric Vortex",
+		"rarity": "Rare"
+	}, {
+		"name": "Torch Fiend",
+		"rarity": "Common"
+	}, {
+		"name": "Trumpet Blast",
+		"rarity": "Common"
+	}, {
+		"name": "Uncontrollable Anger",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Vent Sentinel",
+		"rarity": "Common"
+	}, {
+		"name": "Volcanic Fallout",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wrap in Flames",
+		"rarity": "Common"
+	}, {
+		"name": "Charging Rhino",
+		"rarity": "Common"
+	}, {
+		"name": "Copperhorn Scout",
+		"rarity": "Common"
+	}, {
+		"name": "Echoing Courage",
+		"rarity": "Common"
+	}, {
+		"name": "Elephant Guide",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Elvish Aberration",
+		"rarity": "Common"
+	}, {
+		"name": "Exploration",
+		"rarity": "Rare"
+	}, {
+		"name": "Gamekeeper",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Gnarlid Pack",
+		"rarity": "Common"
+	}, {
+		"name": "Howling Wolf",
+		"rarity": "Common"
+	}, {
+		"name": "Hunger of the Howlpack",
+		"rarity": "Common"
+	}, {
+		"name": "Hydra Omnivore",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Lead the Stampede",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Nature's Claim",
+		"rarity": "Common"
+	}, {
+		"name": "Pelakka Wurm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Plummet",
+		"rarity": "Common"
+	}, {
+		"name": "Provoke",
+		"rarity": "Common"
+	}, {
+		"name": "Relic Crush",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Respite",
+		"rarity": "Common"
+	}, {
+		"name": "Sakura-Tribe Elder",
+		"rarity": "Common"
+	}, {
+		"name": "Scaled Wurm",
+		"rarity": "Common"
+	}, {
+		"name": "Sporecap Spider",
+		"rarity": "Common"
+	}, {
+		"name": "Squirrel Nest",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Terastodon",
+		"rarity": "Rare"
+	}, {
+		"name": "Wolfbriar Elemental",
+		"rarity": "Rare"
+	}, {
+		"name": "Wrap in Vigor",
+		"rarity": "Common"
+	}, {
+		"name": "Basandra, Battle Seraph",
+		"rarity": "Rare"
+	}, {
+		"name": "Decimate",
+		"rarity": "Rare"
+	}, {
+		"name": "Dimir Doppelganger",
+		"rarity": "Rare"
+	}, {
+		"name": "Edric, Spymaster of Trest",
+		"rarity": "Rare"
+	}, {
+		"name": "Fires of Yavimaya",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mirari's Wake",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Mortify",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Pernicious Deed",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Sky Spirit",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spiritmonger",
+		"rarity": "Rare"
+	}, {
+		"name": "Spontaneous Combustion",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wood Sage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Altar of Dementia",
+		"rarity": "Rare"
+	}, {
+		"name": "Deathrender",
+		"rarity": "Rare"
+	}, {
+		"name": "Explorer's Scope",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Fireshrieker",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Galvanic Juggernaut",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Peace Strider",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Reito Lantern",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Runed Servitor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Silent Arbiter",
+		"rarity": "Rare"
+	}, {
+		"name": "Spectral Searchlight",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Vedalken Orrery",
+		"rarity": "Rare"
+	}, {
+		"name": "Warmonger's Chariot",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mirrodin's Core",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Quicksand",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Reflecting Pool",
+		"rarity": "Rare"
+	}]
+}, {
+	"code": "CN2",
+	"name": "Conspiracy: Take the Crown",
+	"cards": [{
+		"name": "Adriana's Valor",
+		"rarity": "Common"
+	}, {
+		"name": "Assemble the Rank and Vile",
+		"rarity": "Common"
+	}, {
+		"name": "Echoing Boon",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Emissary's Ploy",
+		"rarity": "Rare"
+	}, {
+		"name": "Hired Heist",
+		"rarity": "Common"
+	}, {
+		"name": "Hold the Perimeter",
+		"rarity": "Rare"
+	}, {
+		"name": "Hymn of the Wilds",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Incendiary Dissent",
+		"rarity": "Common"
+	}, {
+		"name": "Natural Unity",
+		"rarity": "Common"
+	}, {
+		"name": "Sovereign's Realm",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Summoner's Bond",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Weight Advantage",
+		"rarity": "Rare"
+	}, {
+		"name": "Ballot Broker",
+		"rarity": "Common"
+	}, {
+		"name": "Custodi Peacekeeper",
+		"rarity": "Common"
+	}, {
+		"name": "Custodi Soulcaller",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Lieutenants of the Guard",
+		"rarity": "Common"
+	}, {
+		"name": "Noble Banneret",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Palace Jailer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Palace Sentinels",
+		"rarity": "Common"
+	}, {
+		"name": "Paliano Vanguard",
+		"rarity": "Rare"
+	}, {
+		"name": "Protector of the Crown",
+		"rarity": "Rare"
+	}, {
+		"name": "Recruiter of the Guard",
+		"rarity": "Rare"
+	}, {
+		"name": "Sanctum Prelate",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Spectral Grasp",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Throne Warden",
+		"rarity": "Common"
+	}, {
+		"name": "Wings of the Guard",
+		"rarity": "Common"
+	}, {
+		"name": "Arcane Savant",
+		"rarity": "Rare"
+	}, {
+		"name": "Canal Courier",
+		"rarity": "Common"
+	}, {
+		"name": "Coveted Peacock",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Expropriate",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Illusion of Choice",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Illusionary Informant",
+		"rarity": "Common"
+	}, {
+		"name": "Jeering Homunculus",
+		"rarity": "Common"
+	}, {
+		"name": "Keeper of Keys",
+		"rarity": "Rare"
+	}, {
+		"name": "Messenger Jays",
+		"rarity": "Common"
+	}, {
+		"name": "Skittering Crustacean",
+		"rarity": "Common"
+	}, {
+		"name": "Spire Phantasm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stunt Double",
+		"rarity": "Rare"
+	}, {
+		"name": "Archdemon of Paliano",
+		"rarity": "Rare"
+	}, {
+		"name": "Capital Punishment",
+		"rarity": "Rare"
+	}, {
+		"name": "Custodi Lich",
+		"rarity": "Rare"
+	}, {
+		"name": "Deadly Designs",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Garrulous Sycophant",
+		"rarity": "Common"
+	}, {
+		"name": "Marchesa's Decree",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Regicide",
+		"rarity": "Common"
+	}, {
+		"name": "Sinuous Vermin",
+		"rarity": "Common"
+	}, {
+		"name": "Smuggler Captain",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Thorn of the Black Rose",
+		"rarity": "Common"
+	}, {
+		"name": "Besmirch",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Crown-Hunter Hireling",
+		"rarity": "Common"
+	}, {
+		"name": "Deputized Protester",
+		"rarity": "Common"
+	}, {
+		"name": "Garbage Fire",
+		"rarity": "Common"
+	}, {
+		"name": "Goblin Racketeer",
+		"rarity": "Common"
+	}, {
+		"name": "Grenzo, Havoc Raiser",
+		"rarity": "Rare"
+	}, {
+		"name": "Grenzo's Ruffians",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Pyretic Hunter",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Skyline Despot",
+		"rarity": "Rare"
+	}, {
+		"name": "Subterranean Tremors",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Volatile Chimera",
+		"rarity": "Rare"
+	}, {
+		"name": "Animus of Predation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Borderland Explorer",
+		"rarity": "Common"
+	}, {
+		"name": "Caller of the Untamed",
+		"rarity": "Rare"
+	}, {
+		"name": "Domesticated Hydra",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Entourage of Trest",
+		"rarity": "Common"
+	}, {
+		"name": "Fang of the Pack",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Leovold's Operative",
+		"rarity": "Common"
+	}, {
+		"name": "Menagerie Liberator",
+		"rarity": "Common"
+	}, {
+		"name": "Orchard Elemental",
+		"rarity": "Common"
+	}, {
+		"name": "Regal Behemoth",
+		"rarity": "Rare"
+	}, {
+		"name": "Selvala, Heart of the Wilds",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Selvala's Stampede",
+		"rarity": "Rare"
+	}, {
+		"name": "Splitting Slime",
+		"rarity": "Rare"
+	}, {
+		"name": "Adriana, Captain of the Guard",
+		"rarity": "Rare"
+	}, {
+		"name": "Daretti, Ingenious Iconoclast",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Kaya, Ghost Assassin",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Knights of the Black Rose",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Leovold, Emissary of Trest",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Queen Marchesa",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Spy Kit",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Throne of the High City",
+		"rarity": "Rare"
+	}, {
+		"name": "Affa Guard Hound",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Disenchant",
+		"rarity": "Common"
+	}, {
+		"name": "Doomed Traveler",
+		"rarity": "Common"
+	}, {
+		"name": "Faith's Reward",
+		"rarity": "Rare"
+	}, {
+		"name": "Ghostly Possession",
+		"rarity": "Common"
+	}, {
+		"name": "Ghostly Prison",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Gleam of Resistance",
+		"rarity": "Common"
+	}, {
+		"name": "Gods Willing",
+		"rarity": "Common"
+	}, {
+		"name": "Guardian of the Gateless",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Hail of Arrows",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Hallowed Burial",
+		"rarity": "Rare"
+	}, {
+		"name": "Hollowhenge Spirit",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Hundred-Handed One",
+		"rarity": "Rare"
+	}, {
+		"name": "Kill Shot",
+		"rarity": "Common"
+	}, {
+		"name": "Pariah",
+		"rarity": "Rare"
+	}, {
+		"name": "Raise the Alarm",
+		"rarity": "Common"
+	}, {
+		"name": "Reviving Dose",
+		"rarity": "Common"
+	}, {
+		"name": "Spirit of the Hearth",
+		"rarity": "Rare"
+	}, {
+		"name": "Wild Griffin",
+		"rarity": "Common"
+	}, {
+		"name": "Windborne Charge",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Zealous Strike",
+		"rarity": "Common"
+	}, {
+		"name": "Bonds of Quicksilver",
+		"rarity": "Common"
+	}, {
+		"name": "Caller of Gales",
+		"rarity": "Common"
+	}, {
+		"name": "Cloaked Siren",
+		"rarity": "Common"
+	}, {
+		"name": "Covenant of Minds",
+		"rarity": "Rare"
+	}, {
+		"name": "Deceiver Exarch",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Desertion",
+		"rarity": "Rare"
+	}, {
+		"name": "Dismiss",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Divination",
+		"rarity": "Common"
+	}, {
+		"name": "Fleeting Distraction",
+		"rarity": "Common"
+	}, {
+		"name": "Followed Footsteps",
+		"rarity": "Rare"
+	}, {
+		"name": "Into the Void",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Kami of the Crescent Moon",
+		"rarity": "Rare"
+	}, {
+		"name": "Merfolk Looter",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Merfolk Skyscout",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mnemonic Wall",
+		"rarity": "Common"
+	}, {
+		"name": "Negate",
+		"rarity": "Common"
+	}, {
+		"name": "Omenspeaker",
+		"rarity": "Common"
+	}, {
+		"name": "Repulse",
+		"rarity": "Common"
+	}, {
+		"name": "Serum Visions",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Show and Tell",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Sphinx of Magosi",
+		"rarity": "Rare"
+	}, {
+		"name": "Traumatic Visions",
+		"rarity": "Common"
+	}, {
+		"name": "Vaporkin",
+		"rarity": "Common"
+	}, {
+		"name": "Vertigo Spawn",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Absorb Vis",
+		"rarity": "Common"
+	}, {
+		"name": "Altar's Reap",
+		"rarity": "Common"
+	}, {
+		"name": "Avatar of Woe",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Blood-Toll Harpy",
+		"rarity": "Common"
+	}, {
+		"name": "Child of Night",
+		"rarity": "Common"
+	}, {
+		"name": "Death Wind",
+		"rarity": "Common"
+	}, {
+		"name": "Diabolic Tutor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Driver of the Dead",
+		"rarity": "Common"
+	}, {
+		"name": "Farbog Boneflinger",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Festergloom",
+		"rarity": "Common"
+	}, {
+		"name": "Fleshbag Marauder",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Guul Draz Specter",
+		"rarity": "Rare"
+	}, {
+		"name": "Harvester of Souls",
+		"rarity": "Rare"
+	}, {
+		"name": "Infest",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Inquisition of Kozilek",
+		"rarity": "Rare"
+	}, {
+		"name": "Keepsake Gorgon",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mausoleum Turnkey",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Murder",
+		"rarity": "Common"
+	}, {
+		"name": "Phyrexian Arena",
+		"rarity": "Rare"
+	}, {
+		"name": "Public Execution",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Raise Dead",
+		"rarity": "Common"
+	}, {
+		"name": "Sangromancer",
+		"rarity": "Rare"
+	}, {
+		"name": "Shambling Goblin",
+		"rarity": "Common"
+	}, {
+		"name": "Stromkirk Patrol",
+		"rarity": "Common"
+	}, {
+		"name": "Unnerve",
+		"rarity": "Common"
+	}, {
+		"name": "Burn Away",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Burning Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Charmbreaker Devils",
+		"rarity": "Rare"
+	}, {
+		"name": "Coordinated Assault",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Ember Beast",
+		"rarity": "Common"
+	}, {
+		"name": "Fiery Fall",
+		"rarity": "Common"
+	}, {
+		"name": "Flame Slash",
+		"rarity": "Common"
+	}, {
+		"name": "Gang of Devils",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Goblin Balloon Brigade",
+		"rarity": "Common"
+	}, {
+		"name": "Goblin Tunneler",
+		"rarity": "Common"
+	}, {
+		"name": "Gratuitous Violence",
+		"rarity": "Rare"
+	}, {
+		"name": "Guttersnipe",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Hamletback Goliath",
+		"rarity": "Rare"
+	}, {
+		"name": "Havengul Vampire",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Hurly-Burly",
+		"rarity": "Common"
+	}, {
+		"name": "Ill-Tempered Cyclops",
+		"rarity": "Common"
+	}, {
+		"name": "Kiln Fiend",
+		"rarity": "Common"
+	}, {
+		"name": "Ogre Sentry",
+		"rarity": "Common"
+	}, {
+		"name": "Stoneshock Giant",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sulfurous Blast",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Tormenting Voice",
+		"rarity": "Common"
+	}, {
+		"name": "Trumpet Blast",
+		"rarity": "Common"
+	}, {
+		"name": "Twin Bolt",
+		"rarity": "Common"
+	}, {
+		"name": "Beast Within",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Berserk",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Birds of Paradise",
+		"rarity": "Rare"
+	}, {
+		"name": "Brushstrider",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Burgeoning",
+		"rarity": "Rare"
+	}, {
+		"name": "Copperhorn Scout",
+		"rarity": "Common"
+	}, {
+		"name": "Explosive Vegetation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Fade into Antiquity",
+		"rarity": "Common"
+	}, {
+		"name": "Forgotten Ancient",
+		"rarity": "Rare"
+	}, {
+		"name": "Irresistible Prey",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Lace with Moonglove",
+		"rarity": "Common"
+	}, {
+		"name": "Lay of the Land",
+		"rarity": "Common"
+	}, {
+		"name": "Manaplasm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Nessian Asp",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Netcaster Spider",
+		"rarity": "Common"
+	}, {
+		"name": "Overrun",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Plummet",
+		"rarity": "Common"
+	}, {
+		"name": "Prey Upon",
+		"rarity": "Common"
+	}, {
+		"name": "Ravenous Leucrocota",
+		"rarity": "Common"
+	}, {
+		"name": "Strength in Numbers",
+		"rarity": "Common"
+	}, {
+		"name": "Sylvan Bounty",
+		"rarity": "Common"
+	}, {
+		"name": "Voyaging Satyr",
+		"rarity": "Common"
+	}, {
+		"name": "Wild Pair",
+		"rarity": "Rare"
+	}, {
+		"name": "Akroan Hoplite",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Ascended Lawmage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Carnage Gladiator",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Coiling Oracle",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dragonlair Spider",
+		"rarity": "Rare"
+	}, {
+		"name": "Duskmantle Seer",
+		"rarity": "Rare"
+	}, {
+		"name": "Gruul War Chant",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Juniper Order Ranger",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Pharika's Mender",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Shipwreck Singer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stormchaser Chimera",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Bronze Sable",
+		"rarity": "Common"
+	}, {
+		"name": "Hedron Matrix",
+		"rarity": "Rare"
+	}, {
+		"name": "Hexplate Golem",
+		"rarity": "Common"
+	}, {
+		"name": "Horn of Greed",
+		"rarity": "Rare"
+	}, {
+		"name": "Kitesail",
+		"rarity": "Common"
+	}, {
+		"name": "Opaline Unicorn",
+		"rarity": "Common"
+	}, {
+		"name": "Platinum Angel",
+		"rarity": "Mythic Rare"
+	}, {
+		"name": "Psychosis Crawler",
+		"rarity": "Rare"
+	}, {
+		"name": "Runed Servitor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dread Statuary",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Evolving Wilds",
+		"rarity": "Common"
+	}, {
+		"name": "Exotic Orchard",
+		"rarity": "Rare"
+	}, {
+		"name": "Rogue's Passage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Shimmering Grotto",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Kaya, Ghost Assassin",
+		"rarity": "Mythic Rare"
+	}]
+}, {
 	"code": "MMQ",
 	"name": "Mercadian Masques",
 	"cards": [{
@@ -25039,6 +26343,1493 @@
 	}, {
 		"name": "Wooded Foothills",
 		"rarity": "Rare"
+	}, {
+		"name": "Plains",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Plains",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Plains",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Plains",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Island",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Island",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Island",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Island",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Swamp",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Swamp",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Swamp",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Swamp",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Mountain",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Mountain",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Mountain",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Mountain",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Forest",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Forest",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Forest",
+		"rarity": "Basic Land"
+	}, {
+		"name": "Forest",
+		"rarity": "Basic Land"
+	}]
+}, {
+	"code": "JUD",
+	"name": "Judgment",
+	"cards": [{
+		"name": "Ancestor's Chosen",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aven Warcraft",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Battle Screech",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Battlewise Aven",
+		"rarity": "Common"
+	}, {
+		"name": "Benevolent Bodyguard",
+		"rarity": "Common"
+	}, {
+		"name": "Border Patrol",
+		"rarity": "Common"
+	}, {
+		"name": "Cagemail",
+		"rarity": "Common"
+	}, {
+		"name": "Chastise",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Commander Eesha",
+		"rarity": "Rare"
+	}, {
+		"name": "Funeral Pyre",
+		"rarity": "Common"
+	}, {
+		"name": "Glory",
+		"rarity": "Rare"
+	}, {
+		"name": "Golden Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Guided Strike",
+		"rarity": "Common"
+	}, {
+		"name": "Lead Astray",
+		"rarity": "Common"
+	}, {
+		"name": "Nomad Mythmaker",
+		"rarity": "Rare"
+	}, {
+		"name": "Phantom Flock",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Phantom Nomad",
+		"rarity": "Common"
+	}, {
+		"name": "Prismatic Strands",
+		"rarity": "Common"
+	}, {
+		"name": "Pulsemage Advocate",
+		"rarity": "Rare"
+	}, {
+		"name": "Ray of Revelation",
+		"rarity": "Common"
+	}, {
+		"name": "Selfless Exorcist",
+		"rarity": "Rare"
+	}, {
+		"name": "Shieldmage Advocate",
+		"rarity": "Common"
+	}, {
+		"name": "Silver Seraph",
+		"rarity": "Rare"
+	}, {
+		"name": "Solitary Confinement",
+		"rarity": "Rare"
+	}, {
+		"name": "Soulcatchers' Aerie",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spirit Cairn",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spurnmage Advocate",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Suntail Hawk",
+		"rarity": "Common"
+	}, {
+		"name": "Test of Endurance",
+		"rarity": "Rare"
+	}, {
+		"name": "Trained Pronghorn",
+		"rarity": "Common"
+	}, {
+		"name": "Unquestioned Authority",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Valor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Vigilant Sentry",
+		"rarity": "Common"
+	}, {
+		"name": "Aven Fogbringer",
+		"rarity": "Common"
+	}, {
+		"name": "Cephalid Constable",
+		"rarity": "Rare"
+	}, {
+		"name": "Cephalid Inkshrouder",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cunning Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Defy Gravity",
+		"rarity": "Common"
+	}, {
+		"name": "Envelop",
+		"rarity": "Common"
+	}, {
+		"name": "Flash of Insight",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Grip of Amnesia",
+		"rarity": "Common"
+	}, {
+		"name": "Hapless Researcher",
+		"rarity": "Common"
+	}, {
+		"name": "Keep Watch",
+		"rarity": "Common"
+	}, {
+		"name": "Laquatus's Disdain",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Lost in Thought",
+		"rarity": "Common"
+	}, {
+		"name": "Mental Note",
+		"rarity": "Common"
+	}, {
+		"name": "Mirror Wall",
+		"rarity": "Common"
+	}, {
+		"name": "Mist of Stagnation",
+		"rarity": "Rare"
+	}, {
+		"name": "Quiet Speculation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Scalpelexis",
+		"rarity": "Rare"
+	}, {
+		"name": "Spelljack",
+		"rarity": "Rare"
+	}, {
+		"name": "Telekinetic Bonds",
+		"rarity": "Rare"
+	}, {
+		"name": "Web of Inertia",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wonder",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wormfang Behemoth",
+		"rarity": "Rare"
+	}, {
+		"name": "Wormfang Crab",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Wormfang Drake",
+		"rarity": "Common"
+	}, {
+		"name": "Wormfang Manta",
+		"rarity": "Rare"
+	}, {
+		"name": "Wormfang Newt",
+		"rarity": "Common"
+	}, {
+		"name": "Wormfang Turtle",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Balthor the Defiled",
+		"rarity": "Rare"
+	}, {
+		"name": "Cabal Therapy",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cabal Trainee",
+		"rarity": "Common"
+	}, {
+		"name": "Death Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Earsplitting Rats",
+		"rarity": "Common"
+	}, {
+		"name": "Filth",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Grave Consequences",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Guiltfeeder",
+		"rarity": "Rare"
+	}, {
+		"name": "Masked Gorgon",
+		"rarity": "Rare"
+	}, {
+		"name": "Morality Shift",
+		"rarity": "Rare"
+	}, {
+		"name": "Rats' Feast",
+		"rarity": "Common"
+	}, {
+		"name": "Stitch Together",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sutured Ghoul",
+		"rarity": "Rare"
+	}, {
+		"name": "Toxic Stench",
+		"rarity": "Common"
+	}, {
+		"name": "Treacherous Vampire",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Treacherous Werewolf",
+		"rarity": "Common"
+	}, {
+		"name": "Anger",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Arcane Teachings",
+		"rarity": "Common"
+	}, {
+		"name": "Barbarian Bully",
+		"rarity": "Common"
+	}, {
+		"name": "Book Burning",
+		"rarity": "Common"
+	}, {
+		"name": "Breaking Point",
+		"rarity": "Rare"
+	}, {
+		"name": "Browbeat",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Burning Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Dwarven Bloodboiler",
+		"rarity": "Rare"
+	}, {
+		"name": "Dwarven Driller",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dwarven Scorcher",
+		"rarity": "Common"
+	}, {
+		"name": "Ember Shot",
+		"rarity": "Common"
+	}, {
+		"name": "Firecat Blitz",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Flaring Pain",
+		"rarity": "Common"
+	}, {
+		"name": "Fledgling Dragon",
+		"rarity": "Rare"
+	}, {
+		"name": "Goretusk Firebeast",
+		"rarity": "Common"
+	}, {
+		"name": "Infectious Rage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Jeska, Warrior Adept",
+		"rarity": "Rare"
+	}, {
+		"name": "Lava Dart",
+		"rarity": "Common"
+	}, {
+		"name": "Liberated Dwarf",
+		"rarity": "Common"
+	}, {
+		"name": "Lightning Surge",
+		"rarity": "Rare"
+	}, {
+		"name": "Planar Chaos",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Shaman's Trance",
+		"rarity": "Rare"
+	}, {
+		"name": "Soulgorger Orgg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spellgorger Barbarian",
+		"rarity": "Common"
+	}, {
+		"name": "Swelter",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Swirling Sandstorm",
+		"rarity": "Common"
+	}, {
+		"name": "Worldgorger Dragon",
+		"rarity": "Rare"
+	}, {
+		"name": "Anurid Barkripper",
+		"rarity": "Common"
+	}, {
+		"name": "Anurid Swarmsnapper",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Battlefield Scrounger",
+		"rarity": "Common"
+	}, {
+		"name": "Brawn",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Canopy Claws",
+		"rarity": "Common"
+	}, {
+		"name": "Centaur Rootcaster",
+		"rarity": "Common"
+	}, {
+		"name": "Crush of Wurms",
+		"rarity": "Rare"
+	}, {
+		"name": "Elephant Guide",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Epic Struggle",
+		"rarity": "Rare"
+	}, {
+		"name": "Erhnam Djinn",
+		"rarity": "Rare"
+	}, {
+		"name": "Exoskeletal Armor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Folk Medicine",
+		"rarity": "Common"
+	}, {
+		"name": "Forcemage Advocate",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Genesis",
+		"rarity": "Rare"
+	}, {
+		"name": "Giant Warthog",
+		"rarity": "Common"
+	}, {
+		"name": "Grizzly Fate",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Harvester Druid",
+		"rarity": "Common"
+	}, {
+		"name": "Ironshell Beetle",
+		"rarity": "Common"
+	}, {
+		"name": "Krosan Reclamation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Krosan Wayfarer",
+		"rarity": "Common"
+	}, {
+		"name": "Living Wish",
+		"rarity": "Rare"
+	}, {
+		"name": "Nantuko Tracer",
+		"rarity": "Common"
+	}, {
+		"name": "Nullmage Advocate",
+		"rarity": "Common"
+	}, {
+		"name": "Phantom Centaur",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Phantom Nantuko",
+		"rarity": "Rare"
+	}, {
+		"name": "Phantom Tiger",
+		"rarity": "Common"
+	}, {
+		"name": "Seedtime",
+		"rarity": "Rare"
+	}, {
+		"name": "Serene Sunset",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sudden Strength",
+		"rarity": "Common"
+	}, {
+		"name": "Sylvan Safekeeper",
+		"rarity": "Rare"
+	}, {
+		"name": "Thriss, Nantuko Primus",
+		"rarity": "Rare"
+	}, {
+		"name": "Tunneler Wurm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Venomous Vines",
+		"rarity": "Common"
+	}, {
+		"name": "Anurid Brushhopper",
+		"rarity": "Rare"
+	}, {
+		"name": "Hunting Grounds",
+		"rarity": "Rare"
+	}, {
+		"name": "Mirari's Wake",
+		"rarity": "Rare"
+	}, {
+		"name": "Phantom Nishoba",
+		"rarity": "Rare"
+	}, {
+		"name": "Krosan Verge",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Nantuko Monastery",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Riftstone Portal",
+		"rarity": "Uncommon"
+	}]
+}, {
+	"code": "ODY",
+	"name": "Odyssey",
+	"cards": [{
+		"name": "Aegis of Honor",
+		"rarity": "Rare"
+	}, {
+		"name": "Ancestral Tribute",
+		"rarity": "Rare"
+	}, {
+		"name": "Angelic Wall",
+		"rarity": "Common"
+	}, {
+		"name": "Animal Boneyard",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Auramancer",
+		"rarity": "Common"
+	}, {
+		"name": "Aven Archer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aven Cloudchaser",
+		"rarity": "Common"
+	}, {
+		"name": "Aven Flock",
+		"rarity": "Common"
+	}, {
+		"name": "Aven Shrine",
+		"rarity": "Rare"
+	}, {
+		"name": "Balancing Act",
+		"rarity": "Rare"
+	}, {
+		"name": "Beloved Chaplain",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Blessed Orator",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cantivore",
+		"rarity": "Rare"
+	}, {
+		"name": "Cease-Fire",
+		"rarity": "Common"
+	}, {
+		"name": "Confessor",
+		"rarity": "Common"
+	}, {
+		"name": "Dedicated Martyr",
+		"rarity": "Common"
+	}, {
+		"name": "Delaying Shield",
+		"rarity": "Rare"
+	}, {
+		"name": "Devoted Caretaker",
+		"rarity": "Rare"
+	}, {
+		"name": "Divine Sacrament",
+		"rarity": "Rare"
+	}, {
+		"name": "Dogged Hunter",
+		"rarity": "Rare"
+	}, {
+		"name": "Earnest Fellowship",
+		"rarity": "Rare"
+	}, {
+		"name": "Embolden",
+		"rarity": "Common"
+	}, {
+		"name": "Gallantry",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Graceful Antelope",
+		"rarity": "Rare"
+	}, {
+		"name": "Hallowed Healer",
+		"rarity": "Common"
+	}, {
+		"name": "Karmic Justice",
+		"rarity": "Rare"
+	}, {
+		"name": "Kirtar's Desire",
+		"rarity": "Common"
+	}, {
+		"name": "Kirtar's Wrath",
+		"rarity": "Rare"
+	}, {
+		"name": "Lieutenant Kirtar",
+		"rarity": "Rare"
+	}, {
+		"name": "Life Burst",
+		"rarity": "Common"
+	}, {
+		"name": "Luminous Guardian",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Master Apothecary",
+		"rarity": "Rare"
+	}, {
+		"name": "Mystic Crusader",
+		"rarity": "Rare"
+	}, {
+		"name": "Mystic Penitent",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mystic Visionary",
+		"rarity": "Common"
+	}, {
+		"name": "Mystic Zealot",
+		"rarity": "Common"
+	}, {
+		"name": "Nomad Decoy",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Patrol Hound",
+		"rarity": "Common"
+	}, {
+		"name": "Pianna, Nomad Captain",
+		"rarity": "Rare"
+	}, {
+		"name": "Pilgrim of Justice",
+		"rarity": "Common"
+	}, {
+		"name": "Pilgrim of Virtue",
+		"rarity": "Common"
+	}, {
+		"name": "Ray of Distortion",
+		"rarity": "Common"
+	}, {
+		"name": "Resilient Wanderer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sacred Rites",
+		"rarity": "Common"
+	}, {
+		"name": "Second Thoughts",
+		"rarity": "Common"
+	}, {
+		"name": "Shelter",
+		"rarity": "Common"
+	}, {
+		"name": "Soulcatcher",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sphere of Duty",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sphere of Grace",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sphere of Law",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sphere of Reason",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sphere of Truth",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spiritualize",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Tattoo Ward",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Testament of Faith",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Tireless Tribe",
+		"rarity": "Common"
+	}, {
+		"name": "Wayward Angel",
+		"rarity": "Rare"
+	}, {
+		"name": "Aboshan, Cephalid Emperor",
+		"rarity": "Rare"
+	}, {
+		"name": "Aboshan's Desire",
+		"rarity": "Common"
+	}, {
+		"name": "Aether Burst",
+		"rarity": "Common"
+	}, {
+		"name": "Amugaba",
+		"rarity": "Rare"
+	}, {
+		"name": "Aura Graft",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aven Fisher",
+		"rarity": "Common"
+	}, {
+		"name": "Aven Smokeweaver",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Aven Windreader",
+		"rarity": "Common"
+	}, {
+		"name": "Balshan Beguiler",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Balshan Griffin",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Bamboozle",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Battle of Wits",
+		"rarity": "Rare"
+	}, {
+		"name": "Careful Study",
+		"rarity": "Common"
+	}, {
+		"name": "Cephalid Broker",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cephalid Looter",
+		"rarity": "Common"
+	}, {
+		"name": "Cephalid Retainer",
+		"rarity": "Rare"
+	}, {
+		"name": "Cephalid Scout",
+		"rarity": "Common"
+	}, {
+		"name": "Cephalid Shrine",
+		"rarity": "Rare"
+	}, {
+		"name": "Chamber of Manipulation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cognivore",
+		"rarity": "Rare"
+	}, {
+		"name": "Concentrate",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cultural Exchange",
+		"rarity": "Rare"
+	}, {
+		"name": "Deluge",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dematerialize",
+		"rarity": "Common"
+	}, {
+		"name": "Divert",
+		"rarity": "Rare"
+	}, {
+		"name": "Dreamwinder",
+		"rarity": "Common"
+	}, {
+		"name": "Escape Artist",
+		"rarity": "Common"
+	}, {
+		"name": "Extract",
+		"rarity": "Rare"
+	}, {
+		"name": "Fervent Denial",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Immobilizing Ink",
+		"rarity": "Common"
+	}, {
+		"name": "Laquatus's Creativity",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Patron Wizard",
+		"rarity": "Rare"
+	}, {
+		"name": "Pedantic Learning",
+		"rarity": "Rare"
+	}, {
+		"name": "Peek",
+		"rarity": "Common"
+	}, {
+		"name": "Persuasion",
+		"rarity": "Rare"
+	}, {
+		"name": "Phantom Whelp",
+		"rarity": "Common"
+	}, {
+		"name": "Predict",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Psionic Gift",
+		"rarity": "Common"
+	}, {
+		"name": "Pulsating Illusion",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Puppeteer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Repel",
+		"rarity": "Common"
+	}, {
+		"name": "Rites of Refusal",
+		"rarity": "Common"
+	}, {
+		"name": "Scrivener",
+		"rarity": "Common"
+	}, {
+		"name": "Shifty Doppelganger",
+		"rarity": "Rare"
+	}, {
+		"name": "Standstill",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Syncopate",
+		"rarity": "Common"
+	}, {
+		"name": "Think Tank",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Thought Devourer",
+		"rarity": "Rare"
+	}, {
+		"name": "Thought Eater",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Thought Nibbler",
+		"rarity": "Common"
+	}, {
+		"name": "Time Stretch",
+		"rarity": "Rare"
+	}, {
+		"name": "Touch of Invisibility",
+		"rarity": "Common"
+	}, {
+		"name": "Traumatize",
+		"rarity": "Rare"
+	}, {
+		"name": "Treetop Sentinel",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Unifying Theory",
+		"rarity": "Rare"
+	}, {
+		"name": "Upheaval",
+		"rarity": "Rare"
+	}, {
+		"name": "Words of Wisdom",
+		"rarity": "Common"
+	}, {
+		"name": "Afflict",
+		"rarity": "Common"
+	}, {
+		"name": "Bloodcurdler",
+		"rarity": "Rare"
+	}, {
+		"name": "Braids, Cabal Minion",
+		"rarity": "Rare"
+	}, {
+		"name": "Buried Alive",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cabal Inquisitor",
+		"rarity": "Common"
+	}, {
+		"name": "Cabal Patriarch",
+		"rarity": "Rare"
+	}, {
+		"name": "Cabal Shrine",
+		"rarity": "Rare"
+	}, {
+		"name": "Caustic Tar",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Childhood Horror",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Coffin Purge",
+		"rarity": "Common"
+	}, {
+		"name": "Crypt Creeper",
+		"rarity": "Common"
+	}, {
+		"name": "Cursed Monstrosity",
+		"rarity": "Rare"
+	}, {
+		"name": "Decaying Soil",
+		"rarity": "Rare"
+	}, {
+		"name": "Decompose",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Diabolic Tutor",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dirty Wererat",
+		"rarity": "Common"
+	}, {
+		"name": "Dusk Imp",
+		"rarity": "Common"
+	}, {
+		"name": "Entomb",
+		"rarity": "Rare"
+	}, {
+		"name": "Execute",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Face of Fear",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Famished Ghoul",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Filthy Cur",
+		"rarity": "Common"
+	}, {
+		"name": "Fledgling Imp",
+		"rarity": "Common"
+	}, {
+		"name": "Frightcrawler",
+		"rarity": "Common"
+	}, {
+		"name": "Ghastly Demise",
+		"rarity": "Common"
+	}, {
+		"name": "Gravedigger",
+		"rarity": "Common"
+	}, {
+		"name": "Gravestorm",
+		"rarity": "Rare"
+	}, {
+		"name": "Haunting Echoes",
+		"rarity": "Rare"
+	}, {
+		"name": "Hint of Insanity",
+		"rarity": "Rare"
+	}, {
+		"name": "Infected Vermin",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Innocent Blood",
+		"rarity": "Common"
+	}, {
+		"name": "Last Rites",
+		"rarity": "Common"
+	}, {
+		"name": "Malevolent Awakening",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mind Burst",
+		"rarity": "Common"
+	}, {
+		"name": "Mindslicer",
+		"rarity": "Rare"
+	}, {
+		"name": "Morbid Hunger",
+		"rarity": "Common"
+	}, {
+		"name": "Morgue Theft",
+		"rarity": "Common"
+	}, {
+		"name": "Mortivore",
+		"rarity": "Rare"
+	}, {
+		"name": "Nefarious Lich",
+		"rarity": "Rare"
+	}, {
+		"name": "Overeager Apprentice",
+		"rarity": "Common"
+	}, {
+		"name": "Painbringer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Patriarch's Desire",
+		"rarity": "Common"
+	}, {
+		"name": "Repentant Vampire",
+		"rarity": "Rare"
+	}, {
+		"name": "Rotting Giant",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sadistic Hypnotist",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Screams of the Damned",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Skeletal Scrying",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Skull Fracture",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stalking Bloodsucker",
+		"rarity": "Rare"
+	}, {
+		"name": "Tainted Pact",
+		"rarity": "Rare"
+	}, {
+		"name": "Tombfire",
+		"rarity": "Rare"
+	}, {
+		"name": "Traveling Plague",
+		"rarity": "Rare"
+	}, {
+		"name": "Whispering Shade",
+		"rarity": "Common"
+	}, {
+		"name": "Zombie Assassin",
+		"rarity": "Common"
+	}, {
+		"name": "Zombie Cannibal",
+		"rarity": "Common"
+	}, {
+		"name": "Zombie Infestation",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Zombify",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Acceptable Losses",
+		"rarity": "Common"
+	}, {
+		"name": "Anarchist",
+		"rarity": "Common"
+	}, {
+		"name": "Ashen Firebeast",
+		"rarity": "Rare"
+	}, {
+		"name": "Barbarian Lunatic",
+		"rarity": "Common"
+	}, {
+		"name": "Bash to Bits",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Battle Strain",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Blazing Salvo",
+		"rarity": "Common"
+	}, {
+		"name": "Bomb Squad",
+		"rarity": "Rare"
+	}, {
+		"name": "Burning Sands",
+		"rarity": "Rare"
+	}, {
+		"name": "Chainflinger",
+		"rarity": "Common"
+	}, {
+		"name": "Chance Encounter",
+		"rarity": "Rare"
+	}, {
+		"name": "Demolish",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Demoralize",
+		"rarity": "Common"
+	}, {
+		"name": "Dwarven Grunt",
+		"rarity": "Common"
+	}, {
+		"name": "Dwarven Recruiter",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Dwarven Shrine",
+		"rarity": "Rare"
+	}, {
+		"name": "Dwarven Strike Force",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Earth Rift",
+		"rarity": "Common"
+	}, {
+		"name": "Ember Beast",
+		"rarity": "Common"
+	}, {
+		"name": "Engulfing Flames",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Epicenter",
+		"rarity": "Rare"
+	}, {
+		"name": "Firebolt",
+		"rarity": "Common"
+	}, {
+		"name": "Flame Burst",
+		"rarity": "Common"
+	}, {
+		"name": "Frenetic Ogre",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Halberdier",
+		"rarity": "Common"
+	}, {
+		"name": "Impulsive Maneuvers",
+		"rarity": "Rare"
+	}, {
+		"name": "Kamahl, Pit Fighter",
+		"rarity": "Rare"
+	}, {
+		"name": "Kamahl's Desire",
+		"rarity": "Common"
+	}, {
+		"name": "Lava Blister",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Liquid Fire",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mad Dog",
+		"rarity": "Common"
+	}, {
+		"name": "Magma Vein",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Magnivore",
+		"rarity": "Rare"
+	}, {
+		"name": "Mine Layer",
+		"rarity": "Rare"
+	}, {
+		"name": "Minotaur Explorer",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Molten Influence",
+		"rarity": "Rare"
+	}, {
+		"name": "Mudhole",
+		"rarity": "Rare"
+	}, {
+		"name": "Need for Speed",
+		"rarity": "Rare"
+	}, {
+		"name": "Obstinate Familiar",
+		"rarity": "Rare"
+	}, {
+		"name": "Pardic Firecat",
+		"rarity": "Common"
+	}, {
+		"name": "Pardic Miner",
+		"rarity": "Rare"
+	}, {
+		"name": "Pardic Swordsmith",
+		"rarity": "Common"
+	}, {
+		"name": "Price of Glory",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Reckless Charge",
+		"rarity": "Common"
+	}, {
+		"name": "Recoup",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Rites of Initiation",
+		"rarity": "Common"
+	}, {
+		"name": "Savage Firecat",
+		"rarity": "Rare"
+	}, {
+		"name": "Scorching Missile",
+		"rarity": "Common"
+	}, {
+		"name": "Seize the Day",
+		"rarity": "Rare"
+	}, {
+		"name": "Shower of Coals",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spark Mage",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Steam Vines",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Thermal Blast",
+		"rarity": "Common"
+	}, {
+		"name": "Tremble",
+		"rarity": "Common"
+	}, {
+		"name": "Volcanic Spray",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Volley of Boulders",
+		"rarity": "Rare"
+	}, {
+		"name": "Whipkeeper",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Bearscape",
+		"rarity": "Rare"
+	}, {
+		"name": "Beast Attack",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Call of the Herd",
+		"rarity": "Rare"
+	}, {
+		"name": "Cartographer",
+		"rarity": "Common"
+	}, {
+		"name": "Chatter of the Squirrel",
+		"rarity": "Common"
+	}, {
+		"name": "Chlorophant",
+		"rarity": "Rare"
+	}, {
+		"name": "Crashing Centaur",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Deep Reconnaissance",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Diligent Farmhand",
+		"rarity": "Common"
+	}, {
+		"name": "Druid Lyrist",
+		"rarity": "Common"
+	}, {
+		"name": "Druid's Call",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Elephant Ambush",
+		"rarity": "Common"
+	}, {
+		"name": "Gorilla Titan",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Ground Seal",
+		"rarity": "Rare"
+	}, {
+		"name": "Holistic Wisdom",
+		"rarity": "Rare"
+	}, {
+		"name": "Howling Gale",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Ivy Elemental",
+		"rarity": "Rare"
+	}, {
+		"name": "Krosan Archer",
+		"rarity": "Common"
+	}, {
+		"name": "Krosan Avenger",
+		"rarity": "Common"
+	}, {
+		"name": "Krosan Beast",
+		"rarity": "Rare"
+	}, {
+		"name": "Leaf Dancer",
+		"rarity": "Common"
+	}, {
+		"name": "Metamorphic Wurm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Moment's Peace",
+		"rarity": "Common"
+	}, {
+		"name": "Muscle Burst",
+		"rarity": "Common"
+	}, {
+		"name": "Nantuko Disciple",
+		"rarity": "Common"
+	}, {
+		"name": "Nantuko Elder",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Nantuko Mentor",
+		"rarity": "Rare"
+	}, {
+		"name": "Nantuko Shrine",
+		"rarity": "Rare"
+	}, {
+		"name": "New Frontiers",
+		"rarity": "Rare"
+	}, {
+		"name": "Nimble Mongoose",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Nut Collector",
+		"rarity": "Rare"
+	}, {
+		"name": "Overrun",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Piper's Melody",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Primal Frenzy",
+		"rarity": "Common"
+	}, {
+		"name": "Rabid Elephant",
+		"rarity": "Common"
+	}, {
+		"name": "Refresh",
+		"rarity": "Common"
+	}, {
+		"name": "Rites of Spring",
+		"rarity": "Common"
+	}, {
+		"name": "Roar of the Wurm",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Seton, Krosan Protector",
+		"rarity": "Rare"
+	}, {
+		"name": "Seton's Desire",
+		"rarity": "Common"
+	}, {
+		"name": "Simplify",
+		"rarity": "Common"
+	}, {
+		"name": "Skyshooter",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Spellbane Centaur",
+		"rarity": "Rare"
+	}, {
+		"name": "Springing Tiger",
+		"rarity": "Common"
+	}, {
+		"name": "Squirrel Mob",
+		"rarity": "Rare"
+	}, {
+		"name": "Squirrel Nest",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Still Life",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Stone-Tongue Basilisk",
+		"rarity": "Rare"
+	}, {
+		"name": "Sylvan Might",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Terravore",
+		"rarity": "Rare"
+	}, {
+		"name": "Twigwalker",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Verdant Succession",
+		"rarity": "Rare"
+	}, {
+		"name": "Vivify",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Werebear",
+		"rarity": "Common"
+	}, {
+		"name": "Wild Mongrel",
+		"rarity": "Common"
+	}, {
+		"name": "Woodland Druid",
+		"rarity": "Common"
+	}, {
+		"name": "Zoologist",
+		"rarity": "Rare"
+	}, {
+		"name": "Atogatog",
+		"rarity": "Rare"
+	}, {
+		"name": "Decimate",
+		"rarity": "Rare"
+	}, {
+		"name": "Iridescent Angel",
+		"rarity": "Rare"
+	}, {
+		"name": "Lithatog",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mystic Enforcer",
+		"rarity": "Rare"
+	}, {
+		"name": "Phantatog",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Psychatog",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sarcatog",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Shadowmage Infiltrator",
+		"rarity": "Rare"
+	}, {
+		"name": "Thaumatog",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Vampiric Dragon",
+		"rarity": "Rare"
+	}, {
+		"name": "Catalyst Stone",
+		"rarity": "Rare"
+	}, {
+		"name": "Charmed Pendant",
+		"rarity": "Rare"
+	}, {
+		"name": "Darkwater Egg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Junk Golem",
+		"rarity": "Rare"
+	}, {
+		"name": "Limestone Golem",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Millikin",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Mirari",
+		"rarity": "Rare"
+	}, {
+		"name": "Mossfire Egg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Otarian Juggernaut",
+		"rarity": "Rare"
+	}, {
+		"name": "Patchwork Gnomes",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sandstone Deadfall",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Shadowblood Egg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Skycloud Egg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Steamclaw",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Sungrass Egg",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Abandoned Outpost",
+		"rarity": "Common"
+	}, {
+		"name": "Barbarian Ring",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Bog Wreckage",
+		"rarity": "Common"
+	}, {
+		"name": "Cabal Pit",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Centaur Garden",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Cephalid Coliseum",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Crystal Quarry",
+		"rarity": "Rare"
+	}, {
+		"name": "Darkwater Catacombs",
+		"rarity": "Rare"
+	}, {
+		"name": "Deserted Temple",
+		"rarity": "Rare"
+	}, {
+		"name": "Mossfire Valley",
+		"rarity": "Rare"
+	}, {
+		"name": "Nomad Stadium",
+		"rarity": "Uncommon"
+	}, {
+		"name": "Petrified Field",
+		"rarity": "Rare"
+	}, {
+		"name": "Ravaged Highlands",
+		"rarity": "Common"
+	}, {
+		"name": "Seafloor Debris",
+		"rarity": "Common"
+	}, {
+		"name": "Shadowblood Ridge",
+		"rarity": "Rare"
+	}, {
+		"name": "Skycloud Expanse",
+		"rarity": "Rare"
+	}, {
+		"name": "Sungrass Prairie",
+		"rarity": "Rare"
+	}, {
+		"name": "Tarnished Citadel",
+		"rarity": "Rare"
+	}, {
+		"name": "Timberland Ruins",
+		"rarity": "Common"
 	}, {
 		"name": "Plains",
 		"rarity": "Basic Land"
