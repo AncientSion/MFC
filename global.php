@@ -322,6 +322,7 @@ function writeBoosterInput(){
 }
 
 function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
+	return;
 	$stamp = time();
 
 	$search = array(
@@ -338,6 +339,7 @@ function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $min
 }
 
 function logChart($set, $card){
+	return;
 	$stamp = time();
 
 	$search = array(
