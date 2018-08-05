@@ -8,7 +8,6 @@
 	echo '<a href="shakers.php">Reload Blank</a>';
 	echo '<a style="margin-left: 100px; color: yellow;" href="charts.php">Go to single card lookup</a>';
 		
-		
 
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
@@ -27,7 +26,6 @@
 			$stackDisplay = 0; if (isset($_GET["stackDisplay"])){$stackDisplay = 1;}
 			$type = $_GET["compareType"];
 			$foil = 0; if ($_GET["foil"] == "Foil"){$foil = 1;}
-
 
 		echo "<div class='mainContainer'>
 			<div class='container'>

@@ -175,7 +175,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='depth'>Max Avail (n)</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='10000' value='".$maxAvail."' name='maxAvail'>";
+	$html .= "<input type='number' min=0 max=10000 value='".$maxAvail."' name='maxAvail'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -184,7 +184,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='minPrice'>Min (€, n)</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='5000' step='0.5' value='".$minPrice."' name='minPrice'>";
+	$html .= "<input type='number' min=0 max=5000 step=0.5 value='".$minPrice."' name='minPrice'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -193,7 +193,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='maxPrice'>Max (€, n)</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number'min='0' max='5000' value='".$maxPrice."' name='maxPrice'>";
+	$html .= "<input type='number'min=0 max=5000 value='".$maxPrice."' name='maxPrice'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -202,7 +202,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number'min='-100' max='100' value='".$availChange."' name='availChange'>";
+	$html .= "<input type='number' value='".$availChange."' name='availChange'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -507,7 +507,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 		$moneyChange = "foilPriceChange";
 	}
 
-	if ($compareType == "abs"){
+	if ($compareType == "ABS"){
 		$index = 0;
 	} else $index = 1;
 
