@@ -33,7 +33,7 @@ function fetchAll($day){
 	);
 	
 			
-	$data = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
+	$data = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $data["codes"];
 	$names = $data["names"];	
 
@@ -93,7 +93,6 @@ function getEDH($date){
 		for ($j = 0; $j < sizeof($cards->cardviews); $j++){
 			//var_export($cards->cardviews[0]->label);
 
-			//$avail = str_replace(",", ".", substr($foilPrice, $start, strpos($foilPrice, " ")))
 			$label = $cards->cardviews[$j]->label;
 			$pos =  strpos($label, ">");
 			$baseAvail = substr($label, 3, strpos($label, " ", 4)-3);
@@ -202,8 +201,8 @@ function foil($date, $codes, $names, $context){
 
 function mixed($date, $codes, $names, $context){
 	
-	//$codes = array("ODY", "JUD");
-	//$names = array("Odyssey", "Judgment");
+	//$codes = array("BFZ", "OGW");
+	//$names = array("Battle for Zendikar", "Oath of the Gatewatch");
 	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";

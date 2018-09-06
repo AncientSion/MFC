@@ -43,7 +43,7 @@ function getMemory(){
 }
 	
 function buildFullCardPool(){
-	$sets = file_get_contents(__DIR__."/input/avail.json");
+	$sets = file_get_contents(__DIR__."/output/avail.json");
 	$sets = json_decode($sets);
 
 	$data = array();
@@ -70,7 +70,7 @@ function buildFullCardPool(){
 
 
 function getSetNamesByCodes($data){
-	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
+	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
 	//var_export($data);
 	//return;
@@ -243,7 +243,7 @@ function getForm($get){
 
 
 
-	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
+	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $sets["codes"];
 	$names = $sets["codes"];
 
@@ -360,7 +360,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);
 	
-	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
+	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
 	$names = getSetNamesByCodes($codes);
 	$allSets = array();
@@ -637,7 +637,7 @@ function writeAndClose($code, $data){
 
 
 function fixOutputSets(){
-	$sets = json_decode(file_get_contents(__DIR__."/input/avail.json"), TRUE);
+	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $sets["codes"];
 	$names = $sets["names"];
 
