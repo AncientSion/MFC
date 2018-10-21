@@ -139,7 +139,7 @@ div > input, div > span{
 #set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChange {
 	text-align: center;
 	display: block;
-	font-size: 20px;
+	font-size: 14px;
 	color: lightGreen;
 	margin-bottom: 10px;
 }
@@ -151,6 +151,6 @@ div > input, div > span{
 
 .inputContainer {
 	display: inline-block;
-	margin-right: 20px;
+	margin-right: 14px;
 	text-align: center;
 }

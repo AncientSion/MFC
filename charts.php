@@ -13,7 +13,7 @@
 			$set = $_GET["set"];
 			$card = $_GET["card"];
 
-			//echo $set; echo $card;
+			//echo $card;
 
 			logChart($set, $card);
 			$dataPoints = array();

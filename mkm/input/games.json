@@ -1,0 +1,125 @@
+{
+	"game": [{
+		"idGame": 1,
+		"name": "Magic the Gathering",
+		"abbreviation": "MtG",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/1\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 3,
+		"name": "Yugioh",
+		"abbreviation": "YGO",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/3\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 6,
+		"name": "Pok\u00e9mon",
+		"abbreviation": "PCG",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/6\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 13,
+		"name": "Dragon Ball Super",
+		"abbreviation": "DBS",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/13\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 9,
+		"name": "Final Fantasy",
+		"abbreviation": "FF",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/9\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 7,
+		"name": "Force of Will",
+		"abbreviation": "FoW",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/7\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 8,
+		"name": "Cardfight!! Vanguard",
+		"abbreviation": "CFV",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/8\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 2,
+		"name": "World of Warcraft TCG",
+		"abbreviation": "WoW",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/2\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 15,
+		"name": "Star Wars: Destiny",
+		"abbreviation": "SWD",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/15\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 10,
+		"name": "Wei\u00df Schwarz",
+		"abbreviation": "WS",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/10\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 11,
+		"name": "Dragoborne",
+		"abbreviation": "DGB",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/11\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 12,
+		"name": "My Little Pony",
+		"abbreviation": "MLP",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/12\/expansions",
+			"method": "GET"
+		}]
+	}, {
+		"idGame": 5,
+		"name": "The Spoils",
+		"abbreviation": "Spoils",
+		"links": [{
+			"rel": "expansions",
+			"href": "\/games\/5\/expansions",
+			"method": "GET"
+		}]
+	}],
+	"links": [{
+		"rel": "self",
+		"href": "\/games",
+		"method": "GET"
+	}]
+}

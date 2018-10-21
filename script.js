@@ -161,37 +161,39 @@ class Charter {
 		return ret;
 	}
 
+	
+//function doReplace($name){return str_replace("'", "", str_replace(" ", "-", str_replace(",", "", $name)));
+
+	getCardLink(set, name){
+		console.log(set);
+		console.log(name);
+		
+		set = set.replace(/ /g, "-");
+		name = name.replace(/ /g, "-");
+		name = name.replace(/'/g, "");
+		name = name.replace(/,/g, "");
+		name = name.replace("//", "");
+		name = name.replace("/,", "");
+		name = name.replace(/--/g, "-");
+		
+		console.log(set);
+		console.log(name);
+		
+		
+		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + (set + "/" + name);
+		var link = "<a target='_blank' href='" + url + "'>click dat link to mkm</a>";
+		return link
+	}
+
 	buildAllCards(card, set, data){
 		
-		var setEncode = encodeURIComponent($("#setSearch").val());
-		var cardEncode = escape(card);
-		
-		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + setEncode + "/" + cardEncode;
-		//	url = encodeURI(url);
-		var link = "<a target='_blank' href='" + url + "'>"+ card + " - " + set + " (click)</a>";
-
-
-		//if (data.msg != undefined){
+		if ($("#cardName").length){
+			var link = this.getCardLink($("#setSearch").val(), card);
 			$("#cardName").html(link);
-		//	return;
-		//}
-		/*
-		var foilAvail = this.getfoilAvailData(data);
-		var foilPrice = this.getFoilPriceData(data);
-		var baseAvail = this.getbaseAvailData(data);
-		var basePrice = this.getbasePriceData(data);
-
-
-		if (foilAvail[0].data.length){this.buildChart(card, set, label, "Available Stock", foilAvail, "foilAvailChart", this.foilAvailCtx);}
-		if (foilPrice[0].data.length){this.buildChart(card, set, label, "Low. Price", foilPrice, "foilPriceChart", this.foilPriceCtx);}
-		if (baseAvail[0].data.length){this.buildChart(card, set, label, "Available Stock", baseAvail, "baseAvailChart", this.baseAvailCtx);}
-		if (basePrice[0].data.length){this.buildChart(card, set, label, "Low. Price", basePrice, "basePriceChart", this.basePriceCtx);}
-		*/
-
+		}
 
 		this.undrawOldCharts();
 		this.draws++;
-
 
 		var label = this.getLabel(data);
 		var cardData = this.getCardDataSets(data, card, set);

@@ -1,1323 +1,1383 @@
 {
 	"expansions": [{
-		"code": "MGFC",
+		"code": "MTG",
 		"name": "Filler Cards",
 		"id": 1408
 	}, {
-		"code": "PROM",
+		"code": "MTG",
 		"name": "Promos",
 		"id": 1249
 	}, {
-		"code": "YMGT",
+		"code": "MTG",
 		"name": "Your Move Games Tokens",
 		"id": 1281
 	}, {
-		"code": "SCT2",
+		"code": "MTG",
 		"name": "Starcity Games: Justin Treadway Tokens",
 		"id": 1438
 	}, {
-		"code": "MKMT",
+		"code": "MTG",
 		"name": "Custom Tokens",
 		"id": 1499
 	}, {
-		"code": "SCT3",
+		"code": "MTG",
 		"name": "Starcity Games: Commemorative Tokens",
 		"id": 1500
 	}, {
-		"code": "SCCC",
+		"code": "MTG",
 		"name": "Starcity Games: Creature Collection",
 		"id": 1501
 	}, {
-		"code": "MSTK",
+		"code": "MTG",
 		"name": "Tokens for MTG",
 		"id": 1502
 	}, {
-		"code": "TMP",
+		"code": "MTG",
 		"name": "Tierra Media Tokens",
 		"id": 1511
 	}, {
-		"code": "SCT4",
+		"code": "MTG",
 		"name": "Starcity Games: Kristen Plescow Tokens",
 		"id": 1512
 	}, {
-		"code": "SCT1",
+		"code": "MTG",
 		"name": "Starcity Games: Token Series One",
 		"id": 1514
 	}, {
-		"code": "TOKY",
+		"code": "MTG",
 		"name": "TokyoMTG Products",
 		"id": 1515
 	}, {
-		"code": "LET",
+		"code": "MTG",
 		"name": "League Promos",
 		"id": 1594
 	}, {
-		"code": "GETC",
+		"code": "MTG",
 		"name": "GamingEtc Tokens",
 		"id": 1642
 	}, {
-		"code": "YUM",
+		"code": "MTG",
 		"name": "Yummy Tokens",
 		"id": 1659
 	}, {
-		"code": "GnDT",
+		"code": "MTG",
 		"name": "GnD Cards",
 		"id": 1691
 	}, {
-		"code": "JAT",
+		"code": "MTG",
 		"name": "Javi Alterations Tokens",
 		"id": 1705
 	}, {
-		"code": "MFMT",
+		"code": "MTG",
 		"name": "Mezzocielo & Friends Mini Tokens",
 		"id": 1765
 	}, {
-		"code": "SSP",
+		"code": "MTG",
 		"name": "Standard Series Promos",
 		"id": 1809
 	}, {
-		"code": "RKP",
+		"code": "MTG",
 		"name": "Rk post Products",
 		"id": 1833
 	}, {
-		"code": "MFCT",
+		"code": "MTG",
 		"name": "Mezzocielo & Friends Classic Tokens",
 		"id": 1834
 	}, {
-		"code": "JVT",
+		"code": "MTG",
 		"name": "Johannes Voss Tokens",
 		"id": 2114
 	}, {
-		"code": "UPRT",
-		"name": "Ultra Pro Relic Tokens",
-		"id": 2115
+		"code": "MTG",
+		"name": "Old School Tokens",
+		"id": 2360
 	}, {
-		"code": "LEA",
+		"code": "MTG",
 		"name": "Alpha",
 		"id": 1
 	}, {
-		"code": "LEB",
+		"code": "MTG",
 		"name": "Beta",
 		"id": 2
 	}, {
-		"code": "2ED",
+		"code": "MTG",
 		"name": "Unlimited",
 		"id": 3
 	}, {
-		"code": "ARN",
+		"code": "MTG",
 		"name": "Arabian Nights",
 		"id": 4
 	}, {
-		"code": "CED",
+		"code": "MTG",
 		"name": "Collectors' Edition",
 		"id": 61
 	}, {
-		"code": "IED",
+		"code": "MTG",
 		"name": "International Edition",
 		"id": 77
 	}, {
-		"code": "TDP",
+		"code": "MTG",
 		"name": "The Duelist Promos",
 		"id": 93
 	}, {
-		"code": "ARBI",
+		"code": "MTG",
 		"name": "Armada Comics",
 		"id": 117
 	}, {
-		"code": "MSPR",
+		"code": "MTG",
 		"name": "Misprints",
 		"id": 1367
 	}, {
-		"code": "ATQ",
+		"code": "MTG",
 		"name": "Antiquities",
 		"id": 5
 	}, {
-		"code": "3ED",
+		"code": "MTG",
 		"name": "Revised",
 		"id": 6
 	}, {
-		"code": "DTL",
+		"code": "MTG",
 		"name": "Foreign Black Bordered",
 		"id": 57
 	}, {
-		"code": "LEG",
+		"code": "MTG",
 		"name": "Legends",
 		"id": 7
 	}, {
-		"code": "SUM",
+		"code": "MTG",
 		"name": "Summer Magic",
 		"id": 76
 	}, {
-		"code": "DRK",
+		"code": "MTG",
 		"name": "The Dark",
 		"id": 8
 	}, {
-		"code": "HPP",
+		"code": "MTG",
 		"name": "Harper Prism Promos",
 		"id": 71
 	}, {
-		"code": "FEM",
+		"code": "MTG",
 		"name": "Fallen Empires",
 		"id": 9
 	}, {
-		"code": "FEWM",
+		"code": "MTG",
 		"name": "Fallen Empires: Wyvern Misprints",
 		"id": 1638
 	}, {
-		"code": "DTU",
+		"code": "MTG",
 		"name": "Foreign White Bordered",
 		"id": 73
 	}, {
-		"code": "DKIT",
+		"code": "MTG",
 		"name": "The Dark Italian",
 		"id": 1837
 	}, {
-		"code": "LEIT",
+		"code": "MTG",
 		"name": "Legends Italian",
 		"id": 1838
 	}, {
-		"code": "4EBB",
-		"name": "Fourth Edition: Black Bordered",
-		"id": 1332
-	}, {
-		"code": "4EAT",
-		"name": "Fourth Edition: Alternate",
-		"id": 1600
-	}, {
-		"code": "4ED",
+		"code": "MTG",
 		"name": "Fourth Edition",
 		"id": 10
 	}, {
-		"code": "ICE",
+		"code": "MTG",
+		"name": "Fourth Edition: Black Bordered",
+		"id": 1332
+	}, {
+		"code": "MTG",
+		"name": "Fourth Edition: Alternate",
+		"id": 1600
+	}, {
+		"code": "MTG",
 		"name": "Ice Age",
 		"id": 11
 	}, {
-		"code": "RE",
+		"code": "MTG",
 		"name": "Renaissance",
 		"id": 60
 	}, {
-		"code": "RI",
+		"code": "MTG",
 		"name": "Rinascimento",
 		"id": 96
 	}, {
-		"code": "CHR",
+		"code": "MTG",
 		"name": "Chronicles",
 		"id": 12
 	}, {
-		"code": "CHRJP",
+		"code": "MTG",
 		"name": "Chronicles: Japanese",
 		"id": 1599
 	}, {
-		"code": "HML",
+		"code": "MTG",
 		"name": "Homelands",
 		"id": 14
 	}, {
-		"code": "IBS",
+		"code": "MTG",
 		"name": "Introductory Two-Player Set",
 		"id": 85
 	}, {
-		"code": "UPPC",
+		"code": "MTG",
 		"name": "Ultra-Pro Puzzle Cards",
 		"id": 1451
 	}, {
-		"code": "ALL",
+		"code": "MTG",
 		"name": "Alliances",
 		"id": 15
 	}, {
-		"code": "ALP",
+		"code": "MTG",
 		"name": "Arena League Promos",
 		"id": 89
 	}, {
-		"code": "MIR",
+		"code": "MTG",
 		"name": "Mirage",
 		"id": 16
 	}, {
-		"code": "MUL",
+		"code": "MTG",
 		"name": "Multiverse Gift Box",
 		"id": 1519
 	}, {
-		"code": "WCD1",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Bertrand Lestree",
 		"id": 121
 	}, {
-		"code": "WCD2",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Eric Tam",
 		"id": 122
 	}, {
-		"code": "WCD3",
+		"code": "MTG",
 		"name": "Pro Tour 1996: George Baxter",
 		"id": 123
 	}, {
-		"code": "WCD4",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Leon Lindback",
 		"id": 124
 	}, {
-		"code": "WCD5",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Mark Justice",
 		"id": 125
 	}, {
-		"code": "WCD6",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Michael Locanto",
 		"id": 126
 	}, {
-		"code": "WCD7",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Preston Poulter",
 		"id": 127
 	}, {
-		"code": "WCD8",
+		"code": "MTG",
 		"name": "Pro Tour 1996: Shawn Regnier",
 		"id": 128
 	}, {
-		"code": "POR",
+		"code": "MTG",
 		"name": "Portal",
 		"id": 25
 	}, {
-		"code": "OS69",
+		"code": "MTG",
 		"name": "Oversized 6x9 Promos",
 		"id": 110
 	}, {
-		"code": "OS912",
+		"code": "MTG",
 		"name": "Oversized 9x12 Promos",
 		"id": 1639
 	}, {
-		"code": "VIS",
+		"code": "MTG",
 		"name": "Visions",
 		"id": 17
 	}, {
-		"code": "5ED",
+		"code": "MTG",
 		"name": "Fifth Edition",
 		"id": 23
 	}, {
-		"code": "WTH",
+		"code": "MTG",
 		"name": "Weatherlight",
 		"id": 18
 	}, {
-		"code": "VG",
+		"code": "MTG",
 		"name": "Vanguard",
 		"id": 69
 	}, {
-		"code": "TP",
+		"code": "MTG",
 		"name": "Tempest",
 		"id": 19
 	}, {
-		"code": "GDC",
+		"code": "MTG",
 		"name": "Prerelease Promos",
 		"id": 83
 	}, {
-		"code": "APL",
+		"code": "MTG",
 		"name": "APAC Lands",
 		"id": 97
 	}, {
-		"code": "WCD9",
+		"code": "MTG",
 		"name": "WCD 1997: Jakub Slemr",
 		"id": 1199
 	}, {
-		"code": "WCD10",
+		"code": "MTG",
 		"name": "WCD 1997: Janosch Kuhn",
 		"id": 1200
 	}, {
-		"code": "WCD11",
+		"code": "MTG",
 		"name": "WCD 1997: Paul McCabe",
 		"id": 1292
 	}, {
-		"code": "WCD12",
+		"code": "MTG",
 		"name": "WCD 1997: Svend Geertsen",
 		"id": 1293
 	}, {
-		"code": "STH",
+		"code": "MTG",
 		"name": "Stronghold",
 		"id": 20
 	}, {
-		"code": "EXO",
+		"code": "MTG",
 		"name": "Exodus",
 		"id": 21
 	}, {
-		"code": "P02",
+		"code": "MTG",
 		"name": "Portal Second Age",
 		"id": 24
 	}, {
-		"code": "UGL",
+		"code": "MTG",
 		"name": "Unglued",
 		"id": 22
 	}, {
-		"code": "USG",
+		"code": "MTG",
 		"name": "Urza's Saga",
 		"id": 26
 	}, {
-		"code": "ATH",
+		"code": "MTG",
 		"name": "Anthologies",
 		"id": 75
 	}, {
-		"code": "SCAA",
+		"code": "MTG",
 		"name": "Simplified Chinese Alternate Art Cards",
 		"id": 1401
 	}, {
-		"code": "WCD13",
+		"code": "MTG",
 		"name": "WCD 1998: Randy Buehler",
 		"id": 1294
 	}, {
-		"code": "WCD14",
+		"code": "MTG",
 		"name": "WCD 1998: Brian Hacker",
 		"id": 1295
 	}, {
-		"code": "WCD15",
+		"code": "MTG",
 		"name": "WCD 1998: Ben Rubin",
 		"id": 1296
 	}, {
-		"code": "WCD16",
+		"code": "MTG",
 		"name": "WCD 1998: Brian Selden",
 		"id": 1297
 	}, {
-		"code": "ULG",
+		"code": "MTG",
 		"name": "Urza's Legacy",
 		"id": 27
 	}, {
-		"code": "6ED",
+		"code": "MTG",
 		"name": "Sixth Edition",
 		"id": 29
 	}, {
-		"code": "UDS",
+		"code": "MTG",
 		"name": "Urza's Destiny",
 		"id": 28
 	}, {
-		"code": "JR",
+		"code": "MTG",
 		"name": "Judge Rewards Promos",
 		"id": 80
 	}, {
-		"code": "PTK",
+		"code": "MTG",
 		"name": "Portal Three Kingdoms",
 		"id": 30
 	}, {
-		"code": "S99",
+		"code": "MTG",
 		"name": "Starter 1999",
 		"id": 63
 	}, {
-		"code": "GUL",
+		"code": "MTG",
 		"name": "Guru Lands",
 		"id": 88
 	}, {
-		"code": "MMQ",
+		"code": "MTG",
 		"name": "Mercadian Masques",
 		"id": 31
 	}, {
-		"code": "BRB",
+		"code": "MTG",
 		"name": "Battle Royale",
 		"id": 64
 	}, {
-		"code": "JSS",
+		"code": "MTG",
 		"name": "Junior Super Series Promos",
 		"id": 86
 	}, {
-		"code": "WCD17",
+		"code": "MTG",
 		"name": "WCD 1999: Jakub \u0160lemr",
 		"id": 1298
 	}, {
-		"code": "WCD18",
+		"code": "MTG",
 		"name": "WCD 1999: Matt Linde",
 		"id": 1299
 	}, {
-		"code": "WCD19",
+		"code": "MTG",
 		"name": "WCD 1999: Mark Le Pine",
 		"id": 1300
 	}, {
-		"code": "WCD20",
+		"code": "MTG",
 		"name": "WCD 1999: Kai Budde",
 		"id": 1301
 	}, {
-		"code": "DCI",
+		"code": "MTG",
 		"name": "DCI Promos",
 		"id": 66
 	}, {
-		"code": "TDPR",
+		"code": "MTG",
 		"name": "TopDeck Promos",
 		"id": 129
 	}, {
-		"code": "GPPR",
+		"code": "MTG",
 		"name": "Grand Prix Promos",
 		"id": 1595
 	}, {
-		"code": "PTPR",
+		"code": "MTG",
 		"name": "Pro Tour Promos",
 		"id": 1596
 	}, {
-		"code": "NEM",
+		"code": "MTG",
 		"name": "Nemesis",
 		"id": 32
 	}, {
-		"code": "FNM",
+		"code": "MTG",
 		"name": "Friday Night Magic Promos",
 		"id": 72
 	}, {
-		"code": "EL",
+		"code": "MTG",
 		"name": "Euro Lands",
 		"id": 81
 	}, {
-		"code": "PCY",
+		"code": "MTG",
 		"name": "Prophecy",
 		"id": 33
 	}, {
-		"code": "S00",
+		"code": "MTG",
 		"name": "Starter 2000",
 		"id": 65
 	}, {
-		"code": "INV",
+		"code": "MTG",
 		"name": "Invasion",
 		"id": 34
 	}, {
-		"code": "BTD",
+		"code": "MTG",
 		"name": "Beatdown",
 		"id": 62
 	}, {
-		"code": "WCD21",
+		"code": "MTG",
 		"name": "WCD 2000: Nicolas Labarre",
 		"id": 1302
 	}, {
-		"code": "WCD22",
+		"code": "MTG",
 		"name": "WCD 2000: Tom Van de Logt",
 		"id": 1303
 	}, {
-		"code": "WCD23",
+		"code": "MTG",
 		"name": "WCD 2000: Janosch K\u00fchn",
 		"id": 1304
 	}, {
-		"code": "WCD24",
+		"code": "MTG",
 		"name": "WCD 2000: Jon Finkel",
 		"id": 1305
 	}, {
-		"code": "CDZP",
+		"code": "MTG",
 		"name": "CardZ Promos",
 		"id": 1342
 	}, {
-		"code": "PLS",
+		"code": "MTG",
 		"name": "Planeshift",
 		"id": 35
 	}, {
-		"code": "7ED",
+		"code": "MTG",
 		"name": "Seventh Edition",
 		"id": 37
 	}, {
-		"code": "MPR",
+		"code": "MTG",
 		"name": "Player Rewards Promos",
 		"id": 79
 	}, {
-		"code": "APC",
+		"code": "MTG",
 		"name": "Apocalypse",
 		"id": 36
 	}, {
-		"code": "ODY",
+		"code": "MTG",
 		"name": "Odyssey",
 		"id": 38
 	}, {
-		"code": "DKM",
+		"code": "MTG",
 		"name": "Deckmasters",
 		"id": 67
 	}, {
-		"code": "WCD25",
+		"code": "MTG",
 		"name": "WCD 2001: Jan Tomcani",
 		"id": 1306
 	}, {
-		"code": "WCD26",
+		"code": "MTG",
 		"name": "WCD 2001: Antoine Ruel",
 		"id": 1307
 	}, {
-		"code": "WCD27",
+		"code": "MTG",
 		"name": "WCD 2001: Alex Borteh",
 		"id": 1308
 	}, {
-		"code": "WCD28",
+		"code": "MTG",
 		"name": "WCD 2001: Tom van de Logt",
 		"id": 1309
 	}, {
-		"code": "JH02",
+		"code": "MTG",
 		"name": "JingHe Age: 2002 Tokens",
 		"id": 1328
 	}, {
-		"code": "TOR",
+		"code": "MTG",
 		"name": "Torment",
 		"id": 39
 	}, {
-		"code": "JUD",
+		"code": "MTG",
 		"name": "Judgment",
 		"id": 40
 	}, {
-		"code": "JJT",
+		"code": "MTG",
 		"name": "Japan Junior Tournament Promos",
 		"id": 87
 	}, {
-		"code": "HJCC",
+		"code": "MTG",
 		"name": "Hobby Japan Commemorative Promos",
 		"id": 1421
 	}, {
-		"code": "ONS",
+		"code": "MTG",
 		"name": "Onslaught",
 		"id": 41
 	}, {
-		"code": "WCD29",
+		"code": "MTG",
 		"name": "WCD 2002: Sim Han How",
 		"id": 1310
 	}, {
-		"code": "WCD30",
+		"code": "MTG",
 		"name": "WCD 2002: Raphael Levy",
 		"id": 1311
 	}, {
-		"code": "WCD31",
+		"code": "MTG",
 		"name": "WCD 2002: Brian Kibler",
 		"id": 1312
 	}, {
-		"code": "WCD32",
+		"code": "MTG",
 		"name": "WCD 2002: Carlos Romao",
 		"id": 1313
 	}, {
-		"code": "JH03",
+		"code": "MTG",
 		"name": "JingHe Age: MtG 10th Anniversary Tokens",
 		"id": 1329
 	}, {
-		"code": "LGN",
+		"code": "MTG",
 		"name": "Legions",
 		"id": 42
 	}, {
-		"code": "SCG",
+		"code": "MTG",
 		"name": "Scourge",
 		"id": 43
 	}, {
-		"code": "REL",
+		"code": "MTG",
 		"name": "Release Promos",
 		"id": 1210
 	}, {
-		"code": "8ED",
+		"code": "MTG",
 		"name": "Eighth Edition",
 		"id": 44
 	}, {
-		"code": "MRD",
+		"code": "MTG",
 		"name": "Mirrodin",
 		"id": 45
 	}, {
-		"code": "OBT",
+		"code": "MTG",
 		"name": "Oversized Box Toppers",
 		"id": 111
 	}, {
-		"code": "WCD33",
+		"code": "MTG",
 		"name": "WCD 2003: Peer Kr\u00f6ger",
 		"id": 1314
 	}, {
-		"code": "WCD34",
+		"code": "MTG",
 		"name": "WCD 2003: Wolfgang Eder",
 		"id": 1315
 	}, {
-		"code": "WCD35",
+		"code": "MTG",
 		"name": "WCD 2003: Dave Humpherys",
 		"id": 1316
 	}, {
-		"code": "WCD36",
+		"code": "MTG",
 		"name": "WCD 2003: Daniel Zink",
 		"id": 1317
 	}, {
-		"code": "DST",
+		"code": "MTG",
 		"name": "Darksteel",
 		"id": 46
 	}, {
-		"code": "JSP",
+		"code": "MTG",
 		"name": "Junior Series Promos",
 		"id": 1361
 	}, {
-		"code": "5DN",
+		"code": "MTG",
 		"name": "Fifth Dawn",
 		"id": 47
 	}, {
-		"code": "CHK",
+		"code": "MTG",
 		"name": "Champions of Kamigawa",
 		"id": 48
 	}, {
-		"code": "UNH",
+		"code": "MTG",
 		"name": "Unhinged",
 		"id": 59
 	}, {
-		"code": "WCD37",
+		"code": "MTG",
 		"name": "WCD 2004: Gabriel Nassif",
 		"id": 1318
 	}, {
-		"code": "WCD38",
+		"code": "MTG",
 		"name": "WCD 2004: Manuel Bevand",
 		"id": 1319
 	}, {
-		"code": "WCD39",
+		"code": "MTG",
 		"name": "WCD 2004: Aeo Paquette",
 		"id": 1320
 	}, {
-		"code": "WCD40",
+		"code": "MTG",
 		"name": "WCD 2004: Julien Nuijten",
 		"id": 1321
 	}, {
-		"code": "PC05",
+		"code": "MTG",
 		"name": "2005 Player Cards",
 		"id": 1391
 	}, {
-		"code": "SAL",
+		"code": "MTG",
 		"name": "Salvat-Hachette",
 		"id": 105
 	}, {
-		"code": "BOK",
+		"code": "MTG",
 		"name": "Betrayers of Kamigawa",
 		"id": 51
 	}, {
-		"code": "SOK",
+		"code": "MTG",
 		"name": "Saviors of Kamigawa",
 		"id": 50
 	}, {
-		"code": "9ED",
+		"code": "MTG",
 		"name": "Ninth Edition",
 		"id": 49
 	}, {
-		"code": "RAV",
+		"code": "MTG",
 		"name": "Ravnica: City of Guilds",
 		"id": 55
 	}, {
-		"code": "GW",
+		"code": "MTG",
 		"name": "Gateway Promos",
 		"id": 78
 	}, {
-		"code": "MPSP",
+		"code": "MTG",
 		"name": "Magic Premiere Shop Promos",
 		"id": 101
 	}, {
-		"code": "PC06",
+		"code": "MTG",
 		"name": "2006 Player Cards",
 		"id": 1269
 	}, {
-		"code": "RSPR",
+		"code": "MTG",
 		"name": "Revista Serra Promos",
 		"id": 1432
 	}, {
-		"code": "JAS",
+		"code": "MTG",
 		"name": "Junior APAC Series Promos",
 		"id": 1586
 	}, {
-		"code": "GPT",
+		"code": "MTG",
 		"name": "Guildpact",
 		"id": 54
 	}, {
-		"code": "DIS",
+		"code": "MTG",
 		"name": "Dissension",
 		"id": 53
 	}, {
-		"code": "CPR",
+		"code": "MTG",
 		"name": "Champs & States Promos",
 		"id": 94
 	}, {
-		"code": "CSP",
+		"code": "MTG",
 		"name": "Coldsnap",
 		"id": 52
 	}, {
-		"code": "CSPTD",
+		"code": "MTG",
 		"name": "Coldsnap Theme Decks",
 		"id": 82
 	}, {
-		"code": "TSP",
+		"code": "MTG",
 		"name": "Time Spiral",
 		"id": 56
 	}, {
-		"code": "HHPR",
+		"code": "MTG",
 		"name": "Happy Holidays Promos",
 		"id": 1247
 	}, {
-		"code": "MSSP",
+		"code": "MTG",
 		"name": "Magic Scholarship Series Promos",
 		"id": 1360
 	}, {
-		"code": "PC07",
+		"code": "MTG",
 		"name": "2007 Player Cards",
 		"id": 1392
 	}, {
-		"code": "PLC",
+		"code": "MTG",
 		"name": "Planar Chaos",
 		"id": 58
 	}, {
-		"code": "FUT",
+		"code": "MTG",
 		"name": "Future Sight",
 		"id": 70
 	}, {
-		"code": "10E",
+		"code": "MTG",
 		"name": "Tenth Edition",
 		"id": 74
 	}, {
-		"code": "RSP",
+		"code": "MTG",
 		"name": "Resale Promos",
 		"id": 98
 	}, {
-		"code": "LRW",
+		"code": "MTG",
 		"name": "Lorwyn",
 		"id": 84
 	}, {
-		"code": "EVG",
+		"code": "MTG",
 		"name": "Duel Decks: Elves vs. Goblins",
 		"id": 91
 	}, {
-		"code": "MOR",
+		"code": "MTG",
 		"name": "Morningtide",
 		"id": 92
 	}, {
-		"code": "SHM",
+		"code": "MTG",
 		"name": "Shadowmoor",
 		"id": 95
 	}, {
-		"code": "EVE",
+		"code": "MTG",
 		"name": "Eventide",
 		"id": 99
 	}, {
-		"code": "DRB",
+		"code": "MTG",
 		"name": "From the Vault: Dragons",
 		"id": 100
 	}, {
-		"code": "ALA",
+		"code": "MTG",
 		"name": "Shards of Alara",
 		"id": 102
 	}, {
-		"code": "DD2",
+		"code": "MTG",
 		"name": "Duel Decks: Jace vs. Chandra",
 		"id": 104
 	}, {
-		"code": "CNPR",
+		"code": "MTG",
 		"name": "Convention Promos",
 		"id": 1597
 	}, {
-		"code": "CON",
+		"code": "MTG",
 		"name": "Conflux",
 		"id": 106
 	}, {
-		"code": "DDC",
+		"code": "MTG",
 		"name": "Duel Decks: Divine vs. Demonic",
 		"id": 107
 	}, {
-		"code": "ARB",
+		"code": "MTG",
 		"name": "Alara Reborn",
 		"id": 108
 	}, {
-		"code": "DPP",
+		"code": "MTG",
 		"name": "Duels of the Planeswalkers Promos",
 		"id": 1278
 	}, {
-		"code": "M10",
+		"code": "MTG",
 		"name": "Magic 2010",
 		"id": 109
 	}, {
-		"code": "BABP",
+		"code": "MTG",
 		"name": "Buy a Box Promos",
 		"id": 1198
 	}, {
-		"code": "V09",
+		"code": "MTG",
 		"name": "From the Vault: Exiled",
 		"id": 112
 	}, {
-		"code": "HOP",
+		"code": "MTG",
 		"name": "Planechase",
 		"id": 113
 	}, {
-		"code": "ZEN",
+		"code": "MTG",
 		"name": "Zendikar",
 		"id": 114
 	}, {
-		"code": "DDD",
+		"code": "MTG",
 		"name": "Duel Decks: Garruk vs. Liliana",
 		"id": 115
 	}, {
-		"code": "DMPR",
+		"code": "MTG",
 		"name": "Dengeki Maoh Promos",
 		"id": 1248
 	}, {
-		"code": "H09",
+		"code": "MTG",
 		"name": "Premium Deck Series: Slivers",
 		"id": 116
 	}, {
-		"code": "GDP",
+		"code": "MTG",
 		"name": "Game Day Promos",
 		"id": 1209
 	}, {
-		"code": "WWK",
+		"code": "MTG",
 		"name": "Worldwake",
 		"id": 118
 	}, {
-		"code": "DDE",
+		"code": "MTG",
 		"name": "Duel Decks: Phyrexia vs. The Coalition",
 		"id": 119
 	}, {
-		"code": "ROE",
+		"code": "MTG",
 		"name": "Rise of the Eldrazi",
 		"id": 120
 	}, {
-		"code": "DPA",
+		"code": "MTG",
 		"name": "Duels of the Planeswalkers Decks",
 		"id": 1193
 	}, {
-		"code": "ARC",
+		"code": "MTG",
 		"name": "Archenemy",
 		"id": 1194
 	}, {
-		"code": "M11",
+		"code": "MTG",
 		"name": "Magic 2011",
 		"id": 1197
 	}, {
-		"code": "V10",
+		"code": "MTG",
 		"name": "From the Vault: Relics",
 		"id": 1202
 	}, {
-		"code": "DDF",
+		"code": "MTG",
 		"name": "Duel Decks: Elspeth vs. Tezzeret",
 		"id": 1203
 	}, {
-		"code": "SOM",
+		"code": "MTG",
 		"name": "Scars of Mirrodin",
 		"id": 1206
 	}, {
-		"code": "PD2",
+		"code": "MTG",
 		"name": "Premium Deck Series: Fire & Lightning",
 		"id": 1218
 	}, {
-		"code": "IDW",
+		"code": "MTG",
 		"name": "IDW Promos",
 		"id": 1413
 	}, {
-		"code": "SV11",
+		"code": "MTG",
 		"name": "Salvat-Hachette 2011",
 		"id": 1259
 	}, {
-		"code": "JPT",
+		"code": "MTG",
 		"name": "Judge Program Tokens",
 		"id": 1643
 	}, {
-		"code": "MBS",
+		"code": "MTG",
 		"name": "Mirrodin Besieged",
 		"id": 1253
 	}, {
-		"code": "DDG",
+		"code": "MTG",
 		"name": "Duel Decks: Knights vs. Dragons",
 		"id": 1261
 	}, {
-		"code": "NPH",
+		"code": "MTG",
 		"name": "New Phyrexia",
 		"id": 1262
 	}, {
-		"code": "CMD",
+		"code": "MTG",
 		"name": "Commander",
 		"id": 1273
 	}, {
-		"code": "M12",
+		"code": "MTG",
 		"name": "Magic 2012",
 		"id": 1280
 	}, {
-		"code": "V11",
+		"code": "MTG",
 		"name": "From the Vault: Legends",
 		"id": 1286
 	}, {
-		"code": "DDH",
+		"code": "MTG",
 		"name": "Duel Decks: Ajani vs. Nicol Bolas",
 		"id": 1288
 	}, {
-		"code": "ISD",
+		"code": "MTG",
 		"name": "Innistrad",
 		"id": 1327
 	}, {
-		"code": "PD3",
+		"code": "MTG",
 		"name": "Premium Deck Series: Graveborn",
 		"id": 1337
 	}, {
-		"code": "DKA",
+		"code": "MTG",
 		"name": "Dark Ascension",
 		"id": 1345
 	}, {
-		"code": "DDI",
+		"code": "MTG",
 		"name": "Duel Decks: Venser vs. Koth",
 		"id": 1350
 	}, {
-		"code": "AVR",
+		"code": "MTG",
 		"name": "Avacyn Restored",
 		"id": 1358
 	}, {
-		"code": "PC2",
+		"code": "MTG",
 		"name": "Planechase 2012",
 		"id": 1369
 	}, {
-		"code": "M13",
+		"code": "MTG",
 		"name": "Magic 2013",
 		"id": 1388
 	}, {
-		"code": "V12",
+		"code": "MTG",
 		"name": "From the Vault: Realms",
 		"id": 1397
 	}, {
-		"code": "DDJ",
+		"code": "MTG",
 		"name": "Duel Decks: Izzet vs. Golgari",
 		"id": 1398
 	}, {
-		"code": "RTR",
+		"code": "MTG",
 		"name": "Return to Ravnica",
 		"id": 1389
 	}, {
-		"code": "CM1",
+		"code": "MTG",
 		"name": "Commander's Arsenal",
 		"id": 1418
 	}, {
-		"code": "GTC",
+		"code": "MTG",
 		"name": "Gatecrash",
 		"id": 1424
 	}, {
-		"code": "DDK",
+		"code": "MTG",
 		"name": "Duel Decks: Sorin vs. Tibalt",
 		"id": 1430
 	}, {
-		"code": "DGM",
+		"code": "MTG",
 		"name": "Dragon's Maze",
 		"id": 1435
 	}, {
-		"code": "MMA",
+		"code": "MTG",
 		"name": "Modern Masters",
 		"id": 1444
 	}, {
-		"code": "M14",
+		"code": "MTG",
 		"name": "Magic 2014",
 		"id": 1449
 	}, {
-		"code": "CC13",
+		"code": "MTG",
 		"name": "San Diego Comic-Con 2013 Promos",
 		"id": 1454
 	}, {
-		"code": "V13",
+		"code": "MTG",
 		"name": "From the Vault: Twenty",
 		"id": 1455
 	}, {
-		"code": "DDL",
+		"code": "MTG",
 		"name": "Duel Decks: Heroes vs. Monsters",
 		"id": 1456
 	}, {
-		"code": "THS",
+		"code": "MTG",
 		"name": "Theros",
 		"id": 1457
 	}, {
-		"code": "C13",
+		"code": "MTG",
 		"name": "Commander 2013",
 		"id": 1464
 	}, {
-		"code": "BNG",
+		"code": "MTG",
 		"name": "Born of the Gods",
 		"id": 1469
 	}, {
-		"code": "DDM",
+		"code": "MTG",
 		"name": "Duel Decks: Jace vs. Vraska",
 		"id": 1477
 	}, {
-		"code": "JOU",
+		"code": "MTG",
 		"name": "Journey into Nyx",
 		"id": 1481
 	}, {
-		"code": "MD1",
+		"code": "MTG",
 		"name": "Modern Event Deck 2014",
 		"id": 1484
 	}, {
-		"code": "CNS",
+		"code": "MTG",
 		"name": "Conspiracy",
 		"id": 1483
 	}, {
-		"code": "M15",
+		"code": "MTG",
 		"name": "Magic 2015",
 		"id": 1485
 	}, {
-		"code": "CPP",
+		"code": "MTG",
 		"name": "Clash Pack Promos",
 		"id": 1490
 	}, {
-		"code": "CC14",
+		"code": "MTG",
 		"name": "San Diego Comic-Con 2014 Promos",
 		"id": 1491
 	}, {
-		"code": "V14",
+		"code": "MTG",
 		"name": "From the Vault: Annihilation",
 		"id": 1494
 	}, {
-		"code": "DDN",
+		"code": "MTG",
 		"name": "Duel Decks: Speed vs. Cunning",
 		"id": 1496
 	}, {
-		"code": "PKTK",
+		"code": "MTG",
 		"name": "Khans of Tarkir: Promos",
 		"id": 1588
 	}, {
-		"code": "KTK",
+		"code": "MTG",
 		"name": "Khans of Tarkir",
 		"id": 1495
 	}, {
-		"code": "C14",
+		"code": "MTG",
 		"name": "Commander 2014",
 		"id": 1513
 	}, {
-		"code": "DD3",
+		"code": "MTG",
 		"name": "Duel Decks: Anthology",
 		"id": 1509
 	}, {
-		"code": "UGFP",
+		"code": "MTG",
 		"name": "Ugin's Fate Promos",
 		"id": 1587
 	}, {
-		"code": "PFRF",
+		"code": "MTG",
 		"name": "Fate Reforged: Promos",
 		"id": 1589
 	}, {
-		"code": "FRF",
+		"code": "MTG",
 		"name": "Fate Reforged",
 		"id": 1522
 	}, {
-		"code": "DDO",
+		"code": "MTG",
 		"name": "Duel Decks: Elspeth vs. Kiora",
 		"id": 1593
 	}, {
-		"code": "PDTK",
+		"code": "MTG",
 		"name": "Dragons Of Tarkir: Promos",
 		"id": 1602
 	}, {
-		"code": "DTK",
+		"code": "MTG",
 		"name": "Dragons of Tarkir",
 		"id": 1601
 	}, {
-		"code": "MM2",
+		"code": "MTG",
 		"name": "Modern Masters 2015",
 		"id": 1641
 	}, {
-		"code": "CC15",
+		"code": "MTG",
 		"name": "San Diego Comic-Con 2015 Promos",
 		"id": 1658
 	}, {
-		"code": "PORI",
+		"code": "MTG",
 		"name": "Magic Origins: Promos",
 		"id": 1655
 	}, {
-		"code": "ORI",
+		"code": "MTG",
 		"name": "Magic Origins",
 		"id": 1652
 	}, {
-		"code": "MKM1",
-		"name": "MKM Products",
+		"code": "MTG",
+		"name": "Cardmarket Tokens",
 		"id": 1662
 	}, {
-		"code": "V15",
+		"code": "MTG",
 		"name": "From the Vault: Angels",
 		"id": 1661
 	}, {
-		"code": "MKMS",
+		"code": "MTG",
 		"name": "MKM Series",
 		"id": 1665
 	}, {
-		"code": "DDP",
+		"code": "MTG",
 		"name": "Duel Decks: Zendikar vs. Eldrazi",
 		"id": 1663
 	}, {
-		"code": "PBFZ",
+		"code": "MTG",
 		"name": "Battle for Zendikar: Promos",
 		"id": 1670
 	}, {
-		"code": "BFZ",
+		"code": "MTG",
 		"name": "Battle for Zendikar",
 		"id": 1668
 	}, {
-		"code": "ZEX",
+		"code": "MTG",
 		"name": "Zendikar Expeditions",
 		"id": 1669
 	}, {
-		"code": "C15",
+		"code": "MTG",
 		"name": "Commander 2015",
 		"id": 1679
 	}, {
-		"code": "POGW",
+		"code": "MTG",
 		"name": "Oath of the Gatewatch: Promos",
 		"id": 1686
 	}, {
-		"code": "OGW",
+		"code": "MTG",
 		"name": "Oath of the Gatewatch",
 		"id": 1676
 	}, {
-		"code": "DDQ",
+		"code": "MTG",
 		"name": "Duel Decks: Blessed vs. Cursed",
 		"id": 1692
 	}, {
-		"code": "PSOI",
+		"code": "MTG",
 		"name": "Shadows over Innistrad: Promos",
 		"id": 1704
 	}, {
-		"code": "SOI",
+		"code": "MTG",
 		"name": "Shadows over Innistrad",
 		"id": 1694
 	}, {
-		"code": "W16",
+		"code": "MTG",
 		"name": "Welcome Deck 2016",
 		"id": 1710
 	}, {
-		"code": "EMA",
+		"code": "MTG",
 		"name": "Eternal Masters",
 		"id": 1696
 	}, {
-		"code": "EMNP",
+		"code": "MTG",
 		"name": "Eldritch Moon: Promos",
 		"id": 1723
 	}, {
-		"code": "EMN",
+		"code": "MTG",
 		"name": "Eldritch Moon",
 		"id": 1695
 	}, {
-		"code": "CC16",
+		"code": "MTG",
 		"name": "San Diego Comic-Con 2016 Promos",
 		"id": 1725
 	}, {
-		"code": "V16",
+		"code": "MTG",
 		"name": "From the Vault: Lore",
 		"id": 1703
 	}, {
-		"code": "CN2",
+		"code": "MTG",
 		"name": "Conspiracy: Take the Crown",
 		"id": 1702
 	}, {
-		"code": "DDR",
+		"code": "MTG",
 		"name": "Duel Decks: Nissa vs. Ob Nixilis",
 		"id": 1720
 	}, {
-		"code": "PKLD",
+		"code": "MTG",
 		"name": "Kaladesh: Promos",
 		"id": 1726
 	}, {
-		"code": "KLD",
+		"code": "MTG",
 		"name": "Kaladesh",
 		"id": 1717
 	}, {
-		"code": "KLDS",
+		"code": "MTG",
 		"name": "Kaladesh Inventions",
 		"id": 1733
 	}, {
-		"code": "C16",
+		"code": "MTG",
 		"name": "Commander 2016",
 		"id": 1719
 	}, {
-		"code": "PCA",
+		"code": "MTG",
 		"name": "Planechase Anthology",
 		"id": 1722
 	}, {
-		"code": "PAER",
+		"code": "MTG",
 		"name": "Aether Revolt: Promos",
 		"id": 1750
 	}, {
-		"code": "AER",
+		"code": "MTG",
 		"name": "Aether Revolt",
 		"id": 1718
 	}, {
-		"code": "MM3",
+		"code": "MTG",
 		"name": "Modern Masters 2017",
 		"id": 1727
 	}, {
-		"code": "DDS",
+		"code": "MTG",
 		"name": "Duel Decks: Mind vs. Might",
 		"id": 1728
 	}, {
-		"code": "W17",
+		"code": "MTG",
 		"name": "Welcome Deck 2017",
 		"id": 1802
 	}, {
-		"code": "PAKH",
+		"code": "MTG",
 		"name": "Amonkhet: Promos",
 		"id": 1803
 	}, {
-		"code": "AKHI",
-		"name": "Amonkhet Invocations",
-		"id": 1798
-	}, {
-		"code": "AKH",
+		"code": "MTG",
 		"name": "Amonkhet",
 		"id": 1729
 	}, {
-		"code": "CMA",
+		"code": "MTG",
+		"name": "Amonkhet Invocations",
+		"id": 1798
+	}, {
+		"code": "MTG",
 		"name": "Commander Anthology",
 		"id": 1732
 	}, {
-		"code": "E01",
+		"code": "MTG",
 		"name": "Archenemy: Nicol Bolas",
 		"id": 1730
 	}, {
-		"code": "PHOU",
+		"code": "MTG",
 		"name": "Hour of Devastation: Promos",
 		"id": 1825
 	}, {
-		"code": "HOU",
+		"code": "MTG",
 		"name": "Hour of Devastation",
 		"id": 1731
 	}, {
-		"code": "CC17",
+		"code": "MTG",
 		"name": "San Diego Comic-Con 2017 Promos",
 		"id": 1828
 	}, {
-		"code": "C17",
+		"code": "MTG",
 		"name": "Commander 2017",
 		"id": 1813
 	}, {
-		"code": "H17",
+		"code": "MTG",
 		"name": "Hascon 2017 Promos",
 		"id": 1841
 	}, {
-		"code": "OH",
+		"code": "MTG",
 		"name": "Open House Promos",
 		"id": 1844
 	}, {
-		"code": "XLNP",
+		"code": "MTG",
 		"name": "Ixalan: Promos",
 		"id": 1847
 	}, {
-		"code": "XLN",
+		"code": "MTG",
 		"name": "Ixalan",
 		"id": 1812
 	}, {
-		"code": "SSP2",
+		"code": "MTG",
 		"name": "Standard Showdown Promos",
 		"id": 1836
 	}, {
-		"code": "DDT",
+		"code": "MTG",
 		"name": "Duel Decks: Merfolk vs. Goblins",
 		"id": 1818
 	}, {
-		"code": "IMA",
+		"code": "MTG",
 		"name": "Iconic Masters",
 		"id": 1811
 	}, {
-		"code": "V17",
+		"code": "MTG",
 		"name": "From the Vault: Transform",
 		"id": 1819
 	}, {
-		"code": "E02",
+		"code": "MTG",
 		"name": "Explorers of Ixalan",
 		"id": 1830
 	}, {
-		"code": "UST",
+		"code": "MTG",
 		"name": "Unstable",
 		"id": 1821
 	}, {
-		"code": "SCH",
+		"code": "MTG",
 		"name": "Store Championship Promos",
 		"id": 2023
 	}, {
-		"code": "RIXP",
+		"code": "MTG",
 		"name": "Rivals of Ixalan: Promos",
 		"id": 2063
 	}, {
-		"code": "RIX",
+		"code": "MTG",
 		"name": "Rivals of Ixalan",
 		"id": 1829
 	}, {
-		"code": "A25",
+		"code": "MTG",
 		"name": "Masters 25",
 		"id": 1820
 	}, {
-		"code": "DDU",
+		"code": "MTG",
 		"name": "Duel Decks: Elves vs. Inventors",
 		"id": 2068
 	}, {
-		"code": "DOM",
+		"code": "MTG",
+		"name": "Dominaria: Promos",
+		"id": 2315
+	}, {
+		"code": "MTG",
 		"name": "Dominaria",
 		"id": 1822
 	}, {
-		"code": "SS1",
+		"code": "MTG",
+		"name": "Commander Anthology II",
+		"id": 2109
+	}, {
+		"code": "MTG",
+		"name": "Battlebond",
+		"id": 2111
+	}, {
+		"code": "MTG",
+		"name": "Battlebond: Promos",
+		"id": 2333
+	}, {
+		"code": "MTG",
 		"name": "Signature Spellbook: Jace",
 		"id": 2103
+	}, {
+		"code": "MTG",
+		"name": "Global Series Jiang Yanggu & Mu Yanling",
+		"id": 2108
+	}, {
+		"code": "MTG",
+		"name": "Core 2019: Promos",
+		"id": 2337
+	}, {
+		"code": "MTG",
+		"name": "Core 2019",
+		"id": 1835
+	}, {
+		"code": "MTG",
+		"name": "San Diego Comic-Con 2018 Promos",
+		"id": 2341
+	}, {
+		"code": "MTG",
+		"name": "Commander 2018",
+		"id": 2110
+	}, {
+		"code": "MTG",
+		"name": "Guilds of Ravnica: Extras",
+		"id": 2371
+	}, {
+		"code": "MTG",
+		"name": "Guilds of Ravnica: Mythic Edition",
+		"id": 2373
+	}, {
+		"code": "MTG",
+		"name": "Guilds of Ravnica",
+		"id": 2348
+	}, {
+		"code": "MTG",
+		"name": "Guilds of Ravnica: Guild Kits",
+		"id": 2379
+	}, {
+		"code": "MTG",
+		"name": "Ravnica Weekend Promos",
+		"id": 2372
+	}, {
+		"code": "MTG",
+		"name": "Magic Game Night",
+		"id": 2381
 	}]
 }

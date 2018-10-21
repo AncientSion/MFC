@@ -1,8 +1,9 @@
 <?php
 
 	include_once(__DIR__."/global.php");
+		
 
-
+	//writeAllBoxes(); return;
 	//buildFullCardPool(); return;
 	
 	echo '<a href="shakers.php">Reload Blank</a>';
@@ -24,6 +25,7 @@
 			$maxPrice = $_GET["maxPrice"];
 			$availChange = $_GET["availChange"];
 			$stackDisplay = 0; if (isset($_GET["stackDisplay"])){$stackDisplay = 1;}
+			$skipUnchanged = 0; if (isset($_GET["skipUnchanged"])){$skipUnchanged = 1;}
 			$type = $_GET["compareType"];
 			$foil = 0; if ($_GET["foil"] == "Foil"){$foil = 1;}
 
@@ -49,6 +51,7 @@
 				$maxPrice,
 				$availChange,
 				$stackDisplay,
+				$skipUnchanged,
 				$type
 			);
 			echo "</div>";

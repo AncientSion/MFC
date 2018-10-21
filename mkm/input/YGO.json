@@ -1,0 +1,1675 @@
+{
+	"expansions": [{
+		"code": "YGO",
+		"name": "Mattel Action Figure Serie 3",
+		"id": 1102
+	}, {
+		"code": "YGO",
+		"name": "Mattel Action Figure Serie 2",
+		"id": 1108
+	}, {
+		"code": "YGO",
+		"name": "Mattel Action Figure Serie 1",
+		"id": 1117
+	}, {
+		"code": "YGO",
+		"name": "King of Cities Tour Promos",
+		"id": 1251
+	}, {
+		"code": "YGO",
+		"name": "Token Promos 1",
+		"id": 1255
+	}, {
+		"code": "YGO",
+		"name": "Token Promos 2",
+		"id": 1256
+	}, {
+		"code": "YGO",
+		"name": "Token Promos 3",
+		"id": 1257
+	}, {
+		"code": "YGO",
+		"name": "Promos",
+		"id": 1365
+	}, {
+		"code": "YGO",
+		"name": "Oversized Cards",
+		"id": 1406
+	}, {
+		"code": "YGO",
+		"name": "Yugioh Filler Cards",
+		"id": 1442
+	}, {
+		"code": "YGO",
+		"name": "Force of the Breaker",
+		"id": 1011
+	}, {
+		"code": "YGO",
+		"name": "Ancient Sanctuary",
+		"id": 1012
+	}, {
+		"code": "YGO",
+		"name": "Dark Revelation 2",
+		"id": 1013
+	}, {
+		"code": "YGO",
+		"name": "Pharaoh's Servant",
+		"id": 1015
+	}, {
+		"code": "YGO",
+		"name": "Metal Raiders",
+		"id": 1016
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Fury From The Deep",
+		"id": 1017
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Joey",
+		"id": 1018
+	}, {
+		"code": "YGO",
+		"name": "Pharaonic Guardian",
+		"id": 1019
+	}, {
+		"code": "YGO",
+		"name": "Dark Revelation 1",
+		"id": 1020
+	}, {
+		"code": "YGO",
+		"name": "Gladiator's Assault",
+		"id": 1021
+	}, {
+		"code": "YGO",
+		"name": "Strike of Neos",
+		"id": 1022
+	}, {
+		"code": "YGO",
+		"name": "Dark Crisis",
+		"id": 1023
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Three",
+		"id": 1024
+	}, {
+		"code": "YGO",
+		"name": "Flaming Eternity",
+		"id": 1025
+	}, {
+		"code": "YGO",
+		"name": "Legacy of Darkness",
+		"id": 1026
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Jaden Yuki",
+		"id": 1027
+	}, {
+		"code": "YGO",
+		"name": "Invasion of Chaos",
+		"id": 1028
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 1",
+		"id": 1030
+	}, {
+		"code": "YGO",
+		"name": "Cybernetic Revolution",
+		"id": 1031
+	}, {
+		"code": "YGO",
+		"name": "Rise of Destiny",
+		"id": 1032
+	}, {
+		"code": "YGO",
+		"name": "Cyberdark Impact",
+		"id": 1033
+	}, {
+		"code": "YGO",
+		"name": "Soul of the Duelist",
+		"id": 1034
+	}, {
+		"code": "YGO",
+		"name": "Kapselmonster Kolosseum",
+		"id": 1035
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Two",
+		"id": 1036
+	}, {
+		"code": "YGO",
+		"name": "Tactical Evolution",
+		"id": 1037
+	}, {
+		"code": "YGO",
+		"name": "Duelist League Promos Upperdeck",
+		"id": 1038
+	}, {
+		"code": "YGO",
+		"name": "Dark Duel Stories",
+		"id": 1039
+	}, {
+		"code": "YGO",
+		"name": "Shadow of Infinity",
+		"id": 1040
+	}, {
+		"code": "YGO",
+		"name": "Magician's Force",
+		"id": 1042
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 6",
+		"id": 1043
+	}, {
+		"code": "YGO",
+		"name": "Duelist of the Roses",
+		"id": 1044
+	}, {
+		"code": "YGO",
+		"name": "Labyrinth of Nightmare",
+		"id": 1045
+	}, {
+		"code": "YGO",
+		"name": "Sneak Preview 1",
+		"id": 1046
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 7",
+		"id": 1047
+	}, {
+		"code": "YGO",
+		"name": "Magic Ruler",
+		"id": 1048
+	}, {
+		"code": "YGO",
+		"name": "McDonald's Promo Pack 2",
+		"id": 1049
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Jesse Anderson",
+		"id": 1050
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Yugi",
+		"id": 1051
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Machine Re-Volt",
+		"id": 1052
+	}, {
+		"code": "YGO",
+		"name": "The Lost Millennium",
+		"id": 1053
+	}, {
+		"code": "YGO",
+		"name": "Sneak Preview 2",
+		"id": 1054
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Kaiba",
+		"id": 1055
+	}, {
+		"code": "YGO",
+		"name": "Exclusive Pack 1",
+		"id": 1056
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 3",
+		"id": 1058
+	}, {
+		"code": "YGO",
+		"name": "Power of Chaos: Yugi the Destiny",
+		"id": 1059
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Four",
+		"id": 1060
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Spellcaster's Judgment",
+		"id": 1061
+	}, {
+		"code": "YGO",
+		"name": "Power of Chaos: Kaiba the Revenge",
+		"id": 1062
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Lord of the Storm",
+		"id": 1063
+	}, {
+		"code": "YGO",
+		"name": "Legend of Blue Eyes White Dragon",
+		"id": 1064
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Pegasus",
+		"id": 1065
+	}, {
+		"code": "YGO",
+		"name": "Shonen Jump Magazine",
+		"id": 1066
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Chazz Princeton",
+		"id": 1067
+	}, {
+		"code": "YGO",
+		"name": "Elemental Energy",
+		"id": 1068
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Dragon's Roar",
+		"id": 1069
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Warrior's Triumph",
+		"id": 1070
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Jaden Yuki 3",
+		"id": 1071
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 4",
+		"id": 1072
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Zane Truesdale",
+		"id": 1073
+	}, {
+		"code": "YGO",
+		"name": "Enemy of Justice",
+		"id": 1074
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Yugi Evolution",
+		"id": 1075
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 1",
+		"id": 1076
+	}, {
+		"code": "YGO",
+		"name": "Booster Pack Tin",
+		"id": 1077
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Dinosaur's Rage",
+		"id": 1078
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Blaze of Destruction",
+		"id": 1079
+	}, {
+		"code": "YGO",
+		"name": "Master Collection Vol. 1",
+		"id": 1080
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Kaiba Evolution",
+		"id": 1081
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 5",
+		"id": 1082
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 2",
+		"id": 1083
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 8",
+		"id": 1084
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game One",
+		"id": 1085
+	}, {
+		"code": "YGO",
+		"name": "Master Collection Vol. 2",
+		"id": 1086
+	}, {
+		"code": "YGO",
+		"name": "Premium Pack 1",
+		"id": 1087
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: GX 2006",
+		"id": 1088
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2004",
+		"id": 1089
+	}, {
+		"code": "YGO",
+		"name": "Banzai Promos!",
+		"id": 1090
+	}, {
+		"code": "YGO",
+		"name": "GX Card Almanac",
+		"id": 1091
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack 1&2 Special Edition",
+		"id": 1092
+	}, {
+		"code": "YGO",
+		"name": "Yu-Gi-Oh! The Movie",
+		"id": 1093
+	}, {
+		"code": "YGO",
+		"name": "Forbidden Legacy 1",
+		"id": 1094
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Zombie Madness",
+		"id": 1095
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Invincible Fortress",
+		"id": 1096
+	}, {
+		"code": "YGO",
+		"name": "GX Spirit Caller",
+		"id": 1097
+	}, {
+		"code": "YGO",
+		"name": "GX Tag Force Evolution (PS2)",
+		"id": 1098
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Jaden Yuki 2",
+		"id": 1099
+	}, {
+		"code": "YGO",
+		"name": "Tournament Pack 4",
+		"id": 1100
+	}, {
+		"code": "YGO",
+		"name": "GX Tag Force 2",
+		"id": 1101
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Aster Phoenix",
+		"id": 1103
+	}, {
+		"code": "YGO",
+		"name": "McDonald's Promo Pack 1",
+		"id": 1104
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 3",
+		"id": 1105
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 5",
+		"id": 1106
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2006",
+		"id": 1107
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 2",
+		"id": 1109
+	}, {
+		"code": "YGO",
+		"name": "Destiny Board Traveler",
+		"id": 1110
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2005",
+		"id": 1111
+	}, {
+		"code": "YGO",
+		"name": "Duel Master's Guide",
+		"id": 1112
+	}, {
+		"code": "YGO",
+		"name": "Dawn of Destiny",
+		"id": 1113
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2007",
+		"id": 1114
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2007",
+		"id": 1115
+	}, {
+		"code": "YGO",
+		"name": "GX Duel Academy",
+		"id": 1116
+	}, {
+		"code": "YGO",
+		"name": "GX Special Edition",
+		"id": 1118
+	}, {
+		"code": "YGO",
+		"name": "Eternal Duelist's Soul",
+		"id": 1119
+	}, {
+		"code": "YGO",
+		"name": "GX Ultimate Beginner's Pack 1",
+		"id": 1120
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2004",
+		"id": 1121
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2006",
+		"id": 1122
+	}, {
+		"code": "YGO",
+		"name": "Stairway to the Destined Duel",
+		"id": 1123
+	}, {
+		"code": "YGO",
+		"name": "Forbidden Memories",
+		"id": 1124
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2005",
+		"id": 1125
+	}, {
+		"code": "YGO",
+		"name": "World Championship Series Promos",
+		"id": 1126
+	}, {
+		"code": "YGO",
+		"name": "Nightmare Troubadour",
+		"id": 1128
+	}, {
+		"code": "YGO",
+		"name": "The Sacred Cards",
+		"id": 1129
+	}, {
+		"code": "YGO",
+		"name": "GX Tag Force (PSP)",
+		"id": 1130
+	}, {
+		"code": "YGO",
+		"name": "Pharaoh Tour 2006",
+		"id": 1131
+	}, {
+		"code": "YGO",
+		"name": "GX Next Generation",
+		"id": 1132
+	}, {
+		"code": "YGO",
+		"name": "Dark Revelation 3",
+		"id": 1142
+	}, {
+		"code": "YGO",
+		"name": "Gameboy Worldwide Edition Promos",
+		"id": 1160
+	}, {
+		"code": "YGO",
+		"name": "Spell Ruler",
+		"id": 1250
+	}, {
+		"code": "YGO",
+		"name": "The Falsebound Kingdom Promos",
+		"id": 1239
+	}, {
+		"code": "YGO",
+		"name": "Reshef of Destruction Promos",
+		"id": 1237
+	}, {
+		"code": "YGO",
+		"name": "Power of Chaos: Joey the Passion",
+		"id": 1241
+	}, {
+		"code": "YGO",
+		"name": "Yu-Gi-Oh! The Movie Ani-Manga",
+		"id": 1846
+	}, {
+		"code": "YGO",
+		"name": "Shonen Jump Championship Series",
+		"id": 1183
+	}, {
+		"code": "YGO",
+		"name": "Dark Beginning 1",
+		"id": 1014
+	}, {
+		"code": "YGO",
+		"name": "Pharaoh Tour 2005",
+		"id": 1242
+	}, {
+		"code": "YGO",
+		"name": "Dark Beginning 2",
+		"id": 1029
+	}, {
+		"code": "YGO",
+		"name": "Power of the Duelist",
+		"id": 1144
+	}, {
+		"code": "YGO",
+		"name": "Ultimate Edition Promotional Cards: Series 2",
+		"id": 1238
+	}, {
+		"code": "YGO",
+		"name": "Pharaoh Tour 2007",
+		"id": 1243
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Syrus",
+		"id": 1150
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Jaden Yuki",
+		"id": 1366
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Rise of the Dragon Lords",
+		"id": 1181
+	}, {
+		"code": "YGO",
+		"name": "Dark Revelation 4",
+		"id": 1143
+	}, {
+		"code": "YGO",
+		"name": "Elemental Hero Collection 1",
+		"id": 1403
+	}, {
+		"code": "YGO",
+		"name": "Elemental Hero Collection 2",
+		"id": 1404
+	}, {
+		"code": "YGO",
+		"name": "Light and Darkness Power Pack",
+		"id": 1353
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 6",
+		"id": 1157
+	}, {
+		"code": "YGO",
+		"name": "GX Manga Promos",
+		"id": 1159
+	}, {
+		"code": "YGO",
+		"name": "Phantom Darkness",
+		"id": 1041
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: 2008",
+		"id": 1147
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Five",
+		"id": 1148
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2008",
+		"id": 1324
+	}, {
+		"code": "YGO",
+		"name": "Gold Series 1",
+		"id": 1141
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: The Dark Emperor",
+		"id": 1182
+	}, {
+		"code": "YGO",
+		"name": "Light of Destruction",
+		"id": 1057
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Six",
+		"id": 1149
+	}, {
+		"code": "YGO",
+		"name": "Hobby League 7",
+		"id": 1158
+	}, {
+		"code": "YGO",
+		"name": "Premium Pack 2",
+		"id": 1145
+	}, {
+		"code": "YGO",
+		"name": "Retro Pack",
+		"id": 1176
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Yu-Gi-Oh! 5D's",
+		"id": 1173
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2008",
+		"id": 1222
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal Preview",
+		"id": 1379
+	}, {
+		"code": "YGO",
+		"name": "The Duelist Genesis",
+		"id": 1146
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Zombie World",
+		"id": 1154
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Seven",
+		"id": 1226
+	}, {
+		"code": "YGO",
+		"name": "Crossroads of Chaos",
+		"id": 1156
+	}, {
+		"code": "YGO",
+		"name": "Dark Legends",
+		"id": 1236
+	}, {
+		"code": "YGO",
+		"name": "Anniversary Pack",
+		"id": 1171
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Yusei Fudo",
+		"id": 1170
+	}, {
+		"code": "YGO",
+		"name": "Crimson Crisis",
+		"id": 1161
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: 2009",
+		"id": 1172
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Spellcaster's Command",
+		"id": 1219
+	}, {
+		"code": "YGO",
+		"name": "Champion Pack: Game Eight",
+		"id": 1227
+	}, {
+		"code": "YGO",
+		"name": "Yu-Gi-Oh! 5D's Wheelie Breakers Promos",
+		"id": 1252
+	}, {
+		"code": "YGO",
+		"name": "Token Promos 4",
+		"id": 1370
+	}, {
+		"code": "YGO",
+		"name": "5D's Stardust Accelerator Promotional Cards",
+		"id": 1323
+	}, {
+		"code": "YGO",
+		"name": "Gold Series 2",
+		"id": 1163
+	}, {
+		"code": "YGO",
+		"name": "Raging Battle",
+		"id": 1164
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Yugi",
+		"id": 1169
+	}, {
+		"code": "YGO",
+		"name": "Retro Pack 2",
+		"id": 1175
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack",
+		"id": 1179
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2009",
+		"id": 1223
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 09",
+		"id": 1375
+	}, {
+		"code": "YGO",
+		"name": "Duelist League Demo 2010",
+		"id": 1387
+	}, {
+		"code": "YGO",
+		"name": "Ancient Prophecy",
+		"id": 1174
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Warrior's Strike",
+		"id": 1180
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal",
+		"id": 1177
+	}, {
+		"code": "YGO",
+		"name": "5D's Tag Force 4 Promotional Cards",
+		"id": 1354
+	}, {
+		"code": "YGO",
+		"name": "Stardust Overdrive",
+		"id": 1178
+	}, {
+		"code": "YGO",
+		"name": "Duel Disk - Yusei Version Promotional Cards",
+		"id": 1448
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Yusei Fudo 2",
+		"id": 1186
+	}, {
+		"code": "YGO",
+		"name": "Twilight Edition",
+		"id": 1189
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Two",
+		"id": 1207
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 1",
+		"id": 1380
+	}, {
+		"code": "YGO",
+		"name": "Absolute Powerforce",
+		"id": 1187
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Machina Mayhem",
+		"id": 1188
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2010 Card Pack",
+		"id": 1240
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack Collection Tin 2010",
+		"id": 1190
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Kaiba",
+		"id": 1191
+	}, {
+		"code": "YGO",
+		"name": "5D's Reverse of Arcadia Promotional Cards",
+		"id": 1322
+	}, {
+		"code": "YGO",
+		"name": "The Shining Darkness",
+		"id": 1196
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Duelist Toolbox",
+		"id": 1291
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 2",
+		"id": 1381
+	}, {
+		"code": "YGO",
+		"name": "Gold Series 3",
+		"id": 1204
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 2",
+		"id": 1201
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Three",
+		"id": 1208
+	}, {
+		"code": "YGO",
+		"name": "Duelist Revolution",
+		"id": 1205
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2010",
+		"id": 1221
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection",
+		"id": 1225
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 3",
+		"id": 1382
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Marik",
+		"id": 1220
+	}, {
+		"code": "YGO",
+		"name": "5D's Tag Force 5 Promotional Cards",
+		"id": 1274
+	}, {
+		"code": "YGO",
+		"name": "Starstrike Blast",
+		"id": 1224
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Four",
+		"id": 1245
+	}, {
+		"code": "YGO",
+		"name": "X-Saber Power-Up",
+		"id": 1463
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 3",
+		"id": 1244
+	}, {
+		"code": "YGO",
+		"name": "5D's Duel Transer Promotional Cards",
+		"id": 1352
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 11",
+		"id": 1376
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Yusei Fudo 3",
+		"id": 1254
+	}, {
+		"code": "YGO",
+		"name": "World Championship 2011 Card Pack",
+		"id": 1368
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 4",
+		"id": 1383
+	}, {
+		"code": "YGO",
+		"name": "Storm of Ragnarok",
+		"id": 1258
+	}, {
+		"code": "YGO",
+		"name": "3D Bonds Beyond Time Movie Pack",
+		"id": 1260
+	}, {
+		"code": "YGO",
+		"name": "Demo Pack",
+		"id": 1441
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Dragunity Legion",
+		"id": 1265
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack Collection Tin 2011",
+		"id": 1355
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 4",
+		"id": 1263
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Five",
+		"id": 1266
+	}, {
+		"code": "YGO",
+		"name": "5D's Over the Nexus Promotional Cards",
+		"id": 1325
+	}, {
+		"code": "YGO",
+		"name": "Extreme Victory",
+		"id": 1264
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Crow",
+		"id": 1271
+	}, {
+		"code": "YGO",
+		"name": "World Championship Qualifier 2011 Promos",
+		"id": 1272
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 5",
+		"id": 1384
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Lost Sanctuary",
+		"id": 1276
+	}, {
+		"code": "YGO",
+		"name": "Gold Series 4: Pyramids Edition",
+		"id": 1277
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 12",
+		"id": 1377
+	}, {
+		"code": "YGO",
+		"name": "5D's Manga Promos",
+		"id": 1386
+	}, {
+		"code": "YGO",
+		"name": "ZEXAL Manga Promos",
+		"id": 1414
+	}, {
+		"code": "YGO",
+		"name": "R Comic Book Promos",
+		"id": 1415
+	}, {
+		"code": "YGO",
+		"name": "GX Tag Force 3",
+		"id": 1416
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Dawn of the Xyz",
+		"id": 1282
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal: Special Edition",
+		"id": 1284
+	}, {
+		"code": "YGO",
+		"name": "Generation Force",
+		"id": 1285
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Six",
+		"id": 1287
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2011",
+		"id": 1289
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Gates of the Underworld",
+		"id": 1333
+	}, {
+		"code": "YGO",
+		"name": "Advent Calendar 2011",
+		"id": 1334
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 2: Mega Pack",
+		"id": 1335
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 2: The Duel Academy Years",
+		"id": 1336
+	}, {
+		"code": "YGO",
+		"name": "Photon Shockwave",
+		"id": 1338
+	}, {
+		"code": "YGO",
+		"name": "Samurai Assault",
+		"id": 1340
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 5",
+		"id": 1341
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 13",
+		"id": 1378
+	}, {
+		"code": "YGO",
+		"name": "Order of Chaos",
+		"id": 1346
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Seven",
+		"id": 1349
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Dragons Collide",
+		"id": 1348
+	}, {
+		"code": "YGO",
+		"name": "Ra Yellow Mega Pack",
+		"id": 1351
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 6",
+		"id": 1385
+	}, {
+		"code": "YGO",
+		"name": "Premium Collection",
+		"id": 1357
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Xyz Symphony",
+		"id": 1363
+	}, {
+		"code": "YGO",
+		"name": "Galactic Overlord",
+		"id": 1364
+	}, {
+		"code": "YGO",
+		"name": "Battle Pack: Epic Dawn",
+		"id": 1371
+	}, {
+		"code": "YGO",
+		"name": "Battle Pack Tournament Prize Cards",
+		"id": 1417
+	}, {
+		"code": "YGO",
+		"name": "Gold Series 5: Haunted Mine",
+		"id": 1372
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Samurai Warlords",
+		"id": 1373
+	}, {
+		"code": "YGO",
+		"name": "Turbo Pack: Booster Eight",
+		"id": 1390
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 14",
+		"id": 1396
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 6",
+		"id": 1394
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2012",
+		"id": 1399
+	}, {
+		"code": "YGO",
+		"name": "Return of the Duelist",
+		"id": 1405
+	}, {
+		"code": "YGO",
+		"name": "Duel Terminal 7",
+		"id": 1439
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 3: Yugi's World",
+		"id": 1410
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 3: Mega Pack",
+		"id": 1411
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Realm of the Sea Emperor",
+		"id": 1412
+	}, {
+		"code": "YGO",
+		"name": "Abyss Rising",
+		"id": 1419
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack One",
+		"id": 1423
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 15",
+		"id": 1427
+	}, {
+		"code": "YGO",
+		"name": "Cosmo Blazer",
+		"id": 1426
+	}, {
+		"code": "YGO",
+		"name": "Yu-Gi-Oh! The Official Magazine Promos",
+		"id": 1510
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Onslaught of the Fire Kings",
+		"id": 1428
+	}, {
+		"code": "YGO",
+		"name": "Star Pack 2013",
+		"id": 1431
+	}, {
+		"code": "YGO",
+		"name": "2013 Zexal Collection Tin",
+		"id": 1433
+	}, {
+		"code": "YGO",
+		"name": "Hidden Arsenal 7",
+		"id": 1436
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Two",
+		"id": 1440
+	}, {
+		"code": "YGO",
+		"name": "Lord of the Tachyon Galaxy",
+		"id": 1443
+	}, {
+		"code": "YGO",
+		"name": "Yu-Gi-Oh! Championship Series Prize Cards",
+		"id": 1461
+	}, {
+		"code": "YGO",
+		"name": "Super Starter: V for Victory",
+		"id": 1445
+	}, {
+		"code": "YGO",
+		"name": "Battle Pack 2: War of the Giants",
+		"id": 1446
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 16",
+		"id": 1471
+	}, {
+		"code": "YGO",
+		"name": "Number Hunters",
+		"id": 1450
+	}, {
+		"code": "YGO",
+		"name": "Judgment of the Light",
+		"id": 1452
+	}, {
+		"code": "YGO",
+		"name": "Collector's Tins 2013",
+		"id": 1453
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Saga of Blue-Eyes White Dragon",
+		"id": 1458
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Three",
+		"id": 1462
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 4: Joey's World",
+		"id": 1459
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 4: Mega Pack",
+		"id": 1460
+	}, {
+		"code": "YGO",
+		"name": "Shadow Specters",
+		"id": 1465
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Kaiba Reloaded",
+		"id": 1467
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Yugi Reloaded",
+		"id": 1468
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 17",
+		"id": 1480
+	}, {
+		"code": "YGO",
+		"name": "Battle Pack 2: War of the Giants - Round 2",
+		"id": 1472
+	}, {
+		"code": "YGO",
+		"name": "War of the Giants Reinforcements",
+		"id": 1473
+	}, {
+		"code": "YGO",
+		"name": "Legacy of the Valiant",
+		"id": 1470
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Four",
+		"id": 1475
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Cyber Dragon Revolution",
+		"id": 1474
+	}, {
+		"code": "YGO",
+		"name": "Star Pack 2014",
+		"id": 1476
+	}, {
+		"code": "YGO",
+		"name": "Premium Gold",
+		"id": 1478
+	}, {
+		"code": "YGO",
+		"name": "Fire Fists Special Edition",
+		"id": 1644
+	}, {
+		"code": "YGO",
+		"name": "ARC-V Manga Promos",
+		"id": 1810
+	}, {
+		"code": "YGO",
+		"name": "Dragons of Legend",
+		"id": 1479
+	}, {
+		"code": "YGO",
+		"name": "Primal Origin",
+		"id": 1482
+	}, {
+		"code": "YGO",
+		"name": "ZEXAL World Duel Carnival Promos",
+		"id": 1492
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: The Realm of Light",
+		"id": 1486
+	}, {
+		"code": "YGO",
+		"name": "Duelist League 18",
+		"id": 1503
+	}, {
+		"code": "YGO",
+		"name": "Super Starter: Space-Time Showdown",
+		"id": 1488
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Five",
+		"id": 1487
+	}, {
+		"code": "YGO",
+		"name": "Battle Pack 3: Monster League",
+		"id": 1489
+	}, {
+		"code": "YGO",
+		"name": "Duelist Alliance",
+		"id": 1493
+	}, {
+		"code": "YGO",
+		"name": "2014 Mega-Tins",
+		"id": 1497
+	}, {
+		"code": "YGO",
+		"name": "2014 Mega-Tins Mega-Pack",
+		"id": 1498
+	}, {
+		"code": "YGO",
+		"name": "Advent Calendar 2014",
+		"id": 1504
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Geargia Rampage",
+		"id": 1506
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 5D's",
+		"id": 1507
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection 5D's: Mega Pack",
+		"id": 1508
+	}, {
+		"code": "YGO",
+		"name": "The New Challengers",
+		"id": 1505
+	}, {
+		"code": "YGO",
+		"name": "Noble Knights of the Round Table Box Set",
+		"id": 1517
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Six",
+		"id": 1518
+	}, {
+		"code": "YGO",
+		"name": "Secrets of Eternity",
+		"id": 1520
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: HERO Strike",
+		"id": 1590
+	}, {
+		"code": "YGO",
+		"name": "The Secret Forces",
+		"id": 1591
+	}, {
+		"code": "YGO",
+		"name": "Premium Gold 2",
+		"id": 1598
+	}, {
+		"code": "YGO",
+		"name": "Demo Deck 2015",
+		"id": 1761
+	}, {
+		"code": "YGO",
+		"name": "World Superstars",
+		"id": 1640
+	}, {
+		"code": "YGO",
+		"name": "Crossed Souls",
+		"id": 1647
+	}, {
+		"code": "YGO",
+		"name": "2-Player Starter Deck Yuya & Declan",
+		"id": 1651
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Seven",
+		"id": 1653
+	}, {
+		"code": "YGO",
+		"name": "Star Pack Arc-V",
+		"id": 1650
+	}, {
+		"code": "YGO",
+		"name": "Dragons of Legend 2",
+		"id": 1656
+	}, {
+		"code": "YGO",
+		"name": "Clash of Rebellions",
+		"id": 1657
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Synchron Extreme",
+		"id": 1664
+	}, {
+		"code": "YGO",
+		"name": "2015 Mega-Tins",
+		"id": 1671
+	}, {
+		"code": "YGO",
+		"name": "2015 Mega-Tin Mega Pack",
+		"id": 1672
+	}, {
+		"code": "YGO",
+		"name": "High-Speed Riders",
+		"id": 1673
+	}, {
+		"code": "YGO",
+		"name": "Astral Pack Eight",
+		"id": 1680
+	}, {
+		"code": "YGO",
+		"name": "Dimension of Chaos",
+		"id": 1677
+	}, {
+		"code": "YGO",
+		"name": "Yugi's Legendary Decks",
+		"id": 1674
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Master of Pendulum",
+		"id": 1682
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Battle City",
+		"id": 1681
+	}, {
+		"code": "YGO",
+		"name": "Breakers of Shadow",
+		"id": 1685
+	}, {
+		"code": "YGO",
+		"name": "Demo Deck 2016",
+		"id": 1762
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Emperor of Darkness",
+		"id": 1689
+	}, {
+		"code": "YGO",
+		"name": "Wing Raiders",
+		"id": 1690
+	}, {
+		"code": "YGO",
+		"name": "Premium Gold: Infinite Gold",
+		"id": 1698
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 1",
+		"id": 1699
+	}, {
+		"code": "YGO",
+		"name": "Millennium Pack",
+		"id": 1700
+	}, {
+		"code": "YGO",
+		"name": "Shining Victories",
+		"id": 1701
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Yuya",
+		"id": 1709
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Rise of the True Dragons",
+		"id": 1708
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 2",
+		"id": 1724
+	}, {
+		"code": "YGO",
+		"name": "The Dark Side of Dimensions Movie Pack",
+		"id": 1711
+	}, {
+		"code": "YGO",
+		"name": "The Dark Illusion",
+		"id": 1712
+	}, {
+		"code": "YGO",
+		"name": "Dragons of Legend: Unleashed",
+		"id": 1713
+	}, {
+		"code": "YGO",
+		"name": "2016 Mega-Tins",
+		"id": 1714
+	}, {
+		"code": "YGO",
+		"name": "2016 Mega-Tin Mega Pack",
+		"id": 1715
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Rivals of the Pharaoh",
+		"id": 1721
+	}, {
+		"code": "YGO",
+		"name": "Legendary Decks II",
+		"id": 1734
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Yugi Muto",
+		"id": 1735
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Seto Kaiba",
+		"id": 1736
+	}, {
+		"code": "YGO",
+		"name": "Invasion: Vengeance",
+		"id": 1737
+	}, {
+		"code": "YGO",
+		"name": "Destiny Soldiers",
+		"id": 1738
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 3",
+		"id": 1746
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Pendulum Domination",
+		"id": 1739
+	}, {
+		"code": "YGO",
+		"name": "Raging Tempest",
+		"id": 1740
+	}, {
+		"code": "YGO",
+		"name": "Fusion Enforcers",
+		"id": 1743
+	}, {
+		"code": "YGO",
+		"name": "Star Pack Battle Royal",
+		"id": 1759
+	}, {
+		"code": "YGO",
+		"name": "Duelist Saga",
+		"id": 1744
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 4",
+		"id": 1799
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Machine Reactor",
+		"id": 1763
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Dinosmasher's Fury",
+		"id": 1764
+	}, {
+		"code": "YGO",
+		"name": "Maximum Crisis",
+		"id": 1760
+	}, {
+		"code": "YGO",
+		"name": "Duelist Pack: Dimensional Guardians",
+		"id": 1767
+	}, {
+		"code": "YGO",
+		"name": "Pendulum Evolution",
+		"id": 1768
+	}, {
+		"code": "YGO",
+		"name": "Battles of Legend: Light's Revenge",
+		"id": 1805
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Link Strike",
+		"id": 1804
+	}, {
+		"code": "YGO",
+		"name": "Code of the Duelist",
+		"id": 1806
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 5",
+		"id": 1826
+	}, {
+		"code": "YGO",
+		"name": "2017 Mega-Tin Mega Pack",
+		"id": 1807
+	}, {
+		"code": "YGO",
+		"name": "2017 Mega-Tins",
+		"id": 1808
+	}, {
+		"code": "YGO",
+		"name": "Legendary Duelists",
+		"id": 1817
+	}, {
+		"code": "YGO",
+		"name": "Yugi's Collector Box",
+		"id": 1832
+	}, {
+		"code": "YGO",
+		"name": "Legendary Dragon Decks",
+		"id": 1823
+	}, {
+		"code": "YGO",
+		"name": "Circuit Break",
+		"id": 1827
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Cyberse Link",
+		"id": 1839
+	}, {
+		"code": "YGO",
+		"name": "Spirit Warriors",
+		"id": 1840
+	}, {
+		"code": "YGO",
+		"name": "Kaiba's Collector Box",
+		"id": 1831
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 6",
+		"id": 2050
+	}, {
+		"code": "YGO",
+		"name": "Advanced Demo Deck Extra Pack",
+		"id": 2069
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Wave of Light",
+		"id": 2024
+	}, {
+		"code": "YGO",
+		"name": "Extreme Force",
+		"id": 2025
+	}, {
+		"code": "YGO",
+		"name": "Lost Art Promos",
+		"id": 2074
+	}, {
+		"code": "YGO",
+		"name": "Legendary Duelists: Ancient Millennium",
+		"id": 2048
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection Kaiba Mega Pack",
+		"id": 2066
+	}, {
+		"code": "YGO",
+		"name": "Legendary Collection Kaiba",
+		"id": 2067
+	}, {
+		"code": "YGO",
+		"name": "Star Pack VRAINS",
+		"id": 2078
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 7",
+		"id": 2077
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Lair of Darkness",
+		"id": 2079
+	}, {
+		"code": "YGO",
+		"name": "Flames of Destruction",
+		"id": 2076
+	}, {
+		"code": "YGO",
+		"name": "Dark Saviors",
+		"id": 2106
+	}, {
+		"code": "YGO",
+		"name": "Battles of Legend: Relentless Revenge",
+		"id": 2169
+	}, {
+		"code": "YGO",
+		"name": "Starter Deck: Codebreaker",
+		"id": 2170
+	}, {
+		"code": "YGO",
+		"name": "Cybernetic Horizon",
+		"id": 2171
+	}, {
+		"code": "YGO",
+		"name": "Structure Deck: Powercode Link",
+		"id": 2347
+	}, {
+		"code": "YGO",
+		"name": "Shadows in Valhalla",
+		"id": 2346
+	}, {
+		"code": "YGO",
+		"name": "OTS Tournament Pack 8",
+		"id": 2359
+	}, {
+		"code": "YGO",
+		"name": "2018 Mega-Tin Mega Pack",
+		"id": 2313
+	}, {
+		"code": "YGO",
+		"name": "2018 Mega-Tins",
+		"id": 2314
+	}, {
+		"code": "YGO",
+		"name": "Legendary Duelists: White Dragon Abyss",
+		"id": 2354
+	}, {
+		"code": "YGO",
+		"name": "Legendary Hero Decks",
+		"id": 2355
+	}, {
+		"code": "YGO",
+		"name": "Soul Fusion",
+		"id": 2369
+	}]
+}

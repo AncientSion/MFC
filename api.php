@@ -16,10 +16,38 @@ Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK
 
 
 //getArticleDetails(319033);
-getMKMJson("ALP");
+getGames("ALP");
+
+
+function getGames(){
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/games";
+
+	$data = doConnect($url);
+	
+	$json = array();
+	//var_export($data);
+
+	//$file = fopen(__DIR__."/mkm/input/games.json", "w");
+	//fwrite($file, json_encode($data));
+	//fclose($file);
+	
+	foreach ($data->game as $game){
+		echo "#" . $game->idGame . " " . $game->name;
+		
+		//var_export($game->idGame);
+		echo "\n";
+		
+		
+		getAllExpansions(($game->name), strtoupper($game->abbreviation), $game->idGame);
+		return;
+	}
+	
+	//fwrite($file, json_encode($obj)); fclose($file);
+}
+
 
 function getArticleDetails($id){
-	$url = "https://www.mkmapi.eu/ws/v2.0/output.json/articles/".$id."?isFoil=1";
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/articles/".$id."?isFoil=1";
 	//echo $url;
 
 	$data = doConnect($url);
@@ -40,16 +68,13 @@ function getArticleDetails($id){
 
 
 
-
-
 function getMKMJson($code){
 	$set = getSetByCode($code);
 	getCardsBySetId($set);
 }
 
-
 function getCardsBySetId($set){
-	$url = "https://www.mkmapi.eu/ws/v2.0/output.json/expansions/".$set->id."/singles";
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/expansions/".$set->id."/singles";
 
 	$data = doConnect($url);
 
@@ -73,15 +98,17 @@ function getSetByCode($code){
 }
 
 
-function getAllExpansions(){
-	$url = "https://www.mkmapi.eu/ws/v2.0/output.json/games/1/expansions";
+function getAllExpansions($name, $code, $id){
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/games/".$id."/expansions";
 	$data = doConnect($url);
-	$obj = array("expansions" => array());
 
-	foreach ($decoded->expansion as $item){
-		$obj["expansions"][] = array("code" => $item->abbreviation, "name" => $item->enName, "id" => $item->idExpansion);
+	$obj = array("expansions" => array());
+	
+	foreach ($data->expansion as $item){
+		var_export($data->expansion); return;
+		$obj["expansions"][] = array("code" => $code, "name" => $item->enName, "id" => $item->idExpansion);
 	}
-	$file = fopen(__DIR__."/mkm/" . "expansions" .".json", "w");
+	$file = fopen(__DIR__."/mkm/input/" . $code .".json", "w");
 	fwrite($file, json_encode($obj)); fclose($file);
 }
 
@@ -168,7 +195,7 @@ function doConnect($url){
 	// Execute the request, retrieve information about the request and response, and close the connection
 	$content = curl_exec($curlHandle);
 	$info = curl_getinfo($curlHandle);
-	foreach ($info as $key => $value){echo $key.": ".$value."\n";}
+	//foreach ($info as $key => $value){echo $key.": ".$value."\n";}
 	curl_close($curlHandle);
 
 	// Convert the response string into an object

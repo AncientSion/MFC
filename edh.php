@@ -20,7 +20,7 @@ echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)
 
 function fetchAll($day){
 	
-	getEDH($day);
+	//getEDH($day);
 	getBoxPrices($day);
 
 	$context = stream_context_create(
@@ -41,16 +41,7 @@ function fetchAll($day){
 	foil($day, $codes[1], $names[1], $context);
 	mixed($day, $codes[2], $names[2], $context);
 	
-	echo "\n\n";
-
-	if (!sizeof($GLOBALS["errors"])){
-		echo "NO ERRORS !";
-	}
-	else {
-		for ($i = 0; $i < sizeof($GLOBALS["errors"]); $i++){
-			echo "error: ".$GLOBALS["errors"][$i]."\n";
-		}
-	}
+	logErrors();
 
 }
 
@@ -126,14 +117,16 @@ function nonFoil($date, $codes, $names, $context){
 		$page = 0;
 
 		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . urlencode($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
+			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
 			if ($page){$url .= "&resultsPage=".$page;}
 
 			//echo "URL: ".$url."\n";
+			
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
 			$rows = $html->find(".MKMTable", 0)->find("tr");
 
 			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
+			else if (sizeof($rows[0]->children()) < 6){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
 
 			for ($k = 1; $k < sizeof($rows)-1; $k++){
 				$name = $rows[$k]->children(2)->plaintext;
@@ -153,6 +146,7 @@ function nonFoil($date, $codes, $names, $context){
 			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
 		}
 
+		
 		writeAndClose($codes[$i], $set);
 	}
 }
@@ -168,7 +162,7 @@ function foil($date, $codes, $names, $context){
 		$page = 0;
 
 		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . urlencode($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
+			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
 			if ($page){$url .= "&resultsPage=".$page;}
 
 			//echo "URL: ".$url."\n";
@@ -176,6 +170,7 @@ function foil($date, $codes, $names, $context){
 			$rows = $html->find(".MKMTable", 0)->find("tr");
 
 			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
+			else if (sizeof($rows[0]->children()) < 8){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
 
 			for ($k = 1; $k < sizeof($rows)-1; $k++){
 				$name = $rows[$k]->children(2)->plaintext;
@@ -192,7 +187,7 @@ function foil($date, $codes, $names, $context){
 
 			$page++;
 
-			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; break;}
+			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
 		}
 
 		writeAndClose($codes[$i], $set);
@@ -200,9 +195,6 @@ function foil($date, $codes, $names, $context){
 }
 
 function mixed($date, $codes, $names, $context){
-	
-	//$codes = array("BFZ", "OGW");
-	//$names = array("Battle for Zendikar", "Oath of the Gatewatch");
 	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";
@@ -213,7 +205,7 @@ function mixed($date, $codes, $names, $context){
 		$page = 0;
 
 		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . urlencode($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
+			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
 			if ($page){$url .= "&resultsPage=".$page;}
 
 			//echo "URL: ".$url."\n";
@@ -221,7 +213,7 @@ function mixed($date, $codes, $names, $context){
 			$rows = $html->find(".MKMTable", 0)->find("tr");
 
 			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
-			else if (sizeof($rows[0]->children()) < 8){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; break;}
+			else if (sizeof($rows[0]->children()) < 8){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
 
 			for ($k = 1; $k < sizeof($rows)-1; $k++){
 				$name = $rows[$k]->children(2)->plaintext;
@@ -240,13 +232,12 @@ function mixed($date, $codes, $names, $context){
 
 			$page++;
 
-			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; break;}
+			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
 		}
 
 		writeAndClose($codes[$i], $set);
 	}
 }
-
 function getBoxPrices($date){
 	$context = stream_context_create(
 	    array(
@@ -255,37 +246,51 @@ function getBoxPrices($date){
 				    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
 				)
 			)
-	);
+	);	
 
-	$set = array("date" => $date, "code" => "BOXES", "set" => "Booster Boxes", "data" => array());
+	$names = array("Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy"); 
+	$codes = array("MTG", "YGO", "CFV", "DBS", "FOW", "MLP", "SPOILS", "SWD", "WOW", "WS", "DGB", "FF");
+	
+			
+	for ($k = 0; $k < sizeof($names); $k++){
+	
+	$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
 
+		//echo "try fetching ".$names[$k]." / ".$codes[$k]."\n";
+		
+		for ($i = 0; $i < 10; $i++){
+			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster+Boxes?name=&idExpansion=0&onlyAvailable=&sortBy=englishName&sortDir=asc&view=list";
 
+			if ($i){$url .= "&resultsPage=".$i;}
 
-	for ($i = 0; $i < 5; $i++){
-		$url = "https://www.cardmarket.com/en/Magic/Products/Booster+Boxes?name=&idExpansion=0&onlyAvailable=&sortBy=englishName&sortDir=asc&view=list";
+			echo "paging: ".$names[$k]." / ".$i."\n";
+			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+			$rows = $html->find(".MKMTable", 0)->children(1)->children();
 
-		if ($i){$url .= "&resultsPage=".$i;}
+			for ($j = 0; $j < sizeof($rows); $j++){
+				$name = $rows[$j]->children(2)->children(0)->innertext;
+				$baseAvail = $rows[$j]->children(3)->children(0)->innertext;
+				$basePrice = 0.00;
+				if ($baseAvail){
+					$basePrice = $rows[$j]->children(4)->children(0)->innertext;
+					$basePrice = str_replace(",", ".", $basePrice);
+					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+				}
 
-		echo "paging: ".$i."\n";
-		$html = file_get_html($url, false, $context);
-		$rows = $html->find(".MKMTable", 0)->children(1)->children();
-
-		for ($j = 0; $j < sizeof($rows); $j++){
-			$name = $rows[$j]->children(2)->children(0)->innertext;
-			$baseAvail = $rows[$j]->children(3)->children(0)->innertext;
-			$basePrice = 0.00;
-			if ($baseAvail){
-				$basePrice = $rows[$j]->children(4)->children(0)->innertext;
-				$basePrice = str_replace(",", ".", $basePrice);
-				$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+				$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
 			}
-
-			$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
+			
+			if (sizeof($rows) < 30){
+				echo "last page - ";
+				break;
+			}
 		}
-	}
 
-	writeAndClose("BOXES", $set);
+		//echo "try write ".$names[$k]." / ".$codes[$k];
+		writeAndClose($codes[$k], $set);
+	}
 }
+
 
 function doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
 	$set["data"][] = array(
@@ -299,60 +304,15 @@ function doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
 }
 
 
+function logErrors(){
+	echo "\n\n";
 
-
-function doConvert(){
-	$data = json_decode(
-	  '{
-		"codes": [
-			["A25", "EMA"],
-			["LEB", "LEG", "TMP", "STH"],
-			["MIR", "VIS"],
-			["PLS", "LRW", "MOR", "SHM", "EVE", "RAV", "PLC", "GTC", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM"],
-			[],
-			["BOXES"]
-		],
-		"names":
-		[
-			["Masters 25", "Eternal Masters"],
-			["Beta", "Legends", "Tempest", "Stronghold"],
-			["Mirage", "Visions"],
-			["Planeshift", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Planar Chaos", "Gatecrash", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria"],
-			["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations"],
-			["Booster Boxes"]
-		]
-	}'
-	, FALSE);
-
-	//var_export($data); return;
-
-	$codes = 'array(';
-
-	for ($i = 0; $i < sizeof($data->codes); $i++){
-	  for ($j = 0; $j < sizeof($data->codes[$i]); $j++){
-	    $codes .= '"'.$data->codes[$i][$j].'", ';
-	  }
+	if (!sizeof($GLOBALS["errors"])){echo "NO ERRORS !";}
+	else {
+		for ($i = 0; $i < sizeof($GLOBALS["errors"]); $i++){
+			echo "error: ".$GLOBALS["errors"][$i]."\n";
+		}
 	}
-
-	$codes = substr($codes, 0, strlen($codes)-2);
-	$codes .= ');';
-
-
-	$names = 'array(';
-
-	for ($i = 0; $i < sizeof($data->names); $i++){
-	  for ($j = 0; $j < sizeof($data->names[$i]); $j++){
-	    $names .= '"'.$data->names[$i][$j].'", ';
-	  }
-	}
-
-	$names = substr($names, 0, strlen($names)-2);
-	$names .= ');';
-
-
-	array("A25", "EMA", "PLS", "LRW", "MOR", "SHM", "EVE", "RAV", "PLC", "GTC", "WWK", "ROE", "MRD", "5DN", "DST", "SOM", "MBS", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM", "EXP", "MPS", "MPS_AKH", "BOXES");
-
-	array("Masters 25", "Eternal Masters", "Planeshift", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica: City of Guilds", "Planar Chaos", "Gatecrash", "Worldwake", "Rise of the Eldrazi", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria");
 }
 
 ?>

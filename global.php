@@ -18,6 +18,28 @@ function getCardDataSet($name, $data){
 	return false;
 }
 
+function getMKMURL($set, $card){
+	
+	
+	if (strlen($set) > 5 && substr($set, strlen($set)-5, 5) == "Boxes"){
+		$base = "https://www.cardmarket.com/en/".substr($set, 0, strlen($set)-6)."/Products/Booster+Boxes/";
+		$card = str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))));
+		return $base.$card;
+	}
+	else {
+		$base = "https://www.cardmarket.com/en/Magic/Products/Singles/";
+		$set =  doReplace($set);
+		$card = str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))));
+		$url = $base.$set."/".$card;
+		return $url;
+	}
+}
+
+
+function doReplace($set){
+	return preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $set)));
+}
+
 function addCardDataPoint(&$currentSet, $point){
 	//echo "</br>adding point</br>";
 	//var_export($point); echo "</br>";
@@ -46,23 +68,64 @@ function buildFullCardPool(){
 	$sets = file_get_contents(__DIR__."/output/avail.json");
 	$sets = json_decode($sets);
 
-	$data = array();
+	$data = array();	
+	
+	for ($i = 3; $i < sizeof($sets->codes); $i++){		
+		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){	
+			echo "adding set: ".$sets->codes[$i][$j]."</br>";
+			$set = array("code" => $sets->codes[$i][$j], "name" => $sets->names[$i][$j], "cards" => array());			
+			$json = json_decode(file_get_contents(__DIR__."/output/".$sets->codes[$i][$j].".json"));
+			
+			foreach ($json->content[0]->data as $card){
+				$set["cards"][] = array("name" => $card->name, "rarity" => "Special");
+				
+			}
+			$data[] = $set;	
+		}
+	}
 
-	for ($i = 0; $i < sizeof($sets->codes); $i++){
+	for ($i = 0; $i < sizeof($sets->codes)-1; $i++){
 		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
 			echo "adding set: ".$sets->codes[$i][$j]."</br>";
 			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
 
-			$set = array("code" => $json->code, "name" => $json->name, "cards" => array());
+			$set = array("code" => $json->code, "name" => $json->name, "cards" => array());	
+			
+				
+			$skipNext = 0;
+				
 			foreach ($json->cards as $card){
-				$set["cards"][] = array("name" => $card->name, "rarity" => $card->rarity);
+				$name = $card->name; 
+				//echo $name."</br>";
+				
+				if ($skipNext){
+					$skipNext = 0;
+					//echo "SKIPPING</br>";
+					continue;
+				}
+					
+				if (isset($card->layout)){
+					if ($card->layout == "double-faced"){
+						$name = $card->names[0]. " / ".$card->names[1];
+						$skipNext = 1;
+						//echo $name."</br>";
+					}
+					else if ($card->layout == "split"){
+						$name = $card->names[0]. " // ".$card->names[1];
+						$skipNext = 1;
+						//echo $name."</br>";
+					}
+				}
+				
+				$set["cards"][] = array("name" => $name, "rarity" => $card->rarity);
+				
 			}
 			$data[] = $set;
 		}
 	}
 
 	$file = fopen(__DIR__."/output/cardlist.json", "a");
-	echo "writing</br>";
+	echo "writing total of ".sizeof($data)." sets</br>";
 	fwrite($file, json_encode($data));
 	fclose($file);
 }
@@ -193,7 +256,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='maxPrice'>Max (€, n)</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number'min=0 max=5000 value='".$maxPrice."' name='maxPrice'>";
+	$html .= "<input type='number' min=0 max=5000 value='".$maxPrice."' name='maxPrice'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -202,7 +265,7 @@ function getForm($get){
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' value='".$availChange."' name='availChange'>";
+	$html .= "<input type='number' min=-100 max=100 value='".$availChange."' name='availChange'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -217,6 +280,18 @@ function getForm($get){
 	$html .="<div class='checkContainer'>";
 	$html .= "<input type='checkbox' name='stackDisplay' value='1'".$checked."'>";
 	$html .= "stack</div>";
+	
+	
+	$skipUnchanged = "";
+	$checked = "";
+	$value = "";
+	//var_export($get);
+	if (sizeof($get) && isset($get["skipUnchanged"])){
+		$checked = "checked='checked'";
+	}
+	$html .="<div class='checkContainer'>";
+	$html .= "<input type='checkbox' name='skipUnchanged' value='1'".$checked."'>";
+	$html .= "Skip 0</div>";
 	
 	
 	$pctChecked = "";
@@ -295,33 +370,38 @@ function getForm($get){
 
 
 
+function writeAllBoxes(){
+	$data =  file_get_contents(__DIR__."/output/avail.json");
+	$data = json_decode($data);
+	
+	for ($i = 0; $i < sizeof($data->codes[3]); $i++){
+		convertBoosterInput($data->names[3][$i], $data->codes[3][$i]);
+		return;
+	}
+}
 
 
-
-function writeBoosterInput(){
+function convertBoosterInput($name, $code){
 	$set = array(
-		"name" => "Booster Boxes",
+		"name" => $name,
 		"cards" => array(),
 	);
 
-
-	$data =  file_get_contents(__DIR__."/output/BOXES.json");
+	$data =  file_get_contents(__DIR__."/mkm/input/".$code.".json");
 	$data = json_decode($data);
-
-	$entry = $data->content[0]->data;
 
 	foreach ($entry as $box){
 		//echo "day: ".$day->date.": ".sizeof($day->data)."\n";
 		$set["cards"][] = array("name" => $box->name, "rarity" => "D");
 	}
 
-	$file = fopen(__DIR__."/input/BOXES.json", "a");
+	$file = fopen(__DIR__."/input/".$code.".json", "a");
 	echo "writing \n";
 	fwrite($file, json_encode($set));
 	fclose($file);
 }
 
-function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
+function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType){
 	return;
 	$stamp = time();
 
@@ -354,27 +434,32 @@ function logChart($set, $card){
 	file_put_contents(__DIR__."/search.log", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
 }
 
-function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType){
+
+
+function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType){
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
 
-	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType);
+	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType);
 	
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
 	$names = getSetNamesByCodes($codes);
 	$allSets = array();
-
-	//$codes = array(array("A25"));
-
-	//echo $maxPrice;
 	
-	
+	$cardList = json_decode(file_get_contents(__DIR__."/output/cardlist.json"), TRUE);
+		
 	for ($i = 0; $i < sizeof($codes); $i++){
 		$setName = $names[$i];
-
-		$cards = json_decode(file_get_contents(__DIR__."/input/".$codes[$i].".json"), TRUE);
-		$cards = $cards["cards"];
+		
+		$cards;
+		for ($j = 0; $j < sizeof($cardList); $j++){
+			if ($cardList[$j]["code"] == $codes[$i]){
+				$cards = $cardList[$j]["cards"];
+				break;
+			}
+		}
+		
 		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
 		$points = $points["content"];
 		if (!$points){continue;}
@@ -397,6 +482,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		
 		for ($k = 0; $k < sizeof($cards); $k++){
 
+			//echo $cards[$k]["name"]."</br>";
 			$skip = true;
 			for ($l = 0; $l < sizeof($includes); $l++){
 				if ($cards[$k]["rarity"][0] == $includes[$l]){$skip = false; break;}
@@ -460,7 +546,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
 	
 	//echo $html;
-	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay);
+	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay, $skipUnchanged);
 
 }
 
@@ -473,8 +559,7 @@ function setChangeValue(&$card, $attr){
 }
 
 
-function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay){
-	//var_export($allSets);
+function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay, $skipUnchanged){
 
 	//echo $availChange;
 	/*var_export(func_get_arg(1));
@@ -489,7 +574,6 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 	$avail = "";
 	$change = "";
 	$price = "";
-	$html = "<span style='color: red'>NOTE: Prefer the # (available stock) columns, price is biased because of 'cheap' foreign foils</span>";
 	$html = "";
 	$html .= "</br>";
 	$index;
@@ -514,7 +598,6 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 	$colSpan = 8;
 	if ($stackDisplay){$colSpan = 9;}
 	
-	$mkmBaseUrl = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		$html .="<table class='moveTable'>";
@@ -555,13 +638,12 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
 			
 
+			if ($skipUnchanged && $card[$volChange][$index] == 0){continue;}
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
 			if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
 			if ($availChange > 0 && $card[$volChange][$index] < $availChange){continue;}
 
-			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
 			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
-			$mkmUrl = $mkmBaseUrl.urlencode($allSets[$i]["set"]) . "/" . urlencode($card["name"]);
 
 			$html .="<tr>";
 			$html .="<td>";
@@ -608,10 +690,13 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 				$html .="<td>".$string."</td>";
 			}	
 			$html .="<td>";
+			
+			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
 			$html .= "<a target='_blank' href=".$chartUrl.">"."Chart"."</a>";
 			$html .="</td>";
 			$html .="<td>";
-			$html .="<a target='_blank' href=".$mkmUrl.">MKM</a></td>";
+			
+			$html .="<a target='_blank' href=".getMKMURL($allSets[$i]["set"], $card["name"]).">MKM</a></td>";
 			$html .="</td>";
 			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
 
@@ -626,7 +711,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 }
 
 function writeAndClose($code, $data){
-	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
+	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n\n";
 	$GLOBALS["cards"] += sizeof($data["data"]);
 	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
 	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
