@@ -23,7 +23,18 @@
 				echo json_encode(array("msg" => "no card price data found"));
 				return;
 			}
+			
+			$days = sizeof($json->content);
+			$keep = 1;
+			if ($days > 200){
+				$keep = 3;
+			}
+			else if ($days > 100){
+				$keep = 2;
+			}
+			
 			for ($i = 0; $i < sizeof($json->content); $i++){
+				if ($i % $keep != 0){continue;}
 				for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
 					if ($json->content[$i]->data[$j]->name == $card){
 						$dataPoints[] = array("time" => $json->content[$i]->date, "data" => $json->content[$i]->data[$j]);

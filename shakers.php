@@ -5,10 +5,11 @@
 
 	//writeAllBoxes(); return;
 	//buildFullCardPool(); return;
-	
-	echo '<a href="shakers.php">Reload Blank</a>';
-	echo '<a style="margin-left: 100px; color: yellow;" href="charts.php">Go to single card lookup</a>';
-		
+	echo "<div class='topHead'>";
+	echo '<div><a href="shakers.php">Reload Blank</a></div>';
+	echo '<div><a href="charts.php">Go to single card lookup</a></div>';
+	echo "<div><input id='toggleVis' type='button' value='hide'></div>";
+	echo "</div>";
 
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
@@ -97,6 +98,6 @@
 	.mainContainer {
 		margin: auto;
 		height: auto;
-		margin-bottom: 30px
+		margin-bottom: 10px
 	}
 </style>

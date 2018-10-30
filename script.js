@@ -96,6 +96,7 @@ class Charter {
 	}
 
 	getLabel(points){
+		//console.log("points " + points.length);
 		var ret = [];
 		for (let i = 0; i < points.length; i++){
 			ret.push(points[i].time);
@@ -120,8 +121,6 @@ class Charter {
 			sets[1].push(points[i].data.foilPrice || 0);
 			sets[2].push(points[i].data.baseAvail || 0);
 			sets[3].push(points[i].data.basePrice || 0);
-			//min = Math.min(min, ret[ret.length-1]);
-			//max = Math.max(max, ret[ret.length-1]);
 		}
 
 		var returnData = [];
@@ -175,6 +174,7 @@ class Charter {
 		name = name.replace("//", "");
 		name = name.replace("/,", "");
 		name = name.replace(/--/g, "-");
+		name = name.replace(":", "");
 		
 		console.log(set);
 		console.log(name);
@@ -222,6 +222,8 @@ class Charter {
 	}
 
 	buildChart(label, dataSets, tickData){
+		
+		//console.log(tickData);
 
 		//console.log(this[(dataSets[0].ref) + "Chart"]);
 

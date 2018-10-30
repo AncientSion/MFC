@@ -8,10 +8,19 @@ input[type=checkbox], input[type=radio] {
   transform: scale(1.5);
 }
 
+.topHead {
+	display: inline-block;
+}
+
+.topHead div {
+	display: inline-block;
+	margin-left: 40px;
+}
+
 form {
 	margin: auto;
 	width: 1200px;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 a:link, a:visited {
@@ -71,7 +80,7 @@ canvas {
 }
 
 td {
-	font-size: 16px;
+	font-size: 14px;
 }
 
 div > input, div > span{
@@ -130,10 +139,7 @@ div > input, div > span{
 
 .dataTables_wrapper {
 	padding: 10px;
-}
-
-.dataTables_wrapper {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 #set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChange {

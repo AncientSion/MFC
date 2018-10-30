@@ -25,9 +25,6 @@ $(document).ready(function(){
 						$(this).parent().parent().parent().children().first().children().first().children().first().children().last().html(),
 						$(this).find("a").first().html()
 					)
-				},
-				function(){
-					hideChart();
 				}
 			)
 		})
@@ -39,11 +36,6 @@ function showChart(set, card){
 	//console.log("showChart");
 	//console.log(set + " / " + card);
 	charter.getCardData(set, card)
-}
-
-function hideChart(){
-	//console.log("hideChart");
-	//console.log("out");
 }
 
 $(document).contextmenu(function(e){
@@ -59,8 +51,8 @@ $(".setDivider").contextmenu(function(e){
 	})
 })
 
-$("form").find("input").click(function(){
-	$(this).parent().find(".checkWrapper").toggleClass("disabled");
+$("#toggleVis").click(function(){
+	$(".checkWrapper").toggleClass("disabled");
 	setRes();
 })
 
@@ -68,6 +60,6 @@ function setRes(){
 	var resY = window.innerHeight;
 	var formHeight = $("form").height();
 	var chartHeight = $(".mainContainer").height();
-	var rem = (resY - formHeight - chartHeight -100);
+	var rem = (resY - formHeight - chartHeight -70);
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }

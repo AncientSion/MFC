@@ -19,7 +19,9 @@ function getCardDataSet($name, $data){
 }
 
 function getMKMURL($set, $card){
-	
+
+	//echo $card;
+	//echo "</br>";
 	
 	if (strlen($set) > 5 && substr($set, strlen($set)-5, 5) == "Boxes"){
 		$base = "https://www.cardmarket.com/en/".substr($set, 0, strlen($set)-6)."/Products/Booster+Boxes/";
@@ -29,7 +31,8 @@ function getMKMURL($set, $card){
 	else {
 		$base = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 		$set =  doReplace($set);
-		$card = str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))));
+		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card)))));
+		//echo $card."</br>";
 		$url = $base.$set."/".$card;
 		return $url;
 	}
@@ -163,7 +166,6 @@ function getForm($get){
 	$html = "";
 
 	$html .="<form method='get'>";
-	$html .="<input type='button' value='hide'>";
 
 	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
 	$rarity = array("C", "U", "R", "M", "S");
@@ -620,8 +622,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 		$html .="<th style='width: 50px'></th>";
 		$html .="<th style='width: 60px'>Rarity</th>";
 
-		$html .="<th style='width: 80px'>Stock</br>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 80px'>Stock</br>".$allSets[$i]["lastDate"]."</th>";
+		$html .="<th style='width: 80px'>".$allSets[$i]["compareDate"]."</th>";
+		$html .="<th style='width: 80px'>".$allSets[$i]["lastDate"]."</th>";
 	
 		/*
 		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
