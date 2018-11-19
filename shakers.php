@@ -25,6 +25,7 @@
 			$minPrice = $_GET["minPrice"];
 			$maxPrice = $_GET["maxPrice"];
 			$availChange = $_GET["availChange"];
+			$plusminus = 0; if (isset($_GET["plusminus"])){$plusminus = 1;}
 			$stackDisplay = 0; if (isset($_GET["stackDisplay"])){$stackDisplay = 1;}
 			$skipUnchanged = 0; if (isset($_GET["skipUnchanged"])){$skipUnchanged = 1;}
 			$type = $_GET["compareType"];
@@ -51,6 +52,7 @@
 				$minPrice,
 				$maxPrice,
 				$availChange,
+				$plusminus,
 				$stackDisplay,
 				$skipUnchanged,
 				$type

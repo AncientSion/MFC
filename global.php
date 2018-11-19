@@ -272,6 +272,14 @@ function getForm($get){
 	$html .= "</div>";
 
 	
+	$checked = "";
+	if (sizeof($get) && isset($get["plusminus"])){
+		$checked = "checked='checked'";
+	}
+	$html .="<div class='checkContainer'>";
+	$html .= "<input type='checkbox' name='plusminus' value='1'".$checked."'>";
+	$html .= "+/-</div>";
+	
 	$stackDisplay = "";
 	$checked = "";
 	$value = "";
@@ -403,7 +411,7 @@ function convertBoosterInput($name, $code){
 	fclose($file);
 }
 
-function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType){
+function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 	return;
 	$stamp = time();
 
@@ -413,7 +421,7 @@ function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $min
 		"date" => date('d.m.Y', $stamp),
 		"time" => date('H:i:s', $stamp),
 		"options" => array(
-			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $compareType
+			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType
 		)
 	);
 
@@ -438,11 +446,11 @@ function logChart($set, $card){
 
 
 
-function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType){
+function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 	//var_export(func_get_args());
 	//echo $minAvail; echo $maxAvail;
 
-	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $stackDisplay, $skipUnchanged, $compareType);
+	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
 	
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
@@ -548,7 +556,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
 	
 	//echo $html;
-	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay, $skipUnchanged);
+	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $plusminus, $stackDisplay, $skipUnchanged);
 
 }
 
@@ -561,7 +569,7 @@ function setChangeValue(&$card, $attr){
 }
 
 
-function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $stackDisplay, $skipUnchanged){
+function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $plusminus, $stackDisplay, $skipUnchanged){
 
 	//echo $availChange;
 	/*var_export(func_get_arg(1));
@@ -642,9 +650,14 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $st
 
 			if ($skipUnchanged && $card[$volChange][$index] == 0){continue;}
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
-			if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
-			if ($availChange > 0 && $card[$volChange][$index] < $availChange){continue;}
-
+			
+			if ($plusminus){
+				if (abs($card[$volChange][$index]) < $availChange){continue;}
+			}
+			else {
+				if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
+				if ($availChange > 0 && $card[$volChange][$index] < $availChange){continue;}
+			}				
 			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
 
 			$html .="<tr>";

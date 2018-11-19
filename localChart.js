@@ -25,7 +25,8 @@ $(document).ready(function(){
 						$(this).parent().parent().parent().children().first().children().first().children().first().children().last().html(),
 						$(this).find("a").first().html()
 					)
-				}
+				},
+				function(){}
 			)
 		})
 	})
