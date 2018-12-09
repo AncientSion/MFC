@@ -1,0 +1,54 @@
+{
+	"name": "Guilds of Ravnica Mythic Edition",
+	"code": "GME",
+	"mkm_name": "Guilds of Ravnica Mythic Edition",
+	"cards": [{
+		"name": "Elspeth, Knight-Errant",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Daretti, Ingenious Iconoclast",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Construct Token (Artifact 1\/1)",
+		"rarity": "Token"
+	}, {
+		"name": "Liliana, the Last Hope Emblem",
+		"rarity": "Token"
+	}, {
+		"name": "Teferi, Hero of Dominaria",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Ral, Izzet Viceroy",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Soldier Token (White 1\/1)",
+		"rarity": "Token"
+	}, {
+		"name": "Ral, Izzet Viceroy Emblem",
+		"rarity": "Token"
+	}, {
+		"name": "Tezzeret, Agent of Bolas",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Nicol Bolas, Planeswalker",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Zombie Token (Black 2\/2)",
+		"rarity": "Token"
+	}, {
+		"name": "Teferi, Hero of Dominaria Emblem",
+		"rarity": "Token"
+	}, {
+		"name": "Liliana, the Last Hope",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Vraska, Golgari Queen",
+		"rarity": "Masterpiece"
+	}, {
+		"name": "Elspeth, Knight-Errant Emblem",
+		"rarity": "Token"
+	}, {
+		"name": "Vraska, Golgari Queen Emblem",
+		"rarity": "Token"
+	}]
+}

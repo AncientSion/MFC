@@ -16,8 +16,8 @@ Nbx1gkL3XFeDH6cVcbdEXqphaHzWrQhK
 
 
 //getArticleDetails(319033);
-getGames("ALP");
-
+//getGames();
+//getCardsBySetId("GME", 2373);
 
 function getGames(){
 	$url = "https://api.cardmarket.com/ws/v2.0/output.json/games";
@@ -39,12 +39,25 @@ function getGames(){
 		
 		
 		getAllExpansions(($game->name), strtoupper($game->abbreviation), $game->idGame);
-		return;
+		//return;
 	}
 	
 	//fwrite($file, json_encode($obj)); fclose($file);
 }
 
+function getAllExpansions($name, $code, $id){
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/games/".$id."/expansions";
+	$data = doConnect($url);
+
+	$obj = array("expansions" => array());
+	
+	foreach ($data->expansion as $item){
+	//	var_export($data->expansion); return;
+		$obj["expansions"][] = array("code" => $code, "name" => $item->enName, "id" => $item->idExpansion);
+	}
+	$file = fopen(__DIR__."/mkm/input/" . $code .".json", "w");
+	fwrite($file, json_encode($obj)); fclose($file);
+}
 
 function getArticleDetails($id){
 	$url = "https://api.cardmarket.com/ws/v2.0/output.json/articles/".$id."?isFoil=1";
@@ -73,15 +86,24 @@ function getMKMJson($code){
 	getCardsBySetId($set);
 }
 
-function getCardsBySetId($set){
-	$url = "https://api.cardmarket.com/ws/v2.0/output.json/expansions/".$set->id."/singles";
+function getCardsBySetId($code, $id){
+	$url = "https://api.cardmarket.com/ws/v2.0/output.json/expansions/".$id."/singles";
+	$json = doConnect($url);
 
-	$data = doConnect($url);
+	$export = array("name" => "", "code" => $code, "mkm_name" => "", "cards" => array());
+	
+	//var_export($json); return; 
+	
+	
+	foreach ($json->single as $entry){
+		//var_export($entry->enName); ;
+		$export["cards"][] = array("name" => $entry->enName, "rarity" => $entry->rarity);
+	}
+		
 
-	//$export = array("name" => 
-
-	$file = fopen(__DIR__."/mkm/input/" . $set->code .".json", "w");
-	fwrite($file, json_encode($data->single));
+	//$file = fopen(__DIR__."/mkm/input/" . $set->code .".json", "w");
+	$file = fopen(__DIR__."/mkm/input/".$code.".json", "w");
+	fwrite($file, json_encode($export));
 	fclose($file);
 	//fwrite($file, json_encode($obj)); fclose($file);
 }
@@ -96,22 +118,6 @@ function getSetByCode($code){
 		}
 	}
 }
-
-
-function getAllExpansions($name, $code, $id){
-	$url = "https://api.cardmarket.com/ws/v2.0/output.json/games/".$id."/expansions";
-	$data = doConnect($url);
-
-	$obj = array("expansions" => array());
-	
-	foreach ($data->expansion as $item){
-		var_export($data->expansion); return;
-		$obj["expansions"][] = array("code" => $code, "name" => $item->enName, "id" => $item->idExpansion);
-	}
-	$file = fopen(__DIR__."/mkm/input/" . $code .".json", "w");
-	fwrite($file, json_encode($obj)); fclose($file);
-}
-
 
 function doConnect($url){
 	// Declare and assign all needed variables for the request and the header
@@ -205,62 +211,6 @@ function doConnect($url){
 	$decoded = json_decode($content);
 	return $decoded;
 }
-
-
-//
-
-
-/*
-$context = stream_context_create(
-    array(
-        "http" =>
-			array(
-			    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T",
-				"method" => "POST",
-				"content" => http_build_query(
-					array(
-						"productFilter[idLanguage]" => array(1),
-						"productFilter[isFoil]" => "Y",
-						"productFilter[condition]" => array("NM", "EX")
-					)
-				)
-			)
-		)
-);
-$url = "https://www.cardmarket.com/robots.txt";
-$html = file_get_html($url, false, $context);
-
-echo $html;
-
-*/
-
-
-
-
-
-
-
-
-
-/*
-
-include_once(__DIR__."\global.php");
-
-
-$session = curl_init();
-curl_setopt($session, CURLOPT_URL, "http://www.google.com/search?q=curl");
-curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($session, CURLOPT_HEADER, false);
-
-$result = curl_exec($session);
-
-curl_close($session);
-
-echo $result;
-
-return;
-
-*/
 
 
 

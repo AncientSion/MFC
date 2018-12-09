@@ -1379,5 +1379,17 @@
 		"code": "MTG",
 		"name": "Magic Game Night",
 		"id": 2381
+	}, {
+		"code": "MTG",
+		"name": "Ultimate Masters",
+		"id": 2397
+	}, {
+		"code": "MTG",
+		"name": "Ultimate Box Toppers",
+		"id": 2398
+	}, {
+		"code": "MTG",
+		"name": "MagicFest Promos",
+		"id": 2413
 	}]
 }

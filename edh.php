@@ -152,6 +152,9 @@ function nonFoil($date, $codes, $names, $context){
 }
 
 function foil($date, $codes, $names, $context){
+	
+	//$codes = array("GME");
+	//$names = array("Guilds of Ravnica Mythic Edition");
 
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";

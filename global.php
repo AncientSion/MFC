@@ -31,7 +31,7 @@ function getMKMURL($set, $card){
 	else {
 		$base = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 		$set =  doReplace($set);
-		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card)))));
+		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "-", preg_replace("/,/", "", $card)))));
 		//echo $card."</br>";
 		$url = $base.$set."/".$card;
 		return $url;
@@ -79,9 +79,8 @@ function buildFullCardPool(){
 			$set = array("code" => $sets->codes[$i][$j], "name" => $sets->names[$i][$j], "cards" => array());			
 			$json = json_decode(file_get_contents(__DIR__."/output/".$sets->codes[$i][$j].".json"));
 			
-			foreach ($json->content[0]->data as $card){
+			foreach ($json->content[sizeof($json->content)-1]->data as $card){
 				$set["cards"][] = array("name" => $card->name, "rarity" => "Special");
-				
 			}
 			$data[] = $set;	
 		}
@@ -93,7 +92,6 @@ function buildFullCardPool(){
 			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
 
 			$set = array("code" => $json->code, "name" => $json->name, "cards" => array());	
-			
 				
 			$skipNext = 0;
 				
