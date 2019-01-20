@@ -10,10 +10,9 @@
 			return;
 		}
 		else if ($_GET["type"] == "price"){
+			//var_export($_GET); return;
 			$set = $_GET["set"];
 			$card = $_GET["card"];
-
-			//echo $card;
 
 			logChart($set, $card);
 			$dataPoints = array();
@@ -25,16 +24,16 @@
 			}
 			
 			$days = sizeof($json->content);
-			$keep = 1;
+		/*	$keep = 1;
 			if ($days > 200){
 				$keep = 3;
 			}
 			else if ($days > 100){
 				$keep = 2;
 			}
-			
+		*/	
 			for ($i = 0; $i < sizeof($json->content); $i++){
-				if ($i % $keep != 0){continue;}
+				//if ($i % $keep != 0){continue;}
 				for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
 					if ($json->content[$i]->data[$j]->name == $card){
 						$dataPoints[] = array("time" => $json->content[$i]->date, "data" => $json->content[$i]->data[$j]);

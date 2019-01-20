@@ -132,6 +132,7 @@ class Charter {
 				"data": sets[i],
 				"fontColor": "white",
 				"fontSize": 14,
+				"pointRadius": 2,
 				"borderColor": colors[i],
 				"backgroundColor": colors[i],
 				"borderWidth": 2,
@@ -164,8 +165,6 @@ class Charter {
 //function doReplace($name){return str_replace("'", "", str_replace(" ", "-", str_replace(",", "", $name)));
 
 	getCardLink(set, name){
-		console.log(set);
-		console.log(name);
 		
 		set = set.replace(/ /g, "-");
 		name = name.replace(/ /g, "-");
@@ -176,8 +175,8 @@ class Charter {
 		name = name.replace(/--/g, "-");
 		name = name.replace(":", "");
 		
-		console.log(set);
-		console.log(name);
+		//console.log(set);
+		//console.log(name);
 		
 		
 		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + (set + "/" + name);
@@ -234,6 +233,13 @@ class Charter {
 					datasets: dataSets
 				},
 				options: {
+			        animation: {
+			            duration: 0, // general animation time
+			        },
+			        hover: {
+			            animationDuration: 0, // duration of animations when hovering an item
+			        },
+			        responsiveAnimationDuration: 0, // animation duration after a resize
 					legend: {
 						display: true,
 						labels: {

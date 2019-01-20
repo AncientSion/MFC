@@ -2,7 +2,6 @@
 
 	include_once(__DIR__."/global.php");
 		
-
 	//buildFullCardPool(); return;
 	echo "<div class='topHead'>";
 	echo '<div><a href="shakers.php">Reload Blank</a></div>';

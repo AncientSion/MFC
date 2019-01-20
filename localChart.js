@@ -14,7 +14,7 @@ $(document).ready(function(){
 			"paging": false,
 			"info": false,
 			"searching": false,
-			"aaSorting": [[1, "asc"]],
+			"aaSorting": [[2, "asc"]],
 			//"aaSorting": []
 		})
 		

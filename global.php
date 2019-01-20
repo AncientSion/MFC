@@ -64,7 +64,7 @@ function addCardDataPoint(&$currentSet, $point){
 function getMemory(){
 	$size = memory_get_usage(true);
     $unit = array('b','kb','mb','gb','tb','pb');
-    echo (@round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i])."</br>";
+    return (@round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i]);
 }
 	
 function buildFullCardPool(){
@@ -76,11 +76,11 @@ function buildFullCardPool(){
 	for ($i = 3; $i < sizeof($sets->codes); $i++){		
 		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){	
 			echo "adding set: ".$sets->codes[$i][$j]."</br>";
-			$set = array("code" => $sets->codes[$i][$j], "name" => $sets->names[$i][$j], "cards" => array());			
+			$set = array("code" => strtoupper($sets->codes[$i][$j]), "name" => $sets->names[$i][$j], "cards" => array());			
 			$json = json_decode(file_get_contents(__DIR__."/output/".$sets->codes[$i][$j].".json"));
 			
 			foreach ($json->content[sizeof($json->content)-1]->data as $card){
-				$set["cards"][] = array("name" => $card->name, "rarity" => "Special");
+				$set["cards"][] = array("name" => $card->name, "rarity" => "S");
 			}
 			$data[] = $set;	
 		}
@@ -118,7 +118,7 @@ function buildFullCardPool(){
 					}
 				}
 				
-				$set["cards"][] = array("name" => $name, "rarity" => $card->rarity);
+				$set["cards"][] = array("name" => $name, "rarity" => strtoupper($card->rarity[0]));
 				
 			}
 			$data[] = $set;
@@ -136,14 +136,13 @@ function buildFullCardPool(){
 function getSetNamesByCodes($data){
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
-	//var_export($data);
-	//return;
-
-	//echo "s: ".sizeof($data);
+	//var_export($data); return;
 
 	$codes = $sets["codes"];
 	$names = $sets["names"];
 	$return = array();
+	
+	//var_export($codes); return;
 
 	for ($i = 0; $i < sizeof($data); $i++){
 		for ($j = 0; $j < sizeof($codes); $j++){
@@ -153,8 +152,8 @@ function getSetNamesByCodes($data){
 				}
 			}
 		}
-	}
-
+	}	
+	///var_export($return); return;
 	return $return;
 }
 
@@ -409,6 +408,11 @@ function convertBoosterInput($name, $code){
 	fclose($file);
 }
 
+function debug($string){
+	//echo $string;
+	file_put_contents(__DIR__."/debug.log", $string.PHP_EOL, FILE_APPEND);
+}
+
 function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 	return;
 	$stamp = time();
@@ -445,8 +449,10 @@ function logChart($set, $card){
 
 
 function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
-	//var_export(func_get_args());
-	//echo $minAvail; echo $maxAvail;
+
+	$time = time();
+	$date = date('d.m.Y', $time);
+	$time = -microtime(true);
 
 	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
 	
@@ -462,11 +468,13 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		
 		$cards;
 		for ($j = 0; $j < sizeof($cardList); $j++){
-			if ($cardList[$j]["code"] == $codes[$i]){
+			if (strtoupper($cardList[$j]["code"]) == $codes[$i]){
 				$cards = $cardList[$j]["cards"];
 				break;
 			}
 		}
+		
+		//var_export($cards);
 		
 		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
 		$points = $points["content"];
@@ -490,10 +498,11 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		
 		for ($k = 0; $k < sizeof($cards); $k++){
 
+			//var_export($cards[$k]); echo "</br>";
 			//echo $cards[$k]["name"]."</br>";
 			$skip = true;
 			for ($l = 0; $l < sizeof($includes); $l++){
-				if ($cards[$k]["rarity"][0] == $includes[$l]){$skip = false; break;}
+				if ($cards[$k]["rarity"] == $includes[$l]){$skip = false; break;}
 			}
 
 			if ($skip){continue;}
@@ -554,6 +563,12 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
 	
 	//echo $html;
+
+	$time += microtime(true);
+	//debug("Script Execution Completed; TIME:".round($time/60, 2)." minutes");
+	debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
+
+
 	echo buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $plusminus, $stackDisplay, $skipUnchanged);
 
 }
@@ -603,8 +618,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 		$index = 0;
 	} else $index = 1;
 
-	$colSpan = 8;
-	if ($stackDisplay){$colSpan = 9;}
+	$colSpan = 9;
+	if ($stackDisplay){$colSpan = 10;}
 	
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
@@ -618,6 +633,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
+		$html .="<th colSpan=1 style='width: 100px'>Chart</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		
@@ -650,7 +666,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
 			
 			if ($plusminus){
-				if (abs($card[$volChange][$index]) < $availChange){continue;}
+				if (abs($card[$volChange][$index]) < abs($availChange)){continue;}
 			}
 			else {
 				if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
@@ -662,6 +678,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 			$html .="<td>";
 			$html .= "<a target='_blank' href=".$cardUrl.">".$card['name']."</a>";
 			$html .="</td>";
+			$html .="<td class='smallChart'>";
 			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
 			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
 			
@@ -723,13 +740,22 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 	return $html;
 }
 
+function writeAndCloseO($code, $data){
+	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
+	$GLOBALS["cards"] += sizeof($data["data"]);
+	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
+	fseek($file, -2, SEEK_END);
+	fwrite($file, ",".json_encode($data)."\n"."]}");
+	fclose($file);
+}
+
 function writeAndClose($code, $data){
-	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n\n";
+	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
 	$GLOBALS["cards"] += sizeof($data["data"]);
 	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
 	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
 	fseek($file, -2, SEEK_END);
-	fwrite($file, ",".json_encode($data)."\n"."]}");
+	fwrite($file, ",".json_encode($data)."]}");
 	fclose($file);
 }
 

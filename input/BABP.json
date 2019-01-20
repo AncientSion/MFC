@@ -54,7 +54,32 @@
 		"href": "\/metaproducts\/545",
 		"method": "GET"
 	}]
-}, {
+},
+    {
+      "artist": "Mike Bierek",
+      "cmc": 7,
+      "colorIdentity": [
+        "U"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "flavor": "Sarkhan wandered into a tomb and back in time.",
+      "id": "b9f0cd581eff3ec5b187f8c05fbd30c48d1a8a4a",
+      "imageName": "nexus of fate",
+      "layout": "normal",
+      "manaCost": "{5}{U}{U}",
+      "multiverseid": 450253,
+      "name": "Nexus of Fate",
+      "number": "306",
+      "rarity": "Mythic Rare",
+      "text": "Take an extra turn after this one.\nIf Nexus of Fate would be put into a graveyard from anywhere, reveal Nexus of Fate and shuffle it into its owner's library instead.",
+      "type": "Instant",
+      "types": [
+        "Instant"
+      ]
+    },
+	{
 	"idProduct": 269595,
 	"idMetaproduct": 210193,
 	"countReprints": 3,

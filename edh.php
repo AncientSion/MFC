@@ -35,11 +35,16 @@ function fetchAll($day){
 			
 	$data = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $data["codes"];
-	$names = $data["names"];	
+	$names = $data["names"];
+	
+	
+	crawl($day, $codes[0], $names[0], 1, 0, $context);
+	crawl($day, $codes[1], $names[1], 0, 1, $context);
+	crawl($day, $codes[2], $names[2], 1, 1, $context);	
 
-	nonFoil($day, $codes[0], $names[0], $context);
-	foil($day, $codes[1], $names[1], $context);
-	mixed($day, $codes[2], $names[2], $context);
+//	nonFoil($day, $codes[0], $names[0], $context);
+//	foil($day, $codes[1], $names[1], $context);
+//	mixed($day, $codes[2], $names[2], $context);
 	
 	logErrors();
 
@@ -106,141 +111,62 @@ function getEDH($date){
 	}
 }
 
-function nonFoil($date, $codes, $names, $context){
-
+function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]."\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $names[$i], "data" => array());
 
 		$exit = 0;
-		$page = 0;
+		$page = 1;
 
 		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
-			if ($page){$url .= "&resultsPage=".$page;}
-
-			//echo "URL: ".$url."\n";
-			
+			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
+			$url .= "&site=".$page;
+						
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
-			$rows = $html->find(".MKMTable", 0)->find("tr");
+			$rows = $html->find(".table-body", 0)->children();
 
-			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
-			else if (sizeof($rows[0]->children()) < 6){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
-
-			for ($k = 1; $k < sizeof($rows)-1; $k++){
-				$name = $rows[$k]->children(2)->plaintext;
-
-				$baseAvail = $rows[$k]->children(4)->plaintext;
-				$basePrice = $rows[$k]->children(5)->plaintext;
-				$basePrice = str_replace(",", ".", substr($basePrice, 0, strlen($basePrice)-9));
-
-				$foilAvail = 0;
-				$foilPrice = 0.00;
-
-				doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
-			}
-
-			$page++;
-
-			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
-		}
-
-		
-		writeAndClose($codes[$i], $set);
-	}
-}
-
-function foil($date, $codes, $names, $context){
-	
-	//$codes = array("GME");
-	//$names = array("Guilds of Ravnica Mythic Edition");
-
-	for ($i = 0; $i < sizeof($codes); $i++){
-		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";
-
-		$set = array("date" => $date, "code" => $codes[$i], "set" => $names[$i], "data" => array());
-
-		$exit = 0;
-		$page = 0;
-
-		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
-			if ($page){$url .= "&resultsPage=".$page;}
-
-			//echo "URL: ".$url."\n";
-			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
-			$rows = $html->find(".MKMTable", 0)->find("tr");
-
-			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
-			else if (sizeof($rows[0]->children()) < 8){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
-
-			for ($k = 1; $k < sizeof($rows)-1; $k++){
-				$name = $rows[$k]->children(2)->plaintext;
-
+			for ($k = 0; $k < sizeof($rows)-1; $k++){
+				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->plaintext;
 				$baseAvail = 0;
 				$basePrice = 0.00;
-
-				$foilAvail = $rows[$k]->children(4)->plaintext;
-				$foilPrice = $rows[$k]->children(5)->plaintext;
-				$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
-
+				$foilAvail = 0;
+				$foilPrice = 0.00;
+				
+				if ($nonFoil){
+					$baseAvail = $rows[$k]->children(4)->children(0)->plaintext;
+					$basePrice = $rows[$k]->children(5)->plaintext;
+					$basePrice = str_replace(",", ".", substr($basePrice, 0, strlen($basePrice)-9));
+				}
+				if ($foil){
+					$foilAvail = $rows[$k]->children(6)->plaintext;
+					$foilPrice = $rows[$k]->children(7)->plaintext;
+					$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
+				}
+				
+				
+				//echo $name."/".$baseAvail."/".$basePrice."/".$foilAvail."/".$foilPrice."\n";				
 				doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
 			}
-
+			
 			$page++;
-
-			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
+			
+			if (sizeof($rows) < 50){
+				//echo "last site of set \n\n";
+				break;
+			}
+			else if ($page >= 15){
+				echo "ERROR \n\n";
+				$GLOBALS["errors"][] = $codes[$i];
+				break;
+			}
 		}
-
 		writeAndClose($codes[$i], $set);
+		//return;
 	}
 }
 
-function mixed($date, $codes, $names, $context){
-	
-	for ($i = 0; $i < sizeof($codes); $i++){
-		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." / ".$date."***\n";
-
-		$set = array("date" => $date, "code" => $codes[$i], "set" => $names[$i], "data" => array());
-
-		$exit = 0;
-		$page = 0;
-
-		while(!$exit){
-			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?sortBy=englishName&sortDir=asc&view=list";
-			if ($page){$url .= "&resultsPage=".$page;}
-
-			//echo "URL: ".$url."\n";
-			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
-			$rows = $html->find(".MKMTable", 0)->find("tr");
-
-			if (!$rows){echo "----- Invalid Page, ending Set on page ".$page."\n"; $exit = 1; break;}
-			else if (sizeof($rows[0]->children()) < 8){echo "----- BREAKUP Page, ending Set on page ".$page."\n"; $exit = 1; $GLOBALS["errors"][] = $codes[$i]; break;}
-
-			for ($k = 1; $k < sizeof($rows)-1; $k++){
-				$name = $rows[$k]->children(2)->plaintext;
-				//echo $name."\n";
-
-				$baseAvail = $rows[$k]->children(4)->plaintext;
-				$basePrice = $rows[$k]->children(5)->plaintext;
-				$basePrice = str_replace(",", ".", substr($basePrice, 0, strlen($basePrice)-9));
-
-				$foilAvail = $rows[$k]->children(6)->plaintext;
-				$foilPrice = $rows[$k]->children(7)->plaintext;
-				$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
-
-				doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
-			}
-
-			$page++;
-
-			if ($page > 15){$exit = 1; echo "\n LOOP ERROR ---- SET: ".$codes[$i]."/".$names[$i]; $GLOBALS["errors"][] = $codes[$i]; break;}
-		}
-
-		writeAndClose($codes[$i], $set);
-	}
-}
 function getBoxPrices($date){
 	$context = stream_context_create(
 	    array(
@@ -251,45 +177,43 @@ function getBoxPrices($date){
 			)
 	);	
 
-	$names = array("Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy"); 
-	$codes = array("MTG", "YGO", "CFV", "DBS", "FOW", "MLP", "SPOILS", "SWD", "WOW", "WS", "DGB", "FF");
+	$names = array("Pokemon", "Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy"); 
+	$codes = array("PCG", "MTG", "YGO", "CFV", "DBS", "FOW", "MLP", "SPOILS", "SWD", "WOW", "WS", "DGB", "FF");
 	
 			
 	for ($k = 0; $k < sizeof($names); $k++){
 	
-	$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
-
-		//echo "try fetching ".$names[$k]." / ".$codes[$k]."\n";
+		$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
 		
 		for ($i = 0; $i < 10; $i++){
-			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster+Boxes?name=&idExpansion=0&onlyAvailable=&sortBy=englishName&sortDir=asc&view=list";
+			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster-Boxes?mode=list&idCategory=53&idExpansion=0&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
+			$url .= "&site=".$i;
 
-			if ($i){$url .= "&resultsPage=".$i;}
-
-			echo "paging: ".$names[$k]." / ".$i."\n";
+			//echo "paging: ".$names[$k]." / ".$i."\n";
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
-			$rows = $html->find(".MKMTable", 0)->children(1)->children();
+			$rows = $html->find(".table-body", 0)->children();
 
 			for ($j = 0; $j < sizeof($rows); $j++){
-				$name = $rows[$j]->children(2)->children(0)->innertext;
-				$baseAvail = $rows[$j]->children(3)->children(0)->innertext;
+				$name = $rows[$j]->children(3)->children(0)->children(0)->children(0)->innertext;
+				$baseAvail = $rows[$j]->children(4)->children(0)->innertext;
 				$basePrice = 0.00;
 				if ($baseAvail){
-					$basePrice = $rows[$j]->children(4)->children(0)->innertext;
+					$basePrice = $rows[$j]->children(5)->innertext;
 					$basePrice = str_replace(",", ".", $basePrice);
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
 				}
 
+				//echo $name."/".$baseAvail."/".$basePrice."\n";
 				$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
 			}
 			
-			if (sizeof($rows) < 30){
+			if (sizeof($rows) < 50){
 				echo "last page - ";
 				break;
 			}
 		}
-
-		//echo "try write ".$names[$k]." / ".$codes[$k];
+			
+		//return;
 		writeAndClose($codes[$k], $set);
 	}
 }
