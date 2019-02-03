@@ -162,57 +162,41 @@ function getForm($get){
 	//var_export($get);
 	$html = "";
 
-	$html .="<form method='get'>";
-
-	$rarityStr = array("Common", "Uncommon", "Rare", "Mythic Rare", "Special");
-	$rarity = array("C", "U", "R", "M", "S");
-	$preset = array('', '', "checked='checked'", "checked='checked'", "checked='checked'");
-
-	$html .="<div class='checkWrapper'>";
-	$html .="<div id='rarity'>Rarities to include (right-click, toggle all)</div>";
-
-
-	if (sizeof($get) && $get["rarities"]){
-		for ($i = 0; $i < sizeof($rarity); $i++){
-			$checked = '';
-			for ($j = 0; $j < sizeof($get["rarities"]); $j++){
-				if ($get["rarities"][$j] == $rarity[$i]){
-					$checked = "checked='checked'";
-				}
-			}
-
-			$html .="<div class='checkContainer'>";
-			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$checked.">";
-			$html .="<span>".$rarityStr[$i]."</br>";
-			$html .="</div>";
-		}
-	}
-	else {
-		for ($i = 0; $i < sizeof($rarity); $i++){
-			$html .="<div class='checkContainer'>";
-			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$preset[$i].">";
-			$html .="<span>".$rarityStr[$i]."</br>";
-			$html .="</div>";
-		} 
-	}
-	$html .="</div>"; 
+	$html .="<form class='upper' method='get'>"; 
 
 	$foilChecked = "";
 	$nonFoilChecked = "";
 	if (sizeof($get)){
-		if ($get["foil"] == "Foil"){$foilChecked = "checked='checked'";}
-		else if ($get["foil"] == "Non Foil"){$nonFoilChecked = "checked='checked'";}
+		if ($get["foil"] == "Is Foil"){$foilChecked = "checked='checked'";}
+		else if ($get["foil"] == "Not Foil"){$nonFoilChecked = "checked='checked'";}
 	}
 	else {
 		$foilChecked = "checked='checked'";
 	}
 
 	$html .="<div class='checkWrapper'>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Foil'".$foilChecked."'>Foil</div>";
-	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Non Foil'".$nonFoilChecked."'>Non Foil</div>";
-	//$html .= "</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Is Foil'".$foilChecked."'>Is Foil</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Not Foil'".$nonFoilChecked."'>Not Foil</div>";
 
-	//$html .="<div class='checkWrapper'>";
+
+	
+	
+	$pctChecked = "";
+	$absChecked = "";
+	if (sizeof($get)){
+		if ($get["compareType"] == "PCT"){$pctChecked = "checked='checked'";}
+		else if ($get["compareType"] == "ABS"){$absChecked = "checked='checked'";}
+	}
+	else {
+		$pctChecked = "checked='checked'"; 
+	}
+
+	$html .="<div class='inputContainer'>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='PCT'".$pctChecked."'>%-based</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='ABS'".$absChecked."'>abs-based</div>";
+	$html .= "</div>";
+
+
 
 	$depth = 1;
 	if (sizeof($get)){$depth = $get["depth"];}
@@ -299,29 +283,13 @@ function getForm($get){
 	$html .="<div class='checkContainer'>";
 	$html .= "<input type='checkbox' name='skipUnchanged' value='1'".$checked."'>";
 	$html .= "Skip 0</div>";
-	
-	
-	$pctChecked = "";
-	$absChecked = "";
-	if (sizeof($get)){
-		if ($get["compareType"] == "PCT"){$pctChecked = "checked='checked'";}
-		else if ($get["compareType"] == "ABS"){$absChecked = "checked='checked'";}
-	}
-	else {
-		$pctChecked = "checked='checked'"; 
-	}
-
-	$html .="<div class='inputContainer'>";
-	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='PCT'".$pctChecked."'>%-based</div>";
-	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='ABS'".$absChecked."'>abs-based</div>";
-	$html .= "</div>";
 
 
 
 	$html .= "</div>";
 
 	$html .="<div class='checkWrapper'>";
-	$html .="<div id='set' class='toggle'>Sets to include</div>";
+	//$html .="<div id='set' class='toggle'>Sets to include</div>";
 
 
 
@@ -347,30 +315,53 @@ function getForm($get){
 				}
 			}
 
-			$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
+			$html .="<div class='checkContainer set'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
 			$html .="<span>".$codes[$i][$j]."</span>";
 			$html .="</div>";
 		}
 		$html .= "</div>";
-		//$html .="</br>";
 	}
+	$html .="</div>";
 
 
-	/*
-	$html .="<div class='checkContainer'><input type='checkbox' name='sets[]' value='BOXES'".$checked.">";
-	$html .="<span>BOXES</span>";
-	$html .="</div>";
-	*/
-	//$html .="</br>";
+
+	$rarity = array("C", "U", "R", "M", "S");
+	$preset = array('', '', "checked='checked'", "checked='checked'", "checked='checked'");
+	$html .="<div class='checkWrapper'>";
+
+	if (sizeof($get) && $get["rarities"]){
+		for ($i = 0; $i < sizeof($rarity); $i++){
+			$checked = '';
+			for ($j = 0; $j < sizeof($get["rarities"]); $j++){
+				if ($get["rarities"][$j] == $rarity[$i]){
+					$checked = "checked='checked'";
+				}
+			}
+
+			$html .="<div class='checkContainer'>";
+			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$checked.">";
+			$html .="<span>".$rarity[$i]."</br>";
+			$html .="</div>";
+		}
+	}
+	else {
+		for ($i = 0; $i < sizeof($rarity); $i++){
+			$html .="<div class='checkContainer'>";
+			$html .="<input type='checkbox' name='rarities[]' value='".$rarity[$i]."' ".$preset[$i].">";
+			$html .="<span>".$rarity[$i]."</br>";
+			$html .="</div>";
+		} 
+	}
 	
-	$html .="<div style='display: inline'>";
-	$preset = json_encode(array(['R', 'M', 'S'], ['LEB', '2ED']), true);
-	$html .="<input type='button' style='width: 200px; font-size: 26px' value='Preset 1' onclick='preset(".$preset.")'></input>";
-	$html .="</div>";
-	
-	$html .="<input type='submit' style='width: 200px; font-size: 26px' value='Search'></input>";
+	$html .="<div style='display: inline-block'><input type='submit' style='width: 100px; font-size: 20px' value='Search'></input></div>";
 	$html .="</div>";
 	$html .="</form>";
+
+	$html .="<div class='upper'>";
+	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
+	$html .='<div class="lower"><a href="charts.php">Go to single card lookup</a></div>';
+	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
+	$html .="</div>";
 
 	return $html;
 }

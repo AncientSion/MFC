@@ -1,7 +1,6 @@
 <?php
 	include_once(__DIR__."/global.php");
 
-	//buildFullCardPool(); return;
 
 	if (isset($_GET["type"])){
 		if ($_GET["type"] == "cardList"){

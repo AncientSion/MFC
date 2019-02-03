@@ -8,19 +8,15 @@ input[type=checkbox], input[type=radio] {
   transform: scale(1.5);
 }
 
-.topHead {
-	display: inline-block;
-}
-
-.topHead div {
-	display: inline-block;
-	margin-left: 40px;
-}
-
-form {
+.upper {
 	margin: auto;
 	width: 1200px;
-	margin-top: 10px;
+}
+
+.lower {
+	display: inline-block;
+	width: 200px;
+	margin: auto;
 }
 
 a:link, a:visited {
@@ -29,7 +25,7 @@ a:link, a:visited {
 }
 
 .setDivider {
-	margin-bottom: 20px;
+	padding: 7px;
 }
 
 #card {
@@ -133,7 +129,14 @@ div > input, div > span{
 
 .checkContainer {
 	display: inline-block; 
-	margin-right: 25px; 
+	width: 80px;
+	margin: auto;
+}
+
+.checkContainer.set {
+	display: inline-block; 
+	width: 75px;
+	margin: auto;
 	margin-bottom: 10px;
 }
 
@@ -148,11 +151,6 @@ div > input, div > span{
 	font-size: 14px;
 	color: lightGreen;
 	margin-bottom: 10px;
-}
-
-
-#depth, #minPrice, #maxPrice {
-	font-size: 18px;
 }
 
 .inputContainer {

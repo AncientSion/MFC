@@ -19,9 +19,6 @@ echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)
 
 
 function fetchAll($day){
-	
-	//getEDH($day);
-	getBoxPrices($day);
 
 	$context = stream_context_create(
 	    array(
@@ -32,19 +29,18 @@ function fetchAll($day){
 			)
 	);
 	
+	//getEDH($day);
+	getVarious($day, $context);;
+	getBoxPrices($day, $context);
+	
 			
 	$data = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	
 	crawl($day, $codes[0], $names[0], 1, 0, $context);
 	crawl($day, $codes[1], $names[1], 0, 1, $context);
-	crawl($day, $codes[2], $names[2], 1, 1, $context);	
-
-//	nonFoil($day, $codes[0], $names[0], $context);
-//	foil($day, $codes[1], $names[1], $context);
-//	mixed($day, $codes[2], $names[2], $context);
+	crawl($day, $codes[2], $names[2], 1, 1, $context);
 	
 	logErrors();
 
@@ -112,6 +108,10 @@ function getEDH($date){
 }
 
 function crawl($date, $codes, $names, $nonFoil, $foil, $context){
+	
+	//$codes = array("RNA");
+	//$names = array("Ravnica Allegiance");
+	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]."\n";
 
@@ -167,26 +167,18 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 	}
 }
 
-function getBoxPrices($date){
-	$context = stream_context_create(
-	    array(
-	        "http" =>
-				array(
-				    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
-				)
-			)
-	);	
+
+function getBoxPrices($date, $context){
 
 	$names = array("Pokemon", "Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy"); 
 	$codes = array("PCG", "MTG", "YGO", "CFV", "DBS", "FOW", "MLP", "SPOILS", "SWD", "WOW", "WS", "DGB", "FF");
 	
-			
 	for ($k = 0; $k < sizeof($names); $k++){
 	
 		$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
 		
-		for ($i = 0; $i < 10; $i++){
-			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster-Boxes?mode=list&idCategory=53&idExpansion=0&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
+		for ($i = 0; $i < 10; $i++){			
+			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";		
 			$url .= "&site=".$i;
 
 			//echo "paging: ".$names[$k]." / ".$i."\n";
@@ -217,6 +209,51 @@ function getBoxPrices($date){
 		writeAndClose($codes[$k], $set);
 	}
 }
+
+function getVarious($date, $context){
+	
+	$urls = array();
+	$urls[] =  "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
+	
+	$codes = array();
+	$codes[] = "SETS";
+	
+	for ($i = 0; $i < sizeof($urls); $i++){
+	
+		$set = array("date" => $date, "files" => $codes[$i], "set" => $codes[$i], "data" => array());	
+		$baseUrl = $urls[$i];
+		
+		for ($j = 0; $j < 10; $j++){			
+			$url = $baseUrl."&site=".$j;
+
+			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+			$rows = $html->find(".table-body", 0)->children();
+
+			for ($k = 0; $k < sizeof($rows); $k++){
+				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
+				$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
+				$basePrice = 0.00;
+				if ($baseAvail){
+					$basePrice = $rows[$k]->children(5)->innertext;
+					$basePrice = str_replace(",", ".", $basePrice);
+					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+				}
+
+				//echo $name."/".$baseAvail."/".$basePrice."\n";
+				$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
+			}
+			
+			if (sizeof($rows) < 50){
+				echo "last page - ";
+				break;
+			}
+		}
+			
+		//return;
+		writeAndClose($codes[$i], $set);
+	}
+}
+
 
 
 function doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){

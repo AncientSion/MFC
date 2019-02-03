@@ -3,11 +3,6 @@
 	include_once(__DIR__."/global.php");
 		
 	//buildFullCardPool(); return;
-	echo "<div class='topHead'>";
-	echo '<div><a href="shakers.php">Reload Blank</a></div>';
-	echo '<div><a href="charts.php">Go to single card lookup</a></div>';
-	echo "<div><input id='toggleVis' type='button' value='hide'></div>";
-	echo "</div>";
 
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
@@ -27,17 +22,17 @@
 			$stackDisplay = 0; if (isset($_GET["stackDisplay"])){$stackDisplay = 1;}
 			$skipUnchanged = 0; if (isset($_GET["skipUnchanged"])){$skipUnchanged = 1;}
 			$type = $_GET["compareType"];
-			$foil = 0; if ($_GET["foil"] == "Foil"){$foil = 1;}
+			$foil = 0; if ($_GET["foil"] == "Is Foil"){$foil = 1;}
 
-		echo "<div class='mainContainer'>
-			<div class='container'>
-				<canvas id='foilAvailCanvas'</canvas>
-			</div>
-			<div id='card'></div>
-			<div class='container'>
-				<canvas id='baseAvailCanvas'</canvas>
-			</div>
-		</div>";
+			echo "<div class='mainContainer'>
+				<div class='container'>
+					<canvas id='foilAvailCanvas'</canvas>
+				</div>
+				<div id='card'></div>
+				<div class='container'>
+					<canvas id='baseAvailCanvas'</canvas>
+				</div>
+			</div>";
 
 			echo "<div class='scrollWrapper'>";
 			echo requestShakers(
@@ -66,7 +61,12 @@
 			echo getForm(array());
 		}
 
-	} else echo getForm($_GET);
+	}
+	else {
+		echo getForm($_GET);
+	}
+
+
 ?>
 
 
