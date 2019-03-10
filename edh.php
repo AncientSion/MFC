@@ -30,8 +30,8 @@ function fetchAll($day){
 	);
 	
 	//getEDH($day);
-	getVarious($day, $context);;
 	getBoxPrices($day, $context);
+	getVarious($day, $context);
 	
 			
 	$data = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
@@ -170,15 +170,16 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 
 function getBoxPrices($date, $context){
 
-	$names = array("Pokemon", "Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy"); 
-	$codes = array("PCG", "MTG", "YGO", "CFV", "DBS", "FOW", "MLP", "SPOILS", "SWD", "WOW", "WS", "DGB", "FF");
+	$names = array("Pokemon", "Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy");
+	//$names = array("Pokemon");
+	$codes = array("_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPOILS", "_SWD", "_WOW", "_WS", "_DBS", "_FF");
 	
 	for ($k = 0; $k < sizeof($names); $k++){
 	
 		$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
 		
-		for ($i = 0; $i < 10; $i++){			
-			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";		
+		for ($i = 1; $i < 10; $i++){			
+			$url = "https://www.cardmarket.com/en/".$names[$k]."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
 			$url .= "&site=".$i;
 
 			//echo "paging: ".$names[$k]." / ".$i."\n";
@@ -195,7 +196,6 @@ function getBoxPrices($date, $context){
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
 				}
 
-				//echo $name."/".$baseAvail."/".$basePrice."\n";
 				$set["data"][] = array("name" => $name, "baseAvail" => intval($baseAvail), "basePrice" => floatval($basePrice), "foilAvail" => intval(0), "foilPrice" => floatval(0));
 			}
 			
@@ -204,8 +204,14 @@ function getBoxPrices($date, $context){
 				break;
 			}
 		}
-			
-		//return;
+
+
+	/*	foreach ($set["data"] as $entry){
+			echo $entry["name"]."\n";
+		}
+		echo sizeof($set["data"]);			
+		return;
+	*/
 		writeAndClose($codes[$k], $set);
 	}
 }
@@ -213,7 +219,7 @@ function getBoxPrices($date, $context){
 function getVarious($date, $context){
 	
 	$urls = array();
-	$urls[] =  "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
+	$urls[] = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
 	
 	$codes = array();
 	$codes[] = "SETS";

@@ -3,11 +3,45 @@
 
 include_once(__DIR__."\global.php");
 
+getLengthOfSet("TSP");
+return;
 
-deleteFromFront(4);
+function getLengthOfSet($set){
+	
+	$data = json_decode(file_get_contents("../htdocs/crawl/output/".$set.".json"));
+	
+	//echo sizeof($data->content);
+	foreach ($data->content as $day){
+		echo $day->date."\n";
+	}
+	
+}
+	
+
+function deleteForeignFromInput(){
+	$file = null;
+	$folder = '../htdocs/crawl/fix';
+	$files = scandir($folder);
+
+	$files = array_slice($files, 2);
+
+	foreach ($files as $file){
+		echo "doing file ".$file."\n";
+		$data = file_get_contents($folder."/".$file);
+		$data = json_decode($data);
+
+		for ($i = 0; $i < sizeof($data->cards); $i++){
+			$data->cards[$i]->foreignData = array();
+		}
+
+		$handle = fopen($folder."/".$file, "w+");
+		fwrite($handle, json_encode($data));
+		fclose($handle);
+	}
+}
 
 function deleteFromEnd($amountToDelete){
-	return;
+	//return;
 	
 	echo "start\n";
 	$file = null;

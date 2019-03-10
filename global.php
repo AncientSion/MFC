@@ -444,6 +444,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	$time = time();
 	$date = date('d.m.Y', $time);
 	$time = -microtime(true);
+	
+	//mored Ascensecho var_export(func_get_args());
 
 	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChange, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
 	
@@ -508,8 +510,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			if ($minAvail && ((!$foil && $last["baseAvail"] < $minAvail) || ($foil && $last["foilAvail"] < $minAvail))){continue;}
 			if ($maxAvail && ((!$foil && $last["baseAvail"] > $maxAvail) || ($foil && $last["foilAvail"] > $maxAvail))){continue;}
 			
-			if ($minPrice && ((!$foil && $last["basePrice"] < $minPrice) || ($foil && $last["foilPrice"] > $minPrice))){continue;}
-			if ($maxPrice && ((!$foil && $last["basePrice"] > $maxPrice) || ($foil && $last["foilPrice"] < $maxPrice))){continue;}
+			if ($minPrice && ((!$foil && $last["basePrice"] < $minPrice) || ($foil && $last["foilPrice"] < $minPrice))){continue;}
+			if ($maxPrice && ((!$foil && $last["basePrice"] > $maxPrice) || ($foil && $last["foilPrice"] > $maxPrice))){continue;}
 			
 			$card = array(
 				"name" => $name,
@@ -525,9 +527,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			);
 
 			$amountData = sizeof($points)-1;
-			//$limit = max(0, (sizeof($points)-1 -$delve));
-			//echo $delve; echo "</br>";
-			//echo $limit; echo "</br>";
 			
 			for ($l = $amountData; $l >= $delve; $l--){
 				$dataPoint = getCardDataSet($name, $points[$l]["data"]);
@@ -544,19 +543,13 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
-			setChangeValue($allSets[$i]["shakers"][$j], "baseAvail");
-			setChangeValue($allSets[$i]["shakers"][$j], "basePrice");
-			setChangeValue($allSets[$i]["shakers"][$j], "foilAvail");
-			setChangeValue($allSets[$i]["shakers"][$j], "foilPrice");
+			setChangeValue($allSets[$i]["shakers"][$j], $foil);
 		}
 	}
 	
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
-	
-	//echo $html;
 
 	$time += microtime(true);
-	//debug("Script Execution Completed; TIME:".round($time/60, 2)." minutes");
 	debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
 
 
@@ -564,12 +557,22 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 }
 
-
-function setChangeValue(&$card, $attr){
-	if ($card[$attr][sizeof($card[$attr])-1] == 0){$card[$attr."Change"][0] = 0; $card[$attr."Change"][1] = 0; return;}
-	//var_export($card);
-	$card[$attr."Change"][0] = round($card[$attr][0] - $card[$attr][sizeof($card[$attr])-1], 2); 
-	$card[$attr."Change"][1] = round((($card[$attr][0] / $card[$attr][sizeof($card[$attr])-1])*100)-100, 2); 
+function setChangeValue(&$card, $forFoil){
+	$props = array();
+	
+	if (!$forFoil){
+		$props = array("baseAvail", "basePrice");
+	} else $props = array("foilAvail", "foilPrice");
+		
+	for ($i = 0; $i < sizeof($props); $i++){	
+		if ($card[$props[$i]][sizeof($card[$props[$i]])-1] == 0){
+			$card[$props[$i]."Change"][0] = 0; $card[$props[$i]."Change"][1] = 0;
+			return;
+		}
+		$card[$props[$i]."Change"][0] = round($card[$props[$i]][0] - $card[$props[$i]][sizeof($card[$props[$i]])-1], 2); 
+		$card[$props[$i]."Change"][1] = round((($card[$props[$i]][0] / $card[$props[$i]][sizeof($card[$props[$i]])-1])*100)-100, 2);
+	}
+	//var_export(func_get_args()); die();
 }
 
 
@@ -646,10 +649,13 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 		$html .="</tr></thead>";
 		*/
 		
+		
 		$html .="<tbody>";
 
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 			$card = $allSets[$i]["shakers"][$j];
+			
+			//var_export($card); die();
 			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
 			
 
@@ -662,7 +668,8 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 			else {
 				if ($availChange < 0 && $card[$volChange][$index] > $availChange){continue;}
 				if ($availChange > 0 && $card[$volChange][$index] < $availChange){continue;}
-			}				
+			}		
+			//die();		
 			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
 
 			$html .="<tr>";
