@@ -86,7 +86,7 @@ function buildFullCardPool(){
 		}
 	}
 
-	for ($i = 0; $i < sizeof($sets->codes)-1; $i++){
+	for ($i = 0; $i < sizeof($sets->codes)-2; $i++){
 		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
 			echo "adding set: ".$sets->codes[$i][$j]."</br>";
 			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
@@ -243,7 +243,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChange = -4;
+	$availChange = -15;
 	if (sizeof($get)){$availChange = $get["availChange"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
@@ -617,7 +617,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 	
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
-		$html .="<table class='moveTable'>";
+		$html .="<table class='moveTable' style='width: 1100px'>";
 
 		$html .="<thead>";
 		$html .="<tr><th class='set' colSpan=".$colSpan.">";
@@ -626,7 +626,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 		$html .="<span>".$allSets[$i]["code"]."</span>";
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
-		$html .="<th colSpan=1 style='width: 200px'>Name</th>";
+		$html .="<th colSpan=1 style='width: 250px'>Name</th>";
 		$html .="<th colSpan=1 style='width: 100px'>Chart</th>";
 		$html .="<th style='width: 70px'>PCT</th>";
 		$html .="<th style='width: 70px'>ABS</th>";

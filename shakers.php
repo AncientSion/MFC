@@ -100,4 +100,8 @@
 		height: auto;
 		margin-bottom: 10px
 	}
+	
+	div input[type=number] {
+		width: 80px
+	}
 </style>

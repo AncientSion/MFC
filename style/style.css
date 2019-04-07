@@ -65,7 +65,16 @@ a:link, a:visited {
 }
 
 .ui {
-	padding: 20px;
+	paddidng: 20px;
+}
+
+.reprints {
+	padding: 8px;
+}
+
+.reprints div {
+	display: inline-block;
+	margin-left: 10px
 }
 
 .disabled {

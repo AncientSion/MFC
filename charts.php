@@ -82,9 +82,9 @@
 
 
 					?>
-					
 					<input type="button" style="font-size: 20px" onclick="charter.getCardData($('#setSearch').val(), $('#cardSearch').val())" value="Search">
 					<div id="cardName"></div>
+					<div class="reprints"></div>
 				</div>
 			</div>
 			<div class="container">

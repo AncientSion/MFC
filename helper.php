@@ -3,8 +3,85 @@
 
 include_once(__DIR__."\global.php");
 
-getLengthOfSet("TSP");
+
+//convertToBase();
+
+deleteForeignFromInput();
+
 return;
+
+
+
+function convertToBase(){
+	
+	$codes = array("EXP", "MPS", "AIN", "DCI", "FNM", "BABP", "GDP", "JR", "CPR", "ALP", "UBT", "GME");
+	//$codes = array("GDP");
+	
+	$folder = '../htdocs/crawl/output';
+	
+	for ($i = 0; $i < sizeof($codes); $i++){
+		$newJson;
+		
+		$json = file_get_contents($folder."/".$codes[$i].".json");
+		$json = json_decode($json);		
+
+		for ($j = 0; $j < sizeof($json->content)-1; $j++){
+			for ($k = 0; $k < sizeof($json->content[$j]->data); $k++){
+			/*	$json->content[$j]->data[$k]->baseAvail = $json->content[$j]->data[$k]->foilAvail;
+				$json->content[$j]->data[$k]->basePrice = $json->content[$j]->data[$k]->foilPrice;
+				$json->content[$j]->data[$k]->foilAvail = 0;
+				$json->content[$j]->data[$k]->foilPrice = 0;
+			*/
+			
+				if ($json->content[$j]->data[$k]->baseAvail == 0){
+				/*	echo "ding \n";
+					var_export($json->content[$j]->date);
+					echo "\n";
+					echo "\n";
+					var_export($json->content[$j]->data[$k]);
+					echo "\n";
+					echo "\n";
+					var_export($json->content[$j-1]->data[$k]);
+					echo "\n";
+					echo "\n";
+				*/
+				//	return;
+					
+					$json->content[$j]->data[$k]->baseAvail = $json->content[$j-1]->data[$k]->baseAvail;
+					$json->content[$j]->data[$k]->basePrice = $json->content[$j-1]->data[$k]->basePrice;
+				}
+		
+			}
+		}
+		
+		
+		$handle = fopen(($folder."/".$codes[$i].".json"), "w+");
+		fwrite($handle, json_encode($json));
+		fclose($handle);
+
+	}
+}
+	
+	
+
+function checkValidJson(){
+	$file = null;
+	$folder = '../htdocs/crawl/output';
+	$files = scandir($folder);
+
+	$files = array_slice($files, 2);
+	
+	foreach ($files as $file){
+		//echo "doing file ".$file."\n";
+		$data = file_get_contents($folder."/".$file);
+		$data = json_decode($data);
+		
+		if (!$data){
+			echo "invalid JSON on " . $file;
+		}
+	}
+}	
+	
 
 function getLengthOfSet($set){
 	

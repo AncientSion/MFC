@@ -13,7 +13,6 @@ class Charter {
 	
 	constructor(){
 		this.data;
-		this.sets = [];
 		this.content;
 		this.draws = 0;
 		this.foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
@@ -21,15 +20,15 @@ class Charter {
 		this.basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
 		this.baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
 
-		this.getData(this, "cardList", "addCards");
+		this.getData(this, "cardList", "addAutocomplete");
 	};
 
 	isValidSetSelected(){
-		var setName = $("#setSearch").val();
+		var entered = $("#setSearch").val();
 		var valid = false;
 		var i = 0;
 		for (var i = 0; i < this.data.length; i++){
-			if (this.data[i].name == setName){
+			if (this.data[i].name == entered || this.data[i].code == entered){
 				valid = true; break;
 			}
 		}
@@ -51,18 +50,49 @@ class Charter {
 	getCardData(setName, cardName){
 		if (!setName || !cardName){return;}
 
-		var set = this.getSet(setName);
-		var card = this.getCardName(set, cardName)
+		var set = this.getFullSet(setName);
+		var card = this.getCardName(set, cardName);
+		var others = this.getOthers(cardName);
 
 		if (!set || !card){return;}
 
 		//console.log("valid, setName: " + setName + ", cardName: " + cardName);
 		this.getPriceData(this, set.code, card, "buildAllCards");
+		
+	}
+	
+	getOthers(cardName){
+		$(".reprints").empty();
+		
+		var results = [];
+		
+		for (let i = 0; i < this.data.length; i++){
+			for (let j = 0; j < this.data[i].cards.length; j++){
+				if (this.data[i].cards[j].name == cardName){
+					results.push(this.data[i].code);
+					break;
+				}
+			}
+		}
+		
+		var divs = [];
+		
+		for (let i = 0; i < results.length; i++){
+			$(".reprints").append(
+				$("<input>")
+				.attr("value", results[i])
+				.attr("type", "button")
+				.click(function(){
+					$("#setSearch").val($(this).val());
+					charter.getPriceData(charter, $('#setSearch').val(), $('#cardSearch').val(), "buildAllCards");
+				})
+			)
+		}
 	}
 
-	getSet(search){
+	getFullSet(setName){
 		for (let i = 0; i < this.data.length; i++){
-			if (this.data[i].name == search || this.data[i].code == search){
+			if (this.data[i].name == setName || this.data[i].code == setName){
 				return this.data[i];
 			}
 		}
@@ -166,6 +196,8 @@ class Charter {
 
 	getCardLink(set, name){
 		
+		set = set.length < 4 ? this.getFullSet(set).name : set
+		
 		set = set.replace(/ /g, "-");
 		name = name.replace(/ /g, "-");
 		name = name.replace(/'/g, "");
@@ -214,10 +246,38 @@ class Charter {
 
 	undrawOldCharts(){
 		if (!this.draws){$(".container").addClass("border"); return;}
-		if (this.foilAvailChart){this.foilAvailChart.destroy()};
+	/*	if (this.foilAvailChart){this.foilAvailChart.destroy()};
 		if (this.foilPriceChart){this.foilPriceChart.destroy()};
 		if (this.baseAvailChart){this.baseAvailChart.destroy()};
 		if (this.basePriceChart){this.basePriceChart.destroy()};
+	*/	
+		if (this.foilAvailChart){
+			this.foilAvailChart.data.labels = [];
+			this.foilAvailChart.data.datasets[0] = [];
+			this.foilAvailChart.data.datasets[1] = [];
+			this.foilAvailChart.update();
+		}
+		
+		if (this.foilPriceChart){
+			this.foilPriceChart.data.labels = [];
+			this.foilPriceChart.data.datasets[0] = [];
+			this.foilPriceChart.data.datasets[1] = [];
+			this.foilPriceChart.update();
+		}
+		
+		if (this.baseAvailChart){
+			this.baseAvailChart.data.labels = [];
+			this.baseAvailChart.data.datasets[0] = [];
+			this.baseAvailChart.data.datasets[1] = [];
+			this.baseAvailChart.update();
+		}
+		
+		if (this.basePriceChart){
+			this.basePriceChart.data.labels = [];
+			this.basePriceChart.data.datasets[0] = [];
+			this.basePriceChart.data.datasets[1] = [];
+			this.basePriceChart.update();
+		}
 	}
 
 	buildChart(label, dataSets, tickData){
@@ -314,14 +374,15 @@ class Charter {
 
 	}
 
-	addCards(data){
+	addAutocomplete(data){
 		this.data = data;
-		this.sets = [];
+		var tags = [];
 
-		for (let i = 0; i < data.length; i++){
-			this.sets.push(data[i].name);
+		for (let i = 0; i <this.data.length; i++){
+			tags.push(data[i].code);
+			tags.push(data[i].name);
 		}
-		$("#setSearch").autocomplete({source: this.sets});
+		$("#setSearch").autocomplete({source: tags});
 	}
 
 	getData(ref, type, callback){

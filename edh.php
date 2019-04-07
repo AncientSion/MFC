@@ -38,9 +38,9 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	crawl($day, $codes[0], $names[0], 1, 0, $context);
-	crawl($day, $codes[1], $names[1], 0, 1, $context);
-	crawl($day, $codes[2], $names[2], 1, 1, $context);
+	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
+	crawl($day, $codes[1], $names[1], 1, 0, $context); // promos
+	crawl($day, $codes[2], $names[2], 1, 1, $context); // reg sets
 	
 	logErrors();
 
