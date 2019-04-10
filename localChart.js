@@ -1,8 +1,4 @@
 $(document).ready(function(){
-	window.options = {
-		setAll: 0,
-		rarityAll: 0,
-	}
 
 	window.charter = new Charter();
 
@@ -30,6 +26,10 @@ $(document).ready(function(){
 			)
 		})
 	})
+
+	if (options.autoHideUI){
+		toggleUI();
+	}
 })
 	
 	
@@ -52,10 +52,12 @@ $(".setDivider").contextmenu(function(e){
 	})
 })
 
-$("#toggleVis").click(function(){
+$("#toggleVis").click(toggleUI);
+
+function toggleUI(){
 	$(".checkWrapper").toggleClass("disabled");
 	setRes();
-})
+}
 
 function setRes(){
 	var resY = window.innerHeight;

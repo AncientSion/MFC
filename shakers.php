@@ -3,14 +3,15 @@
 	include_once(__DIR__."/global.php");
 		
 	//buildFullCardPool(); return;
+	echo "<script>var options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
 
 	if (sizeof($_GET)){
 		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
 
 			echo getForm($_GET);
 
-			$time = time();
-			$time = -microtime(true);
+			//$time = time();
+			//time = -microtime(true);
 
 			$depth = $_GET["depth"];
 			$minAvail = $_GET["minAvail"];
@@ -51,9 +52,8 @@
 				$type
 			);
 			echo "</div>";
-
-
-			$time += microtime(true);
+			echo "<script>options.autoHideUI = 1;</script>";
+			//$time += microtime(true);
 			//echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
 		}
 		else {

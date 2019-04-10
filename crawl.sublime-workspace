@@ -523,7 +523,7 @@
 			"file": "edh.php",
 			"settings":
 			{
-				"buffer_size": 8127,
+				"buffer_size": 8162,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,16 +532,26 @@
 			"file": "shakers.php",
 			"settings":
 			{
-				"buffer_size": 2300,
+				"buffer_size": 2482,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 12 files for \"days\"\n\nC:\\xampp\\htdocs\\crawl\\charts.php:\n   23  \t\t\t}\n   24  \t\t\t\n   25: \t\t\t$days = sizeof($json->content);\n   26  \t\t/*\t$keep = 1;\n   27: \t\t\tif ($days > 200){\n   28  \t\t\t\t$keep = 3;\n   29  \t\t\t}\n   30: \t\t\telse if ($days > 100){\n   31  \t\t\t\t$keep = 2;\n   32  \t\t\t}\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n  202  \tif (sizeof($get)){$depth = $get[\"depth\"];}\n  203  \t$html .=\"<div class='inputContainer'>\";\n  204: \t$html .=\"<div id='depth'>Days</div>\";\n  205  \t$html .=\"<div class=''>\";\n  206  \t$html .= \"<input type='number' min='0' max='999' value='\".$depth.\"' name='depth'>\";\n\n4 matches across 2 files\n\n\nSearching 12 files for \"toggleVis\"\n\nC:\\xampp\\htdocs\\crawl\\global.php:\n  361  \t$html .='<div class=\"lower\"><a href=\"shakers.php\">Reload Blank</a></div>';\n  362  \t$html .='<div class=\"lower\"><a href=\"charts.php\">Go to single card lookup</a></div>';\n  363: \t$html .='<div class=\"lower\"><input id=\"toggleVis\" type=\"button\" value=\"hide\"></div>';\n  364  \t$html .=\"</div>\";\n  365  \n\nC:\\xampp\\htdocs\\crawl\\localChart.js:\n   53  })\n   54  \n   55: $(\"#toggleVis\").click(function(){\n   56  \t$(\".checkWrapper\").toggleClass(\"disabled\");\n   57  \tsetRes();\n\n2 matches across 2 files\n\n\nSearching 12 files for \"toggleU\"\n\nC:\\xampp\\htdocs\\crawl\\localChart.js:\n   53  })\n   54  \n   55: $(\"#toggleVis\").click(toggleUI);\n   56  \n   57: function toggleUI(){\n   58  \t$(\".checkWrapper\").toggleClass(\"disabled\");\n   59  \tsetRes();\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n   52  \t\t\t);\n   53  \t\t\techo \"</div>\";\n   54: \t\t\techo \"<script>toggleUI()</script>\";\n   55  \n   56  \n\n3 matches across 2 files\n\n\nSearching 12 files for \"rarityA\"\n\nC:\\xampp\\htdocs\\crawl\\localChart.js:\n    2  \twindow.doptions = {\n    3  \t\tsetAll: 0,\n    4: \t\trarityAll: 0,\n    5  \t}\n    6  \n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n    4  \t\t\n    5  \t//buildFullCardPool(); return;\n    6: \techo \"<script>var options = {toggleUI: 0, setAll: 0, rarityAll: 0};</script>\";\n    7  \n    8  \tif (sizeof($_GET)){\n\n2 matches across 2 files\n\n\nSearching 12 files for \"<script>var window\"\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n   53  \t\t\t);\n   54  \t\t\techo \"</div>\";\n   55: \t\t\techo \"<script>var window.toggleUI = true;</script>\";\n   56  \t\t\t//$time += microtime(true);\n   57  \t\t\t//echo \"Script Execution Completed; TIME:\".round($time, 2).\" seconds.\";\n\n1 match in 1 file\n\n\nSearching 12 files for \"toggleU\"\n\nC:\\xampp\\htdocs\\crawl\\localChart.js:\n   49  })\n   50  \n   51: $(\"#toggleVis\").click(toggleUI);\n   52  \n   53: function toggleUI(){\n   54  \t$(\".checkWrapper\").toggleClass(\"disabled\");\n   55  \tsetRes();\n\nC:\\xampp\\htdocs\\crawl\\shakers.php:\n    4  \t\t\n    5  \t//buildFullCardPool(); return;\n    6: \techo \"<script>var options = {toggleUI: 0, setAll: 0, rarityAll: 0};</script>\";\n    7  \n    8  \tif (sizeof($_GET)){\n    .\n   53  \t\t\t);\n   54  \t\t\techo \"</div>\";\n   55: \t\t\techo \"<script>options.toggleUI = true;</script>\";\n   56  \t\t\t//$time += microtime(true);\n   57  \t\t\t//echo \"Script Execution Completed; TIME:\".round($time, 2).\" seconds.\";\n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 2996,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
 			"file": "output/avail.json",
 			"settings":
 			{
-				"buffer_size": 2947,
+				"buffer_size": 3047,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +569,7 @@
 			"file": "global.php",
 			"settings":
 			{
-				"buffer_size": 24057,
+				"buffer_size": 24330,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -568,7 +578,7 @@
 			"file": "style/style.css",
 			"settings":
 			{
-				"buffer_size": 1921,
+				"buffer_size": 2014,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,7 +587,7 @@
 			"file": "helper.php",
 			"settings":
 			{
-				"buffer_size": 3800,
+				"buffer_size": 5818,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -604,7 +614,7 @@
 			"file": "localChart.js",
 			"settings":
 			{
-				"buffer_size": 1462,
+				"buffer_size": 1474,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -613,7 +623,7 @@
 			"file": "script.js",
 			"settings":
 			{
-				"buffer_size": 9986,
+				"buffer_size": 11603,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -622,7 +632,7 @@
 			"file": "charts.php",
 			"settings":
 			{
-				"buffer_size": 2897,
+				"buffer_size": 2925,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -962,6 +972,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"toggleU",
+			"<script>var window",
+			"rarityA",
+			"toggleU",
+			"toggleVis",
+			"574",
+			"depth",
+			"days",
+			"fays",
 			"con",
 			"getBoxPrices",
 			"getBoxPrices#",
@@ -1080,16 +1099,7 @@
 			"Booster Displays",
 			"booster boxes",
 			"Booster Displays",
-			"Booster Boxes",
-			"Booster Bo",
-			"exp",
-			"buildta",
-			"form",
-			"\"boxes",
-			"\"rarity\": \"D\"",
-			"build",
-			"boxes",
-			"$codes"
+			"Booster Boxes"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1244,15 +1254,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8127,
+						"buffer_size": 8162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								256,
-								264
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1323,7 +1333,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1332,15 +1342,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2300,
+						"buffer_size": 2482,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51,
-								51
+								120,
+								120
 							]
 						],
 						"settings":
@@ -1416,19 +1426,125 @@
 				},
 				{
 					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2996,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										99,
+										103
+									],
+									[
+										168,
+										172
+									],
+									[
+										235,
+										239
+									],
+									[
+										449,
+										453
+									],
+									[
+										910,
+										919
+									],
+									[
+										1058,
+										1067
+									],
+									[
+										1304,
+										1311
+									],
+									[
+										1339,
+										1346
+									],
+									[
+										1519,
+										1526
+									],
+									[
+										1713,
+										1720
+									],
+									[
+										1891,
+										1898
+									],
+									[
+										2115,
+										2133
+									],
+									[
+										2421,
+										2428
+									],
+									[
+										2456,
+										2463
+									],
+									[
+										2660,
+										2667
+									],
+									[
+										2822,
+										2829
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								2834,
+								2834
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 6,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1504.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "output/avail.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2947,
+						"buffer_size": 3047,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								470,
-								470
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1499,11 +1615,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "libs/hover.js",
 					"semi_transient": false,
 					"settings":
@@ -1588,24 +1704,24 @@
 						"translation.y": 4652.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "global.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 24057,
+						"buffer_size": 24330,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								12329,
+								12334
 							]
 						],
 						"settings":
@@ -1673,27 +1789,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6870.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "style/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1921,
+						"buffer_size": 2014,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								270,
-								270
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1764,24 +1880,24 @@
 						"translation.y": 115.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "helper.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3800,
+						"buffer_size": 5818,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								62,
-								62
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1852,11 +1968,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "style/datatables.min.css",
 					"semi_transient": false,
 					"settings":
@@ -1939,11 +2055,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "api.php",
 					"semi_transient": false,
 					"settings":
@@ -1968,24 +2084,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "localChart.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1462,
+						"buffer_size": 1474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								365,
-								365
+								665,
+								675
 							]
 						],
 						"settings":
@@ -2056,24 +2172,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "script.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9986,
+						"buffer_size": 11603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2860,
-								2860
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2141,10 +2257,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1773.0,
+						"translation.y": 813.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -2154,12 +2270,12 @@
 			"sheets":
 			[
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "charts.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2897,
+						"buffer_size": 2925,
 						"regions":
 						{
 						},
@@ -2238,16 +2354,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "global.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 24057,
+						"buffer_size": 24330,
 						"regions":
 						{
 						},
@@ -2326,24 +2442,24 @@
 						"translation.y": 356.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "script.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9986,
+						"buffer_size": 11603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4747,
-								4747
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2414,7 +2530,7 @@
 						"translation.y": 3060.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -2422,7 +2538,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -2466,7 +2582,7 @@
 	"project": "crawl.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2476,16 +2592,40 @@
 		"selected_items":
 		[
 			[
+				"sh",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
+				"loc",
+				"C:\\xampp\\htdocs\\crawl\\localChart.js"
+			],
+			[
+				"scr",
+				"C:\\xampp\\htdocs\\crawl\\script.js"
+			],
+			[
+				"sha",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
+				"",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
+				"gl",
+				"C:\\xampp\\htdocs\\crawl\\global.php"
+			],
+			[
+				"shak",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
 				"sty",
 				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
 			],
 			[
 				"glo",
 				"C:\\xampp\\htdocs\\crawl\\global.php"
-			],
-			[
-				"sha",
-				"C:\\xampp\\htdocs\\crawl\\shakers.php"
 			],
 			[
 				"av",
@@ -2498,14 +2638,6 @@
 			[
 				"st",
 				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
-			],
-			[
-				"gl",
-				"C:\\xampp\\htdocs\\crawl\\global.php"
-			],
-			[
-				"sh",
-				"C:\\xampp\\htdocs\\crawl\\shakers.php"
 			],
 			[
 				"edh",
@@ -2524,24 +2656,12 @@
 				"C:\\xampp\\htdocs\\crawl\\slice.php"
 			],
 			[
-				"shak",
-				"C:\\xampp\\htdocs\\crawl\\shakers.php"
-			],
-			[
 				"local",
 				"C:\\xampp\\htdocs\\crawl\\localChart.js"
 			],
 			[
 				"lo",
 				"C:\\xampp\\htdocs\\crawl\\localChart.js"
-			],
-			[
-				"loc",
-				"C:\\xampp\\htdocs\\crawl\\localChart.js"
-			],
-			[
-				"scr",
-				"C:\\xampp\\htdocs\\crawl\\script.js"
 			],
 			[
 				"char",
@@ -2597,10 +2717,6 @@
 			],
 			[
 				"kt",
-				"C:\\xampp\\htdocs\\crawl\\output\\KTK.json"
-			],
-			[
-				"",
 				"C:\\xampp\\htdocs\\crawl\\output\\KTK.json"
 			],
 			[

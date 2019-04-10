@@ -201,9 +201,9 @@ function getForm($get){
 	$depth = 1;
 	if (sizeof($get)){$depth = $get["depth"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='depth'>Days</div>";
+	$html .="<div id='depth'>Depth</div>";
 	$html .="<div class=''>";
-	$html .= "<input type='number' min='0' max='999' value='".$depth."' name='depth'>";
+	$html .= "<input type='number' min='-999' max='999' value='".$depth."' name='depth'>";
 	$html .= "</div>";
 	$html .= "</div>";
 
@@ -243,7 +243,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChange = -15;
+	$availChange = -14;
 	if (sizeof($get)){$availChange = $get["availChange"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChange'>Supply Change</div>";
@@ -474,9 +474,15 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		if (!$points){continue;}
 		
 		$delve = $depth;
-		if ($delve){
+		if ($delve >= 0){
 			$delve = max(0, (sizeof($points)-1 -$depth));
-		} else $delve = 0;
+		}
+		else if ($delve < 0){
+			$delve = -$depth;
+		}
+		else {
+			$delve = 0;
+		}
 	
 	
 		$extract = array(
