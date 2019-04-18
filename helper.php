@@ -6,7 +6,7 @@ include_once(__DIR__."\global.php");
 
 //convertToBase();
 
-deleteForeignFromInput();
+//deleteForeignFromInput();
 
 return;
 

@@ -29,7 +29,12 @@ a:link, a:visited {
 }
 
 #card {
-	height: 300px;
+	width: 215px;
+	dheight: 300px;
+}
+
+#card div {
+	text-align: center;
 }
 
 .container {

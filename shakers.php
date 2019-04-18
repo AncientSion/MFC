@@ -3,15 +3,20 @@
 	include_once(__DIR__."/global.php");
 		
 	//buildFullCardPool(); return;
-	echo "<script>var options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
 
 	if (sizeof($_GET)){
-		if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
+		if (isset($_GET["type"]) && $_GET["type"] == "cardrules"){
+			$cardname = $_GET["cardname"];
+			$setname = $_GET["setname"];
+			echo requestCardText($cardname, $setname);
+			return;
+		}
+		else if (isset($_GET["rarities"]) && isset($_GET["foil"]) && isset($_GET["depth"]) && isset($_GET["sets"])){
 
 			echo getForm($_GET);
 
-			//$time = time();
-			//time = -microtime(true);
+			$time = time();
+			$time = -microtime(true);
 
 			$depth = $_GET["depth"];
 			$minAvail = $_GET["minAvail"];
@@ -52,13 +57,14 @@
 				$type
 			);
 			echo "</div>";
-			echo "<script>options.autoHideUI = 1;</script>";
-			//$time += microtime(true);
+			echo "<script>var options = {autoHideUI: 1, setAll: 0, rarityAll: 0};</script>";
+			$time += microtime(true);
 			//echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
 		}
 		else {
 			echo "<div style='color: red; font-size: 30px'>Brah, no sets -> no results ... !</div>";
 			echo getForm(array());
+			echo "<script>var options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
 		}
 
 	}
@@ -97,8 +103,8 @@
 	
 	.mainContainer {
 		margin: auto;
-		height: auto;
-		margin-bottom: 10px
+		/margin-bottom: 10px;*/
+		height: 300px;
 	}
 	
 	div input[type=number] {

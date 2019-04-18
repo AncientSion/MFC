@@ -8,6 +8,20 @@ error_reporting(E_ALL);
 include(__DIR__."/simple_html_dom.php");
 
 
+function requestCardText($cardname, $set){
+	$folder = 'input';
+	$file = $set.".json";
+	$data = file_get_contents($folder."/".$file);
+	$data = json_decode($data);
+
+	foreach ($data->cards as $card){
+		if ($card->name == $cardname){
+			return "<div>".$card->text."</div>";
+		}
+	}
+	return "not found!";
+}	
+	
 
 function getCardDataSet($name, $data){
 	for ($i = 0; $i < sizeof($data); $i++){
@@ -629,7 +643,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 		$html .="<tr><th class='set' colSpan=".$colSpan.">";
 		$html .="<span>".$allSets[$i]["set"]."</span>";
 		$html .="<span> - </span>";
-		$html .="<span>".$allSets[$i]["code"]."</span>";
+		$html .="<span class='setName'>".$allSets[$i]["code"]."</span>";
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
 		$html .="<th colSpan=1 style='width: 250px'>Name</th>";

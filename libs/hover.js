@@ -1,13 +1,13 @@
+
+
 // Initialize namespaces.
 if (typeof Deckbox == "undefined") Deckbox = {};
 Deckbox.ui = Deckbox.ui || {};
 
-
 /**
  * Main tooltip type. Will be initialized for both the image tooltips and for the wow tooltips, or simple text tooltips.
  */
-Deckbox.ui.Tooltip = function(className, type) {
-    console.log("ding");
+Deckbox.ui.Tooltip = function(className, type){
     this.el = document.getElementById("card")
     this.el.className = className + ' ' + type;
     this.type = type;
@@ -117,11 +117,11 @@ Deckbox._ = {
     },
 
     preloadImg: function(link) {
-        var img = document.createElement('img');
-        img.style.display = "none"
-        img.style.width = "1px"
-        img.style.height = "1px"
-        img.src = link.href + '/tooltip';
+        let img = document.createElement('img');
+            img.style.display = "none"
+            img.style.width = "1px"
+            img.style.height = "1px"
+            img.src = link.href + '/tooltip';
         return img;
     },
 
@@ -267,29 +267,51 @@ Deckbox._ = {
                     showImage(el, url, posX, posY);
                 } else if (el.href.match('/(mtg|whi)/')) {
                     showImage(el, el.href + '/tooltip', posX, posY);
-                } else {
-                    Deckbox._.tooltip('wow').showWow(posX, posY, null, el.href + '/tooltip', el);
                 }
             }
         }
     }
 
     function showImage(el, url, posX, posY) {
-        var img = document.createElement('img');
-        url = url.replace(/\?/g, ""); /* Problematic with routes on server. */
-        img.src = url;
-        img.style.height = "100%";
+        if (navigator.onLine){
+            url = url.replace(/\?/g, ""); /* Problematic with routes on server. */
+            img = document.createElement('img');
+            img.onload = function(){
+                $("#card").empty().append($("<div>").append($(img)));
+            img.src = url;
+          }
+        }
+        else {
+            showRules();
+        }
+    }
 
-        setTimeout(function() {
-            $("#card").empty().append(img), 200})
-        return;
+    function showRules(){
+        $.ajax({
+            type: "GET",
+            url: "shakers.php",
+            datatype: "json",
+            data: {
+                    type: "cardrules",
+                    cardname: window.cardName,
+                    setname: window.setName
+                },
+            success: function(data){
+                $("#card").html(data);
+            },
+            error: function(){console.log("error")},
+        }); 
 
+    }
+    
 
-
-
-        setTimeout(function() {
-            if (el._shown) Deckbox._.tooltip('image').showImage(posX-420, posY-20, img);
-        }, 200);
+    function appendImage(img){
+        if (img){
+            $("#card").empty().append(img);
+        }
+        else {
+           console.log("ding");
+        }
     }
 
     function onmousemove(event) {

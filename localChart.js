@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
 	window.charter = new Charter();
+	window.cardName = "";
+	window.setName = "";
 
 	$(".moveTable").each(function(){
 		if (!this.childNodes[1].childNodes.length){
@@ -17,10 +19,9 @@ $(document).ready(function(){
 		$(this).find("tbody").find("tr").each(function(){
 			$(this).find("td").first().hover(
 				function(){
-					showChart(
-						$(this).parent().parent().parent().children().first().children().first().children().first().children().last().html(),
-						$(this).find("a").first().html()
-					)
+					window.cardName = $(this).find("a").first().html();
+					window.setName = $(this).closest(".moveTable").find(".setName").html();
+					showChart(setName, cardName)
 				},
 				function(){}
 			)
@@ -32,11 +33,10 @@ $(document).ready(function(){
 	}
 })
 	
-	
-function showChart(set, card){
+function showChart(setname, cardname){
 	//console.log("showChart");
 	//console.log(set + " / " + card);
-	charter.getCardData(set, card)
+	charter.getCardData(setname, cardname);
 }
 
 $(document).contextmenu(function(e){
