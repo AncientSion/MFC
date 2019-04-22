@@ -63,6 +63,6 @@ function setRes(){
 	var resY = window.innerHeight;
 	var formHeight = $("form").height();
 	var chartHeight = $(".mainContainer").height();
-	var rem = (resY - formHeight - chartHeight -70);
+	var rem = (resY - formHeight - chartHeight - 220);
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }

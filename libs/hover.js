@@ -276,9 +276,10 @@ Deckbox._ = {
         if (navigator.onLine){
             url = url.replace(/\?/g, ""); /* Problematic with routes on server. */
             img = document.createElement('img');
+            img.style.height = $(".mainContainer").height()-10;
+            img.src = url;
             img.onload = function(){
                 $("#card").empty().append($("<div>").append($(img)));
-            img.src = url;
           }
         }
         else {
