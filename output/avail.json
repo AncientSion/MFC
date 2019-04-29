@@ -1,17 +1,17 @@
 {
 	"codes": [
-		["LEA", "LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "ALL", "TMP", "WTH", "STH", "EXO", "MIR", "VIS", "USG", "C17","C18"],
-		["EXP", "MPS", "AIN", "DCI", "FNM", "BABP", "GDP", "JR", "CPR", "ALP", "UBT", "GME"],
+		["LEA", "LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "ALL", "TMP", "WTH", "STH", "EXO", "MIR", "VIS", "USG", "C16", "C17","C18"],
 		["ORI", "UMA", "MMA", "MM2", "MM3", "IMA", "A25", "EMA", "CNS", "CN2", "MMQ", "NMS", "PCY", "ULG", "UDS", "CHK", "BOK", "SOK", "TSP", "PLC", "FUT", "CSP", "INV", "ONS", "JUD", "ODY", "TOR", "SCG", "APC", "M10", "M11", "M12", "M13", "M14", "M15", "10E", "PLS", "ALA", "CFX", "ARB", "LRW", "MOR", "SHM", "EVE", "RAV", "DIS", "RTR", "GTC", "DGM", "ZEN", "WWK", "ROE", "BFZ", "OGW", "MRD", "5DN", "DST", "SOM", "MBS", "ISD", "DKA", "AVR", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM", "M19", "SS1", "BBD", "GRN", "RNA"],
 		["_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPOILS", "_SWD", "_WOW", "_WS", "_DBS", "_FF"],
+		["EXP", "MPS", "AIN", "DCI", "FNM", "BABP", "GDP", "JR", "CPR", "ALP", "UBT", "GME"],
 		["SETS"]
 	],
 	"names":
 	[
-		["Alpha", "Beta", "Unlimited", "Revised", "Legends", "Arabian Nights", "Antiquities", "Alliances", "Tempest", "Weatherlight", "Stronghold", "Exodus", "Mirage", "Visions", "Urza's Saga", "Commander 2017", "Commander 2018"],
-		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations", "DCI Promos", "Friday Night Magic Promos", "Buy a Box Promos", "Game Day Promos", "Judge Rewards Promos", "Champs States Promos", "Arena League Promos", "Ultimate Box Toppers", "Guilds of Ravnica Mythic Edition"],
+		["Alpha", "Beta", "Unlimited", "Revised", "Legends", "Arabian Nights", "Antiquities", "Alliances", "Tempest", "Weatherlight", "Stronghold", "Exodus", "Mirage", "Visions", "Urza's Saga", "Commander 2016", "Commander 2017", "Commander 2018"],
 		["Magic Origins", "Ultimate Masters", "Modern Masters", "Modern Masters 2015", "Modern Masters 2017", "Iconic Masters", "Masters 25", "Eternal Masters", "Conspiracy", "Conspiracy Take the Crown", "Mercadian Masques", "Nemesis", "Prophecy", "Urza's Legacy", "Urza's Destiny", "Champions of Kamigawa", "Betrayers of Kamigawa", "Saviors of Kamigawa", "Time Spiral", "Planar Chaos", "Future Sight", "Coldsnap", "Invasion", "Onslaught", "Judgment", "Odyssey", "Torment", "Scourge", "Apocalypse", "Magic 2010", "Magic 2011", "Magic 2012", "Magic 2013", "Magic 2014",  "Magic 2015", "Tenth Edition", "Planeshift", "Shards of Alara", "Conflux", "Alara Reborn", "Lorwyn", "Morningtide", "Shadowmoor", "Eventide", "Ravnica City of Guilds", "Dissension", "Return to Ravnica", "Gatecrash", "Dragon's Maze", "Zendikar", "Worldwake", "Rise of the Eldrazi", "Battle for Zendikar", "Oath of the Gatewatch", "Mirrodin", "Fifth Dawn", "Darksteel", "Scars of Mirrodin", "Mirrodin Besieged", "Innistrad", "Dark Ascension", "Avacyn Restored", "New Phyrexia", "Khans of Tarkir", "Dragons of Tarkir", "Fate Reforged", "Shadows over Innistrad", "Eldritch Moon", "Kaladesh", "Aether Revolt", "Amonkhet", "Hour of Devastation", "Ixalan", "Rivals of Ixalan", "Dominaria", "Core 2019", "Signature Spellbook Jace", "Battlebond", "Guilds of Ravnica", "Ravnica Allegiance"],
 		["Pokemon Boxes", "Magic Boxes", "YuGiOh Boxes", "Vanguard Boxes", "DragoBorne Boxes", "FoW Boxes", "MyLittlePony Boxes", "Spoils Boxes", "StarWarsDestiny Boxes", "WOW Boxes", "WeissSchwarz Boxes", "DragonBallSuper Boxes", "FinalFantasy Boxes"],
+		["Zendikar Expeditions", "Kaladesh Inventions", "Amonkhet Invocations", "DCI Promos", "Friday Night Magic Promos", "Buy a Box Promos", "Game Day Promos", "Judge Rewards Promos", "Champs States Promos", "Arena League Promos", "Ultimate Box Toppers", "Guilds of Ravnica Mythic Edition" ,"Ravnica Allegiance Mythic Edition"],
 		["Sets"]
 	]
 }

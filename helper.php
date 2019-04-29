@@ -6,7 +6,9 @@ include_once(__DIR__."\global.php");
 
 //convertToBase();
 
-//deleteForeignFromInput();
+//checkValidJson();
+deleteForeignFromInput();
+
 
 return;
 
@@ -66,7 +68,7 @@ function convertToBase(){
 
 function checkValidJson(){
 	$file = null;
-	$folder = '../htdocs/crawl/output';
+	$folder = '../htdocs/crawl/fix';
 	$files = scandir($folder);
 
 	$files = array_slice($files, 2);
