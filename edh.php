@@ -37,10 +37,10 @@ function fetchAll($day){
 	$names = $data["names"];
 	
 	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
-	//crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	//crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	//getSets($day, $context); // FTV sealed
-	//getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
+	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
+	getSets($day, $context); // FTV sealed
+	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
 
@@ -172,26 +172,26 @@ function getBoxPrices($date, $codes, $names, $context){
 	//$names = array("Pokemon", "Magic", "YuGiOh", "Vanguard", "DragonBallSuper", "FoW", "MyLittlePony", "Spoils", "StarWarsDestiny", "WoW", "WeissSchwarz", "DragoBorne", "FinalFantasy");
 	//$codes = array("_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPOILS", "_SWD", "_WOW", "_WS", "_DBS", "_FF");
 	
-	for ($k = 0; $k < sizeof($names); $k++){
+	for ($i = 0; $i < sizeof($names); $i++){
 
 		$game = substr($names[$i], 0, strlen($names[$i])-6);
 	
-		$set = array("date" => $date, "code" => $codes[$k], "set" => $codes[$k]." Boxes", "data" => array());	
+		$set = array("date" => $date, "code" => $codes[$i], "set" => $codes[$i]." Boxes", "data" => array());	
 		
-		for ($i = 1; $i < 10; $i++){			
+		for ($j = 1; $j < 10; $j++){			
 			$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
-			$url .= "&site=".$i;
+			$url .= "&site=".$j;
 
-			//echo "paging: ".$names[$k]." / ".$i."\n";
+			//echo "paging: ".$names[$i]." / ".$j."\n";
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
 			$rows = $html->find(".table-body", 0)->children();
 
-			for ($j = 0; $j < sizeof($rows); $j++){
-				$name = $rows[$j]->children(3)->children(0)->children(0)->children(0)->innertext;
-				$baseAvail = $rows[$j]->children(4)->children(0)->innertext;
+			for ($k = 0; $k < sizeof($rows); $k++){
+				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
+				$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
 				$basePrice = 0.00;
 				if ($baseAvail){
-					$basePrice = $rows[$j]->children(5)->innertext;
+					$basePrice = $rows[$k]->children(5)->innertext;
 					$basePrice = str_replace(",", ".", $basePrice);
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
 				}
@@ -212,7 +212,7 @@ function getBoxPrices($date, $codes, $names, $context){
 		echo sizeof($set["data"]);			
 		return;
 	*/
-		writeAndClose($codes[$k], $set);
+		writeAndClose($codes[$i], $set);
 	}
 }
 
