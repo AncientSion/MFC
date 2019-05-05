@@ -57,43 +57,48 @@
 	<script src='script.js'></script>
 </head>
 	<body>
-		<div class="mainContainer">
-			<div class="container">
-				<canvas id="foilAvailCanvas"</canvas>
-			</div>
-			<div class="container">
-				<canvas id="foilPriceCanvas"</canvas>
-			</div>
-			<div class="ui disabled">
-				<div>
-					<?php 
-
-					$card = "Brainstorm";
-					$set = "Masters 25";
-
-						if (sizeof($_GET) && ($_GET["type"] == "preset")){
-							$set = $_GET["set"];
-							$card = $_GET["card"];
-							echo "<script>window.remote = 1</script>";
-						} else echo "<script>window.remote = 0</script>";
-
-						echo '<input type="form" id="setSearch" value="'.$set.'">';
-						echo '<input type="form" id="cardSearch" value="'.$card.'">';
 
 
-					?>
-					<input type="button" style="font-size: 20px" onclick="charter.getCardData($('#setSearch').val(), $('#cardSearch').val())" value="Search">
-					<div id="cardName"></div>
-					<div class="reprints"></div>
+		<?php
+
+			echo "<div class='mainContainer'>
+				<div class='container'>
+					<canvas id='foilAvailCanvas'</canvas>
 				</div>
-			</div>
-			<div class="container">
-				<canvas id="baseAvailCanvas"</canvas>
-			</div>
-			<div class="container">
-				<canvas id="basePriceCanvas"</canvas>
-			</div>
-		</div>	
+				<div class='container'>
+					<canvas id='foilPriceCanvas'</canvas>
+				</div>
+				<div class='ui disabled'>
+					<div>";
+
+				$card = "";
+				$set = "";
+
+				if (sizeof($_GET) && ($_GET["type"] == "preset")){
+					$set = $_GET["set"];
+					$card = $_GET["card"];
+					echo "<script>window.remote = 1</script>";
+				} else echo "<script>window.remote = 0</script>";
+
+			echo '<input type="form" id="setSearch" value="'.$set.'">';
+				echo '<input type="form" id="cardSearch" value="'.$card.'">';
+		?>
+
+		<input type="button" style="font-size: 20px" onclick="charter.getCardData(0, $('#setSearch').val(), $('#cardSearch').val())" value="Search">
+		<div id="cardName"></div>
+		<div class="reprints"></div>
+
+		<?php
+			echo "</div>";
+			echo "<div class='container'>
+					<canvas id='baseAvailCanvas'</canvas>
+				</div>
+				<div class='container'>
+					<canvas id='basePriceCanvas'</canvas>
+				</div>";
+
+		?>
+
 	</body>
 </html>
 
@@ -112,7 +117,7 @@
 
 		if (remote){
 			timeout = setTimeout(function(){
-				charter.getCardData($("#setSearch").val(), $("#cardSearch").val())
+				charter.getCardData(0, $("#setSearch").val(), $("#cardSearch").val())
 			}, 300);
 		}
 }

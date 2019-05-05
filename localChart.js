@@ -36,7 +36,7 @@ $(document).ready(function(){
 function showChart(setname, cardname){
 	//console.log("showChart");
 	//console.log(set + " / " + card);
-	charter.getCardData(setname, cardname);
+	charter.getCardData(0, setname, cardname);
 }
 
 $(document).contextmenu(function(e){

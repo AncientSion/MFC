@@ -6,9 +6,10 @@ include_once(__DIR__."\global.php");
 
 //convertToBase();
 
-//checkValidJson();
-deleteForeignFromInput();
+checkValidJson();
+//deleteForeignFromInput();
 
+//deleteFromFront(3);
 
 return;
 
@@ -68,7 +69,7 @@ function convertToBase(){
 
 function checkValidJson(){
 	$file = null;
-	$folder = '../htdocs/crawl/fix';
+	$folder = '../htdocs/crawl/output';
 	$files = scandir($folder);
 
 	$files = array_slice($files, 2);
@@ -80,7 +81,7 @@ function checkValidJson(){
 		
 		if (!$data){
 			echo "invalid JSON on " . $file;
-		}
+		}// else echo "valid! \n";
 	}
 }	
 	
@@ -144,7 +145,6 @@ function deleteFromEnd($amountToDelete){
 }
 
 function deleteFromFront($amountToDelete){
-	return;
 	echo "start\n";
 	$file = null;
 	$folder = '../htdocs/crawl/fix';

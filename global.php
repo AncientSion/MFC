@@ -87,20 +87,7 @@ function buildFullCardPool(){
 
 	$data = array();	
 	
-	for ($i = 3; $i < sizeof($sets->codes); $i++){		
-		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){	
-			echo "adding set: ".$sets->codes[$i][$j]."</br>";
-			$set = array("code" => strtoupper($sets->codes[$i][$j]), "name" => $sets->names[$i][$j], "cards" => array());			
-			$json = json_decode(file_get_contents(__DIR__."/output/".$sets->codes[$i][$j].".json"));
-			
-			foreach ($json->content[sizeof($json->content)-1]->data as $card){
-				$set["cards"][] = array("name" => $card->name, "rarity" => "S");
-			}
-			$data[] = $set;	
-		}
-	}
-
-	for ($i = 0; $i < sizeof($sets->codes)-2; $i++){
+	for ($i = 0; $i < 2; $i++){
 		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){
 			echo "adding set: ".$sets->codes[$i][$j]."</br>";
 			$json = json_decode(file_get_contents(__DIR__."/input/".$sets->codes[$i][$j].".json"));
@@ -139,6 +126,19 @@ function buildFullCardPool(){
 		}
 	}
 
+	for ($i = 2; $i < sizeof($sets->codes); $i++){		
+		for ($j = 0; $j < sizeof($sets->codes[$i]); $j++){	
+			echo "adding set: ".$sets->codes[$i][$j]."</br>";
+			$set = array("code" => strtoupper($sets->codes[$i][$j]), "name" => $sets->names[$i][$j], "cards" => array());			
+			$json = json_decode(file_get_contents(__DIR__."/output/".$sets->codes[$i][$j].".json"));
+			
+			foreach ($json->content[sizeof($json->content)-1]->data as $card){
+				$set["cards"][] = array("name" => $card->name, "rarity" => "S");
+			}
+			$data[] = $set;	
+		}
+	}
+	
 	$file = fopen(__DIR__."/output/cardlist.json", "a");
 	echo "writing total of ".sizeof($data)." sets</br>";
 	fwrite($file, json_encode($data));

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"build",
+				"buildAllCards"
+			],
+			[
 				"deletef",
 				"deleteForeignFromInput"
 			],
@@ -510,10 +514,6 @@
 			[
 				"proto",
 				"prototype"
-			],
-			[
-				"mission",
-				"missionSwitch"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "edh.php",
 			"settings":
 			{
-				"buffer_size": 8241,
+				"buffer_size": 8251,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,7 @@
 			"file": "output/avail.json",
 			"settings":
 			{
-				"buffer_size": 3110,
+				"buffer_size": 3137,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +559,7 @@
 			"file": "global.php",
 			"settings":
 			{
-				"buffer_size": 24650,
+				"buffer_size": 24630,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,7 +577,7 @@
 			"file": "helper.php",
 			"settings":
 			{
-				"buffer_size": 5836,
+				"buffer_size": 5877,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -604,7 +604,7 @@
 			"file": "localChart.js",
 			"settings":
 			{
-				"buffer_size": 1518,
+				"buffer_size": 1521,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -613,16 +613,28 @@
 			"file": "script.js",
 			"settings":
 			{
-				"buffer_size": 11603,
+				"buffer_size": 12267,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "<?php\n\tinclude_once(__DIR__.\"/global.php\");\n\n\n\tif (isset($_GET[\"type\"])){\n\t\tif ($_GET[\"type\"] == \"cardList\"){\n\t\t\t$cards = file_get_contents(__DIR__.\"/output/cardlist.json\");\n\t\t\techo $cards;\t\n\t\t\treturn;\n\t\t}\n\t\telse if ($_GET[\"type\"] == \"price\"){\n\t\t\t//var_export($_GET); return;\n\t\t\t$set = $_GET[\"set\"];\n\t\t\t$card = $_GET[\"card\"];\n\n\t\t\tlogChart($set, $card);\n\t\t\t$dataPoints = array();\n\t\t\t$file = file_get_contents(__DIR__.\"/output/\".$set.\".json\");\n\t\t\t$json = json_decode($file);\n\t\t\tif ($json == NULL){\n\t\t\t\techo json_encode(array(\"msg\" => \"no card price data found\"));\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t\n\t\t\t$days = sizeof($json->content);\n\t\t/*\t$keep = 1;\n\t\t\tif ($days > 200){\n\t\t\t\t$keep = 3;\n\t\t\t}\n\t\t\telse if ($days > 100){\n\t\t\t\t$keep = 2;\n\t\t\t}\n\t\t*/\t\n\t\t\tfor ($i = 0; $i < sizeof($json->content); $i++){\n\t\t\t\t//if ($i % $keep != 0){continue;}\n\t\t\t\tfor ($j = 0; $j < sizeof($json->content[$i]->data); $j++){\n\t\t\t\t\tif ($json->content[$i]->data[$j]->name == $card){\n\t\t\t\t\t\t$dataPoints[] = array(\"time\" => $json->content[$i]->date, \"data\" => $json->content[$i]->data[$j]);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\techo json_encode($dataPoints);\n\t\t\treturn;\n\t\t}\n\t}\n?>\n\n\n<!DOCTYPE html>\n<html>\n<head>\n\t<link rel='stylesheet' href='style\\style.css'/>\n\t<link rel='stylesheet' href='style\\jquery-ui.min.css'/>\n\t<script src=\"libs\\jquery-2.1.1.min.js\"></script>\n\t<script src='libs\\jquery-ui.min.js'></script>\n\t<script src='libs\\Chart.bundle.min.js'></script>\t\n\t<script src='script.js'></script>\n</head>\n\t<body>\n\n\n\t\t<?php\n\n\t\t\techo \"<div class='mainContainer'>\n\t\t\t\t<div class='container'>\n\t\t\t\t\t<canvas id='foilAvailCanvas'</canvas>\n\t\t\t\t</div>\n\t\t\t\t<div class='container'>\n\t\t\t\t\t<canvas id='foilPriceCanvas'</canvas>\n\t\t\t\t</div>\n\t\t\t\t<div class='ui disabled'>\n\t\t\t\t\t<div>\";\n\n\t\t\t\t$card = \"\";\n\t\t\t\t$set = \"\";\n\n\t\t\t\tif (sizeof($_GET) && ($_GET[\"type\"] == \"preset\")){\n\t\t\t\t\t$set = $_GET[\"set\"];\n\t\t\t\t\t$card = $_GET[\"card\"];\n\t\t\t\t\techo \"<script>window.remote = 1</script>\";\n\t\t\t\t} else echo \"<script>window.remote = 0</script>\";\n\n\t\t\techo '<input type=\"form\" id=\"setSearch\" value=\"'.$set.'\">';\n\t\t\t\techo '<input type=\"form\" id=\"cardSearch\" value=\"'.$card.'\">';\n\t\t?>\n\n\t\t<input type=\"button\" style=\"font-size: 20px\" onclick=\"charter.getCardData(0, $('#setSearch').val(), $('#cardSearch').val())\" value=\"Search\">\n\t\t<div id=\"cardName\"></div>\n\t\t<div class=\"reprints\"></div>\n\n\t\t<?php\n\t\t\techo \"</div>\";\n\t\t\techo \"<div class='container'>\n\t\t\t\t\t<canvas id='baseAvailCanvas'</canvas>\n\t\t\t\t</div>\n\t\t\t\t<div class='container'>\n\t\t\t\t\t<canvas id='basePriceCanvas'</canvas>\n\t\t\t\t</div>\";\n\n\t\t?>\n\n\t</body>\n</html>\n\n<script type=\"text/javascript\">\n\t\n\twindow.onload = function(){\n\t\tcharter = new Charter();\n\t\ttimeout = false;\n\n\t\t$(\"#cardSearch\").focus(function(){\n\t\t\t//console.log(\"ding\");\n\t\t\tcharter.isValidSetSelected();\n\t\t})\n\n\t\t$(\".ui\").removeClass(\"disabled\");\n\n\t\tif (remote){\n\t\t\ttimeout = setTimeout(function(){\n\t\t\t\tcharter.getCardData(0, $(\"#setSearch\").val(), $(\"#cardSearch\").val())\n\t\t\t}, 300);\n\t\t}\n}\n\n</script>\n",
 			"file": "charts.php",
+			"file_size": 3038,
+			"file_write_time": 132014847647094688,
 			"settings":
 			{
-				"buffer_size": 2925,
+				"buffer_size": 2917,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "favs.php",
+			"settings":
+			{
+				"buffer_size": 2681,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -689,6 +701,7 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/crawl/script.js",
 		"/C/xampp/htdocs/crawl/slice.php",
 		"/C/xampp/htdocs/crawl/output/3ED.json",
 		"/C/xampp/htdocs/crawl/output/2ED.json",
@@ -735,7 +748,6 @@
 		"/C/xampp/htdocs/crawl/input/A25.json",
 		"/C/xampp/htdocs/crawl/input/WWK.json",
 		"/C/xampp/htdocs/crawl/input/SOM.json",
-		"/C/xampp/htdocs/crawl/script.js",
 		"/C/xampp/htdocs/crawl/output/LEG.json",
 		"/C/xampp/htdocs/crawl/output/MBS.json",
 		"/C/xampp/htdocs/crawl/output/MIR.json",
@@ -962,6 +974,31 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"indow.loca",
+			"= 0",
+			"gettickd",
+			"buildChart",
+			"label",
+			"this.",
+			"ldAllCards(screen, card, set, data",
+			"buildc",
+			"ter.getCard",
+			"getPriceData",
+			"getPriceData#",
+			"getPriceData",
+			"buildAllCards",
+			"draws",
+			".content",
+			"buildAllCards",
+			"getPriceData",
+			"addAutocomplete",
+			"entry",
+			"label",
+			"unset",
+			"buildAllCards",
+			"getPriceData",
+			"this.data ",
+			"addAutocomplete",
 			"$3",
 			"$k",
 			"$i",
@@ -1064,39 +1101,16 @@
 			"$date, $ctx){",
 			"fetchAll",
 			"($ctx){",
-			"buildFullCardPool",
-			"requestshak",
-			"special",
-			"writeAndClose",
-			"getStandSets",
-			"depths",
-			"requestShakers",
-			"minAva",
-			"requestShakers",
-			"minAvail",
-			"avail",
-			"requestShakers",
-			"getCardDataSet",
-			"days",
-			"$cards->cardviews[0]->label",
-			"($cards->cardviews[0]->label",
-			"str_replace",
-			"json",
-			"\"",
-			"blank",
-			"lbank",
-			"global",
-			"avail",
-			"Booster Displays",
-			"booster boxes",
-			"Booster Displays"
+			"buildFullCardPool"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"this.screens[screen].",
+			"this.screens[screen]",
 			"$k",
 			"$i",
 			"$j",
@@ -1222,9 +1236,7 @@
 			"doSecondDestroyedCheck",
 			"doFirstDestroyedCheck",
 			"checkPrimaryDestroyedState",
-			"$this->checkDestroyedState();",
-			"updateUnitStats",
-			"325"
+			"$this->checkDestroyedState();"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1235,7 +1247,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -1244,15 +1256,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8241,
+						"buffer_size": 8251,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1030,
-								1030
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1260,11 +1272,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1275,36 +1282,31 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1314,16 +1316,26 @@
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 513.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1332,15 +1344,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3110,
+						"buffer_size": 3137,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2866,
-								2866
+								3137,
+								3137
 							]
 						],
 						"settings":
@@ -1348,61 +1360,61 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
 							"translate_tabs_to_spaces": false
@@ -1411,7 +1423,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1427,8 +1439,8 @@
 						"selection":
 						[
 							[
-								51,
-								68
+								2409,
+								2409
 							]
 						],
 						"settings":
@@ -1496,10 +1508,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1311.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1588,7 +1600,7 @@
 						"translation.y": 4652.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1597,15 +1609,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 24650,
+						"buffer_size": 24630,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2411,
-								2411
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1673,10 +1685,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1535.0,
+						"translation.y": 243.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1764,7 +1776,7 @@
 						"translation.y": 115.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1773,15 +1785,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5836,
+						"buffer_size": 5877,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5317,
-								5317
+								1911,
+								1911
 							]
 						],
 						"settings":
@@ -1789,31 +1801,31 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1824,35 +1836,35 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3135.0,
+						"translation.y": 1350.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1939,7 +1951,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -1968,7 +1980,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1977,15 +1989,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1518,
+						"buffer_size": 1521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								418,
+								418
 							]
 						],
 						"settings":
@@ -2056,7 +2068,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -2065,15 +2077,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11603,
+						"buffer_size": 12267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7473,
+								7473
 							]
 						],
 						"settings":
@@ -2141,33 +2153,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1773.0,
+						"translation.y": 4813.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 11,
 					"file": "charts.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2925,
+						"buffer_size": 2917,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2601,
+								2601
 							]
 						],
 						"settings":
@@ -2235,10 +2241,280 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1893.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 12,
+					"file": "favs.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2011,
+								2011
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1305.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "localChart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1521,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								840,
+								840
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "charts.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1061,
+								1061
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 455.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -2247,7 +2523,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 24650,
+						"buffer_size": 24630,
 						"regions":
 						{
 						},
@@ -2323,10 +2599,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 356.0,
+						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -2335,15 +2611,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11603,
+						"buffer_size": 12267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2285,
+								2320
 							]
 						],
 						"settings":
@@ -2361,60 +2637,61 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
+							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3060.0,
+						"translation.y": 959.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -2448,7 +2725,7 @@
 		"cols":
 		[
 			0.0,
-			0.858055390249,
+			0.447189097104,
 			1.0
 		],
 		"rows":
@@ -2466,7 +2743,7 @@
 	"project": "crawl.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 52.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2475,6 +2752,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"scr",
+				"C:\\xampp\\htdocs\\crawl\\script.js"
+			],
+			[
+				"fav",
+				"C:\\xampp\\htdocs\\crawl\\favs.php"
+			],
+			[
+				"loc",
+				"C:\\xampp\\htdocs\\crawl\\localChart.js"
+			],
+			[
+				"char",
+				"C:\\xampp\\htdocs\\crawl\\script.js"
+			],
+			[
+				"sh",
+				"C:\\xampp\\htdocs\\crawl\\shakers.php"
+			],
+			[
+				"ch",
+				"C:\\xampp\\htdocs\\crawl\\charts.php"
+			],
+			[
+				"favs",
+				"C:\\xampp\\htdocs\\crawl\\favs.php"
+			],
 			[
 				"sty",
 				"C:\\xampp\\htdocs\\crawl\\style\\style.css"
@@ -2504,10 +2809,6 @@
 				"C:\\xampp\\htdocs\\crawl\\global.php"
 			],
 			[
-				"sh",
-				"C:\\xampp\\htdocs\\crawl\\shakers.php"
-			],
-			[
 				"edh",
 				"C:\\xampp\\htdocs\\crawl\\edh.php"
 			],
@@ -2534,18 +2835,6 @@
 			[
 				"lo",
 				"C:\\xampp\\htdocs\\crawl\\localChart.js"
-			],
-			[
-				"loc",
-				"C:\\xampp\\htdocs\\crawl\\localChart.js"
-			],
-			[
-				"scr",
-				"C:\\xampp\\htdocs\\crawl\\script.js"
-			],
-			[
-				"char",
-				"C:\\xampp\\htdocs\\crawl\\script.js"
 			],
 			[
 				"api",
@@ -2646,10 +2935,6 @@
 			[
 				"mox",
 				"C:\\xampp\\htdocs\\crawl\\output\\BOXES.json"
-			],
-			[
-				"ch",
-				"C:\\xampp\\htdocs\\crawl\\charts.php"
 			],
 			[
 				"aja",
@@ -2978,14 +3263,6 @@
 			[
 				"wea",
 				"C:\\xampp\\htdocs\\fire\\server\\systems\\weapon.php"
-			],
-			[
-				"sho",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\shokov.php"
-			],
-			[
-				"hyp",
-				"C:\\xampp\\htdocs\\fire\\server\\ships\\hyperion.php"
 			]
 		],
 		"width": 0.0

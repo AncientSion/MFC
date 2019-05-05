@@ -1,26 +1,30 @@
-class Entry {
-	constructor(time, data){
-		this.time = time;
-		this.name = data.name;
-		this.baseAvail = data.baseAvail || 0;
-		this.basePrice = data.basePrice || 0;
-		this.foilAvail = data.foilAvail || 0;
-		this.foilPrice = data.foilPrice || 0;
-	}
-}
-
 class Charter {
 	
-	constructor(){
+	constructor(multi = 0){
 		this.data;
-		this.content;
 		this.draws = 0;
-		this.foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
+		this.screens = [];
+
+		if (!multi){
+			this.screens[0] = {};
+			this.screens[0].foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
+			this.screens[0].foilAvailCtx = document.getElementById("foilAvailCanvas") ? document.getElementById("foilAvailCanvas").getContext("2d") : false;
+			this.screens[0].basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
+			this.screens[0].baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
+		
+			//this.getData("cardList");
+		}
+
+		this.getData("cardList");
+
+
+	/*	this.foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
 		this.foilAvailCtx = document.getElementById("foilAvailCanvas") ? document.getElementById("foilAvailCanvas").getContext("2d") : false;
 		this.basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
 		this.baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
-
+	
 		this.getData(this, "cardList", "addAutocomplete");
+	*/
 	};
 
 	isValidSetSelected(){
@@ -47,7 +51,7 @@ class Charter {
 		}
 	}
 
-	getCardData(setName, cardName){
+	getCardData(screen, setName, cardName){
 		if (!setName || !cardName){return;}
 
 		var set = this.getFullSet(setName);
@@ -57,7 +61,7 @@ class Charter {
 		if (!set || !card){return;}
 
 		//console.log("valid, setName: " + setName + ", cardName: " + cardName);
-		this.getPriceData(this, set.code, card, "buildAllCards");
+		this.getPriceData(screen, set.code, card);
 		
 	}
 	
@@ -84,7 +88,7 @@ class Charter {
 				.attr("type", "button")
 				.click(function(){
 					$("#setSearch").val($(this).val());
-					charter.getPriceData(charter, $('#setSearch').val(), $('#cardSearch').val(), "buildAllCards");
+					charter.getPriceData(0, $('#setSearch').val(), $('#cardSearch').val());
 				})
 			)
 		}
@@ -108,7 +112,7 @@ class Charter {
 		return false;
 	}
 
-	getPriceData(ref, set, card, callback){
+	getPriceData(screen, set, card){
 		$.ajax({
 			type: "GET",
 			url: "charts.php",
@@ -119,7 +123,7 @@ class Charter {
 				card: card
 			},
 			success: function(data){
-				ref[callback](card, set, JSON.parse(data));
+				charter.buildAllCards(screen, card, set, JSON.parse(data));
 			},
 			error: function(){console.log("error");}
 		});
@@ -128,8 +132,14 @@ class Charter {
 	getLabel(points){
 		//console.log("points " + points.length);
 		var ret = [];
+		var year = 18;
 		for (let i = 0; i < points.length; i++){
-			ret.push(points[i].time);
+			if (points[i].time.substr(8, points[i].time.length-1) == year){
+				ret.push([points[i].time.substr(0, 5), year]);
+				year++;
+			} else ret.push(points[i].time.substr(0, 5));
+
+			//ret[ret.length-1] = 0;
 		}
 		return ret;
 	}
@@ -158,11 +168,11 @@ class Charter {
 		for (let i = 0; i < sets.length; i++){
 			returnData.push([{
 				"ref": ref[i],
-				"label": labels[i],
+				"label": (labels[i] + " - " + set + " " + card),
 				"data": sets[i],
 				"fontColor": "white",
 				"fontSize": 14,
-				"pointRadius": 2,
+				"pointRadius": 0,
 				"borderColor": colors[i],
 				"backgroundColor": colors[i],
 				"borderWidth": 2,
@@ -216,14 +226,14 @@ class Charter {
 		return link
 	}
 
-	buildAllCards(card, set, data){
+	buildAllCards(screen, card, set, data){
 		
 		if ($("#cardName").length){
 			var link = this.getCardLink($("#setSearch").val(), card);
 			$("#cardName").html(link);
 		}
 
-		this.undrawOldCharts();
+		this.undrawOldCharts(screen);
 		this.draws++;
 
 		var label = this.getLabel(data);
@@ -232,10 +242,12 @@ class Charter {
 
 		//$("#cardName").html(card + " - " + set);
 
-		if (this.foilAvailCtx && this.isValidData(cardData[0][0])){this.buildChart(label, cardData[0], tickData[0]);}
-		if (this.foilPriceCtx && this.isValidData(cardData[1][0])){this.buildChart(label, cardData[1], tickData[1]);}
-		if (this.baseAvailCtx && this.isValidData(cardData[2][0])){this.buildChart(label, cardData[2], tickData[2]);}
-		if (this.basePriceCtx && this.isValidData(cardData[3][0])){this.buildChart(label, cardData[3], tickData[3]);}		
+
+
+		if (this.screens[screen].foilAvailCtx && this.isValidData(cardData[0][0])){this.buildChart(screen, label, cardData[0], tickData[0]);}
+		if (this.screens[screen].foilPriceCtx && this.isValidData(cardData[1][0])){this.buildChart(screen, label, cardData[1], tickData[1]);}
+		if (this.screens[screen].baseAvailCtx && this.isValidData(cardData[2][0])){this.buildChart(screen, label, cardData[2], tickData[2]);}
+		if (this.screens[screen].basePriceCtx && this.isValidData(cardData[3][0])){this.buildChart(screen, label, cardData[3], tickData[3]);}		
 	}
 
 	isValidData(points){
@@ -244,43 +256,40 @@ class Charter {
 		} return false;
 	}
 
-	undrawOldCharts(){
+	undrawOldCharts(screen){
 		if (!this.draws){$(".container").addClass("border"); return;}
-	/*	if (this.foilAvailChart){this.foilAvailChart.destroy()};
-		if (this.foilPriceChart){this.foilPriceChart.destroy()};
-		if (this.baseAvailChart){this.baseAvailChart.destroy()};
-		if (this.basePriceChart){this.basePriceChart.destroy()};
-	*/	
-		if (this.foilAvailChart){
-			this.foilAvailChart.data.labels = [];
-			this.foilAvailChart.data.datasets[0] = [];
-			this.foilAvailChart.data.datasets[1] = [];
-			this.foilAvailChart.update();
+		//console.log("undraw");
+
+		if (this.screens[screen].foilAvailChart){
+			this.screens[screen].foilAvailChart.data.labels = [];
+			this.screens[screen].foilAvailChart.data.datasets[0] = [];
+			this.screens[screen].foilAvailChart.data.datasets[1] = [];
+			this.screens[screen].foilAvailChart.update();
 		}
 		
-		if (this.foilPriceChart){
-			this.foilPriceChart.data.labels = [];
-			this.foilPriceChart.data.datasets[0] = [];
-			this.foilPriceChart.data.datasets[1] = [];
-			this.foilPriceChart.update();
+		if (this.screens[screen].foilPriceChart){
+			this.screens[screen].foilPriceChart.data.labels = [];
+			this.screens[screen].foilPriceChart.data.datasets[0] = [];
+			this.screens[screen].foilPriceChart.data.datasets[1] = [];
+			this.screens[screen].foilPriceChart.update();
 		}
 		
-		if (this.baseAvailChart){
-			this.baseAvailChart.data.labels = [];
-			this.baseAvailChart.data.datasets[0] = [];
-			this.baseAvailChart.data.datasets[1] = [];
-			this.baseAvailChart.update();
+		if (this.screens[screen].baseAvailChart){
+			this.screens[screen].baseAvailChart.data.labels = [];
+			this.screens[screen].baseAvailChart.data.datasets[0] = [];
+			this.screens[screen].baseAvailChart.data.datasets[1] = [];
+			this.screens[screen].baseAvailChart.update();
 		}
 		
-		if (this.basePriceChart){
-			this.basePriceChart.data.labels = [];
-			this.basePriceChart.data.datasets[0] = [];
-			this.basePriceChart.data.datasets[1] = [];
-			this.basePriceChart.update();
+		if (this.screens[screen].basePriceChart){
+			this.screens[screen].basePriceChart.data.labels = [];
+			this.screens[screen].basePriceChart.data.datasets[0] = [];
+			this.screens[screen].basePriceChart.data.datasets[1] = [];
+			this.screens[screen].basePriceChart.update();
 		}
 	}
 
-	buildChart(label, dataSets, tickData){
+	buildChart(screen, label, dataSets, tickData){
 		
 		//console.log(tickData);
 
@@ -293,13 +302,18 @@ class Charter {
 					datasets: dataSets
 				},
 				options: {
+					elements: {
+						line: {
+							tension: 0 // bezeir curv
+						}
+					},
 			        animation: {
-			            duration: 0, // general animation time
+			            duration: 0,
 			        },
 			        hover: {
-			            animationDuration: 0, // duration of animations when hovering an item
+			            animationDuration: 0,
 			        },
-			        responsiveAnimationDuration: 0, // animation duration after a resize
+			        responsiveAnimationDuration: 0,
 					legend: {
 						display: true,
 						labels: {
@@ -313,20 +327,11 @@ class Charter {
 						fontSize: 24,
 						fontColor: "white"
 					},
-					display: true,
-					//responsive: true,
 					scales: {
 						yAxes: [
-						{
-							//id: "price",
-							//position: 'left',
-							//ticks: {
-							//	beginAtZero: true,
-							//	fontColor: "white"
-							//},
+						{	position: "right",
 							gridLines: {
 								display: false,
-								//color: ["rgba(255,255,255,1)"]
 							},
 							scaleLabel: {
 								display: false,
@@ -335,40 +340,38 @@ class Charter {
 								fontColor: "white"
 							}, 
 			                ticks: tickData,
-						}/*,
-						{	
-							id: "stock",
-							position: 'right',
-							ticks: {
-								beginAtZero: true,
-								fontColor: "white",
-								//stepSize: 1
-							},
-							gridLines: {
-								display: false,
-								color: ["rgba(255,255,255,1)"]
-							},
-							scaleLabel: {
-								display: true,
-								labelString: "Stock",
-								fontSize: 20,
-								fontColor: "white"
-							}
-						},*/
+						}
 						],
-						xAxes: [{
-							ticks: {
-								beginAtZero: true,
-								fontColor: "white"
-							},
-							gridLines: {
-								display: true,
-								color: "rgba(255,255,255,0.5)"
-							},
-						}],
+						xAxes: [
+							{
+								ticks: {
+									display: 1,
+									//beginAtZero: true,
+									fontColor: "white",
+									autoskip: true,
+									maxTicksLimit: 10,
+									fontSize: 12,
+									minRotation: 0,
+									maxRotation: 0
+								},
+								gridLines: {
+									display: true,
+									color: "rgba(255,255,255,0.5)"
+								},
+								scaleLabel: {
+									display: 0,
+									labelString: 'Month'
+								}
+							}
+						],
 					}
 				}
 		}
+
+		
+		this.screens[screen][dataSets[0].ref + "Chart"] = new Chart(this.screens[screen][dataSets[0].ref + "Ctx"], chartData); 
+		return;
+
 
 		this[(dataSets[0].ref) + "Chart"] = new Chart(this[dataSets[0].ref + "Ctx"], chartData);
 
@@ -378,14 +381,14 @@ class Charter {
 		this.data = data;
 		var tags = [];
 
-		for (let i = 0; i <this.data.length; i++){
+		for (let i = 0; i < this.data.length; i++){
 			tags.push(data[i].code);
 			tags.push(data[i].name);
 		}
 		$("#setSearch").autocomplete({source: tags});
 	}
 
-	getData(ref, type, callback){
+	getData(type){
 		//return;
 		$.ajax({
 			type: "GET",
@@ -395,7 +398,7 @@ class Charter {
 				type: type
 			},
 			success: function(data){
-				ref[callback](JSON.parse(data));
+				charter.addAutocomplete(JSON.parse(data));
 			},
 			error: function(){console.log("error");}
 		});

@@ -15,7 +15,7 @@ $fetch = "";
 echo "\n\n\nScript Execution Started \n\n";
 fetchAll($date);
 $time += microtime(true);
-echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["cards"]." cards over ".$GLOBALS["requests"]." requests";
+echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["cards"]." entries over ".$GLOBALS["requests"]." requests";
 
 
 function fetchAll($day){
@@ -36,11 +36,11 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
+	//crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
 	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	getSets($day, $context); // FTV sealed
-	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	//crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
+	//getSets($day, $context); // FTV sealed
+	//getBoxPrices($day, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
 
