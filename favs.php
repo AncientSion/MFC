@@ -1,6 +1,23 @@
 <?php
 	include_once(__DIR__."/global.php");
 
+	//DB::app()->dump(); return;
+
+	if (isset($_POST["type"]) && $_POST["type"] == "addNewFavs"){
+		echo "addNewFavs";
+
+		//echo var_export($_POST); return;
+
+		if (DB::app()->insertNewFavorites($_POST["sets"], $_POST["cards"], $_POST["isFoil"])){
+			echo "added!";
+		}
+
+		return;
+		
+	}
+
+
+
 ?>
 
 
@@ -18,16 +35,43 @@
 	<body>
 		<?php
 
-			$favs = array(
-				array("A25", "Brainstorm", 1),
-				array("KLD", "Saheeli Rai", 0),
-				array("KLD", "Saheeli Rai", 1),
-				array("Shadows over Innistrad", "Second Harvest", 1),
-				array("Shadows over Innistrad", "Cryptolith Rite", 1),
-				array("Eternal Masters", "Sylvan Library", 1),
-				array("Core 2019", "Scapeshift", 0),
-				array("Core 2019", "Crucible of Worlds", 0),
-			);
+
+		echo
+			"<form>
+				<table class='newEntryTable'>
+					<thead>
+						<tr>
+							<th>set</th>
+							<th>card</th>
+							<th>foil</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr class='newEntryBlank'>
+							<td colSpan=3>
+								<div>
+									<input type='form' class='setSearch'></input>
+									<input type='form' class='cardSearch'></input>
+									<input type='checkbox'></input>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+
+					<tfoot>
+						<tr>
+							<td colSpan=3>
+								<input type='button' value='new row' onclick='addNewRow()'></input>
+								<input type='button' value='Confirm' onclick='saveNewFavorites()'></input>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</form>";
+
+
+			$favs = DB::app()->getFavorites();
 
 			$cont = "<div class='mainContainer'>";
 			$foil = "<div class='container'>
@@ -42,14 +86,14 @@
 				echo $cont;
 
 				echo 
-					"<div class='ui disabled'>
+					"<div class='disabled'>
 						<div>
-							<input type='form' value='".$fav[0]."'>
-							<input type='form' value='".$fav[1]."'>
+							<input type='form' value='".$fav["setcode"]."'>
+							<input type='form' value='".$fav["cardname"]."'>
 						</div>
 					</div>";
 
-				if ($fav[2] == 1){
+				if ($fav["isFoil"]){
 					echo $foil;
 				} else echo $nonFoil;
 
@@ -61,51 +105,74 @@
 </html>
 
 <script type="text/javascript">
+
+	const charter = new Charter(1);
 	
 	window.onload = function(){
-		charter = new Charter(1);
+		addNewRow();
+	}
 
-		things = [];
+	function addNewRow(){
+		let table = $(".newEntryTable");
+		let row = table.find(".newEntryBlank").clone();
+			row.removeClass().find("div").addClass("search");
 
-		$(".mainContainer").each(function(){
-			chart = {}
-			let can = $(this).find("canvas");
-				can.each(function(){
-					let type = $(this).attr("id");
-						type = type.substr(0, type.length-6) + "Ctx";
-					chart[type] = this.getContext("2d");
-				})
-				can.click(function(){
-					let set = "";
-					let card = "";
-					$(this).parent().parent().find("input").each(function(i){
-						if (!i){
-							set = $(this).val();
-						} else card = $(this).val()
-					})
-					console.log(set, card);
+		//coremoveClass().find("div").addClass("search");
+			table.append(row)
+		charter.initCardSearchInputs(row)
+	}
 
-					window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
-				})
+	function saveNewFavorites(){
+		console.log("saveNewFavorites");
 
-			charter.screens.push(chart);
+		let sets = [];
+		let cards = [];
+		let isFoil = [];
 
-			$(this).find("input").each(function(){
-				things.push($(this).val())
-			})
+		$(".search").each(function(){
+			sets.push($(this).find(".setSearch").val());
+			cards.push($(this).find(".cardSearch").val());
+			isFoil.push($(this).find("input:checkbox").prop("checked"));
 		})
-		//console.log(things);
 
-		timeout = setTimeout(function(){
-			loadCharts();
-		}, 1000);
+	//	console.log(sets);
+	//	console.log(cards);
+	//	console.log(isFoil);
+	//	return;
 
-		function loadCharts(){
-			for (let i = 0; i < things.length; i+=2){
-				//console.log(things[i], things[i+1]);
-				charter.getCardData(i/2, things[i], things[i+1]);
+		for (let i = 0; i < sets.length; i++){
+			if (sets[i].length > 4){
+				sets[i] = charter.getSetCodeBySetName(sets[i]);
 			}
 		}
+
+        $.ajax({
+            type: "POST",
+            url: "favs.php",
+            datatype: "json",
+            data: {
+                    type: "addNewFavs",
+                    sets: sets,
+                    cards: cards,
+                    isFoil: isFoil
+                },
+            success: function(data){
+            	//console.log("success!")
+            	//console.log(data);
+            	$(".newEntryTable tbody tr").each(function(i){
+            		if (!i){return;}
+
+            		$(this).remove();
+            		
+            	})
+            	addNewRow();
+
+
+            },
+            error: function(){console.log("error")},
+        }); 
+
+
 	}
 
 </script>
@@ -114,13 +181,20 @@
 	.mainContainer {
 		display: inline-block;
 		margin: auto;
-		width: 500px;
+		width: 400px;
 	}
 	.mainContainer .disabled {
 		display: none;
 	}
 	.mainContainer div {
 		width: 100%;
+	}
+
+	.newEntryTable input[type=button] {
+	}
+
+	.newEntryBlank {
+		display: none;
 	}
 
 </style>

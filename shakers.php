@@ -57,14 +57,14 @@
 				$type
 			);
 			echo "</div>";
-			echo "<script>var options = {autoHideUI: 1, setAll: 0, rarityAll: 0};</script>";
+			echo "<script>const options = {autoHideUI: 1, setAll: 0, rarityAll: 0};</script>";
 			$time += microtime(true);
 			//echo "Script Execution Completed; TIME:".round($time, 2)." seconds.";
 		}
 		else {
 			echo "<div style='color: red; font-size: 30px'>Brah, no sets -> no results ... !</div>";
 			echo getForm(array());
-			echo "<script>var options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
+			echo "<script>const options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
 		}
 
 	}

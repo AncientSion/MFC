@@ -1,8 +1,9 @@
 class Charter {
 	
 	constructor(multi = 0){
-		this.data;
+		this.data = [];
 		this.draws = 0;
+		this.setIndex = 0;
 		this.screens = [];
 
 		if (!multi){
@@ -11,44 +12,30 @@ class Charter {
 			this.screens[0].foilAvailCtx = document.getElementById("foilAvailCanvas") ? document.getElementById("foilAvailCanvas").getContext("2d") : false;
 			this.screens[0].basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
 			this.screens[0].baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
-		
-			//this.getData("cardList");
 		}
 
-		this.getData("cardList");
-
-
-	/*	this.foilPriceCtx = document.getElementById("foilPriceCanvas") ? document.getElementById("foilPriceCanvas").getContext("2d") : false;
-		this.foilAvailCtx = document.getElementById("foilAvailCanvas") ? document.getElementById("foilAvailCanvas").getContext("2d") : false;
-		this.basePriceCtx = document.getElementById("basePriceCanvas") ? document.getElementById("basePriceCanvas").getContext("2d") : false;
-		this.baseAvailCtx = document.getElementById("baseAvailCanvas") ? document.getElementById("baseAvailCanvas").getContext("2d") : false;
-	
-		this.getData(this, "cardList", "addAutocomplete");
-	*/
+		this.loadAllCards(this);
 	};
 
-	isValidSetSelected(){
-		var entered = $("#setSearch").val();
+	isValidSetSelected(element){
+		let setString = $(element).parent().find(".setSearch").val();
 		var valid = false;
-		var i = 0;
 		for (var i = 0; i < this.data.length; i++){
-			if (this.data[i].name == entered || this.data[i].code == entered){
-				valid = true; break;
+			if (this.data[i].name == setString || this.data[i].code == setString){
+				this.setIndex = i;
+				return true;
 			}
 		}
+		return false;
+	}
 
-		if (valid){
-			var suggest = [];
-			for (let j = 0; j < this.data[i].cards.length; j++){
-				suggest.push(this.data[i].cards[j].name);
-			}
-			//console.log("init");
-			$("#cardSearch").autocomplete({source: suggest});
+	addCardAutoComplete(element){
+		var suggest = [];
+		for (let i = 0; i < this.data[this.setIndex].cards.length; i++){
+			suggest.push(this.data[this.setIndex].cards[i].name);
 		}
-		else {
-			//console.log("destroy");
-			$("#cardSearch").autocomplete("destroy");
-		}
+		//console.log("init");
+		$(element).autocomplete({source: suggest});
 	}
 
 	getCardData(screen, setName, cardName){
@@ -87,8 +74,8 @@ class Charter {
 				.attr("value", results[i])
 				.attr("type", "button")
 				.click(function(){
-					$("#setSearch").val($(this).val());
-					charter.getPriceData(0, $('#setSearch').val(), $('#cardSearch').val());
+					$(".setSearch").val($(this).val());
+					charter.getPriceData(0, $('.setSearch').val(), $('.cardSearch').val());
 				})
 			)
 		}
@@ -107,6 +94,15 @@ class Charter {
 		for (var i = 0; i < set.cards.length; i++){
 			if (set.cards[i].name == cardName){
 				return set.cards[i].name;
+			}
+		}
+		return false;
+	}
+
+	getSetCodeBySetName(name){
+		for (let i = 0; i < this.data.length; i++){
+			if (this.data[i].name == name){
+				return this.data[i].code;
 			}
 		}
 		return false;
@@ -172,7 +168,8 @@ class Charter {
 				"data": sets[i],
 				"fontColor": "white",
 				"fontSize": 14,
-				"pointRadius": 0,
+				"pointRadius": 1,
+				//"pointColor": "red",
 				"borderColor": colors[i],
 				"backgroundColor": colors[i],
 				"borderWidth": 2,
@@ -229,7 +226,7 @@ class Charter {
 	buildAllCards(screen, card, set, data){
 		
 		if ($("#cardName").length){
-			var link = this.getCardLink($("#setSearch").val(), card);
+			var link = this.getCardLink($(".setSearch").val(), card);
 			$("#cardName").html(link);
 		}
 
@@ -377,109 +374,85 @@ class Charter {
 
 	}
 
-	addAutocomplete(data){
-		this.data = data;
+	initCardSearchInputs(element){
+
+		this.addSetAutoComplete(element);
+
+		$(element).find(".cardSearch").focus(function(){
+			if (charter.isValidSetSelected(this)){
+				charter.addCardAutoComplete(this);
+			}
+			else if ($(this).hasClass("ui-autocomplete-input")){
+				$(this).autocomplete("destroy");
+			}
+		})
+	}
+	
+
+	addSetAutoComplete(element){
 		var tags = [];
 
 		for (let i = 0; i < this.data.length; i++){
-			tags.push(data[i].code);
-			tags.push(data[i].name);
+			tags.push(this.data[i].code);
+			tags.push(this.data[i].name);
 		}
-		$("#setSearch").autocomplete({source: tags});
+		$(element).find(".setSearch").autocomplete({source: tags});
 	}
 
-	getData(type){
+	loadAllCards(self){
 		//return;
 		$.ajax({
 			type: "GET",
 			url: "charts.php",
 			datatype: "json",
 			data: {
-				type: type
+				type: "cardlist"
 			},
 			success: function(data){
-				charter.addAutocomplete(JSON.parse(data));
+				self.data = JSON.parse(data);
+				self.initCardSearchInputs($(".search").first());
+				self.loadExistingCharts();
 			},
 			error: function(){console.log("error");}
 		});
 	}
-	
-}
 
+	loadExistingCharts(){
 
-/*
-		var chartData = {
-				type: 'line',
-				data: {
-					labels: label,
-					datasets: dataSets
-				},
-				options: {
-					legend: {
-						display: true,
-						labels: {
-							fontColor: "white",
-							fontSize: 16,
-						}
-					}, 
-					title: {
-						display: true,
-						text: card + " - " + set,
-						fontSize: 24,
-						fontColor: "white"
-					},
-					display: true,
-					//responsive: false,
-					scales: {
-						yAxes: [
-						{
-							id: "price",
-							position: 'left',
-							ticks: {
-								beginAtZero: true,
-								fontColor: "white"
-							},
-							gridLines: {
-								display: false,
-								color: ["rgba(255,255,255,1)"]
-							},
-							scaleLabel: {
-								display: true,
-								labelString: "Price",
-								fontSize: 20,
-								fontColor: "white"
-							}
-						},
-						{	
-							id: "stock",
-							position: 'right',
-							ticks: {
-								beginAtZero: true,
-								fontColor: "white",
-								//stepSize: 1
-							},
-							gridLines: {
-								display: false,
-								color: ["rgba(255,255,255,1)"]
-							},
-							scaleLabel: {
-								display: true,
-								labelString: "Stock",
-								fontSize: 20,
-								fontColor: "white"
-							}
-						},
-						],
-						xAxes: [{
-							ticks: {
-								beginAtZero: true,
-								fontColor: "white"
-							},
-							gridLines: {
-								color: ["rgba(255,255,255,1)"]
-							},
-						}],
-					}
-				}
+		if (window.location.href.substr(window.location.href.length-8, window.location.href.length-1) != "favs.php"){return;}
+		let things = [];
+
+		$(".mainContainer").each(function(){
+			var chart = {}
+			let can = $(this).find("canvas");
+				can.each(function(){
+					let type = $(this).attr("id");
+						type = type.substr(0, type.length-6) + "Ctx";
+					chart[type] = this.getContext("2d");
+				})
+				can.click(function(){
+					let set = "";
+					let card = "";
+					$(this).parent().parent().find("input").each(function(i){
+						if (!i){
+							set = $(this).val();
+						} else card = $(this).val()
+					})
+				//	console.log(set, card);
+
+					window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
+				})
+
+			charter.screens.push(chart);
+
+			let inputs = $(this).find("input");
+			things.push($(inputs[0]).val())
+			things.push($(inputs[1]).val())
+		})
+
+		for (let i = 0; i < things.length; i+=2){
+			//console.log(things[i], things[i+1]);
+			charter.getCardData(i/2, things[i], things[i+1]);
 		}
-		*/
+	}
+}

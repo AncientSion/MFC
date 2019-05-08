@@ -3,7 +3,7 @@
 
 
 	if (isset($_GET["type"])){
-		if ($_GET["type"] == "cardList"){
+		if ($_GET["type"] == "cardlist"){
 			$cards = file_get_contents(__DIR__."/output/cardlist.json");
 			echo $cards;	
 			return;
@@ -39,6 +39,7 @@
 					}
 				}
 			}
+			
 			echo json_encode($dataPoints);
 			return;
 		}
@@ -68,8 +69,7 @@
 				<div class='container'>
 					<canvas id='foilPriceCanvas'</canvas>
 				</div>
-				<div class='ui disabled'>
-					<div>";
+				<div class='search disabled'>";
 
 				$card = "";
 				$set = "";
@@ -80,18 +80,18 @@
 					echo "<script>window.remote = 1</script>";
 				} else echo "<script>window.remote = 0</script>";
 
-			echo '<input type="form" id="setSearch" value="'.$set.'">';
-				echo '<input type="form" id="cardSearch" value="'.$card.'">';
+			echo '<input type="form" class="setSearch" value="'.$set.'">';
+				echo '<input type="form" class="cardSearch" value="'.$card.'">';
 		?>
 
-		<input type="button" style="font-size: 20px" onclick="charter.getCardData(0, $('#setSearch').val(), $('#cardSearch').val())" value="Search">
+		<input type="button" style="font-size: 20px" onclick="charter.getCardData(0, $('.setSearch').val(), $('.cardSearch').val())" value="Search">
 		<div id="cardName"></div>
 		<div class="reprints"></div>
 
 		<?php
 			echo "</div>";
 			echo "<div class='container'>
-					<canvas id='baseAvailCanvas'</canvas>
+					<canvas id='baseAvailCanvas'</canvas>s
 				</div>
 				<div class='container'>
 					<canvas id='basePriceCanvas'</canvas>
@@ -103,21 +103,17 @@
 </html>
 
 <script type="text/javascript">
+
+	const charter = new Charter();
 	
 	window.onload = function(){
-		charter = new Charter();
 		timeout = false;
 
-		$("#cardSearch").focus(function(){
-			//console.log("ding");
-			charter.isValidSetSelected();
-		})
-
-		$(".ui").removeClass("disabled");
+		//$(".ui").removeClass("disabled");
 
 		if (remote){
 			timeout = setTimeout(function(){
-				charter.getCardData(0, $("#setSearch").val(), $("#cardSearch").val())
+				charter.getCardData(0, $(".setSearch").val(), $(".cardSearch").val())
 			}, 300);
 		}
 }

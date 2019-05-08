@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-	window.charter = new Charter();
-	window.cardName = "";
-	window.setName = "";
+	const charter = new Charter();
+	const cardName = "";
+	const setName = "";
 
 	$(".moveTable").each(function(){
 		if (!this.childNodes[1].childNodes.length){
@@ -19,18 +19,14 @@ $(document).ready(function(){
 		$(this).find("tbody").find("tr").each(function(){
 			$(this).find("td").first().hover(
 				function(){
-					window.cardName = $(this).find("a").first().html();
-					window.setName = $(this).closest(".moveTable").find(".setName").html();
+					cardName = $(this).find("a").first().html();
+					setName = $(this).closest(".moveTable").find(".setName").html();
 					showChart(setName, cardName)
 				},
 				function(){}
 			)
 		})
 	})
-
-	if (options.autoHideUI){
-		toggleUI();
-	}
 })
 	
 function showChart(setname, cardname){

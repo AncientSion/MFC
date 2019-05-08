@@ -6,6 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include(__DIR__."/simple_html_dom.php");
+include(__DIR__."/server/db.php");
 
 
 function requestCardText($cardname, $set){
@@ -21,7 +22,6 @@ function requestCardText($cardname, $set){
 	}
 	return "not found!";
 }	
-	
 
 function getCardDataSet($name, $data){
 	for ($i = 0; $i < sizeof($data); $i++){
@@ -373,9 +373,14 @@ function getForm($get){
 
 	$html .="<div class='upper'>";
 	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
-	$html .='<div class="lower"><a href="charts.php">Go to single card lookup</a></div>';
+	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
+	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
 	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
 	$html .="</div>";
+
+
+			//		window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
+
 
 	return $html;
 }
