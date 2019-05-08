@@ -45,6 +45,7 @@ function getMKMURL($set, $card){
 	else {
 		$base = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 		$set =  doReplace($set);
+		$card = str_replace("ö", "oe", str_replace("ä", "ae", str_replace("ü", "ue", $card)));
 		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "-", preg_replace("/,/", "", $card)))));
 		//echo $card."</br>";
 		$url = $base.$set."/".$card;
@@ -681,7 +682,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 			$card = $allSets[$i]["shakers"][$j];
 			
 			//var_export($card); die();
-			if ($card[$volChange][0] > 0){$class = "green";} else $class ="red";
+			if ($card[$volChange][0] > 0){$class = "green";} else $class = "red";
 			
 
 			if ($skipUnchanged && $card[$volChange][$index] == 0){continue;}
@@ -700,6 +701,7 @@ function buildTables($allSets, $foil, $compareType, $availChange, $minPrice, $pl
 			$html .="<tr>";
 			$html .="<td>";
 			$html .= "<a target='_blank' href=".$cardUrl.">".$card['name']."</a>";
+			$html .= "<input type='button' value='add' onclick='charter.addSingleFavorite($(this))'></add>";
 			$html .="</td>";
 			$html .="<td class='smallChart'>";
 			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";

@@ -63,7 +63,7 @@
 						<tr>
 							<td colSpan=3>
 								<input type='button' value='new row' onclick='addNewRow()'></input>
-								<input type='button' value='Confirm' onclick='saveNewFavorites()'></input>
+								<input type='button' value='Confirm' onclick='charter.assembleFavData()'></input>
 							</td>
 						</tr>
 					</tfoot>
@@ -122,58 +122,6 @@
 		charter.initCardSearchInputs(row)
 	}
 
-	function saveNewFavorites(){
-		console.log("saveNewFavorites");
-
-		let sets = [];
-		let cards = [];
-		let isFoil = [];
-
-		$(".search").each(function(){
-			sets.push($(this).find(".setSearch").val());
-			cards.push($(this).find(".cardSearch").val());
-			isFoil.push($(this).find("input:checkbox").prop("checked"));
-		})
-
-	//	console.log(sets);
-	//	console.log(cards);
-	//	console.log(isFoil);
-	//	return;
-
-		for (let i = 0; i < sets.length; i++){
-			if (sets[i].length > 4){
-				sets[i] = charter.getSetCodeBySetName(sets[i]);
-			}
-		}
-
-        $.ajax({
-            type: "POST",
-            url: "favs.php",
-            datatype: "json",
-            data: {
-                    type: "addNewFavs",
-                    sets: sets,
-                    cards: cards,
-                    isFoil: isFoil
-                },
-            success: function(data){
-            	//console.log("success!")
-            	//console.log(data);
-            	$(".newEntryTable tbody tr").each(function(i){
-            		if (!i){return;}
-
-            		$(this).remove();
-            		
-            	})
-            	addNewRow();
-
-
-            },
-            error: function(){console.log("error")},
-        }); 
-
-
-	}
 
 </script>
 

@@ -5,6 +5,7 @@ class Charter {
 		this.draws = 0;
 		this.setIndex = 0;
 		this.screens = [];
+		this.isLoaded = 0;
 
 		if (!multi){
 			this.screens[0] = {};
@@ -410,6 +411,7 @@ class Charter {
 			},
 			success: function(data){
 				self.data = JSON.parse(data);
+				self.loaded = 1;
 				self.initCardSearchInputs($(".search").first());
 				self.loadExistingCharts();
 			},
@@ -419,7 +421,7 @@ class Charter {
 
 	loadExistingCharts(){
 
-		if (window.location.href.substr(window.location.href.length-8, window.location.href.length-1) != "favs.php"){return;}
+		if (!this.siteIsFavorites()){return;}
 		let things = [];
 
 		$(".mainContainer").each(function(){
@@ -454,5 +456,75 @@ class Charter {
 			//console.log(things[i], things[i+1]);
 			charter.getCardData(i/2, things[i], things[i+1]);
 		}
+	}
+
+	addSingleFavorite($element){
+		console.log("addSingleFavorite");
+		let set = $element.closest(".moveTable").find(".setName").html();
+		let card = $element.parent().find("a").first().html();
+		let isFoil = $(".upper").find("input:radio").eq(0).attr("checked") == "checked" ? 1 : 0;
+		$element.addClass("posted");
+		//return;
+		this.postNewFavs([set], [card], [isFoil]);
+	}
+	
+	assembleFavData(){
+		console.log("assembleFavData");
+
+		let sets = [];
+		let cards = [];
+		let isFoil = [];
+
+		$(".search").each(function(){
+			sets.push($(this).find(".setSearch").val());
+			cards.push($(this).find(".cardSearch").val());
+			isFoil.push($(this).find("input:checkbox").prop("checked"));
+		})
+
+	//	console.log(sets); console.log(cards); console.log(isFoil);	return;
+
+		for (let i = 0; i < sets.length; i++){
+			if (sets[i].length > 4){
+				sets[i] = charter.getSetCodeBySetName(sets[i]);
+			}
+		}
+	}
+
+	siteIsFavorites(){
+		if (window.location.href.substr(window.location.href.length-8, window.location.href.length-1) == "favs.php"){
+			return true;
+		} return false;
+
+	}
+
+	postNewFavs(sets, cards, isFoil){
+		console.log("postNewFavs");
+        $.ajax({
+            type: "POST",
+            url: "favs.php",
+            datatype: "json",
+            data: {
+                    type: "addNewFavs",
+                    sets: sets,
+                    cards: cards,
+                    isFoil: isFoil
+                },
+            success: function(data){
+				if (charter.siteIsFavorites()){
+	            	$(".newEntryTable tbody tr").each(function(i){
+	            		if (!i){return;}
+	            		$(this).remove();
+	 				})
+	            	addNewRow();
+				}
+				else {
+					$("input.posted").each(function(){
+						//$(this).removeClass().addClass("added").hide();
+						$(this).removeClass().prop("disabled", true);
+					})
+				}
+            },
+            error: function(){console.log("error")},
+        });
 	}
 }

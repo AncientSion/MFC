@@ -79,7 +79,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<link rel='stylesheet' href='style\datatables.min.css'/>
 	<link rel='stylesheet' href='style\jquery-ui.min.css'/>
 	<link rel='stylesheet' href='style\style.css'/>
@@ -88,14 +87,15 @@
 	<script src='libs\datatables.min.js'></script>
 	<script src='libs\Chart.bundle.min.js'></script>
 	<script src='libs\hover.js'></script>
-	<script src='localChart.js'></script>
 	<script src='script.js'></script>
+	<script src='localChart.js'></script>
 </head>
 	<body>
 	</body>
 </html>
 <script>
 </script>
+
 <style>
 	body {
 		font-size: 12px;

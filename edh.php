@@ -36,11 +36,11 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	//crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
-	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	//crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	//getSets($day, $context); // FTV sealed
-	//getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
+	//crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
+	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
+	getSets($day, $context); // FTV sealed
+	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
 

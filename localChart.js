@@ -1,8 +1,10 @@
-$(document).ready(function(){
 
-	const charter = new Charter();
-	const cardName = "";
-	const setName = "";
+const charter = new Charter();
+
+$(document).ready(function(){
+	if (options.autoHideUI){
+		toggleUI();
+	}
 
 	$(".moveTable").each(function(){
 		if (!this.childNodes[1].childNodes.length){
@@ -19,9 +21,10 @@ $(document).ready(function(){
 		$(this).find("tbody").find("tr").each(function(){
 			$(this).find("td").first().hover(
 				function(){
-					cardName = $(this).find("a").first().html();
-					setName = $(this).closest(".moveTable").find(".setName").html();
-					showChart(setName, cardName)
+					charter.getCardData(0, 
+						$(this).closest(".moveTable").find(".setName").html(),
+						$(this).find("a").first().html()
+					);
 				},
 				function(){}
 			)
@@ -32,7 +35,6 @@ $(document).ready(function(){
 function showChart(setname, cardname){
 	//console.log("showChart");
 	//console.log(set + " / " + card);
-	charter.getCardData(0, setname, cardname);
 }
 
 $(document).contextmenu(function(e){
@@ -62,3 +64,4 @@ function setRes(){
 	var rem = (resY - formHeight - chartHeight - 220);
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }
+

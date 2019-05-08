@@ -5,8 +5,8 @@ include_once(__DIR__."\global.php");
 
 
 //convertToBase();
-
-checkValidJson();
+//deleteDoubledCardEntries();
+//checkValidJson();
 //deleteForeignFromInput();
 
 //deleteFromFront(3);
@@ -14,6 +14,38 @@ checkValidJson();
 return;
 
 
+function deleteDoubledCardEntries(){
+	$file = null;
+	$folder = '../htdocs/crawl/fix';
+	$files = scandir($folder);
+
+	$files = array_slice($files, 2);
+
+	foreach ($files as $file){
+		echo "doing file ".$file."\n";
+		$data = file_get_contents($folder."/".$file);
+		$data = json_decode($data);
+
+		$doubles = array();
+
+		for ($i = sizeof($data->cards)-1; $i >= 0; $i--){
+			echo $data->cards[$i]->name."\n";
+			for ($j = $i-1; $j >= 0; $j--){
+				if ($data->cards[$i]->name == $data->cards[$j]->name){
+					//$doubles[] = $data->cards[$i]->name;
+					echo "double found at index ".$i." / ".$j." --- ".$data->cards[$i]->name."\n";
+					array_splice($data->cards, $i, 1);
+					break;
+				}
+			}
+		}
+
+		$handle = fopen($folder."/".$file, "w+");
+		fwrite($handle, json_encode($data));
+		fclose($handle);
+	}
+
+}
 
 function convertToBase(){
 	

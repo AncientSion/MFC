@@ -45,7 +45,7 @@
 			//return array();
 
 			$stmt = $this->connection->prepare(
-				"SELECT * FROM favs ORDER BY "
+				"SELECT * FROM favs ORDER BY isFoil ASC, cardname ASC"
 			);
 
 			$stmt->execute();
