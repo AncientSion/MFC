@@ -6,8 +6,8 @@
 
 	if (sizeof($_GET)){
 		if (isset($_GET["type"]) && $_GET["type"] == "cardrules"){
-			$cardname = $_GET["cardname"];
-			$setname = $_GET["setname"];
+			$cardname = $_GET["cardName"];
+			$setname = $_GET["setCode"];
 			echo requestCardText($cardname, $setname);
 			return;
 		}
@@ -23,7 +23,8 @@
 			$maxAvail = $_GET["maxAvail"];
 			$minPrice = $_GET["minPrice"];
 			$maxPrice = $_GET["maxPrice"];
-			$availChange = $_GET["availChange"];
+			$availChangeMin = $_GET["availChangeMin"];
+			$availChangeMax = $_GET["availChangeMax"];
 			$plusminus = 0; if (isset($_GET["plusminus"])){$plusminus = 1;}
 			$stackDisplay = 0; if (isset($_GET["stackDisplay"])){$stackDisplay = 1;}
 			$skipUnchanged = 0; if (isset($_GET["skipUnchanged"])){$skipUnchanged = 1;}
@@ -31,12 +32,14 @@
 			$foil = 0; if ($_GET["foil"] == "Is Foil"){$foil = 1;}
 
 			echo "<div class='mainContainer'>
-				<div class='container'>
-					<canvas id='foilAvailCanvas'</canvas>
-				</div>
-				<div id='card'></div>
-				<div class='container'>
-					<canvas id='baseAvailCanvas'</canvas>
+				<div class='contInnerWrapper'>
+					<div class='container'>
+						<canvas id='foilAvailCanvas'</canvas>
+					</div>
+					<div id='card'></div>
+					<div class='container'>
+						<canvas id='baseAvailCanvas'</canvas>
+					</div>
 				</div>
 			</div>";
 
@@ -50,7 +53,8 @@
 				$maxAvail,
 				$minPrice,
 				$maxPrice,
-				$availChange,
+				$availChangeMin,
+				$availChangeMax,
 				$plusminus,
 				$stackDisplay,
 				$skipUnchanged,
@@ -70,6 +74,7 @@
 	}
 	else {
 		echo getForm($_GET);
+			echo "<script>const options = {autoHideUI: 0, setAll: 0, rarityAll: 0};</script>";
 	}
 
 
@@ -103,11 +108,11 @@
 	
 	.mainContainer {
 		margin: auto;
-		/margin-bottom: 10px;*/
-		height: 300px;
+		height: 230px;
 	}
 	
 	div input[type=number] {
-		width: 80px
+		width: 60px;
 	}
+
 </style>

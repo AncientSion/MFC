@@ -21,7 +21,7 @@
 	        return self::$instance;
 		}
 
-		public function insertNewFavorites($setCodes, $cardNames, $isFoil){
+		public function insertFavorites($setCodes, $cardNames, $isFoil){
 			$stmt = $this->connection->prepare("
 				INSERT into favs 
 					(id, cardname, setcode, isFoil)
@@ -41,11 +41,27 @@
 			return true;
 		}
 
+		public function deleteFavorites($ids){
+			$stmt = $this->connection->prepare(
+				"DELETE FROM favs WHERE id = :id"
+			);
+
+			for ($i = 0; $i < sizeof($ids); $i++){
+				$stmt->bindParam(":id", $ids[$i]);
+				
+				$stmt->execute();
+				if ($stmt->errorCode() == 0){
+					continue;
+				} else return false;
+			}
+			return true;
+		}
+
 		public function getFavorites(){
 			//return array();
 
 			$stmt = $this->connection->prepare(
-				"SELECT * FROM favs ORDER BY isFoil ASC, cardname ASC"
+				"SELECT * FROM favs ORDER BY isFoil ASC, setcode ASC, cardname ASC"
 			);
 
 			$stmt->execute();

@@ -1,23 +1,20 @@
 <?php
 	include_once(__DIR__."/global.php");
 
-	//DB::app()->dump(); return;
-
-	if (isset($_POST["type"]) && $_POST["type"] == "addNewFavs"){
-		echo "addNewFavs";
-
-		//echo var_export($_POST); return;
-
-		if (DB::app()->insertNewFavorites($_POST["sets"], $_POST["cards"], $_POST["isFoil"])){
-			echo "added!";
+	if (isset($_POST["type"])){
+		if ($_POST["type"] == "addNewFavs"){
+			if (DB::app()->insertFavorites($_POST["sets"], $_POST["cards"], $_POST["isFoil"])){
+				echo "added!";
+			}
+			return;
 		}
-
-		return;
-		
+		else if ($_POST["type"] == "delNewFavs"){
+			if (DB::app()->deleteFavorites($_POST["ids"])){
+				echo "deleted!";
+			}
+			return;
+		}
 	}
-
-
-
 ?>
 
 
@@ -73,7 +70,6 @@
 
 			$favs = DB::app()->getFavorites();
 
-			$cont = "<div class='mainContainer'>";
 			$foil = "<div class='container'>
 						<canvas id='foilAvailCanvas'</canvas>
 					</div>";
@@ -83,13 +79,16 @@
 
 
 			foreach ($favs as $fav){
-				echo $cont;
+				$id = "id".$fav['id'];
+				echo "<div class='".$id." mainContainer'>";
 
 				echo 
-					"<div class='disabled'>
+					"<div class='fakeSearch'>
 						<div>
 							<input type='form' value='".$fav["setcode"]."'>
 							<input type='form' value='".$fav["cardname"]."'>
+							<input type='button' value='MKM' onclick=charter.linkToMKM(this)>
+							<input type='button' value='DEL' onclick=charter.deleteSingleFavorite(this)>
 						</div>
 					</div>";
 
@@ -130,10 +129,9 @@
 		display: inline-block;
 		margin: auto;
 		width: 400px;
+		padding: 2px;
 	}
-	.mainContainer .disabled {
-		display: none;
-	}
+
 	.mainContainer div {
 		width: 100%;
 	}
@@ -143,6 +141,18 @@
 
 	.newEntryBlank {
 		display: none;
+	}
+
+	.fakeSearch input[type=form] {
+		font-size: 8px;
+		display: none;
+	}
+
+	.fakeSearch input:nth-child(1) {
+		width: 40px;
+	}
+	.fakeSearch input:nth-child(2) {
+		width: 60px;
 	}
 
 </style>

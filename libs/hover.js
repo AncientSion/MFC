@@ -255,7 +255,7 @@ Deckbox._ = {
 /**
  * Bind the listeners.
  */
-(function() {
+(function(){
     function onmouseover(event) {
         var el = Deckbox._.target(event);
         if (Deckbox._.needsTooltip(el)) {
@@ -294,8 +294,8 @@ Deckbox._ = {
             datatype: "json",
             data: {
                     type: "cardrules",
-                    cardname: window.cardName,
-                    setname: window.setName
+                    setCode: charter.setCode,
+                    cardName: charter.cardName,
                 },
             success: function(data){
                 $("#card").html(data);

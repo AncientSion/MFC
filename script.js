@@ -6,6 +6,8 @@ class Charter {
 		this.setIndex = 0;
 		this.screens = [];
 		this.isLoaded = 0;
+		this.cardName = "";
+		this.setCode = "";
 
 		if (!multi){
 			this.screens[0] = {};
@@ -131,12 +133,12 @@ class Charter {
 		var ret = [];
 		var year = 18;
 		for (let i = 0; i < points.length; i++){
-			if (points[i].time.substr(8, points[i].time.length-1) == year){
+		/*	if (points[i].time.substr(8, points[i].time.length-1) == year){
 				ret.push([points[i].time.substr(0, 5), year]);
 				year++;
 			} else ret.push(points[i].time.substr(0, 5));
-
-			//ret[ret.length-1] = 0;
+		*/
+			ret.push(points[i].time.substr(0, 5));
 		}
 		return ret;
 	}
@@ -144,7 +146,7 @@ class Charter {
 	getCardDataSets(points, card, set){
 
 		var sets = [[], [], [], []];
-		var labels = ["Foil Stock", "Foil Price", "Base Stock", "Base Price"];
+		var labels = ["Foil #", "Foil €", "Base #", "Base €"];
 		var ref = ["foilAvail", "foilPrice", "baseAvail", "basePrice"];
 		var colors = ["rgba(0,255,0,1)", "rgba(0,255,0,1)", "rgba(0,255,255,1)", "rgba(0,255,255,1)"];
 		var title = card + " - " + set;
@@ -202,7 +204,7 @@ class Charter {
 	
 //function doReplace($name){return str_replace("'", "", str_replace(" ", "-", str_replace(",", "", $name)));
 
-	getCardLink(set, name){
+	getMKMCardURL(set, name){
 		
 		set = set.length < 4 ? this.getFullSet(set).name : set
 		
@@ -216,18 +218,32 @@ class Charter {
 		name = name.replace(":", "");
 		
 		//console.log(set);
-		//console.log(name);
-		
+		//console.log(name);		
 		
 		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + (set + "/" + name);
-		var link = "<a target='_blank' href='" + url + "'>click dat link to mkm</a>";
-		return link
+		return url;
 	}
+
+	linkToMKM(element){
+		let set = "";
+		let card = "";
+		$(element).parent().parent().find("input").each(function(i){
+			if (!i){
+				set = $(this).val();
+			} else if (i == 1){card = $(this).val()}
+		})
+	//	console.log(set, card);
+
+		window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
+	}
+
 
 	buildAllCards(screen, card, set, data){
 		
 		if ($("#cardName").length){
-			var link = this.getCardLink($(".setSearch").val(), card);
+			var url = this.getMKMCardURL(set, card)
+			var link = "<a target='_blank' href='" + url + "'>click dat link to mkm</a>";
+		//	var link = this.getMKMCardURL($(".setSearch").val(), card);
 			$("#cardName").html(link);
 		}
 
@@ -316,7 +332,7 @@ class Charter {
 						display: true,
 						labels: {
 							fontColor: "white",
-							fontSize: 16,
+							fontSize: 12,
 						}
 					}, 
 					title: {
@@ -432,7 +448,7 @@ class Charter {
 						type = type.substr(0, type.length-6) + "Ctx";
 					chart[type] = this.getContext("2d");
 				})
-				can.click(function(){
+			/*	can.click(function(){
 					let set = "";
 					let card = "";
 					$(this).parent().parent().find("input").each(function(i){
@@ -444,7 +460,7 @@ class Charter {
 
 					window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
 				})
-
+			*/
 			charter.screens.push(chart);
 
 			let inputs = $(this).find("input");
@@ -465,7 +481,7 @@ class Charter {
 		let isFoil = $(".upper").find("input:radio").eq(0).attr("checked") == "checked" ? 1 : 0;
 		$element.addClass("posted");
 		//return;
-		this.postNewFavs([set], [card], [isFoil]);
+		this.postInsertFavs([set], [card], [isFoil]);
 	}
 	
 	assembleFavData(){
@@ -473,32 +489,42 @@ class Charter {
 
 		let sets = [];
 		let cards = [];
-		let isFoil = [];
+		let isFoils = [];
 
 		$(".search").each(function(){
 			sets.push($(this).find(".setSearch").val());
 			cards.push($(this).find(".cardSearch").val());
-			isFoil.push($(this).find("input:checkbox").prop("checked"));
+			isFoils.push($(this).find("input:checkbox").prop("checked"));
 		})
 
-	//	console.log(sets); console.log(cards); console.log(isFoil);	return;
+	//	console.log(sets); console.log(cards); console.log(isFoils); return;
 
 		for (let i = 0; i < sets.length; i++){
 			if (sets[i].length > 4){
 				sets[i] = charter.getSetCodeBySetName(sets[i]);
 			}
 		}
+
+		this.postInsertFavs(sets, cards, isFoils);
+	}
+
+	deleteSingleFavorite(element){
+		console.log("deleteSingleFavorite");
+		let name = $(element).closest(".mainContainer").attr("class");
+		let id = name.substr(2, name.indexOf(" ")-2)*1;
+		//$element.addClass("posted");
+		//return;
+		this.postDeleteFavs([id]);
 	}
 
 	siteIsFavorites(){
 		if (window.location.href.substr(window.location.href.length-8, window.location.href.length-1) == "favs.php"){
 			return true;
 		} return false;
-
 	}
 
-	postNewFavs(sets, cards, isFoil){
-		console.log("postNewFavs");
+	postInsertFavs(sets, cards, isFoil){
+		console.log("postInsertFavs");
         $.ajax({
             type: "POST",
             url: "favs.php",
@@ -510,6 +536,36 @@ class Charter {
                     isFoil: isFoil
                 },
             success: function(data){
+				if (charter.siteIsFavorites()){
+	            	$(".newEntryTable tbody tr").each(function(i){
+	            		if (!i){return;}
+	            		$(this).remove();
+	 				})
+	            	addNewRow();
+				}
+				else {
+					$("input.posted").each(function(){
+						//$(this).removeClass().addClass("added").hide();
+						$(this).removeClass().prop("disabled", true);
+					})
+				}
+            },
+            error: function(){console.log("error")},
+        });
+	}
+
+	postDeleteFavs(ids){
+		console.log("postDeleteFavs");
+        $.ajax({
+            type: "POST",
+            url: "favs.php",
+            datatype: "json",
+            data: {
+                    type: "delNewFavs",
+                    ids: ids
+                },
+            success: function(data){
+            	return;
 				if (charter.siteIsFavorites()){
 	            	$(".newEntryTable tbody tr").each(function(i){
 	            		if (!i){return;}

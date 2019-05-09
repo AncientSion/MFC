@@ -17,16 +17,24 @@ $(document).ready(function(){
 			"aaSorting": [[2, "asc"]],
 			//"aaSorting": []
 		})
-		
+
 		$(this).find("tbody").find("tr").each(function(){
-			$(this).find("td").first().hover(
+			$(this).hover(
 				function(){
-					charter.getCardData(0, 
-						$(this).closest(".moveTable").find(".setName").html(),
-						$(this).find("a").first().html()
-					);
+					charter.setCode = $(this).closest(".moveTable").find(".setName").html();
+					charter.cardName = $(this).find("a").first().html();
 				},
-				function(){}
+				function(){
+					charter.setCode = "";
+					charter.cardName = "";
+				}
+			)
+			.find("td a").hover(
+				function(){
+					charter.getCardData(0, charter.setCode, charter.cardName);
+				},
+				function(){
+				}
 			)
 		})
 	})
@@ -61,7 +69,7 @@ function setRes(){
 	var resY = window.innerHeight;
 	var formHeight = $("form").height();
 	var chartHeight = $(".mainContainer").height();
-	var rem = (resY - formHeight - chartHeight - 220);
+	var rem = (resY - formHeight - chartHeight - 60);
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }
 

@@ -30,7 +30,7 @@ a:link, a:visited {
 
 #card {
 	width: 215px;
-	dheight: 300px;
+	font-size: 16px;
 }
 
 #card div {
@@ -40,7 +40,7 @@ a:link, a:visited {
 .container {
 	display: inline-block;
 	position: relative;
-	width: 580px;
+	width: 400px;
 }
 
 .scrollWrapper {
@@ -54,6 +54,12 @@ a:link, a:visited {
 }
 
 .mainContainer > div {
+	width: 75%;
+	margin: auto;
+}
+
+.mainContainer > div > div {
+	margin: auto;
 	display: inline-block;
 }
 
@@ -156,10 +162,10 @@ div > input, div > span{
 	margin-bottom: 10px;
 }
 
-#set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChange {
+#set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChangeMin, #availChangeMax {
 	text-align: center;
 	display: block;
-	font-size: 14px;
+	font-size: 12px;
 	color: lightGreen;
 	margin-bottom: 10px;
 }
