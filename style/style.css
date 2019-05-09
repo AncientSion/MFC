@@ -68,11 +68,9 @@ a:link, a:visited {
 }
 
 #cardName {
-	color: red;
-	float: right;
-	text-align: center;
-	margin-left: 150px;
-	font-size: 30px;
+	font-size: 20px;
+	width: 300px;
+	margin-left: 30px;
 }
 
 
@@ -158,8 +156,12 @@ div > input, div > span{
 }
 
 .dataTables_wrapper {
-	padding: 10px;
-	margin-bottom: 10px;
+	apadding: 10px;
+	margin-bottom: 5px;
+}
+
+.sort {
+	border-top: 3px solid #0042b4;
 }
 
 #set, #type, #rarity, #depth, #minPrice, #maxPrice, #availChangeMin, #availChangeMax {

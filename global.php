@@ -652,17 +652,20 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 	
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
+		$setString = $allSets[$i]['set']." - ".$allSets[$i]['code'];
+
 		$html .="<table class='moveTable' style='width: 1100px'>";
 
 		$html .="<thead>";
-		$html .="<tr><th class='set' colSpan=".$colSpan.">";
+		$html .="<tr class='disabled'><th class='set' colSpan=".$colSpan.">";
 		$html .="<span>".$allSets[$i]["set"]."</span>";
 		$html .="<span> - </span>";
 		$html .="<span class='setName'>".$allSets[$i]["code"]."</span>";
 		$html .="</th></tr>";
 		$html .="<tr class='sort'>";
-		$html .="<th colSpan=1 style='width: 250px'>Name</th>";
-		$html .="<th colSpan=1 style='width: 100px'>Chart</th>";
+		$html .="<th colSpan=1 style='width: 250px'>".$setString."</th>";
+		//$html .="<th colSpan=1 style='width: 100px'>Chart</th>";
+		$html .="<th colSpan=1 style='width: 10px'></th>";
 		$html .="<th style='width: 70px'>PCT</th>";
 		$html .="<th style='width: 70px'>ABS</th>";
 		

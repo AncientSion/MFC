@@ -69,7 +69,7 @@
 				<div class='container'>
 					<canvas id='foilPriceCanvas'</canvas>
 				</div>
-				<div class='search disabled'>";
+				<div class='search'>";
 
 				$card = "";
 				$set = "";
@@ -119,3 +119,17 @@
 }
 
 </script>
+
+<style>
+	.mainContainer {
+		width: 850px;
+	}
+
+	.mainContainer div {
+		width: 400px;
+	}
+
+	.mainContainer div.search {
+		width: 100%;
+	}
+</style>
