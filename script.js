@@ -8,6 +8,7 @@ class Charter {
 		this.isLoaded = 0;
 		this.cardName = "";
 		this.setCode = "";
+		this.loadPics = 1;
 
 		if (!multi){
 			this.screens[0] = {};
@@ -19,6 +20,10 @@ class Charter {
 
 		this.loadAllCards(this);
 	};
+
+	toggleLoadPics(){
+		this.loadPics = !this.loadPics;
+	}
 
 	isValidSetSelected(element){
 		let setString = $(element).parent().find(".setSearch").val();

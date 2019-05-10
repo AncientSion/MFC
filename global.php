@@ -386,11 +386,8 @@ function getForm($get){
 	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
 	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
 	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
+	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
 	$html .="</div>";
-
-
-			//		window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
-
 
 	return $html;
 }

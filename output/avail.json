@@ -2,10 +2,9 @@
 	"codes": [
 		["LEA", "LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "ALL", "TMP", "WTH", "STH", "EXO", "MIR", "VIS", "USG", "C16", "C17","C18"],
 		["ORI", "UMA", "MMA", "MM2", "MM3", "IMA", "A25", "EMA", "CNS", "CN2", "MMQ", "NMS", "PCY", "ULG", "UDS", "CHK", "BOK", "SOK", "TSP", "PLC", "FUT", "CSP", "INV", "ONS", "JUD", "ODY", "TOR", "SCG", "APC", "M10", "M11", "M12", "M13", "M14", "M15", "10E", "PLS", "ALA", "CFX", "ARB", "LRW", "MOR", "SHM", "EVE", "RAV", "DIS", "RTR", "GTC", "DGM", "ZEN", "WWK", "ROE", "BFZ", "OGW", "MRD", "5DN", "DST", "SOM", "MBS", "ISD", "DKA", "AVR", "NPH", "KTK", "DTK", "FRF", "SOI", "EMN", "KLD", "AER", "AKH", "HOU", "XLN", "RIX", "DOM", "M19", "SS1", "BBD", "GRN", "RNA", "WAR"],
-		["EXP", "MPS", "AIN", "DCI", "FNM", "BABP", "GDP", "JR", "CPR", "ALP", "UBT", "GME"],
+		["EXP", "MPS", "AIN", "DCI", "FNM", "BAB", "GDP", "JR", "CPR", "ALP", "UBT", "GME"],
 		["SETS"],
-		["_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPOILS", "_SWD", "_WOW", "_WS", "_DBS", "_FF"]
-
+		["_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "SPS", "_SWD", "_WOW", "_WS", "_DBS", "_FF"]
 	],
 	"names":
 	[

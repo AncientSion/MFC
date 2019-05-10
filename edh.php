@@ -264,8 +264,8 @@ function getSets($date, $context){
 
 function doAdd($name, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
 	$set["data"][] = array(
-		"name" => $name, 
-		"rarity" => "Special", 
+		"name" => $name,
+		"rarity" => "Special",
 		"baseAvail" => intval($baseAvail),
 		"basePrice" => floatval($basePrice),
 		"foilAvail" => intval($foilAvail),

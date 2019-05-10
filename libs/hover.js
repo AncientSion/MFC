@@ -273,7 +273,7 @@ Deckbox._ = {
     }
 
     function showImage(el, url, posX, posY) {
-        if (navigator.onLine){
+        if (charter.loadPics){
             url = url.replace(/\?/g, ""); /* Problematic with routes on server. */
             img = document.createElement('img');
             img.style.height = $(".mainContainer").height()-10;

@@ -87,7 +87,7 @@
 						<div>
 							<input type='form' value='".$fav["setcode"]."'>
 							<input type='form' value='".$fav["cardname"]."'>
-							<input type='button' value='MKM' onclick=charter.linkToMKM(this)>
+							<input type='button' value='Chart' onclick=charter.linkToMKM(this)>
 							<input type='button' value='DEL' onclick=charter.deleteSingleFavorite(this)>
 						</div>
 					</div>";
@@ -128,7 +128,7 @@
 	.mainContainer {
 		display: inline-block;
 		margin: auto;
-		width: 400px;
+		width: 300px;
 		padding: 2px;
 	}
 
@@ -136,7 +136,8 @@
 		width: 100%;
 	}
 
-	.newEntryTable input[type=button] {
+	.newEntryTable {
+		margin-bottom: 10px;
 	}
 
 	.newEntryBlank {

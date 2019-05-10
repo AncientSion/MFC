@@ -2,7 +2,7 @@
 
 	class DB {
 
-		private $connection = null;
+		public $connection = null;
 		static protected $instance = null;
 
 		function __construct(){

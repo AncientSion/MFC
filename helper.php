@@ -10,9 +10,107 @@ include_once(__DIR__."\global.php");
 //deleteForeignFromInput();
 
 //deleteFromFront(3);
+//fillAllCards(); return;
+JSONTOSQL(); return;
+//create table ORI (id int(5) primary key AUTO_INCREMENT, cardname varchar(50) default 0 not null, rarity varchar(1) default "" not null, baseAvail int(5) default 0 not null, basePrice decimal(5, 3) default 0 not null, FoilAvail int(5) default 0 not null, FoilPrice decimal(5, 3) default 0 not null, pull date not null);
 
-return;
 
+function fillAllCards(){
+	$file = null;
+	$folder = '../htdocs/crawl/input';
+	$files = scandir($folder);
+
+	$files = array_slice($files, 2);
+
+	$entries = 0;
+	
+	foreach ($files as $file){
+		if ($file == "cardlist.json" || $file == "avail.json"){continue;}
+		$data = file_get_contents($folder."/".$file);
+		$data = json_decode($data);
+		$cards = $data->cards;
+
+		$stmt = DB::app()->connection->prepare(
+			"INSERT INTO cards 
+				(id, cardname, setcode, rarity)
+			VALUES
+				(0, :cardname, :setcode, :rarity)
+		");
+
+		$stmt->bindParam(":setcode", $data->code);
+		foreach ($cards as $card){
+			$entries++;
+			$stmt->bindParam(":cardname", $card->name);
+			$stmt->bindParam(":rarity", $card->rarity);
+			$stmt->execute();
+		};
+
+		echo "ready, insert: ".$entries."\n";
+		//return;
+	}
+}
+
+
+function JSONTOSQL(){
+	$file = null;
+	$folder = '../htdocs/crawl/output';
+	$files = scandir($folder);
+	$files = array_slice($files, 2);
+
+	$sets = 0;
+	$entries = 0;
+	foreach ($files as $file){
+		if ($file == "cardlist.json" || $file == "avail.json"){continue;}
+		echo "doing ".substr($file, 0, 3)."\n";
+		$sets++;
+		if ($sets >= 2){return;}
+
+		$setcode = substr($file, 0, 3);
+		$sql = "create table ".$setcode." (id int(5) primary key AUTO_INCREMENT, cardid int(5) default 0, baseAvail int(5) default 0 not null, basePrice decimal(5, 3) default 0 not null, foilAvail int(5) default 0 not null, foilPrice decimal(5, 3) default 0 not null, date date not null)";
+
+		//echo $sql;// return;
+
+		DB::app()->connection->query($sql);
+
+
+
+
+		$stmt = DB::app()->connection->prepare(
+			"INSERT INTO ".$setcode." 
+				(id, cardid, baseAvail, basePrice, foilAvail, foilPrice, date)
+			VALUES
+				(0, (SELECT id from cards WHERE cards.setcode = :setcode AND cards.cardname = :cardname), :baseAvail, :basePrice, :foilAvail, :foilPrice, :date)
+		");
+		$stmt->bindParam(":setcode", $setcode);
+
+		$data = file_get_contents($folder."/".$file);
+		$data = json_decode($data);
+
+		foreach ($data->content as $day){
+
+			$stmt->bindParam(":date", date("Y-m-d", strtotime(str_replace(".", "-", $day->date))));
+
+			foreach ($day->data as $entry){
+				//echo $entry->name."\n";
+				$entries++;
+				//$stmt->bindParam(":cardid", $entry->name);
+				echo $entry->name."\n";
+				$stmt->bindParam(":cardname", $entry->name);
+				$stmt->bindParam(":baseAvail", $entry->baseAvail);
+				$stmt->bindParam(":basePrice", $entry->basePrice);
+				$stmt->bindParam(":foilAvail", $entry->foilAvail);
+				$stmt->bindParam(":foilPrice", $entry->foilPrice);
+
+				//echo $entry->name." ".$entry->foilPrice."\n";
+
+				$stmt->execute();
+			}
+		}
+	}
+
+	echo "ready, insert: ".$entries."\n";
+	return;
+}
 
 function deleteDoubledCardEntries(){
 	$file = null;
