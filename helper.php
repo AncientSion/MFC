@@ -14,17 +14,38 @@ $time = -microtime(true);
 //checkValidJson();
 //deleteForeignFromInput();
 
-//createAllCardsTable();
-//fillAllNormalCards();
-//fillAllNormalCards2();
-//fillBoosterBoxes();
-//JSONTOSQL();
-
+createAllCardsTable();
+fillAllNormalCards();
+JSONTOSQL();
+//deleteFromEnd(-2);
+//search();
 //checkForNull();
 
 $time += microtime(true);
-message("</br></br>Script Execution Completed; TIME:".round($time, 2)." seconds");
+message("Script Execution Completed; TIME:".round($time, 2)." seconds");
 
+
+
+function search(){
+	$folder = '../htdocs/crawl/output';
+	$file = "10e.json";
+
+	$data = file_get_contents($folder."/".$file);
+	$data = json_decode($data)->content;
+
+	foreach ($data as $day){
+
+		$found = false;
+		foreach ($day->data as $card){
+			//if ($card->name == "Time Stop"){
+			if ($card->name == "Mirri, Cat Warrior"){
+				$found = true;
+			}
+		}
+
+		echo $day->date.($found ? " yes " : " noooo ")."\n";
+	}
+}
 
 
 function checkForNull(){
@@ -35,8 +56,11 @@ function checkForNull(){
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	//var_export($results);
+	$fails = 0;
 
 	foreach ($results as $result){
+		if ($result['Tables_in_crawl'] == "cards" || $result['Tables_in_crawl'] == "favs"){continue;}
+		$fails += sizeof($result);
 
 		$query = "SELECT * FROM ".$result['Tables_in_crawl']." WHERE cardid IS NULL";
 		$stmt = $db->connection->prepare($query);
@@ -45,79 +69,40 @@ function checkForNull(){
 		$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($subResults as $sub){
-			echo $sub["cardname"]."</br>";
+			echo $sub["cardname"]."\n";
 		}
-		echo "</br>";
 	}
+
+	echo "fails: ".$fails."\n";
 }
 
 
 function createAllCardsTable(){
+	message("createAllCardsTable");
 	$sql = "DROP TABLE IF EXISTS cards";
 	DB::app()->connection->query($sql);
 
-	$sql = "CREATE TABLE cards (id int(5) primary key AUTO_INCREMENT, cardname varchar(50) default '' not null, setcode varchar(4) default '' not null, rarity varchar(1) default '' not null)";
+	$sql = "CREATE TABLE cards (id int(5) primary key AUTO_INCREMENT, cardname varchar(100) default '' not null, setcode varchar(4) default '' not null, rarity varchar(1) default '' not null)";
 	DB::app()->connection->query($sql);
 }
 
-function message($print){
-	echo $print."</br>";
-}
-
-
-function fillBoosterBoxes(){
+function fillAllNormalCards(){
 	$file = null;
-	$folder = $_SERVER["DOCUMENT_ROOT"]."/crawl/output";
+	//var_export($_SERVER); return;
+	$folder = '../htdocs/crawl/output';
+	///echo $folder; return;
 	$files = scandir($folder);
 
 	$files = array_slice($files, 2);
 	//echo var_export($files);
 	//return;
 	
-	foreach ($files as $file){
-
-		if (substr($file, 0, 1) != "_"){continue;}
-
-		$data = file_get_contents($folder."/".$file);
-		$data = json_decode($data);
-		$cards = $data->content[sizeof($data->content)-1]->data;
-
-		$stmt = DB::app()->connection->prepare(
-			"INSERT INTO cards 
-				(id, cardname, setcode, rarity)
-			VALUES
-				(0, :cardname, :setcode, :rarity)
-		");
-
-		$setcode = "_".$data->code;
-		$rarity = "S";
-
-		$stmt->bindParam(":setcode", $setcode);
-		$stmt->bindParam(":rarity", $rarity);
-
-		foreach ($cards as $card){
-			$stmt->bindParam(":cardname", $card->name);
-			$stmt->execute();
-		};
-
-		message("ready, entries inserted: ".$file);
-		//return;
-	}
-}
-
-function fillAllNormalCards2(){
-	$file = null;
-	$folder = $_SERVER["DOCUMENT_ROOT"]."/crawl/output";
-	$files = scandir($folder);
-
-	$files = array_slice($files, 2);
-	//echo var_export($files);
-	//return;
-	
+	//$check = 0;
 	
 	foreach ($files as $file){
 		if ($file == "cardlist.json" || $file == "avail.json" || $file == "EDH.json"){continue;}
-		if (substr($file, 0, 1) == "_"){continue;}
+		//if ($file != "C17.json"){continue;}
+		//if (substr($file, 0, 1) == "_"){continue;}
 		message("now ".$file);
 
 		$data = file_get_contents($folder."/".$file);
@@ -132,74 +117,36 @@ function fillAllNormalCards2(){
 		");
 
 		$stmt->bindParam(":setcode", $data->code);
+
 		foreach ($cards as $card){
 			$stmt->bindParam(":cardname", $card->name);
 			$stmt->bindParam(":rarity", $card->rarity);
 			$stmt->execute();
 		};
 
-		message("done!");
+		//message("done!");
 		//return;
 	}
 }
-
-function fillAllNormalCards(){
-	$file = null;
-	$folder = $_SERVER["DOCUMENT_ROOT"]."/crawl/input";
-	$files = scandir($folder);
-
-	$files = array_slice($files, 2);
-	//echo var_export($files);
-	//return;
-	
-	$sets = 0;
-	
-	foreach ($files as $file){
-
-		if ($file == "cardlist.json" || $file == "avail.json"){continue;}
-		$sets++;
-		//if ($sets > 10){return;}
-		$data = file_get_contents($folder."/".$file);
-		$data = json_decode($data);
-		$cards = $data->cards;
-
-		$stmt = DB::app()->connection->prepare(
-			"INSERT INTO cards 
-				(id, cardname, setcode, rarity)
-			VALUES
-				(0, :cardname, :setcode, :rarity)
-		");
-
-		$stmt->bindParam(":setcode", $data->code);
-		foreach ($cards as $card){
-			$stmt->bindParam(":cardname", $card->name);
-			$stmt->bindParam(":rarity", $card->rarity);
-			$stmt->execute();
-		};
-
-		message("ready, sets insert: ".$sets);
-		//return;
-	}
-}
-
 
 function JSONTOSQL(){
 	$file = null;
-	$folder = $_SERVER["DOCUMENT_ROOT"]."/crawl/output";
+	//$folder = $_SERVER["DOCUMENT_ROOT"]."/crawl/output";
+	$folder = '../htdocs/crawl/output';
 	$files = scandir($folder);
 	$files = array_slice($files, 2);
 
 	foreach ($files as $file){
-		if ($file == "cardlist.json" || $file == "avail.json"){continue;}
+		if ($file == "cardlist.json" || $file == "avail.json" || $file == "EDH.json"){continue;}
 		message("doing ".substr($file, 0, 3));
 
-		$setcode = substr($file, 0, 3);
+		$setcode = substr($file, 0, strpos($file, ".", 3));
 
 		$sql = "DROP TABLE IF EXISTS ".$setcode;
-		message($sql);
+		//message($sql);
 		DB::app()->connection->query($sql);
 
-		$sql = "create table ".$setcode." (id int(5) primary key AUTO_INCREMENT, cardid int(5) default 0, cardname varchar(50), baseAvail int(5) default 0 not null, basePrice decimal(5, 3) default 0 not null, foilAvail int(5) default 0 not null, foilPrice decimal(5, 3) default 0 not null, date date not null)";
+		$sql = "create table ".$setcode." (id int(5) primary key AUTO_INCREMENT, cardid int(5) default 0, cardname varchar(100) default '' not null, baseAvail int(5) default 0 not null, basePrice decimal(5, 2) default 0 not null, foilAvail int(5) default 0 not null, foilPrice decimal(5, 2) default 0 not null, date date not null)";
 
 		DB::app()->connection->query($sql);
 

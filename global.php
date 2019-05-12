@@ -163,7 +163,7 @@ function getSetNamesByCodes($data, $foilLookup){
 	for ($i = 0; $i < sizeof($data); $i++){
 		for ($j = 0; $j < sizeof($codes); $j++){
 
-			if ($foilLookup && $j == 2){continue;}
+			if ($foilLookup && $j >= 2){continue;}
 
 			for ($k = 0; $k < sizeof($codes[$j]); $k++){
 				if ($data[$i] == $codes[$j][$k]){
@@ -708,9 +708,12 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 				if (abs($card[$volChange][$index]) < abs($availChangeMin)){continue;}
 			}
 			else if ($availChangeMin == 0 && $availChangeMax == 0){}
+			else if ($availChangeMin != 0 && $availChangeMax != 0){
+				if ($card[$volChange][$index] < $availChangeMin && $card[$volChange][$index] > $availChangeMax){continue;}
+			}
 			else {
-				if ($availChangeMin <= 0 && $card[$volChange][$index] < $availChangeMin){continue;}
-				if ($availChangeMin > 0 && $card[$volChange][$index] > $availChangeMin){continue;}
+				if ($availChangeMin <= 0 && $card[$volChange][$index] > $availChangeMin){continue;}
+				if ($availChangeMin > 0 && $card[$volChange][$index] < $availChangeMin){continue;}
 				if ($availChangeMax < 0 && $card[$volChange][$index] < $availChangeMax){continue;}
 				if ($availChangeMax > 0 && $card[$volChange][$index] > $availChangeMax){continue;}
 			}		
@@ -784,15 +787,6 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 	return $html;
 }
 
-function writeAndCloseO($code, $data){
-	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
-	$GLOBALS["cards"] += sizeof($data["data"]);
-	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
-	fseek($file, -2, SEEK_END);
-	fwrite($file, ",".json_encode($data)."\n"."]}");
-	fclose($file);
-}
-
 function writeAndClose($code, $data){
 	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
 	$GLOBALS["cards"] += sizeof($data["data"]);
@@ -856,6 +850,12 @@ function fixOutputSets(){
 			fclose($file);
 		}
 	}
+}
+
+
+function message($print){
+	echo ($print."\n");
+	//echo $print."</br>";
 }
 
 

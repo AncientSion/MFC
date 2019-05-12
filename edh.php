@@ -36,11 +36,11 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
+	//crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
 	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	getSets($day, $context); // FTV sealed
-	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	//crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
+	//getSets($day, $context); // FTV sealed
+	//getBoxPrices($day, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
 
@@ -50,6 +50,9 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 	
 	//$codes = array("RNA");
 	//$names = array("Ravnica Allegiance");
+
+	$codes = array("10E");
+	$names = array("Tenth Edition");
 	
 	for ($i = 0; $i < sizeof($codes); $i++){
 		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]."\n";
@@ -66,10 +69,22 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 			$url .= "&site=".$page;
 						
 			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+
+			if (!$html){
+				message("NO HTML ! ".$codes[$i]."/".$i);
+				sleep(5);
+
+				if (!$html){
+					message("still not!");
+					die();
+				}
+			}
+
 			$rows = $html->find(".table-body", 0)->children();
 
 			for ($k = 0; $k < sizeof($rows)-1; $k++){
 				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->plaintext;
+				//echo $name."\n";
 				$baseAvail = 0;
 				$basePrice = 0.00;
 				$foilAvail = 0;
@@ -108,6 +123,7 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 		}
 		//die();
 		writeAndClose($codes[$i], $set);
+		//die();
 		//return;
 	}
 }
@@ -138,7 +154,7 @@ function getBoxPrices($date, $codes, $names, $context){
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
 				}
 
-				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), &$set);
+				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
 			}
 			
 			if (sizeof($rows) < 50){
@@ -156,7 +172,7 @@ function getSets($date, $context){
 	$urls[] = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
 	
 	$codes = array();
-	$codes[] = "SETS";
+	$codes[] = "_SET";
 	
 	for ($i = 0; $i < sizeof($urls); $i++){
 	
@@ -179,7 +195,7 @@ function getSets($date, $context){
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
 				}
 
-				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), &$set);
+				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
 			}
 			
 			if (sizeof($rows) < 50){
