@@ -148,8 +148,9 @@ function buildFullCardPool(){
 
 
 
-function getSetNamesByCodes($data){
+function getSetNamesByCodes($data, $foilLookup){
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
+	//echo $foilLookup;
 
 	//var_export($data); return;
 
@@ -161,6 +162,9 @@ function getSetNamesByCodes($data){
 
 	for ($i = 0; $i < sizeof($data); $i++){
 		for ($j = 0; $j < sizeof($codes); $j++){
+
+			if ($foilLookup && $j == 2){continue;}
+
 			for ($k = 0; $k < sizeof($codes[$j]); $k++){
 				if ($data[$i] == $codes[$j][$k]){
 					$return[] = $names[$j][$k]; break 2;
@@ -298,11 +302,11 @@ function getForm($get){
 	
 	
 	$skipUnchanged = "";
-	$checked = "";
+	$checked = "checked='checked'";
 	$value = "";
 	//var_export($get);
-	if (sizeof($get) && isset($get["skipUnchanged"])){
-		$checked = "checked='checked'";
+	if (sizeof($get) && !isset($get["skipUnchanged"])){
+		$checked = "";
 	}
 	$html .="<div class='checkContainer'>";
 	$html .= "<input type='checkbox' name='skipUnchanged' value='1'".$checked."'>";
@@ -385,6 +389,7 @@ function getForm($get){
 	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
 	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
 	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
+	$html .='<div class="lower"><a href="helper.php" target="_blank">help</a></div>';
 	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
 	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
 	$html .="</div>";
@@ -477,12 +482,12 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
-	$names = getSetNamesByCodes($codes);
+	$names = getSetNamesByCodes($codes, $foil);
 	$allSets = array();
 	
 	$cardList = json_decode(file_get_contents(__DIR__."/output/cardlist.json"), TRUE);
 		
-	for ($i = 0; $i < sizeof($codes); $i++){
+	for ($i = 0; $i < sizeof($names); $i++){
 		$setName = $names[$i];
 		
 		$cards;
@@ -585,7 +590,7 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
 
 
-	echo buildTables($allSets, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $plusminus, $stackDisplay, $skipUnchanged);
+	echo buildTables($allSets, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $maxPrice, $plusminus, $stackDisplay, $skipUnchanged);
 
 }
 
@@ -608,7 +613,7 @@ function setChangeValue(&$card, $forFoil){
 }
 
 
-function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $plusminus, $stackDisplay, $skipUnchanged){
+function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $maxPrice, $plusminus, $stackDisplay, $skipUnchanged){
 
 	//echo $availChangeMin;
 	/*var_export(func_get_arg(1));
@@ -693,16 +698,19 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 			//var_export($card); die();
 			if ($card[$volChange][0] > 0){$class = "green";} else $class = "red";
 			
+			//if ($card[$volChange][$index] == 0){echo $card[$volChange][$index];};
 
 			if ($skipUnchanged && $card[$volChange][$index] == 0){continue;}
-			if ($minPrice != 0 && $card[$price][0] <= $minPrice){continue;}
+			if ($minPrice && $card[$price][0] <= $minPrice){continue;}
+			if ($maxPrice && $card[$price][0] >= $maxPrice){continue;}
 			
 			if ($plusminus){
 				if (abs($card[$volChange][$index]) < abs($availChangeMin)){continue;}
 			}
+			else if ($availChangeMin == 0 && $availChangeMax == 0){}
 			else {
-				if ($availChangeMin < 0 && $card[$volChange][$index] > $availChangeMin){continue;}
-				if ($availChangeMin > 0 && $card[$volChange][$index] < $availChangeMin){continue;}
+				if ($availChangeMin <= 0 && $card[$volChange][$index] < $availChangeMin){continue;}
+				if ($availChangeMin > 0 && $card[$volChange][$index] > $availChangeMin){continue;}
 				if ($availChangeMax < 0 && $card[$volChange][$index] < $availChangeMax){continue;}
 				if ($availChangeMax > 0 && $card[$volChange][$index] > $availChangeMax){continue;}
 			}		
