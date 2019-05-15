@@ -36,11 +36,11 @@ function fetchAll($day){
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	//crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
+	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
 	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	//crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	//getSets($day, $context); // FTV sealed
-	//getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
+	getSets($day, $context); // FTV sealed
+	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
 
@@ -48,14 +48,12 @@ function fetchAll($day){
 
 function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 	
-	//$codes = array("RNA");
-	//$names = array("Ravnica Allegiance");
-
-	$codes = array("10E");
-	$names = array("Tenth Edition");
+	//	$codes = array("RAM");
+	//	$names = array("Ravnica Allegiance Mythic Edition");
 	
 	for ($i = 0; $i < sizeof($codes); $i++){
-		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]."\n";
+
+		echo "\n\n*** Beginning - ".$names[$i]." / ".$codes[$i]." $i "."\n";
 
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $names[$i], "data" => array());
 
@@ -64,25 +62,32 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 
 		$prop = "data-original-title";
 
+		$maxPages = 0;
+
 		while(!$exit){
 			$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($names[$i])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
 			$url .= "&site=".$page;
 						
-			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+			$html = file_get_html($url, false, $context);
+			$GLOBALS["requests"]++;
 
 			if (!$html){
 				message("NO HTML ! ".$codes[$i]."/".$i);
 				sleep(5);
+				$html = file_get_html($url, false, $context);
 
-				if (!$html){
-					message("still not!");
-					die();
-				}
+				if (!$html){message("still not!");die();}
 			}
+
+			if (!$maxPages){
+				$dropdown = $html->find("div.dropup > div.dropdown-menu", 0);
+				$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
+			}
+
 
 			$rows = $html->find(".table-body", 0)->children();
 
-			for ($k = 0; $k < sizeof($rows)-1; $k++){
+			for ($k = 0; $k < sizeof($rows); $k++){
 				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->plaintext;
 				//echo $name."\n";
 				$baseAvail = 0;
@@ -101,18 +106,15 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 					$foilPrice = $rows[$k]->children(7)->plaintext;
 					$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
 				}
-				
-				//$rarity = $rows[$k]->children(3)->children(0)->children(2)->children(0)->children(0)->plaintext;
+
 				$rarity = substr($rows[$k]->children(3)->find(".icon", 0)->{$prop}, 0, 1);
-				
-				//echo $name."/".$baseAvail."/".$basePrice."/".$foilAvail."/".$foilPrice."\n";				
+
 				doAdd($name, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
 			}
 			
 			$page++;
-			
-			if (sizeof($rows) < 50){
-				//echo "last site of set \n\n";
+
+			if ($page > $maxPages){
 				break;
 			}
 			else if ($page >= 15){
@@ -121,8 +123,11 @@ function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 				break;
 			}
 		}
+		//return;
 		//die();
 		writeAndClose($codes[$i], $set);
+		$html->clear(); 
+		unset($html);
 		//die();
 		//return;
 	}
