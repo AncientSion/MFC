@@ -26,10 +26,10 @@ class Charter {
 	}
 
 	isValidSetSelected(element){
-		let setString = $(element).parent().find(".setSearch").val();
+		let search = $(element).parent().find(".setSearch").val();
 		var valid = false;
 		for (var i = 0; i < this.data.length; i++){
-			if (this.data[i].name == setString || this.data[i].code == setString){
+			if (this.data[i].setname == search || this.data[i].setcode == search){
 				this.setIndex = i;
 				return true;
 			}
@@ -40,7 +40,7 @@ class Charter {
 	addCardAutoComplete(element){
 		var suggest = [];
 		for (let i = 0; i < this.data[this.setIndex].cards.length; i++){
-			suggest.push(this.data[this.setIndex].cards[i].name);
+			suggest.push(this.data[this.setIndex].cards[i].cardname);
 		}
 		//console.log("init");
 		$(element).autocomplete({source: suggest});
@@ -50,13 +50,13 @@ class Charter {
 		if (!setName || !cardName){return;}
 
 		var set = this.getFullSet(setName);
-		var card = this.getCardName(set, cardName);
+		//var card = this.getCardName(set, cardName);
 		var others = this.getOthers(cardName);
 
-		if (!set || !card){return;}
+		if (!set || !cardName){return;}
 
 		//console.log("valid, setName: " + setName + ", cardName: " + cardName);
-		this.getPriceData(screen, set.code, card);
+		this.getPriceData(screen, set.setcode, cardName);
 		
 	}
 	
@@ -67,8 +67,8 @@ class Charter {
 		
 		for (let i = 0; i < this.data.length; i++){
 			for (let j = 0; j < this.data[i].cards.length; j++){
-				if (this.data[i].cards[j].name == cardName){
-					results.push(this.data[i].code);
+				if (this.data[i].cards[j].cardname == cardName){
+					results.push(this.data[i].setcode);
 					break;
 				}
 			}
@@ -91,7 +91,7 @@ class Charter {
 
 	getFullSet(setName){
 		for (let i = 0; i < this.data.length; i++){
-			if (this.data[i].name == setName || this.data[i].code == setName){
+			if (this.data[i].setname == setName || this.data[i].setcode == setName){
 				return this.data[i];
 			}
 		}
@@ -100,37 +100,29 @@ class Charter {
 
 	getCardName(set, cardName){
 		for (var i = 0; i < set.cards.length; i++){
-			if (set.cards[i].name == cardName){
-				return set.cards[i].name;
+			if (set.cards[i].cardname == cardName){
+				return set.cards[i].cardname;
 			}
 		}
 		return false;
 	}
 
-	getSetCodeBySetName(name){
+	getSetCodeBySetName(setname){
 		for (let i = 0; i < this.data.length; i++){
-			if (this.data[i].name == name){
-				return this.data[i].code;
+			if (this.data[i].setname == setname){
+				return this.data[i].setcode;
 			}
 		}
 		return false;
 	}
 
-	getPriceData(screen, set, card){
-		$.ajax({
-			type: "GET",
-			url: "charts.php",
-			datatype: "json",
-			data: {
-				type: "price",
-				set: set,
-				card: card
-			},
-			success: function(data){
-				charter.buildAllCards(screen, card, set, JSON.parse(data));
-			},
-			error: function(){console.log("error");}
-		});
+	getSetnameBySetcode(setcode){
+		for (let i = 0; i < this.data.length; i++){
+			if (this.data[i].setcode == setcode){
+				return this.data[i].setname;
+			}
+		}
+		return false;
 	}
 
 	getLabel(points){
@@ -209,23 +201,23 @@ class Charter {
 	
 //function doReplace($name){return str_replace("'", "", str_replace(" ", "-", str_replace(",", "", $name)));
 
-	getMKMCardURL(set, name){
+	getMKMCardURL(setcode, cardname){
 		
-		set = set.length < 4 ? this.getFullSet(set).name : set
+		setcode = setcode.length < 4 ? this.getSetnameBySetcode(setcode) : setcode
 		
-		set = set.replace(/ /g, "-");
-		name = name.replace(/ /g, "-");
-		name = name.replace(/'/g, "");
-		name = name.replace(/,/g, "");
-		name = name.replace("//", "");
-		name = name.replace("/,", "");
-		name = name.replace(/--/g, "-");
-		name = name.replace(":", "");
+		setcode = setcode.replace(/ /g, "-");
+		cardname = cardname.replace(/ /g, "-");
+		cardname = cardname.replace(/'/g, "");
+		cardname = cardname.replace(/,/g, "");
+		cardname = cardname.replace("//", "");
+		cardname = cardname.replace("/,", "");
+		cardname = cardname.replace(/--/g, "-");
+		cardname = cardname.replace(":", "");
 		
-		//console.log(set);
-		//console.log(name);		
+		//console.log(setcode);
+		//console.log(cardname);		
 		
-		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + (set + "/" + name);
+		var url = "https://www.cardmarket.com/en/Magic/Products/Singles/" + (setcode + "/" + cardname);
 		return url;
 	}
 
@@ -243,10 +235,10 @@ class Charter {
 	}
 
 
-	buildAllCards(screen, card, set, data){
+	buildAllCards(screen, cardname, setcode, data){
 		
 		if ($("#cardName").length){
-			var url = this.getMKMCardURL(set, card)
+			var url = this.getMKMCardURL(setcode, cardname)
 			var link = "<a target='_blank' href='" + url + "'>click dat link to mkm</a>";
 		//	var link = this.getMKMCardURL($(".setSearch").val(), card);
 			$("#cardName").html(link);
@@ -256,7 +248,7 @@ class Charter {
 		this.draws++;
 
 		var label = this.getLabel(data);
-		var cardData = this.getCardDataSets(data, card, set);
+		var cardData = this.getCardDataSets(data, cardname, setcode);
 		var tickData = this.getTickData(cardData);
 
 		//$("#cardName").html(card + " - " + set);
@@ -415,10 +407,27 @@ class Charter {
 		var tags = [];
 
 		for (let i = 0; i < this.data.length; i++){
-			tags.push(this.data[i].code);
-			tags.push(this.data[i].name);
+			tags.push(this.data[i].setcode);
+			tags.push(this.data[i].setname);
 		}
 		$(element).find(".setSearch").autocomplete({source: tags});
+	}
+
+	getPriceData(screen, setcode, cardname){
+		$.ajax({
+			type: "GET",
+			url: "charts.php",
+			datatype: "json",
+			data: {
+				type: "price",
+				set: setcode,
+				card: cardname
+			},
+			success: function(data){
+				charter.buildAllCards(screen, cardname, setcode, JSON.parse(data));
+			},
+			error: function(){console.log("error");}
+		});
 	}
 
 	loadAllCards(self){
@@ -428,9 +437,10 @@ class Charter {
 			url: "charts.php",
 			datatype: "json",
 			data: {
-				type: "cardlist"
+				type: "cardlistNew"
 			},
 			success: function(data){
+			//	console.trace();
 				self.data = JSON.parse(data);
 				self.loaded = 1;
 				self.initCardSearchInputs($(".search").first());
@@ -484,8 +494,7 @@ class Charter {
 		let set = $element.closest(".moveTable").find(".setName").html();
 		let card = $element.parent().find("a").first().html();
 		let isFoil = $(".upper").find("input:radio").eq(0).attr("checked") == "checked" ? 1 : 0;
-		$element.addClass("posted");
-		//return;
+		$element.hide();
 		this.postInsertFavs([set], [card], [isFoil]);
 	}
 	
@@ -499,7 +508,7 @@ class Charter {
 		$(".search").each(function(){
 			sets.push($(this).find(".setSearch").val());
 			cards.push($(this).find(".cardSearch").val());
-			isFoils.push($(this).find("input:checkbox").prop("checked"));
+			isFoils.push( $(this).find("input:checkbox").prop("checked") == true ? 1 : 0);
 		})
 
 	//	console.log(sets); console.log(cards); console.log(isFoils); return;

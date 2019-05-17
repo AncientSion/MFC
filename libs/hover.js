@@ -22,29 +22,6 @@ Deckbox.ui.Tooltip.prototype = {
             "<th style='background-position: left bottom;'/><th style='background-position: right bottom;'/></tr></table>";
     },
 
-    showWow: function(posX, posY, content, url, el) {
-        /* IE does NOT escape quotes apparently. */
-        url = url.replace(/"/g, "%22");
-        /* Problematic with routes on server. */
-        url = url.replace(/\?/g, "");
-
-        if (this.tooltips[url] && this.tooltips[url].content) {
-            content = this._padContent(this.tooltips[url].content);
-        } else {
-            content = this._padContent('Loading...');
-            this.tooltips[url] = this.tooltips[url] || {el: el};
-            Deckbox._.loadJS(url);
-            /* Remeber these for when (if) the register call wants to show the tooltip. */
-            this.posX = posX; this.posY = posY;
-        }
-
-        this.el.style.width = '';
-        this.el.innerHTML = content;
-        this.el.style.display = '';
-        this.el.style.width = (20 + Math.min(330, this.el.childNodes[0].offsetWidth)) + 'px';
-        this.move(posX, posY);
-    },
-
     showText: function(posX, posY, text) {
         this.el.innerHTML = text;
         this.el.style.display = '';
@@ -108,19 +85,12 @@ Deckbox.ui.Tooltip.hide = function() {
 
 
 Deckbox._ = {
-    onDocumentLoad: function(callback) {
-        if (window.addEventListener) {
-            window.addEventListener("load", callback, false);
-        } else {
-            window.attachEvent && window.attachEvent("onload", callback);
-        }
-    },
 
     preloadImg: function(link) {
         let img = document.createElement('img');
-            img.style.display = "none"
-            img.style.width = "1px"
-            img.style.height = "1px"
+            img.style.display = "none";
+            img.style.width = "1px";
+            img.style.height = "1px";
             img.src = link.href + '/tooltip';
         return img;
     },
@@ -286,24 +256,6 @@ Deckbox._ = {
             showRules();
         }
     }
-
-    function showRules(){
-        $.ajax({
-            type: "GET",
-            url: "shakers.php",
-            datatype: "json",
-            data: {
-                    type: "cardrules",
-                    setCode: charter.setCode,
-                    cardName: charter.cardName,
-                },
-            success: function(data){
-                $("#card").html(data);
-            },
-            error: function(){console.log("error")},
-        }); 
-
-    }
     
 
     function appendImage(img){
@@ -351,16 +303,4 @@ Deckbox._ = {
     if (!!window.attachEvent && !(Object.prototype.toString.call(window.opera) == '[object Opera]')) {
         Deckbox._.loadCSS(protocol + '//deckbox.org/assets/external/deckbox_tooltip_ie.css');
     }
-
-    /* Preload the tooltip images. */
-    Deckbox._.onDocumentLoad(function() {
-        return;
-        var allLinks = document.getElementsByTagName('a');
-        for (var i = 0; i < allLinks.length; i ++) {
-            var link = allLinks[i];
-            if (Deckbox._.needsTooltip(link)) {
-                document.body.appendChild(Deckbox._.preloadImg(link));
-            }
-        }
-    });
 })();

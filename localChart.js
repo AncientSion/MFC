@@ -38,17 +38,16 @@ $(document).ready(function(){
 			)
 		})
 	})
-})
-	
-function showChart(setname, cardname){
-	//console.log("showChart");
-	//console.log(set + " / " + card);
-}
 
-$(document).contextmenu(function(e){
-	//e.preventDefault(); e.stopPropagation();
+	$(".hover").hover(
+		function(){
+			showPic(this);
+		},
+		function(){
+			emptyPic(this);
+		}
+	)
 })
-
 
 $(".setDivider").contextmenu(function(e){
 	e.preventDefault(); e.stopPropagation();
@@ -73,3 +72,41 @@ function setRes(){
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }
 
+function showRules(){
+    $.ajax({
+        type: "GET",
+        url: "shakers.php",
+        datatype: "json",
+        data: {
+                type: "cardrules",
+                setCode: charter.setCode,
+                cardName: charter.cardName,
+            },
+        success: function(data){
+            $("#card").html(data);
+        },
+        error: function(){console.log("error")},
+    });
+}
+
+function showPic(ele){
+            if (charter.loadPics){
+                var url = "https://deckbox.org/mtg/";
+                    url += $(ele).attr("data-hover");
+                    url += "/tooltip";
+
+                img = document.createElement('img');
+                img.style.height = $(".mainContainer").height()-10;
+                img.src = url;
+                img.onload = function(){
+                    $("#card").empty().append($("<div>").append($(img)));
+              }
+            }
+            else {
+                showRules();
+            }
+}
+
+function emptyPic(){
+	$("#card").empty();
+}

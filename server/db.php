@@ -21,6 +21,54 @@
 	        return self::$instance;
 		}
 
+		public function getAllCardsBySetCodes($setcodes, $rarities){
+
+			$stmt = $this->connection->prepare(
+				"SELECT * FROM cards WHERE setcode = :setCode AND rarity = :rarity
+			");
+		}
+
+		public function isNoSetTable($string){
+			if ($string == "cards" || $string == "favs" || $string == "mtgsets"){
+				return true;
+			} return false;
+		}
+
+		public function getAllCards(){
+			$stmt = $this->connection->prepare("SELECT * FROM mtgsets");
+			$stmt->execute();
+			$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			$data = array();
+
+			foreach ($tables as $table){
+
+				$set = array("setcode" => $table['setcode'], "setname" => $table["setname"], "cards" => array());
+
+				$sql = ("SELECT * FROM cards WHERE setcode = '".$table["setcode"]."'");
+				$stmt = $this->connection->prepare($sql);
+				$stmt->execute();
+				$cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+				$set["cards"] = $cards;
+				$data[] = $set;
+			}
+			return $data;
+		}
+
+		public function getChartData($setcode, $cardname){
+			$stmt = $this->connection->prepare(
+				"SELECT * FROM $setcode WHERE cardid = (SELECT id FROM cards WHERE cardname = '$cardname')"
+			);
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+			//return $sql;
+			foreach ($this->connection->query($sql) as $row){
+				return $row;
+			}
+		}
+
 		public function insertFavorites($setCodes, $cardNames, $isFoil){
 			$stmt = $this->connection->prepare("
 				INSERT into favs 

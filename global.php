@@ -486,6 +486,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	$allSets = array();
 	
 	$cardList = json_decode(file_get_contents(__DIR__."/output/cardlist.json"), TRUE);
+
+	$cardList = DB::app()->getAllCardsBySetCode($codes, $includes);
 		
 	for ($i = 0; $i < sizeof($names); $i++){
 		$setName = $names[$i];
@@ -511,9 +513,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		else if ($delve < 0){
 			$delve = -$depth;
 		}
-		else {
-			$delve = 0;
-		}
 	
 	
 		$extract = array(
@@ -523,13 +522,9 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			"lastDate" => $points[sizeof($points)-1]["date"],
 			"shakers" => array()
 		);
-
-		//var_export($extract);
 		
 		for ($k = 0; $k < sizeof($cards); $k++){
 
-			//var_export($cards[$k]); echo "</br>";
-			//echo $cards[$k]["name"]."</br>";
 			$skip = true;
 			for ($l = 0; $l < sizeof($includes); $l++){
 				if ($cards[$k]["rarity"] == $includes[$l]){$skip = false; break;}
@@ -537,9 +532,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 
 			if ($skip){continue;}
 			
-			if (!(isset($cards[$k]["name"]))){
-				echo "error: ".$codes[$i];
-			}
+			if (!(isset($cards[$k]["name"]))){echo "error: ".$codes[$i];}
+
 
 			$name = $cards[$k]["name"];
 			$last = getCardDataSet($name, $points[sizeof($points)-1]["data"]);
@@ -615,21 +609,11 @@ function setChangeValue(&$card, $forFoil){
 
 function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $maxPrice, $plusminus, $stackDisplay, $skipUnchanged){
 
-	//echo $availChangeMin;
-	/*var_export(func_get_arg(1));
-			echo "</br></br>";
-	var_export(func_get_arg(2));
-			echo "</br></br>";
-	var_export(func_get_arg(3));
-			echo "</br></br>";
-	var_export(func_get_arg(4));
-			echo "</br></br>";
-	*/
 	$avail = "";
 	$change = "";
 	$price = "";
-	$html = "";
-	//$html .= "</br>";
+	$allHTML = "";
+
 	$index;
 
 	if ($foil == "Non Foil"){
@@ -654,46 +638,52 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 	
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
+		$subHTML = "";
 		$setString = $allSets[$i]['set']." - ".$allSets[$i]['code'];
 
-		$html .="<table class='moveTable' style='width: 1100px'>";
+		$subHTML .="<table class='moveTable' style='width: 100%'>";
 
-		$html .="<thead>";
-		$html .="<tr class='disabled'><th class='set' colSpan=".$colSpan.">";
-		$html .="<span>".$allSets[$i]["set"]."</span>";
-		$html .="<span> - </span>";
-		$html .="<span class='setName'>".$allSets[$i]["code"]."</span>";
-		$html .="</th></tr>";
-		$html .="<tr class='sort'>";
-		$html .="<th colSpan=1 style='width: 250px'>".$setString."</th>";
-		//$html .="<th colSpan=1 style='width: 100px'>Chart</th>";
-		$html .="<th colSpan=1 style='width: 10px'></th>";
-		$html .="<th style='width: 70px'>PCT</th>";
-		$html .="<th style='width: 70px'>ABS</th>";
+		$subHTML .="<thead>";
+		$subHTML .="<tr class='ddisabled'><th class='set' colSpan=".$colSpan.">";
+		$subHTML .="<span>".$allSets[$i]["set"]."</span>";
+		$subHTML .="<span> - </span>";
+		$subHTML .="<span class='setName'>".$allSets[$i]["code"]."</span>";
+		$subHTML .="</th></tr>";
+		$subHTML .="<tr class='sort'>";
+		$subHTML .="<th colSpan=1>".$setString."</th>";
+
+	//	$subHTML .="<th style='width: 50px'></th>"; // chart link
+	//	$subHTML .="<th style='width: 50px'></th>"; // mkm link
+
+		$subHTML .="<th colSpan=1></th>"; // chartpreview
+		$subHTML .="<th>PCT</th>";
+		$subHTML .="<th>ABS</th>";
 		
 		if ($stackDisplay){
-			$html .="<th style='width: 70px'>Stack</th>";			
+			$subHTML .="<th>Stack</th>";			
 		}
-		$html .="<th style='width: 50px'></th>";
-		$html .="<th style='width: 50px'></th>";
-		$html .="<th style='width: 60px'>Rarity</th>";
 
-		$html .="<th style='width: 80px'>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 80px'>".$allSets[$i]["lastDate"]."</th>";
+		$subHTML .="<th>R</th>";
+
+		$subHTML .="<th>".$allSets[$i]["compareDate"]."</th>";
+		$subHTML .="<th>".$allSets[$i]["lastDate"]."</th>";
 	
 		/*
-		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
-		$html .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["lastDate"]."</th>";
-		$html .="<th style='width: 70px'>ABS</th>";
-		$html .="<th style='width: 70px'>PCT</th>";
-		$html .="</tr></thead>";
+		$subHTML .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["compareDate"]."</th>";
+		$subHTML .="<th style='width: 100px'>Value (EUR)</br>".$allSets[$i]["lastDate"]."</th>";
+		$subHTML .="<th style='width: 70px'>ABS</th>";
+		$subHTML .="<th style='width: 70px'>PCT</th>";
+		$subHTML .="</tr></thead>";
 		*/
 		
 		
-		$html .="<tbody>";
+		$subHTML .="<tbody>";
+
+		$realEntries = 0;
 
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 			$card = $allSets[$i]["shakers"][$j];
+			$relChange = $card[$volChange][$index];
 			
 			//var_export($card); die();
 			if ($card[$volChange][0] > 0){$class = "green";} else $class = "red";
@@ -709,34 +699,52 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 			}
 			else if ($availChangeMin == 0 && $availChangeMax == 0){}
 			else if ($availChangeMin != 0 && $availChangeMax != 0){
-				if ($card[$volChange][$index] < $availChangeMin && $card[$volChange][$index] > $availChangeMax){continue;}
+				if ($availChangeMin < 0 && $availChangeMax < 0){
+					if ($relChange > $availChangeMin || $relChange < $availChangeMax){continue;}
+				}
+				else if ($availChangeMin > 0 && $availChangeMax > 0){
+					if ($relChange < $availChangeMin || $relChange > $availChangeMax){continue;}
+				}
+				else {
+					if ($relChange < $availChangeMin || $relChange > $availChangeMax){continue;}
+				}
 			}
-			else {
-				if ($availChangeMin <= 0 && $card[$volChange][$index] > $availChangeMin){continue;}
-				if ($availChangeMin > 0 && $card[$volChange][$index] < $availChangeMin){continue;}
-				if ($availChangeMax < 0 && $card[$volChange][$index] < $availChangeMax){continue;}
-				if ($availChangeMax > 0 && $card[$volChange][$index] > $availChangeMax){continue;}
-			}		
-			//die();		
-			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
-
-			$html .="<tr>";
-			$html .="<td>";
-			$html .= "<a target='_blank' href=".$cardUrl.">".$card['name']."</a>";
-			$html .= "<input type='button' value='add' onclick='charter.addSingleFavorite($(this))'></add>";
-			$html .="</td>";
-			$html .="<td class='smallChart'>";
-			$html .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
-			$html .="<td class='".$class."'>".$card[$volChange][0]."</td>";
-			
-			/*
-			$html .="<td>".$card[$price][sizeof($card[$price])-1]."</td>";
-			$html .="<td>".$card[$price][0]."</td>";
-			if ($card[$moneyChange][0] > 0){$class = "green";} else $class ="red";
-			$html .="<td class='".$class."'>".$card[$moneyChange][0]."</td>";
-			$html .="<td class='".$class."'>".$card[$moneyChange][1]." %</td>";
-			$html .="</tr>";
+			/*	echo $availChangeMin."</br>";
+				echo $availChangeMax."</br>";
+				echo $relChange."</br>";
+				die();
 			*/
+			else {
+				if ($availChangeMin <= 0 && $relChange > $availChangeMin){continue;}
+				if ($availChangeMin > 0 && $relChange < $availChangeMin){continue;}
+				if ($availChangeMax < 0 && $relChange < $availChangeMax){continue;}
+				if ($availChangeMax > 0 && $relChange > $availChangeMax){continue;}
+			}	
+
+			$realEntries++;
+
+			$cardUrl = "https://deckbox.org/mtg/".rawurlencode($card["name"]);
+			$cardname = rawurlencode($card["name"]);
+
+			$subHTML .="<tr>";
+
+			$subHTML .="<td class='cardEntryContainer'>";
+			//$subHTML .= "<input type='button' value='add' onclick='charter.addSingleFavorite($(this))'></add>";
+			$subHTML .= "<div onclick='charter.addSingleFavorite($(this))'>add</div>";
+
+			$subHTML .= "<div class='hover' data-hover='$cardname'>";
+				$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
+			$subHTML .= "<div><a target='_blank' href=".$chartUrl.">".$card['name']."</a></div>";
+			$subHTML .= "</div>";
+
+			$subHTML .="<div><a target='_blank' href=".getMKMURL($allSets[$i]["set"], $card["name"]).">MKM</a><div>";
+			$subHTML .="</td>";
+
+
+			$subHTML .="<td class='smallChart'></td>";
+			$subHTML .="<td class='".$class."'>".$card[$volChange][1]." %</td>";
+			$subHTML .="<td class='".$class."'>".$card[$volChange][0]."</td>";
+			$subHTML .="<td>".substr($card["rarity"], 0, 1)."</td>";
 			
 			if ($stackDisplay){
 	
@@ -764,27 +772,20 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 					}
 				}
 				
-				$html .="<td>".$string."</td>";
-			}	
-			$html .="<td>";
-			
-			$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["set"])."&card=".urlencode($card["name"]);
-			$html .= "<a target='_blank' href=".$chartUrl.">"."Chart"."</a>";
-			$html .="</td>";
-			$html .="<td>";
-			
-			$html .="<a target='_blank' href=".getMKMURL($allSets[$i]["set"], $card["name"]).">MKM</a></td>";
-			$html .="</td>";
-			$html .="<td>".substr($card["rarity"], 0, 1)."</td>";
+				$subHTML .="<td>".$string."</td>";
+			}
 
-			$html .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
-			$html .="<td>".$card[$avail][0]."</td>";		
+			$subHTML .="<td>".$card[$avail][sizeof($card[$avail])-1]."</td>";
+			$subHTML .="<td>".$card[$avail][0]."</td>";		
 		}
 
-		$html .="</tbody></table>";
+		$subHTML .="</tbody></table>";
+		if ($realEntries){
+			$allHTML .= $subHTML;
+		}
 
 	}
-	return $html;
+	return $allHTML;
 }
 
 function writeAndClose($code, $data){

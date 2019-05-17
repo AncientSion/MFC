@@ -8,6 +8,7 @@
 		if (isset($_GET["type"]) && $_GET["type"] == "cardrules"){
 			$cardname = $_GET["cardName"];
 			$setname = $_GET["setCode"];
+			if ($setname == ""){return;}
 			echo requestCardText($cardname, $setname);
 			return;
 		}

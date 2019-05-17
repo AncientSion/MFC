@@ -3,6 +3,12 @@
 
 
 	if (isset($_GET["type"])){
+		if ($_GET["type"] == "cardlistNew"){
+			$cards = DB::app()->getAllCards();
+			echo json_encode($cards);
+			//echo var_export($cards);
+			return;
+		}
 		if ($_GET["type"] == "cardlist"){
 			$cards = file_get_contents(__DIR__."/output/cardlist.json");
 			echo $cards;	
@@ -13,35 +19,41 @@
 			$set = $_GET["set"];
 			$card = $_GET["card"];
 
-			logChart($set, $card);
-			$dataPoints = array();
-			$file = file_get_contents(__DIR__."/output/".$set.".json");
-			$json = json_decode($file);
-			if ($json == NULL){
-				echo json_encode(array("msg" => "no card price data found"));
-				return;
+			if ($set == "JRW"){
+				$data = DB::app()->getChartData($set, $card);
+				echo json_encode($data); return;
+				echo var_export($data); return;
+				echo json_encode($data);
 			}
-			
-			$days = sizeof($json->content);
-		/*	$keep = 1;
-			if ($days > 200){
-				$keep = 3;
-			}
-			else if ($days > 100){
-				$keep = 2;
-			}
-		*/	
-			for ($i = 0; $i < sizeof($json->content); $i++){
-				//if ($i % $keep != 0){continue;}
-				for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
-					if ($json->content[$i]->data[$j]->name == $card){
-						$dataPoints[] = array("time" => $json->content[$i]->date, "data" => $json->content[$i]->data[$j]);
+			else {
+				logChart($set, $card);
+				$dataPoints = array();
+				$file = file_get_contents(__DIR__."/output/".$set.".json");
+				$json = json_decode($file);
+				if ($json == NULL){
+					echo json_encode(array("msg" => "no card price data found")); return;
+				}
+				
+				$days = sizeof($json->content);
+			/*	$keep = 1;
+				if ($days > 200){
+					$keep = 3;
+				}
+				else if ($days > 100){
+					$keep = 2;
+				}
+			*/	
+				for ($i = 0; $i < sizeof($json->content); $i++){
+					//if ($i % $keep != 0){continue;}
+					for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
+						if ($json->content[$i]->data[$j]->name == $card){
+							$dataPoints[] = array("time" => $json->content[$i]->date, "data" => $json->content[$i]->data[$j]);
+						}
 					}
 				}
+				
+				echo json_encode($dataPoints); return;
 			}
-			
-			echo json_encode($dataPoints);
-			return;
 		}
 	}
 ?>
@@ -84,7 +96,10 @@
 				echo '<input type="form" class="cardSearch" value="'.$card.'">';
 		?>
 
-		<input type="button" style="font-size: 20px" onclick="charter.getCardData(0, $('.setSearch').val(), $('.cardSearch').val())" value="Search">
+		<input type="button" style="font-size: 16px" onclick="charter.getCardData(0, $('.setSearch').val(), $('.cardSearch').val())" value="Search">
+
+		<input type='checkbox'></input>
+		<input type="button" style="font-size: px" onclick="charter.assembleFavData()" value="add">
 		<div id="cardName"></div>
 		<div class="reprints"></div>
 
@@ -96,7 +111,6 @@
 				<div class='container'>
 					<canvas id='basePriceCanvas'</canvas>
 				</div>";
-
 		?>
 
 	</body>
