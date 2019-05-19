@@ -55,7 +55,7 @@ function getMKMURL($set, $card){
 
 
 function doReplace($set){
-	return preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $set)));
+	return preg_replace("/--/", "-", preg_replace("/&/", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $set)))));
 }
 
 function addCardDataPoint(&$currentSet, $point){
@@ -435,7 +435,7 @@ function debug($string){
 	file_put_contents(__DIR__."/debug.log", $string.PHP_EOL, FILE_APPEND);
 }
 
-function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
+function logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 	return;
 	$stamp = time();
 
@@ -445,7 +445,7 @@ function logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $min
 		"date" => date('d.m.Y', $stamp),
 		"time" => date('H:i:s', $stamp),
 		"options" => array(
-			$codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $plusminus, $stackDisplay, $skipUnchanged, $compareType
+			$codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $plusminus, $stackDisplay, $skipUnchanged, $compareType
 		)
 	);
 
@@ -470,7 +470,7 @@ function logChart($set, $card){
 
 
 
-function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
+function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 
 	$time = time();
 	$date = date('d.m.Y', $time);
@@ -478,7 +478,22 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	
 	//mored Ascensecho var_export(func_get_args());
 
-	logShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
+	logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
+
+
+	$db = DB::app();
+
+	$relCards = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
+
+	var_export($relCards);
+
+	die();
+
+
+
+
+
+
 	
 	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 
@@ -487,7 +502,10 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 	
 	$cardList = json_decode(file_get_contents(__DIR__."/output/cardlist.json"), TRUE);
 
-	$cardList = DB::app()->getAllCardsBySetCode($codes, $includes);
+	$db = DB::app();
+
+	$cardList = $db->getAllCardsBySetCodes($codes, $rarities);
+	$names = $db->getSetNamesByCodes($codes, $rarities);
 		
 	for ($i = 0; $i < sizeof($names); $i++){
 		$setName = $names[$i];
@@ -500,7 +518,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			}
 		}
 		
-		//var_export($cards);
 		
 		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
 		$points = $points["content"];
@@ -514,7 +531,6 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 			$delve = -$depth;
 		}
 	
-	
 		$extract = array(
 			"set" => $setName,
 			"code" => $codes[$i],
@@ -526,8 +542,8 @@ function requestShakers($codes, $includes, $foil, $depth, $minAvail, $maxAvail, 
 		for ($k = 0; $k < sizeof($cards); $k++){
 
 			$skip = true;
-			for ($l = 0; $l < sizeof($includes); $l++){
-				if ($cards[$k]["rarity"] == $includes[$l]){$skip = false; break;}
+			for ($l = 0; $l < sizeof($rarities); $l++){
+				if ($cards[$k]["rarity"] == $rarities[$l]){$skip = false; break;}
 			}
 
 			if ($skip){continue;}
@@ -788,7 +804,30 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 	return $allHTML;
 }
 
-function writeAndClose($code, $data){
+function writeAndClose($db, $setcode, $date, $pulldata){
+	//echo "Writing ".$setcode.", entries: ".sizeof($pulldata).", date ".$date."\n";
+	$GLOBALS["cards"] += sizeof($pulldata);
+
+	$db->connection->beginTransaction();
+
+	$success = false;
+
+	if ($db->insertSingleSetPull($setcode, $date, $pulldata)){
+		if ($db->closeSetEntry($setcode, $date)){
+			$success = true;
+		}
+	}
+
+	if (!$success){
+		$db->connection->rollback();
+		message("error, rolling back");
+		return false;
+	}
+	$db->connection->commit();
+	return true;
+}
+
+function writeAndCloseo($code, $data){
 	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
 	$GLOBALS["cards"] += sizeof($data["data"]);
 	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
@@ -855,8 +894,8 @@ function fixOutputSets(){
 
 
 function message($print){
-	echo ($print."\n");
-	//echo $print."</br>";
+	//echo ($print."\n");
+	echo $print."</br>";
 }
 
 

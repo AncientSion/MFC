@@ -126,16 +126,11 @@ class Charter {
 	}
 
 	getLabel(points){
-		//console.log("points " + points.length);
 		var ret = [];
 		var year = 18;
 		for (let i = 0; i < points.length; i++){
-		/*	if (points[i].time.substr(8, points[i].time.length-1) == year){
-				ret.push([points[i].time.substr(0, 5), year]);
-				year++;
-			} else ret.push(points[i].time.substr(0, 5));
-		*/
-			ret.push(points[i].time.substr(0, 5));
+			//ret.push(points[i].date.substr(0, 5));
+			ret.push(points[i].date.substr(5, 10));
 		}
 		return ret;
 	}
@@ -153,10 +148,10 @@ class Charter {
 		var basePrice = [];
 
 		for (let i = 0; i < points.length; i++){
-			sets[0].push(points[i].data.foilAvail || 0);
-			sets[1].push(points[i].data.foilPrice || 0);
-			sets[2].push(points[i].data.baseAvail || 0);
-			sets[3].push(points[i].data.basePrice || 0);
+			sets[0].push(points[i].foilAvail);
+			sets[1].push(points[i].foilPrice);
+			sets[2].push(points[i].baseAvail);
+			sets[3].push(points[i].basePrice);
 		}
 
 		var returnData = [];
@@ -167,7 +162,7 @@ class Charter {
 				"label": (labels[i] + " - " + set + " " + card),
 				"data": sets[i],
 				"fontColor": "white",
-				"fontSize": 14,
+			//	"fontSize": 4,
 				"pointRadius": 1,
 				//"pointColor": "red",
 				"borderColor": colors[i],
@@ -361,7 +356,7 @@ class Charter {
 									fontColor: "white",
 									autoskip: true,
 									maxTicksLimit: 10,
-									fontSize: 12,
+									fontSize: 9,
 									minRotation: 0,
 									maxRotation: 0
 								},

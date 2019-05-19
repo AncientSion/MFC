@@ -5,20 +5,21 @@ include_once(__DIR__."\global.php");
 
 
 $time = time();
-$date = date('d.m.Y', $time);
+$date = date('Y-m-d', $time);
 
 $time = -microtime(true);
 $GLOBALS["cards"] = 0;
 $GLOBALS["requests"] = 0;
 $GLOBALS["errors"] = array();
 $fetch = "";
-echo "\n\n\nScript Execution Started \n\n";
+echo "\n\n\nScript Execution Started, date ".$date."\n\n";
+//die();
 fetchAll($date);
 $time += microtime(true);
 echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["cards"]." entries over ".$GLOBALS["requests"]." requests";
 
 
-function fetchAll($day){
+function fetchAll($date){
 
 	$context = stream_context_create(
 	    array(
@@ -29,22 +30,193 @@ function fetchAll($day){
 			)
 	);
 	
-	//getEDH($day);
-	
 			
 	$data = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
 	$codes = $data["codes"];
 	$names = $data["names"];
 	
-	crawl($day, $codes[0], $names[0], 1, 0, $context); // non foils
-	crawl($day, $codes[1], $names[1], 1, 1, $context); // reg sets
-	crawl($day, $codes[2], $names[2], 1, 0, $context); // promos
-	getSets($day, $context); // FTV sealed
-	getBoxPrices($day, $codes[4], $names[4], $context); // boxes
+	$db = DB::app();
+	$toDo = $db->getSetsToPull($date);
+		foreach ($toDo as $set){
+		message("\n__NOW - ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].", foil ".$set["foil"].", nonfoil ".$set["nonfoil"]);
+		$data;
+
+		if ($set["type"] == 0){
+			$pulled = crawlBaseSet($db, $date, $context, $set);
+		}
+		else if ($set["type"] == 1){
+			$pulled = crawlGameBoxes($db, $date, $context, $set);
+		}
+		else if ($set["type"] == 2){
+			$pulled = crawlFreeURL($db, $date, $context, $set);
+		}
+
+
+		if (!(writeAndClose($db, $set["setcode"], $date, $pulled))){
+			message("error!"); die();
+		}
+	}
+	die();
+
+
+
+
+
+	crawl($date, $codes[0], $names[0], 1, 0, $context); // non foils
+	crawl($date, $codes[1], $names[1], 1, 1, $context); // reg sets
+	crawl($date, $codes[2], $names[2], 1, 0, $context); // promos
+	//getSets($date, $context); // FTV sealed
+	//getBoxPrices($date, $codes[4], $names[4], $context); // boxes
 	
 	logErrors();
-
 }
+
+
+function crawlBaseSet($db, $date, $context, $pull){
+
+	$set = array();
+	$exit = 0;
+	$page = 1;
+	$maxPages = 0;
+	$prop = "data-original-title";
+
+	while(!$exit){
+		$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($pull["setname"])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
+		$url .= "&site=".$page;
+
+		$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+
+		if (!$html){
+			message("NO HTML ! ".$pull["setcode"]);
+			sleep(5);
+			$html = file_get_html($url, false, $context);
+
+			if (!$html){message("still not!"); die();}
+		}
+
+		if (!$maxPages){
+			$dropdown = $html->find("div.dropup > div.dropdown-menu", 0);
+			$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
+		}
+
+
+		$rows = $html->find(".table-body", 0)->children();
+
+		for ($k = 0; $k < sizeof($rows); $k++){
+			$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->plaintext;
+			//message("pulling row $k with name $name");
+			$baseAvail = 0;
+			$basePrice = 0.00;
+			$foilAvail = 0;
+			$foilPrice = 0.00;
+			$rarity = "";
+			
+			if ($pull["foil"] && !$pull["nonfoil"]){
+				$foilAvail = $rows[$k]->children(4)->children(0)->plaintext;
+				$foilPrice = $rows[$k]->children(5)->plaintext;
+				$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
+			}
+			else {
+				if ($pull["nonfoil"]){
+					$baseAvail = $rows[$k]->children(4)->children(0)->plaintext;
+					$basePrice = $rows[$k]->children(5)->plaintext;
+					$basePrice = str_replace(",", ".", substr($basePrice, 0, strlen($basePrice)-9));
+				}
+				if ($pull["foil"]){
+					$foilAvail = $rows[$k]->children(6)->plaintext;
+					$foilPrice = $rows[$k]->children(7)->plaintext;
+					$foilPrice = str_replace(",", ".", substr($foilPrice, 0, strlen($foilPrice)-9));
+				}
+			}
+
+			$rarity = substr($rows[$k]->children(3)->find(".icon", 0)->{$prop}, 0, 1);
+			doAdd($name, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
+		}
+		
+		$page++;
+
+		if ($page >= $maxPages){
+			break;
+		}
+		else if ($page >= 15){
+			echo "ERROR \n\n";
+			$GLOBALS["errors"][] = $pull["setcode"];
+			break;
+		}
+	}
+
+	$html->clear();
+	unset($html);
+	return $set;
+}
+
+function crawlGameBoxes($db, $date, $context, $pull){
+	$game = substr($pull["setname"], 0, strlen($pull["setname"])-6);
+	$set = array();	
+
+	for ($j = 1; $j < 10; $j++){			
+		$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?sortBy=name_asc&perSite=50";
+		$url .= "&site=".$j;
+
+		$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+		$rows = $html->find(".table-body", 0)->children();
+
+		for ($k = 0; $k < sizeof($rows); $k++){
+			$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
+			$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
+			$basePrice = 0.00;
+			if ($baseAvail){
+				$basePrice = $rows[$k]->children(5)->innertext;
+				$basePrice = str_replace(",", ".", $basePrice);
+				$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+			} 
+
+			doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
+		}
+		
+		if (sizeof($rows) < 50){
+			echo "last page - ";
+			break;
+		}
+	}
+
+	$html->clear();
+	unset($html);
+	return $set;
+}
+
+function crawlFreeURL($db, $date, $context, $pull){
+	
+	$set = array();	
+	$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
+	
+	for ($j = 0; $j < 10; $j++){			
+		$url = $baseUrl."&site=".$j;
+		$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
+		$rows = $html->find(".table-body", 0)->children();
+		for ($k = 0; $k < sizeof($rows); $k++){
+			$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
+			$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
+			$basePrice = 0.00;
+			if ($baseAvail){
+				$basePrice = $rows[$k]->children(5)->innertext;
+				$basePrice = str_replace(",", ".", $basePrice);
+				$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
+			}
+			doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
+		}
+		
+		if (sizeof($rows) < 50){
+			echo "last page - ";
+			break;
+		}
+	}
+
+	$html->clear();
+	unset($html);
+	return $set;
+}
+
 
 function crawl($date, $codes, $names, $nonFoil, $foil, $context){
 	
@@ -142,7 +314,8 @@ function getBoxPrices($date, $codes, $names, $context){
 		$set = array("date" => $date, "code" => $codes[$i], "set" => $codes[$i]." Boxes", "data" => array());	
 		
 		for ($j = 1; $j < 10; $j++){			
-			$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
+		//	$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?mode=&searchString=&onlyAvailable=on&sortBy=locName_asc&perSite=50";
+			$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?sortBy=locName_asc&perSite=50";
 			$url .= "&site=".$j;
 
 			//echo "paging: ".$names[$i]." / ".$j."\n";
@@ -157,7 +330,7 @@ function getBoxPrices($date, $codes, $names, $context){
 					$basePrice = $rows[$k]->children(5)->innertext;
 					$basePrice = str_replace(",", ".", $basePrice);
 					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
-				}
+				} 
 
 				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
 			}
@@ -171,54 +344,20 @@ function getBoxPrices($date, $codes, $names, $context){
 	}
 }
 
-function getSets($date, $context){
-	
-	$urls = array();
-	$urls[] = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
-	
-	$codes = array();
-	$codes[] = "_SET";
-	
-	for ($i = 0; $i < sizeof($urls); $i++){
-	
-		$set = array("date" => $date, "files" => $codes[$i], "set" => $codes[$i], "data" => array());	
-		$baseUrl = $urls[$i];
-		
-		for ($j = 0; $j < 10; $j++){			
-			$url = $baseUrl."&site=".$j;
 
-			$html = file_get_html($url, false, $context); $GLOBALS["requests"]++;
-			$rows = $html->find(".table-body", 0)->children();
-
-			for ($k = 0; $k < sizeof($rows); $k++){
-				$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
-				$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
-				$basePrice = 0.00;
-				if ($baseAvail){
-					$basePrice = $rows[$k]->children(5)->innertext;
-					$basePrice = str_replace(",", ".", $basePrice);
-					$basePrice = substr($basePrice, 0, strlen($basePrice)-9);
-				}
-
-				doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
-			}
-			
-			if (sizeof($rows) < 50){
-				echo "last page - ";
-				break;
-			}
-		}
-			
-		//return;
-		writeAndClose($codes[$i], $set);
-	}
+function doAdd($cardname, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
+	$set[] = array(
+		"cardname" => $cardname,
+		"rarity" => $rarity,
+		"baseAvail" => intval($baseAvail),
+		"basePrice" => floatval($basePrice),
+		"foilAvail" => intval($foilAvail),
+		"foilPrice" => floatval($foilPrice)
+	);
 }
-
-
-
-function doAdd($name, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
+function doAddO($cardname, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
 	$set["data"][] = array(
-		"name" => $name,
+		"cardname" => $cardname,
 		"rarity" => $rarity,
 		"baseAvail" => intval($baseAvail),
 		"basePrice" => floatval($basePrice),

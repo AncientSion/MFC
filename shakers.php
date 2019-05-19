@@ -45,7 +45,7 @@
 			</div>";
 
 			echo "<div class='scrollWrapper'>";
-			echo requestShakers(
+			echo requestAllShakers(
 				$_GET["sets"],
 				$_GET["rarities"],
 				$foil,

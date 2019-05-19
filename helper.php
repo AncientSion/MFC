@@ -15,15 +15,21 @@ $time = -microtime(true);
 //deleteForeignFromInput();
 //checkForNull(); return;
 
+//recreateAllCardsTable();
+//reDoSetsTable();
 
 
-handleNewSetCreation();
-checkForNull(); return;
+if (0){
+	writeToBase();
+	return;
+}
+
+
+//deleteFromWithin(2); die();
+//handleSetCreationFromJSON();
 
 	//recreateAllCardsTable();
-	insertSetIntoSets();
-	insertCardsIntoCardsTable();
-	JSONTOSQL();
+
 	//deleteFromEnd(-2);
 	//search();
 
@@ -56,7 +62,21 @@ function search(){
 	}
 }
 
-function checkForNull(){
+function checkSingleSetForNull($db, $setcode){
+
+	$query = "SELECT * FROM ".$setcode." WHERE cardid IS NULL";
+	$stmt = $db->connection->prepare($query);
+	$stmt->execute();
+
+	$missings = array();
+	$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($subResults as $error){
+		$missings[] = $setcode." - ".$error["cardname"];
+	}
+	return $missings;
+}
+
+function checkAllForNull(){
 
 	$db = DB::app();
 	$stmt = $db->connection->prepare("SHOW TABLES");
@@ -64,7 +84,7 @@ function checkForNull(){
 
 	$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	//var_export($results); return;
-	$fails = [];
+	$missings = array();
 
 	foreach ($tables as $table){
 		if ($db->isNoSetTable($table['Tables_in_crawl'])){continue;}
@@ -76,13 +96,13 @@ function checkForNull(){
 
 		$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($subResults as $error){
-			$fails[] = $table['Tables_in_crawl']." - ".$error["cardname"];
+			foreach ($missings as $missing){
+				if ($missing == $table['Tables_in_crawl']." - ".$error["cardname"]){break;}
+			}
+			$missings[] = $table['Tables_in_crawl']." - ".$error["cardname"];
 		}
 	}
-
-	echo implode($fails, " -- ");
-
-	//echo "fails: ".$fails."\n";
+	echo implode($missings, " -- ");
 }
 
 function deleteNull(){
@@ -106,16 +126,16 @@ function deleteNull(){
 
 function reDoSetsTable(){
 	$db = DB::app();
-	$stmt = $db->connection->prepare("DROP TABLE IF EXISTS mtgsets");
+	$stmt = $db->connection->prepare("DROP TABLE IF EXISTS 1sets");
 	$stmt->execute();
 
-	$sql = "CREATE TABLE mtgsets (id int(3) primary key AUTO_INCREMENT, setcode varchar(4) default '' not null, setname varchar(255) default '' not null, foil tinyint(1) default 1 not null, nonfoil tinyint(1) default 0 not null)";
+	$sql = "CREATE TABLE 1sets (id int(3) primary key AUTO_INCREMENT, setcode varchar(4) default '' not null, setname varchar(255) default '' not null, foil tinyint(1) default 1 not null, nonfoil tinyint(1) default 0 not null)";
 
 	$stmt = $db->connection->prepare($sql);
 	$stmt->execute();
 }
 
-function handleNewSetCreation(){
+function handleSetCreationFromJSON(){
 	$file = null;
 	$folder = '../htdocs/crawl/fix';
 	$files = scandir($folder);
@@ -123,26 +143,49 @@ function handleNewSetCreation(){
 
 	$db = DB::app();
 
+	$stmt = $db->connection->prepare("SHOW TABLES");
+	$stmt->execute();
+	$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 	foreach ($files as $file){
 		if ($file == "cardlist.json" || $file == "avail.json" || $file == "EDH.json"){continue;}
-		return;
+		$insert = true;
+		$setcode = substr($file, 0, strpos($file, "."));
+
+		foreach ($tables as $table){
+			if (strtolower($setcode) == $table['Tables_in_crawl']){
+				message("skipping ".$file); 
+				$insert = false;
+				break;
+			}
+		}
+	
+		if (!$insert){continue;}
+
+		message("doing ".$file);
 
 		$data = file_get_contents($folder."/".$file);
 		$data = json_decode($data);
-		$setcode = substr($file, 0, strpos($file, ".", 3));
 
 		recreateSubTable($db, $setcode);
 		insertSetIntoSets($db, $data, $setcode);
 		insertCardsIntoCardsTable($db, $data, $setcode);
 		JSONTOSQL($db, $data, $setcode);
+		$missings = checkSingleSetForNull($db, $setcode);
+
+		if (sizeof($missings)){
+			message(implode($missings, " --"));
+			message("\n early return!");
+			return;
+		} else message("all fine");
 	}
 }
 
 function insertSetIntoSets($db, $data, $setcode){
-	message("insertSetIntoSets");
+	message("insertSetIntoSets for set ".$setcode);
 
 	$stmt = $db->connection->prepare(
-			"INSERT INTO mtgsets 
+			"INSERT INTO 1sets 
 				(id, setcode, setname, foil, nonfoil)
 			VALUES
 				(id, :setcode, :setname, :foil, :nonfoil)
@@ -157,31 +200,34 @@ function insertSetIntoSets($db, $data, $setcode){
 	$stmt->execute();
 }
 
-function insertCardsIntoCardsTable($db, $data, $setcode){
+function insertCardsIntoCardsTable($db, $json, $setcode){
 	message("insertCardsIntoCardsTable");
 
 	$entries = 0;
 
-	$cards = $data->content[sizeof($data->content)-1]->data;
+	$cards = $json->content[sizeof($json->content)-1]->data;
 
 	$stmt = DB::app()->connection->prepare(
-		"INSERT INTO cards 
+		"INSERT INTO 1cards 
 			(id, setid, cardname, setcode, rarity)
 		VALUES
-			(0, (SELECT id from mtgsets WHERE setcode = :setcodeA), :cardname, :setcodeB, :rarity)
+			(0, (SELECT id from 1sets WHERE setcode = :setcodeA), :cardname, :setcodeB, :rarity)
 	");
 
-	$stmt->bindParam(":setcodeA", $data->code);
-	$stmt->bindParam(":setcodeB", $data->code);
+	$stmt->bindParam(":setcodeA", $json->code);
+	$stmt->bindParam(":setcodeB", $json->code);
 
+	//$inserts = array();
 	foreach ($cards as $card){
 		$entries++;
 		$stmt->bindParam(":cardname", $card->name);
 		$stmt->bindParam(":rarity", $card->rarity);
 		$stmt->execute();
+		//$inserts[] = $card->name;
 	};
 
 	message("inserted from file ".$setcode." to allCards, ".$entries." entries");
+	//implode($inserts, ", ");
 }
 
 function recreateSubTable($db, $setcode){
@@ -197,19 +243,101 @@ function recreateSubTable($db, $setcode){
 	message("CREATE TABLE ".$setcode);
 }
 
-function JSONTOSQL($db, $data, $setcode){
 
-	$stmt = DB::app()->connection->prepare(
+
+function JSONTOSQL($db, $json, $setcode){
+	message("new JSONTSQL");
+
+	$stmt = $db->connection->prepare(
+		"SELECT id FROM 1cards WHERE setcode = :setcode AND cardname = :cardname
+	");
+
+	$stmt->bindParam(":setcode", $setcode);
+
+	$ids = array();
+
+	//var_export($stmt);
+
+	foreach ($json->content[sizeof($json->content)-1]->data as $card){
+		$stmt->bindParam(":cardname", $card->name);
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		if ($result){
+			$ids[] = array($card->name, $result["id"]);
+		}
+	}
+
+	for ($i = 0; $i < sizeof($json->content); $i++){
+		for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
+			for ($k = 0; $k < sizeof($ids); $k++){
+				if ($json->content[$i]->data[$j]->name == $ids[$k][0]){
+					$json->content[$i]->data[$j]->cardid = $ids[$k][1];
+					break;	
+				}
+			}
+		}
+	}
+
+	$errors = array();
+	foreach ($json->content as $day){
+		foreach ($day->data as $card){
+			if (!(isset($card->cardid))){
+				$errors[] = $day->date.": ".$card->name;
+			}
+		}
+	}
+
+	if (sizeof($errors)){
+		message(implode($errors, " -- "));
+		//die();
+	}
+
+	$stmt = $db->connection->prepare(
 		"INSERT INTO ".$setcode." 
 			(id, cardid, cardname, baseAvail, basePrice, foilAvail, foilPrice, date)
 		VALUES
-			(0, (SELECT id from cards WHERE cards.setcode = :setcode AND cards.cardname = :cardnameA), :cardnameB, :baseAvail, :basePrice, :foilAvail, :foilPrice, :date)
+			(0, :cardid, :cardname, :baseAvail, :basePrice, :foilAvail, :foilPrice, :date)
+	");
+	//$stmt->bindParam(":setcode", $setcode);
+
+	message("all cards id'ed, filling table ".$setcode);
+
+	foreach ($json->content as $day){
+
+		$stmt->bindValue(":date", date("Y-m-d", strtotime(str_replace(".", "-", $day->date))));
+
+		foreach ($day->data as $card){
+			//var_export($card); die();
+			$stmt->bindParam(":cardid", $card->cardid);
+			$stmt->bindParam(":cardname", $card->name);
+			$stmt->bindParam(":baseAvail", $card->baseAvail);
+			$stmt->bindParam(":basePrice", $card->basePrice);
+			$stmt->bindParam(":foilAvail", $card->foilAvail);
+			$stmt->bindParam(":foilPrice", $card->foilPrice);
+
+			$stmt->execute();
+		}
+	}
+
+	message("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
+	//die();
+}
+
+function xJSONTOSQL($db, $json, $setcode){
+	message("old JSONTSQL");
+
+	$stmt = $db->connection->prepare(
+		"INSERT INTO ".$setcode." 
+			(id, cardid, cardname, baseAvail, basePrice, foilAvail, foilPrice, date)
+		VALUES
+			(0, (SELECT id from 1cards WHERE cards.setcode = :setcode AND cards.cardname = :cardnameA), :cardnameB, :baseAvail, :basePrice, :foilAvail, :foilPrice, :date)
 	");
 	$stmt->bindParam(":setcode", $setcode);
 
 	message("filling table ".$setcode);
-	foreach ($data->content as $day){
-		//$entries++;
+
+	foreach ($json->content as $day){
 
 		$stmt->bindValue(":date", date("Y-m-d", strtotime(str_replace(".", "-", $day->date))));
 
@@ -223,18 +351,19 @@ function JSONTOSQL($db, $data, $setcode){
 
 			$stmt->execute();
 		}
-		//break;
 	}
+
+	message("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
 	return;
 }
 
 function recreateAllCardsTable(){
 	message("recreateAllCardsTable");
 	$db = DB::app();
-	$sql = "DROP TABLE IF EXISTS cards";
+	$sql = "DROP TABLE IF EXISTS 1cards";
 	DB::app()->connection->query($sql);
 
-	$sql = "CREATE TABLE cards (id int(5) primary key AUTO_INCREMENT, setid int(3) default 0 not null, cardname varchar(100) default '' not null, setcode varchar(4) default '' not null, rarity varchar(1) default '' not null)";
+	$sql = "CREATE TABLE 1cards (id int(5) primary key AUTO_INCREMENT, setid int(3) default 0 not null, cardname varchar(100) default '' not null, setcode varchar(4) default '' not null, rarity varchar(1) default '' not null)";
 	DB::app()->connection->query($sql);
 }
 
@@ -373,6 +502,53 @@ function deleteForeignFromInput(){
 
 		$handle = fopen($folder."/".$file, "w+");
 		fwrite($handle, json_encode($data));
+		fclose($handle);
+	}
+}
+
+function deleteFromWithin($amountToDelete){
+	//return;
+	
+	echo "start\n";
+	$file = null;
+	$folder = '../htdocs/crawl/fix';
+	$files = scandir($folder);
+
+	$files = array_slice($files, 2);
+	//echo "files: ".sizeof($files)."\n\n\n";
+
+	foreach ($files as $file){
+		if ($file != "_DGB.json"){continue;}
+		
+		echo $file."\n\n";
+		$json = file_get_contents($folder."/".$file);
+		$json = json_decode($json);
+
+
+		for ($i = sizeof($json->content)-1; $i >= 0 ; $i--){
+			for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
+				if ($json->content[$i]->data[$j]->name == "Cross Worlds Booster Box"){
+					//message($data->content[$i]->date . " index: ".$i);
+					array_splice($json->content, $i, 1);
+					break;
+				}
+			}
+		}
+		//die();
+
+		for ($i = sizeof($json->content)-1; $i >= 0 ; $i--){
+			for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
+				if ($json->content[$i]->data[$j]->name ==  "Cross Worlds Booster Box"){
+					message($json->content[$i]->date . " index: ".$i);
+					die();
+				}
+			}
+		}
+		//die();
+		
+		//array_splice($data->content, $amountToDelete);
+		$handle = fopen($folder."/".$file, "w+");
+		fwrite($handle, json_encode($json));
 		fclose($handle);
 	}
 }
@@ -516,6 +692,48 @@ function alterShipFiles(){
 		}
 	}
 }
+
+
+function writeToFoil(){
+	$tables = ["EXP", "MPS", "AIN", "DCI", "FNM", "BAB", "GDP", "JRW", "CPR", "ALP", "UBT"];
+	$db = DB::app();
+
+	$stmt = $db->connection->prepare("
+		UPDATE 1sets SET foil = 1, nonfoil = 0 WHERE setcode = :setcode
+	");
+	foreach ($tables as $table){
+		$stmt->bindParam(":setcode", $table);
+
+		$stmt->execute();
+	}
+
+	foreach ($tables as $table){
+		$stmt = $db->connection->prepare("
+			UPDATE $table set foilAvail = baseAvail, foilPrice = basePrice, baseAvail = 0, basePrice = 0 WHERE id
+		");
+
+		$stmt->execute();
+		if ($stmt->errorCode() == 0){
+			continue;
+		}
+		else message("error"); die();
+	}
+}
+
+function writeToBase(){
+	$tables = ["LEA", "LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "ALI", "TMP", "WTH", "STH", "EXO", "MIR", "VIS", "USG", "C16", "C17","C18", "_SET", "_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPS", "_SWD", "_WOW", "_WS", "_DBS", "_FF"];
+
+	$db = DB::app();
+	$stmt = $db->connection->prepare("
+		UPDATE 1sets SET foil = 0, nonfoil = 1 WHERE setcode = :setcode
+	");
+
+	foreach ($tables as $table){
+		$stmt->bindParam(":setcode", $table);
+		$stmt->execute();
+	}
+}
+
 
 //SELECT cardname, count(cardname), setcode, count(setcode) FROM cards group by cardname, setcode HAVING (count(cardname) > 1 and count(setcode) > 1)
 ?>

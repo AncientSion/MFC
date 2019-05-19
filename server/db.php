@@ -21,21 +21,63 @@
 	        return self::$instance;
 		}
 
-		public function getAllCardsBySetCodes($setcodes, $rarities){
+		public function getAllPickedCardsForShakersFromDB($setcodes, $rarities){
+			$sql = "SELECT * FROM 1cards WHERE setcode = :setcode AND (";
 
+			for ($i = 0; $i < sizeof($rarities); $i++){
+				$sql .= "rarity = :rarity".($i+1)." ";
+
+				if (sizeof($rarities) > 1 && $i != sizeof($rarities)-1){
+					$sql .= " OR ";
+				}
+
+				if ($i == sizeof($rarities)-1){
+					$sql .= ")";
+				}
+			}
+
+			//var_export($rarities);
+			message($sql);
+
+
+			$stmt = $this->connection->prepare($sql);
+
+			$sets = array();
+
+			for ($i = 0; $i < sizeof($setcodes); $i++){
+				$set = array();
+				$stmt->bindParam(":setcode", $setcodes[$i]);
+
+				for ($j = 0; $j < sizeof($rarities); $j++){
+				//	message("bind rarity".($j+1));
+					$stmt->bindParam(":rarity".($j+1), $rarities[$j]);
+				}
+
+			//	message("executing");
+				$stmt->execute();
+				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				$set = array_merge($result, $set);
+
+				$sets[] = $set;
+			}
+
+			return $sets;
+		}
+
+		public function getSetNamesByCodes($codes){
 			$stmt = $this->connection->prepare(
-				"SELECT * FROM cards WHERE setcode = :setCode AND rarity = :rarity
+				"SELECT * FROM 1cards WHERE setcode = :setcode AND rarity = :rarity
 			");
 		}
 
 		public function isNoSetTable($string){
-			if ($string == "cards" || $string == "favs" || $string == "mtgsets"){
+			if ($string == "1cards" || $string == "1favs" || $string == "1sets"){
 				return true;
 			} return false;
 		}
 
 		public function getAllCards(){
-			$stmt = $this->connection->prepare("SELECT * FROM mtgsets");
+			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
 			$stmt->execute();
 			$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -45,7 +87,7 @@
 
 				$set = array("setcode" => $table['setcode'], "setname" => $table["setname"], "cards" => array());
 
-				$sql = ("SELECT * FROM cards WHERE setcode = '".$table["setcode"]."'");
+				$sql = ("SELECT * FROM 1cards WHERE setcode = '".$table["setcode"]."'");
 				$stmt = $this->connection->prepare($sql);
 				$stmt->execute();
 				$cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +100,7 @@
 
 		public function getChartData($setcode, $cardname){
 			$stmt = $this->connection->prepare(
-				"SELECT * FROM $setcode WHERE cardid = (SELECT id FROM cards WHERE cardname = '$cardname')"
+				"SELECT * FROM $setcode WHERE cardid = (SELECT id FROM 1cards WHERE cardname = '$cardname' AND setcode = '$setcode')"
 			);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -69,9 +111,63 @@
 			}
 		}
 
+		public function insertSingleSetPull($setcode, $time, $data){
+			//return true;
+			$stmt = $this->connection->prepare(
+				"INSERT INTO ".$setcode." 
+					(id, cardid, cardname, baseAvail, basePrice, foilAvail, foilPrice, date)
+				VALUE 
+					(0, (SELECT id FROM 1cards WHERE cardname = :cardnameA AND setcode = :setcode), :cardnameB, :baseAvail, :basePrice, :foilAvail, :foilPrice, :time)
+				");
+
+			//echo $time; die();
+			//message("-".$time."-");
+			$stmt->bindValue(":time", $time);
+			$stmt->bindValue(":setcode", $setcode);
+
+			for ($i = 0; $i < sizeof($data); $i++){
+				//message($data[$i]["cardname"]);
+				$stmt->bindParam(":cardnameA", $data[$i]["cardname"]);
+				$stmt->bindParam(":cardnameB", $data[$i]["cardname"]);
+				$stmt->bindParam(":baseAvail", $data[$i]["baseAvail"]);
+				$stmt->bindParam(":basePrice", $data[$i]["basePrice"]);
+				$stmt->bindParam(":foilAvail", $data[$i]["foilAvail"]);
+				$stmt->bindParam(":foilPrice", $data[$i]["foilPrice"]);
+
+				$stmt->execute();
+
+				if ($stmt->errorCode() == 0){
+					continue;
+				} return false;
+			}
+			return true;
+		}
+
+
+		public function getSetsToPull($date){
+			$stmt = $this->connection->prepare("
+				SELECT * FROM 1sets WHERE lastPull < '$date' ORDER BY id ASC
+			");
+		//	$stmt = $this->connection->prepare("SELECT * FROM 1sets where setcode = 'CPR'");
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			//$this->connection->query("UPDATE 1sets SET open = 0 WHERE id");
+			return $result;
+		}
+
+		public function closeSetEntry($setcode, $date){			
+			$sql = "UPDATE 1sets SET lastPull = '$date' WHERE setcode = '$setcode'";
+			//message($sql);
+			$stmt = $this->connection->prepare($sql);
+			$stmt->execute();
+			//message($stmt->rowCount());
+			return $stmt->rowCount();
+		}
+
 		public function insertFavorites($setCodes, $cardNames, $isFoil){
 			$stmt = $this->connection->prepare("
-				INSERT into favs 
+				INSERT into 1favs 
 					(id, cardname, setcode, isFoil)
 				VALUES(0, :cardname, :setcode, :isFoil)
 			");
@@ -91,7 +187,7 @@
 
 		public function deleteFavorites($ids){
 			$stmt = $this->connection->prepare(
-				"DELETE FROM favs WHERE id = :id"
+				"DELETE FROM 1favs WHERE id = :id"
 			);
 
 			for ($i = 0; $i < sizeof($ids); $i++){
@@ -109,7 +205,7 @@
 			//return array();
 
 			$stmt = $this->connection->prepare(
-				"SELECT * FROM favs ORDER BY isFoil ASC, setcode ASC, cardname ASC"
+				"SELECT * FROM 1favs ORDER BY isFoil ASC, setcode ASC, cardname ASC"
 			);
 
 			$stmt->execute();
@@ -130,5 +226,4 @@
 			}
 	    }
 	}
-
 ?>
