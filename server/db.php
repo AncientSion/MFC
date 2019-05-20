@@ -37,7 +37,7 @@
 			}
 
 			//var_export($rarities);
-			message($sql);
+			//message("SQL ".$sql);
 
 
 			$stmt = $this->connection->prepare($sql);
@@ -49,11 +49,11 @@
 				$stmt->bindParam(":setcode", $setcodes[$i]);
 
 				for ($j = 0; $j < sizeof($rarities); $j++){
-				//	message("bind rarity".($j+1));
+					//message("bind rarity".($j+1));
 					$stmt->bindParam(":rarity".($j+1), $rarities[$j]);
 				}
 
-			//	message("executing");
+				//message("executing");
 				$stmt->execute();
 				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				$set = array_merge($result, $set);
@@ -64,23 +64,21 @@
 			return $sets;
 		}
 
-		public function getSetNamesByCodes($codes){
-			$stmt = $this->connection->prepare(
-				"SELECT * FROM 1cards WHERE setcode = :setcode AND rarity = :rarity
-			");
-		}
-
 		public function isNoSetTable($string){
 			if ($string == "1cards" || $string == "1favs" || $string == "1sets"){
 				return true;
 			} return false;
 		}
 
-		public function getAllCards(){
+		public function getAllSets(){
 			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
 			$stmt->execute();
-			$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
 
+		public function getAllCards(){
+
+			$tables = $this->getAllSets();
 			$data = array();
 
 			foreach ($tables as $table){
@@ -96,6 +94,26 @@
 				$data[] = $set;
 			}
 			return $data;
+		}
+
+		public function getBulkChartData($cards){
+			$stmt = $this->connection->prepare(
+				"SELECT * FROM MPS WHERE cardid = :cardid"
+			);
+
+			for ($i = 0; $i < sizeof($cards); $i++){
+				var_export($cards[0]); die();
+				//$stmt->bindParam(":setcode", $cards[$i]["setcode"]);
+				$stmt->bindParam(":cardid", $cards[$i]["id"]);
+			
+				$stmt->execute();
+				$points = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				var_export($points); die();
+
+				$cards[$i]["points"] = $points;
+			}
+
+			return $cards;
 		}
 
 		public function getChartData($setcode, $cardname){

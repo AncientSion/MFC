@@ -147,36 +147,6 @@ function buildFullCardPool(){
 }
 
 
-
-function getSetNamesByCodes($data, $foilLookup){
-	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
-	//echo $foilLookup;
-
-	//var_export($data); return;
-
-	$codes = $sets["codes"];
-	$names = $sets["names"];
-	$return = array();
-	
-	//var_export($codes); return;
-
-	for ($i = 0; $i < sizeof($data); $i++){
-		for ($j = 0; $j < sizeof($codes); $j++){
-
-			if ($foilLookup && $j >= 2){continue;}
-
-			for ($k = 0; $k < sizeof($codes[$j]); $k++){
-				if ($data[$i] == $codes[$j][$k]){
-					$return[] = $names[$j][$k]; break 2;
-				}
-			}
-		}
-	}	
-	///var_export($return); return;
-	return $return;
-}
-
-
 function getForm($get){
 	//var_export($get);
 	$html = "";
@@ -318,38 +288,58 @@ function getForm($get){
 
 	$html .="<div class='checkWrapper'>";
 	//$html .="<div id='set' class='toggle'>Sets to include</div>";
+//	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
+//	$codes = $sets["codes"];
+//	$names = $sets["codes"];
+
+	$sets = DB::app()->getAllSets();
+
+	usort($sets, function ($a, $b){
+		if (substr($a["setcode"], 0, 1) == "_"){
+			return 1;
+		}
+		else if ($a["type"] != $b["type"]){
+			return $a["type"] - $b["type"];
+		}
+		else if ($a["foil"] != $b["foil"]){
+			return $a["foil"] - $b["foil"];
+		}
+		else if ($a["nonfoil"] != $b["nonfoil"]){
+			return $a["nonfoil"] - $b["nonfoil"];
+		}
+		else return substr($a["setcode"], 0, 1) > substr($b["setcode"], 0, 1);
+	});
+
+//for ($i = 0; $i < sizeof($sets); $i++){echo $sets[$i]["setcode"]." ".$sets[$i]["foil"]." ".$sets[$i]["nonfoil"]."</br>";}die();
 
 
 
-	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
-	$codes = $sets["codes"];
-	$names = $sets["codes"];
+	$foil = -1;
+	$nonfoil = -1;
 
-	//var_export($codes);
-	//echo "</br></br>";
-	//var_export($get["sets"]);
+	for ($i = 0; $i < sizeof($sets); $i++){
+		if ($sets[$i]["foil"] != $foil || $sets[$i]["nonfoil"] != $nonfoil){
+			$foil = $sets[$i]["foil"];
+			$nonfoil = $sets[$i]["nonfoil"];
 
-	for ($i = 0; $i < sizeof($codes); $i++){
-		$html .= "<div class='setDivider'>";
-		for ($j = 0; $j < sizeof($codes[$i]); $j++){
+			if ($i){$html .= "</div>";}
+			$html .= "<div class='setDivider'>";
+		}
 
-			$checked = "";
-			//$checked = "checked='checked'";
-			if (sizeof($get) && $get["sets"]){
-				for ($k = 0; $k < sizeof($get["sets"]); $k++){
-					if ($get["sets"][$k] == $codes[$i][$j]){
-						$checked = "checked='checked'";
-					}
+		$checked = "";
+		if (sizeof($get) && $get["sets"]){
+			for ($j = 0; $j < sizeof($get["sets"]); $j++){
+				if ($get["sets"][$j] == $sets[$i]["setcode"]){
+					$checked = "checked='checked'";
 				}
 			}
-
-			$html .="<div class='checkContainer set'><input type='checkbox' name='sets[]' value='".$codes[$i][$j]."' ".$checked.">";
-			$html .="<span>".$codes[$i][$j]."</span>";
-			$html .="</div>";
 		}
-		$html .= "</div>";
+
+		$html .="<div class='checkContainer set'><input type='checkbox' name='sets[]' value='".$sets[$i]["setcode"]."' ".$checked.">";
+		$html .="<span>".$sets[$i]["setcode"]."</span>";
+		$html .="</div>";
 	}
-	$html .="</div>";
+	$html .= "</div>";
 
 
 
@@ -395,39 +385,6 @@ function getForm($get){
 	$html .="</div>";
 
 	return $html;
-}
-
-
-
-function writeAllBoxes(){
-	$data =  file_get_contents(__DIR__."/output/avail.json");
-	$data = json_decode($data);
-	
-	for ($i = 0; $i < sizeof($data->codes[3]); $i++){
-		convertBoosterInput($data->names[3][$i], $data->codes[3][$i]);
-		return;
-	}
-}
-
-
-function convertBoosterInput($name, $code){
-	$set = array(
-		"name" => $name,
-		"cards" => array(),
-	);
-
-	$data =  file_get_contents(__DIR__."/mkm/input/".$code.".json");
-	$data = json_decode($data);
-
-	foreach ($entry as $box){
-		//echo "day: ".$day->date.": ".sizeof($day->data)."\n";
-		$set["cards"][] = array("name" => $box->name, "rarity" => "D");
-	}
-
-	$file = fopen(__DIR__."/input/".$code.".json", "a");
-	echo "writing \n";
-	fwrite($file, json_encode($set));
-	fclose($file);
 }
 
 function debug($string){
@@ -483,44 +440,14 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 
 	$db = DB::app();
 
-	$relCards = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
-
-	var_export($relCards);
-
-	die();
-
-
-
-
-
-
-	
-	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
-
-	$names = getSetNamesByCodes($codes, $foil);
-	$allSets = array();
-	
-	$cardList = json_decode(file_get_contents(__DIR__."/output/cardlist.json"), TRUE);
-
-	$db = DB::app();
-
-	$cardList = $db->getAllCardsBySetCodes($codes, $rarities);
-	$names = $db->getSetNamesByCodes($codes, $rarities);
+	$cards = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
+	$cards = $db->getBulkChartData($cards);
+	die();	
+	var_export($cards[0]); die();
 		
 	for ($i = 0; $i < sizeof($names); $i++){
-		$setName = $names[$i];
-		
-		$cards;
-		for ($j = 0; $j < sizeof($cardList); $j++){
-			if (strtoupper($cardList[$j]["code"]) == $codes[$i]){
-				$cards = $cardList[$j]["cards"];
-				break;
-			}
-		}
-		
-		
-		$points = json_decode(file_get_contents(__DIR__."/output/".$codes[$i].".json"), TRUE);
-		$points = $points["content"];
+
+
 		if (!$points){continue;}
 		
 		$delve = $depth;
