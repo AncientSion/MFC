@@ -25,7 +25,8 @@ a:link, a:visited {
 }
 
 .setDivider {
-	padding: 7px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 }
 
 #card {
@@ -156,7 +157,7 @@ div > input, div > span{
 
 .checkContainer.set {
 	display: inline-block; 
-	width: 75px;
+	width: 66px;
 	margin: auto;
 	margin-bottom: 10px;
 }

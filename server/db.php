@@ -96,30 +96,33 @@
 			return $data;
 		}
 
-		public function getBulkChartData($cards){
-			$stmt = $this->connection->prepare(
-				"SELECT * FROM MPS WHERE cardid = :cardid"
-			);
+		public function getBulkChartData($setcodes, &$cardsets, $delve){
 
-			for ($i = 0; $i < sizeof($cards); $i++){
-				var_export($cards[0]); die();
-				//$stmt->bindParam(":setcode", $cards[$i]["setcode"]);
-				$stmt->bindParam(":cardid", $cards[$i]["id"]);
-			
-				$stmt->execute();
-				$points = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				var_export($points); die();
+			$limit = ($delve == 0 ? 500 : $delve);
 
-				$cards[$i]["points"] = $points;
+			for ($i = 0; $i < sizeof($cardsets); $i++){
+				$baseSQL = "SELECT * FROM (SELECT id, baseAvail, basePrice, foilAvail, foilPrice, date FROM $setcodes[$i] WHERE cardid = :cardid ORDER BY id DESC LIMIT ".$limit.")var1 ORDER BY id ASC";
+
+				$stmt = $this->connection->prepare($baseSQL);
+
+				for ($j = 0; $j < sizeof($cardsets[$i]); $j++){
+					$stmt->bindParam(":cardid", $cardsets[$i][$j]["id"]);
+
+					$stmt->execute();
+					$points = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+					$cardsets[$i][$j]["points"] = $points;
+					//return;
+				}
 			}
 
-			return $cards;
+			//return $cardsets;
 		}
 
 		public function getChartData($setcode, $cardname){
-			$stmt = $this->connection->prepare(
-				"SELECT * FROM $setcode WHERE cardid = (SELECT id FROM 1cards WHERE cardname = '$cardname' AND setcode = '$setcode')"
-			);
+			$sql = "SELECT * FROM $setcode WHERE cardid = (SELECT id FROM 1cards WHERE cardname = '$cardname' AND setcode = '$setcode')";
+			//return $sql;
+			$stmt = $this->connection->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			return $result;
