@@ -9,11 +9,6 @@
 			//echo var_export($cards);
 			return;
 		}
-		if ($_GET["type"] == "cardlist"){
-			$cards = file_get_contents(__DIR__."/output/cardlist.json");
-			echo $cards;	
-			return;
-		}
 		else if ($_GET["type"] == "price"){
 			$set = $_GET["set"];
 			$card = $_GET["card"];
@@ -86,7 +81,7 @@
 
 	const charter = new Charter();
 	
-	window.onload = function(){
+/*	window.onload = function(){
 		timeout = false;
 
 		//$(".ui").removeClass("disabled");
@@ -94,10 +89,10 @@
 		if (remote){
 			timeout = setTimeout(function(){
 				charter.getCardData(0, $(".setSearch").val(), $(".cardSearch").val())
-			}, 300);
+			}, 500);
 		}
 }
-
+*/
 </script>
 
 <style>

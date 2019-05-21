@@ -59,6 +59,16 @@ function getForm($get){
 	//var_export($get);
 	$html = "";
 
+	$html .="<div class='upper'>";
+	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
+	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
+	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
+	$html .='<div class="lower"><a href="helper.php" target="_blank">help</a></div>';
+	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
+	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
+	$html .="</div>";
+
+
 	$html .="<form class='upper' method='get'>"; 
 
 	$foilChecked = "";
@@ -71,9 +81,16 @@ function getForm($get){
 		$foilChecked = "checked='checked'";
 	}
 
+	//$html .= 
+
 	$html .="<div class='checkWrapper'>";
+
+	$html .="<div class='optionWrapper'>";
+
+	$html .="<div class='inputContainer'>";
 	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Is Foil'".$foilChecked."'>Is Foil</div>";
 	$html .="<div class='checkContainer'><input type='radio' name='foil' value='Not Foil'".$nonFoilChecked."'>Not Foil</div>";
+	$html .= "</div>";
 
 	
 	
@@ -88,8 +105,8 @@ function getForm($get){
 	}
 
 	$html .="<div class='inputContainer'>";
-	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='PCT'".$pctChecked."'>%-based</div>";
-	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='ABS'".$absChecked."'>abs-based</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='PCT'".$pctChecked."'>pct</div>";
+	$html .="<div class='checkContainer'><input type='radio' name='compareType' value='ABS'".$absChecked."'>abs</div>";
 	$html .= "</div>";
 
 
@@ -142,7 +159,7 @@ function getForm($get){
 	$availChangeMin = -14;
 	if (sizeof($get)){$availChangeMin = $get["availChangeMin"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='availChangeMin'># Min Change %</div>";
+	$html .="<div id='availChangeMin'># Min Change</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min=-100 max=100 value='".$availChangeMin."' name='availChangeMin'>";
 	$html .= "</div>";
@@ -151,7 +168,7 @@ function getForm($get){
 	$availChangeMax = 14;
 	if (sizeof($get)){$availChangeMax = $get["availChangeMax"];}
 	$html .="<div class='inputContainer'>";
-	$html .="<div id='availChangeMax'># Max Change %</div>";
+	$html .="<div id='availChangeMax'># Max Change</div>";
 	$html .="<div class=''>";
 	$html .= "<input type='number' min=-100 max=100 value='".$availChangeMax."' name='availChangeMax'>";
 	$html .= "</div>";
@@ -189,9 +206,10 @@ function getForm($get){
 	$html .= "<input type='checkbox' name='skipUnchanged' value='1'".$checked."'>";
 	$html .= "Skip 0</div>";
 
-
-
 	$html .= "</div>";
+	$html .= "</div>";
+
+	
 
 	$html .="<div class='checkWrapper'>";
 	//$html .="<div id='set' class='toggle'>Sets to include</div>";
@@ -252,6 +270,7 @@ function getForm($get){
 	$rarity = array("C", "U", "R", "M", "S");
 	$preset = array('', '', "checked='checked'", "checked='checked'", "checked='checked'");
 	$html .="<div class='checkWrapper'>";
+	$html .="<div class='optionWrapper'>";
 
 	if (sizeof($get) && $get["rarities"]){
 		for ($i = 0; $i < sizeof($rarity); $i++){
@@ -276,21 +295,11 @@ function getForm($get){
 			$html .="</div>";
 		} 
 	}
-	$html .="</div>";
 	
 	$html .="<div style='display: inline-block'><input type='submit' style='width: 100px; font-size: 20px' value='Search'></input></div>";
 	$html .="</div>";
-	$html .="</form>";
-
-	$html .="<div class='upper'>";
-	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
-	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
-	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
-	$html .='<div class="lower"><a href="helper.php" target="_blank">help</a></div>';
-	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
-	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
 	$html .="</div>";
-
+	$html .="</form>";
 	return $html;
 }
 
@@ -331,11 +340,11 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	$db = DB::app();
 
 
-
+	$setnames = $db->getPickedSetNames($codes);
 	$data = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
 	$db->getBulkChartData($codes, $data, $depth);
 
-	//var_export($data);
+	//var_export($data); die();
 
 	//foreach ($data[0][0]["points"] as $point){var_export($point); echo "</br>";}
 
@@ -344,7 +353,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	for ($i = 0; $i < sizeof($data); $i++){
 
 		$extract = array(
-			"setname" => "setname",
+			"setname" => $setnames[$i]["setname"],
 			"setcode" => $codes[$i],
 			"compareDate" => $data[$i][0]["points"][0]["date"],
 			"lastDate" => $data[$i][0]["points"][sizeof($data[$i][0]["points"])-1]["date"],
@@ -409,52 +418,18 @@ function setChangeValue(&$card, $forFoil){
 	$card["foilAvailChange"] = array(0, 0);
 	$card["foilPriceChange"] = array(0, 0);
 
-	//echo $card["points"][sizeof($card["points"])-1][$props[0]]; die(); 
-
-	//	var_export($card["points"][sizeof($card["points"])-1]); echo "</br>";
-	//	var_export($card["points"][0]); echo "</br>";
-
 	$absStockChange = $card["points"][sizeof($card["points"])-1][$props[0]] - $card["points"][0][$props[0]];
 	$absPriceChange = $card["points"][sizeof($card["points"])-1][$props[1]] - $card["points"][0][$props[1]];
-
-	//echo "from ".$card["points"][0][$props[0]]." to ".$card["points"][sizeof($card["points"])-1][$props[0]];
 
 	$pctStockChange = round($absStockChange / $card["points"][0][$props[0]] * 100, 2);
 	$pctPriceChange = round($absPriceChange / $card["points"][0][$props[1]] * 100, 2);
 
-	//echo ("stock pct change ".$pctStockChange.", abs ".$absStockChange);
-	//die();
-
-	//echo "</br>";
 	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
 
 	$card[$props[0]."Change"] = array($absStockChange, $pctStockChange);
 	$card[$props[1]."Change"] = array($absPriceChange, $pctPriceChange);
 
-	//unset($card["points"]);
-	//var_export($card);
-	//die();
 	return;
-
-	echo $absStockChange ." *** ".$absPriceChange;
-	echo "</br>";
-	echo $pctStockChange ." *** ".$pctPriceChange;
-	die();
-
-
-	var_export($card); die();
-	$props = array();
-	
-		
-	for ($i = 0; $i < sizeof($props); $i++){
-		if ($card[$props[$i]][sizeof($card[$props[$i]])-1] == 0){
-			$card[$props[$i]."Change"][0] = 0; $card[$props[$i]."Change"][1] = 0;
-			return;
-		}
-		$card[$props[$i]."Change"][0] = round($card[$props[$i]][0] - $card[$props[$i]][sizeof($card[$props[$i]])-1], 2); 
-		$card[$props[$i]."Change"][1] = round((($card[$props[$i]][0] / $card[$props[$i]][sizeof($card[$props[$i]])-1])*100)-100, 2);
-	}
-	//var_export(func_get_args()); die();
 }
 
 

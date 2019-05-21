@@ -445,9 +445,15 @@ class Charter {
 		});
 	}
 
+	needsToLoadChart(){
+		if (this.siteIsFavorites()){return true;}
+		if (window.remote){return true;}
+		return false;
+	}
+
 	loadExistingCharts(){
 
-		if (!this.siteIsFavorites()){return;}
+		if (!this.needsToLoadChart()){return;}
 		let things = [];
 
 		$(".mainContainer").each(function(){

@@ -72,7 +72,8 @@ function setRes(){
 	$(".scrollWrapper").css("max-height", rem).css("height", rem);
 }
 
-function showRules(){
+function showCardText(){
+	return;
     $.ajax({
         type: "GET",
         url: "shakers.php",
@@ -103,7 +104,7 @@ function showPic(ele){
               }
             }
             else {
-                showRules();
+                showCardText();
             }
 }
 

@@ -21,6 +21,22 @@
 	        return self::$instance;
 		}
 
+		public function getPickedSetNames($setcodes){
+			$sql = "SELECT * FROM 1sets WHERE setcode = :setcode";
+			$stmt = $this->connection->prepare($sql);
+
+			$names = array();
+			
+			for ($i = 0; $i < sizeof($setcodes); $i++){
+				$stmt->bindParam(":setcode", $setcodes[$i]);
+				$stmt->execute();
+				$code = $stmt->fetch(PDO::FETCH_ASSOC);
+				$names[] = $code;
+			}
+
+			return $names;
+		}
+
 		public function getAllPickedCardsForShakersFromDB($setcodes, $rarities){
 			$sql = "SELECT * FROM 1cards WHERE setcode = :setcode AND (";
 
@@ -35,10 +51,6 @@
 					$sql .= ")";
 				}
 			}
-
-			//var_export($rarities);
-			//message("SQL ".$sql);
-
 
 			$stmt = $this->connection->prepare($sql);
 
@@ -98,7 +110,7 @@
 
 		public function getBulkChartData($setcodes, &$cardsets, $delve){
 
-			$limit = ($delve == 0 ? 500 : $delve);
+			$limit = ($delve == 0 ? 500 : $delve+1);
 
 			for ($i = 0; $i < sizeof($cardsets); $i++){
 				$baseSQL = "SELECT * FROM (SELECT id, baseAvail, basePrice, foilAvail, foilPrice, date FROM $setcodes[$i] WHERE cardid = :cardid ORDER BY id DESC LIMIT ".$limit.")var1 ORDER BY id ASC";
@@ -120,16 +132,13 @@
 		}
 
 		public function getChartData($setcode, $cardname){
-			$sql = "SELECT * FROM $setcode WHERE cardid = (SELECT id FROM 1cards WHERE cardname = '$cardname' AND setcode = '$setcode')";
-			//return $sql;
+			//debug("request ".$cardname);
+			$sql = 'SELECT * FROM '.$setcode.' WHERE cardid = (SELECT id FROM 1cards WHERE cardname = "'.$cardname.'" AND setcode = "'.$setcode.'")';
 			$stmt = $this->connection->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			//debug("fullfill ".$cardname);
 			return $result;
-			//return $sql;
-			foreach ($this->connection->query($sql) as $row){
-				return $row;
-			}
 		}
 
 		public function insertSingleSetPull($setcode, $time, $data){
