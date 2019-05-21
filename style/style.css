@@ -5,7 +5,7 @@ body {
 }
 
 input[type=checkbox], input[type=radio] {
-  transform: scale(1.5);
+  transform: scale(1.25);
 }
 
 form {
@@ -19,7 +19,7 @@ form {
 
 .lower {
 	display: inline-block;
-	width: 120px;
+	width: 140px;
 	margin: auto;
 }
 
@@ -42,7 +42,7 @@ a:link, a:visited {
 }
 
 #card {
-	width: 215px;
+	width: 160px;
 	font-size: 16px;
 }
 
@@ -53,7 +53,7 @@ a:link, a:visited {
 .container {
 	display: inline-block;
 	position: relative;
-	width: 400px;
+	width: 440px;
 }
 
 .scrollWrapper {
@@ -64,8 +64,9 @@ a:link, a:visited {
 
 .mainContainer {
 	padding: 5px;
-	width: 1400px;
+	width: 1080px;
 	margin: auto;
+	height: 240px;
 }
 
 th {
@@ -73,7 +74,7 @@ th {
 }
 
 .mainContainer > div {
-	width: 75%;
+	dwidth: 75%;
 	margin: auto;
 }
 
@@ -88,8 +89,8 @@ th {
 
 #cardName {
 	font-size: 20px;
-	width: 300px;
-	margin-left: 30px;
+	dwidth: 300px;
+	smargin-left: 30px;
 }
 
 
@@ -139,9 +140,12 @@ div > input, div > span{
 	margin-top: 10px;
 	margin: auto;
 	width: 1000px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+
 }
 
-.moveTable th, .moveTable td {
+.moveTable dth, .moveTable td {
 	border: 1px solid white;
 	text-align: center;
 }

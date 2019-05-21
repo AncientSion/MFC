@@ -88,17 +88,25 @@
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 
+		public function getLastPullDate(){
+			$sql = "SELECT lastPull from 1sets WHERE id ORDER BY id DESC LIMIT 1";
+			foreach ($this->connection->query($sql) as $result){
+				return $result["lastPull"];
+			}
+		}
+
 		public function getAllCards(){
 
 			$tables = $this->getAllSets();
 			$data = array();
 
+			$stmt = $this->connection->prepare("
+				SELECT * FROM 1cards WHERE setcode = :setcode"
+			);
+			
 			foreach ($tables as $table){
-
 				$set = array("setcode" => $table['setcode'], "setname" => $table["setname"], "cards" => array());
-
-				$sql = ("SELECT * FROM 1cards WHERE setcode = '".$table["setcode"]."'");
-				$stmt = $this->connection->prepare($sql);
+				$stmt->bindParam(":setcode", $table["setcode"]);				
 				$stmt->execute();
 				$cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

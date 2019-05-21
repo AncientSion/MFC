@@ -47,15 +47,17 @@ class Charter {
 	}
 
 	getCardData(screen, setName, cardName){
-		if (!setName || !cardName){return;}
+		if (!setName || !cardName){
+			return;
+		}
 
 		var set = this.getFullSet(setName);
-		//var card = this.getCardName(set, cardName);
 		var others = this.getOthers(cardName);
 
-		if (!set || !cardName){return;}
+		if (!set || !cardName){
+			return;
+		}
 
-		//console.log("valid, setName: " + setName + ", cardName: " + cardName);
 		this.getPriceData(screen, set.setcode, cardName);
 		
 	}

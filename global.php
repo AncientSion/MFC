@@ -57,9 +57,15 @@ function getMemory(){
 
 function getForm($get){
 	//var_export($get);
+
+	$db = DB::app();
+
+	$lastPull = $db->getLastPullDate();
+
 	$html = "";
 
 	$html .="<div class='upper'>";
+	$html .='<div class="lower">Last: '.$lastPull.'</div>';
 	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
 	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
 	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
@@ -217,7 +223,7 @@ function getForm($get){
 //	$codes = $sets["codes"];
 //	$names = $sets["codes"];
 
-	$sets = DB::app()->getAllSets();
+	$sets = $db->getAllSets();
 
 	usort($sets, function ($a, $b){
 		if (substr($a["setcode"], 0, 1) == "_"){
@@ -361,9 +367,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 		);
 
 		//var_export($extract);
-
 		//echo $maxAvail;
-
 		//message(sizeof($data[$i]));
 
 		for ($j = sizeof($data[$i])-1; $j >= 0; $j--){
@@ -421,8 +425,10 @@ function setChangeValue(&$card, $forFoil){
 	$absStockChange = $card["points"][sizeof($card["points"])-1][$props[0]] - $card["points"][0][$props[0]];
 	$absPriceChange = $card["points"][sizeof($card["points"])-1][$props[1]] - $card["points"][0][$props[1]];
 
-	$pctStockChange = round($absStockChange / $card["points"][0][$props[0]] * 100, 2);
-	$pctPriceChange = round($absPriceChange / $card["points"][0][$props[1]] * 100, 2);
+
+	//message($card["cardname"]); message($absPriceChange); message($card["points"][0][$props[1]]);
+	$pctStockChange = $card["points"][0][$props[0]] != 0 ? round($absStockChange / $card["points"][0][$props[0]] * 100, 2) : 0;
+	$pctPriceChange = $card["points"][0][$props[1]] != 0 ? round($absPriceChange / $card["points"][0][$props[1]] * 100, 2) : 0;
 
 	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
 
@@ -465,7 +471,6 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 
 	for ($i = 0; $i < sizeof($allSets); $i++){
 		$subHTML = "";
-		$setString = $allSets[$i]['setname']." - ".$allSets[$i]['setcode'];
 
 		$subHTML .="<table class='moveTable' style='width: 100%'>";
 
@@ -476,7 +481,7 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 		$subHTML .="<span class='setName'>".$allSets[$i]["setcode"]."</span>";
 		$subHTML .="</th></tr>";
 		$subHTML .="<tr class='sort'>";
-		$subHTML .="<th colSpan=1>".$setString."</th>";
+		$subHTML .="<th style='width: 300px' colSpan=1>".$allSets[$i]['setname']." - ".$allSets[$i]['setcode']."</th>";
 
 	//	$subHTML .="<th style='width: 50px'></th>"; // chart link
 	//	$subHTML .="<th style='width: 50px'></th>"; // mkm link

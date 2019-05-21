@@ -107,11 +107,6 @@
 		font-size: 12px;
 	}
 	
-	.mainContainer {
-		margin: auto;
-		height: 230px;
-	}
-	
 	div input[type=number] {
 		width: 60px;
 	}

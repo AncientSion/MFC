@@ -19,7 +19,7 @@ $(document).ready(function(){
 		})
 
 		$(this).find("tbody").find("tr").each(function(){
-			$(this).hover(
+		/*	$(this).hover(
 				function(){
 					charter.setCode = $(this).closest(".moveTable").find(".setName").html();
 					charter.cardName = $(this).find("a").first().html();
@@ -29,9 +29,10 @@ $(document).ready(function(){
 					charter.cardName = "";
 				}
 			)
-			.find("td a").hover(
+		*/	$(this).find("td a").hover(
 				function(){
-					charter.getCardData(0, charter.setCode, charter.cardName);
+					charter.getCardData(0, $(this).closest(".moveTable").find(".setName").html(), $(this).closest("a").html());
+					//charter.getCardData(0, charter.setCode, charter.cardName);
 				},
 				function(){
 				}
@@ -44,7 +45,7 @@ $(document).ready(function(){
 			showPic(this);
 		},
 		function(){
-			emptyPic(this);
+		//	emptyPic(this);
 		}
 	)
 })
@@ -97,7 +98,7 @@ function showPic(ele){
                     url += "/tooltip";
 
                 img = document.createElement('img');
-                img.style.height = $(".mainContainer").height()-10;
+                img.style.height = $(".mainContainer").height()-20;
                 img.src = url;
                 img.onload = function(){
                     $("#card").empty().append($("<div>").append($(img)));
