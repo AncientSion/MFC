@@ -22,9 +22,8 @@ $time = -microtime(true);
 
 echo "\n\n\nScript Execution Started \n\n";
 
-
-
 fetchAll($date);
+
 $time += microtime(true);
 
 echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["cards"]." entries over ".$GLOBALS["requests"]." requests";
@@ -34,7 +33,6 @@ echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)
 function fetchAll($day){
 	crawl($day);
 	logErrors();
-
 }
 
 function crawl($date){

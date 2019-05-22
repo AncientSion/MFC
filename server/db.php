@@ -251,6 +251,50 @@
 			return $result;
 		}
 
+		public function insertNewSet($set){
+			message("insertNewSet");
+			//$this->connection->query("DELETE FROM 1sets WHERE setcode = '".$set["setcode"]."'");
+
+			$stmt = $this->connection->prepare("
+				INSERT INTO 1sets VALUES (0, :setcode, :setname, :foil, :nonfoil, :lastPull, :type)
+			");
+
+			$stmt->bindParam(":setcode", $set["setcode"]);
+			$stmt->bindParam(":setname",$set["setname"]);
+			$stmt->bindParam(":foil", $set["foil"]);
+			$stmt->bindParam(":nonfoil", $set["nonfoil"]);
+			$stmt->bindParam(":lastPull", $set["lastPull"]);
+			$stmt->bindParam(":type", $set["type"]);
+			$stmt->execute();
+			if ($stmt->errorCode() == 0){
+				return $this->connection->lastInsertId();
+			} return false;
+		}
+
+
+		public function insertNewCardsWithSetID($setid, $setcode, $cards){
+
+			$stmt = DB::app()->connection->prepare(
+				"INSERT INTO 1cards 
+					(id, setid, cardname, setcode, rarity)
+				VALUES
+					(0, :setid, :cardname, :setcode, :rarity)
+			");
+
+			$stmt->bindParam(":setid", $setid);
+			$stmt->bindParam(":setcode", $setcode);
+
+			for ($i = 0; $i < sizeof($cards); $i++){
+				$stmt->bindParam(":cardname", $card["cardname"]);
+				$stmt->bindParam(":rarity", $card["rarity"]);
+				$stmt->execute();
+				if ($stmt->errorCode() != 0){
+					return false;
+				}
+			}
+			return true;
+		}
+
 	    public function dump(){
 	    	//Debug::log("dumping DB");
 	    	$os = PHP_OS;

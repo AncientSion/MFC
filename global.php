@@ -24,9 +24,6 @@ function requestCardText($cardname, $set){
 }
 
 function getMKMURL($set, $card){
-
-	//echo $card;
-	//echo "</br>";
 	
 	if (strlen($set) > 5 && substr($set, strlen($set)-5, 5) == "Boxes"){
 		$base = "https://www.cardmarket.com/en/".substr($set, 0, strlen($set)-6)."/Products/Booster+Boxes/";
@@ -65,12 +62,12 @@ function getForm($get){
 	$html = "";
 
 	$html .="<div class='upper'>";
-	$html .='<div class="lower">Last: '.$lastPull.'</div>';
+	$html .='<div class="lower yellow">'.$lastPull.'</div>';
 	$html .='<div class="lower"><a href="shakers.php">Reload Blank</a></div>';
 	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
 	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
 	$html .='<div class="lower"><a href="helper.php" target="_blank">help</a></div>';
-	$html .='<div class="lower"><input id="toggleVis" type="button" value="hide"></div>';
+	$html .='<div class="lower"><input type="button" value="hide" onclick="toggleUI()"></div>';
 	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
 	$html .="</div>";
 
@@ -331,6 +328,13 @@ function logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $min
 	file_put_contents(__DIR__."/search.log", json_encode($search, JSON_NUMERIC_CHECK).",\n", FILE_APPEND);
 }
 
+function isValidSetForSearchOptions($set, $foil){
+	if ($set["foil"] && $foil || $set["nonfoil"] && !$foil){
+		return true;
+	}
+	//echo "skipping ".$set["setname"];
+	return false;
+}
 
 function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType){
 
@@ -342,11 +346,20 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 
 	logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $minPrice, $maxPrice, $availChangeMin, $availChangeMax, $plusminus, $stackDisplay, $skipUnchanged, $compareType);
 
-
 	$db = DB::app();
 
 
 	$setnames = $db->getPickedSetNames($codes);
+
+	for ($i = sizeof($setnames)-1; $i >= 0; $i--){
+		if (!isValidSetForSearchOptions($setnames[$i], $foil)){
+			array_splice($setnames, $i, 1);
+			array_splice($codes, $i, 1);
+		}
+	}
+
+
+
 	$data = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
 	$db->getBulkChartData($codes, $data, $depth);
 
@@ -561,8 +574,8 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 			$subHTML .="<tr>";
 
 			$subHTML .="<td class='cardEntryContainer'>";
-			//$subHTML .= "<input type='button' value='add' onclick='charter.addSingleFavorite($(this))'></add>";
-			$subHTML .= "<div onclick='charter.addSingleFavorite($(this))'>add</div>";
+			//$subHTML .= "<input type='button' value='Fav+' onclick='charter.addSingleFavorite($(this))'>";
+			$subHTML .= "<div class='addFavWrapper'><div onclick='charter.addSingleFavorite($(this))'>fav+</div></div>";
 
 			$subHTML .= "<div class='hover' data-hover='$cardname'>";
 				$chartUrl = "charts.php?type=preset&set=".urlencode($allSets[$i]["setname"])."&card=".urlencode($card["cardname"]);
@@ -614,69 +627,15 @@ function writeAndClose($db, $setcode, $date, $pulldata){
 	return true;
 }
 
-function writeAndCloseo($code, $data){
-	echo "Writing ".$code.", entries: ".sizeof($data["data"])."\n";
-	$GLOBALS["cards"] += sizeof($data["data"]);
-	//$file = fopen(__DIR__."/output/" . $code .".json", "a");
-	$file = fopen(__DIR__."/output/" . $code .".json", "r+");
-	fseek($file, -2, SEEK_END);
-	fwrite($file, ",".json_encode($data)."]}");
-	fclose($file);
-}
-
-
-function fixOutputSets(){
-	$sets = json_decode(file_get_contents(__DIR__."/output/avail.json"), TRUE);
-	$codes = $sets["codes"];
-	$names = $sets["names"];
-
-	//for ($i = 0; $i < 1; $i++){
-	//	for ($j = 0; $j < 1; $j++){
-	for ($i = 0; $i < sizeof($codes); $i++){
-		for ($j = 0; $j < sizeof($codes[$i]); $j++){
-
-			echo "doing set: ".$names[$i][$j]."</br>";
-			$errorA = 0;
-			$errorB = 0;
-			$errorC = 0;
-			$errorD = 0;
-
-			$file = fopen(__DIR__."/output/" . $codes[$i][$j] .".json", "r+");
-			fseek($file, 0);
-
-			fwrite($file, '{"code": "'.$codes[$i][$j].'",');
-			fwrite($file, "\n");
-			fwrite($file, '"content": [');
-			fwrite($file, "\n");
-
-			//fclose($file);
-			//$file = fopen(__DIR__."/output/" . $codes[$i][$j] .".json", "a");
-
-			$data = json_decode(file_get_contents(__DIR__."/output/".$codes[$i][$j].".json"), TRUE);
-
-			for ($k = 0; $k < sizeof($data["content"]); $k++){
-				for ($l = 0; $l < sizeof($data["content"][$k]["data"]); $l++){
-
-					$data["content"][$k]["code"] = $codes[$i][$j];
-
-					if (!isset($data["content"][$k]["data"][$l]["baseAvail"])){$data["content"][$k]["data"][$l]["baseAvail"] = 0;$errorA++;}
-					if (!isset($data["content"][$k]["data"][$l]["basePrice"])){$data["content"][$k]["data"][$l]["basePrice"] = 0;$errorB++;}
-					if (!isset($data["content"][$k]["data"][$l]["foilAvail"])){$data["content"][$k]["data"][$l]["foilAvail"] = 0;$errorC++;}
-					if (!isset($data["content"][$k]["data"][$l]["foilPrice"])){$data["content"][$k]["data"][$l]["foilPrice"] = 0;$errorD++;}
-				}
-
-				fwrite($file, json_encode($data["content"][$k]));
-				fwrite($file, "\n");
-
-				if ($k < sizeof($data["content"])-1){
-					fwrite($file, ",");
-				} else fwrite($file, "]}");
-			}
-
-			echo "found errors: ".$errorA."/".$errorB."/".$errorC."/".$errorD."</br>";
-			fclose($file);
-		}
-	}
+function getContext(){
+	return $context = stream_context_create(
+	    array(
+	        "http" =>
+				array(
+				    "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
+				)
+			)
+	);
 }
 
 

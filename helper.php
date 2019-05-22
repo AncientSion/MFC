@@ -9,37 +9,104 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
-//convertToBase();
-//deleteDoubledCardEntries();
-//checkValidJson();
-//deleteForeignFromInput();
-//checkForNull(); return;
-
-//recreateAllCardsTable();
-//reDoSetsTable();
 
 
-if (0){
-	writeToBase();
-	return;
-}
+handleNewSetCreation();
 
-
-//deleteFromWithin(2); die();
-//handleSetCreationFromJSON();
-
-	//recreateAllCardsTable();
-
-	//deleteFromEnd(-2);
-	//search();
-
-//deleteNull();
 
 
 $time += microtime(true);
 message("Script Execution Completed; TIME:".round($time, 2)." seconds");
 
 
+function handleNewSetCreation(){
+
+
+	message("handleNewSetCreation");
+	$set = array(
+		"setcode" => "C",
+		"setname" => "Modern Horizons",
+		"foil" => 1,
+		"nonfoil" => 1,
+		"lastPull" => "0000-00-00",
+		"type" => 0
+	);
+
+	$db = DB::app();
+
+	$sql = ("SELECT id FROM 1sets ORDER BY id DESC LIMIT 1");
+
+	foreach ($db->connection->query($sql) as $row){
+		print_r($row);
+	}
+	die();
+
+	$db->connection->beginTransaction();
+
+
+	$setid = $db->insertNewSet($set);
+
+	message("setid ".$setid);
+	//message($db->connection->lastInsertId());
+
+	//$db->connection->commit();
+
+		$db->connection->rollback();
+		//
+
+	//message($db->connection->lastInsertId());
+}
+
+function handleNewSetCreation1(){
+	message("handleNewSetCreation");
+	$db = DB::app();
+	$context = getContext();
+
+	$set = array(
+		"setcode" => "MHZ",
+		"setname" => "Modern Horizons",
+		"foil" => 1,
+		"nonfoil" => 1,
+		"lastPull" => "0000-00-00",
+		"type" => 0
+	);
+
+
+	$db->connection->beginTransaction();
+	$setid = $db->insertNewSet($set);
+	if (!$setid){message("no set id!"); return;}
+
+	die();
+	$pulled;
+
+	switch ($set["type"]){
+		case 0: $pulled = crawlBaseSet($db, $context, $set); break;
+		case 1: $pulled = crawlGameBoxes($db, $context, $set); break;
+		case 2: $pulled = crawlFreeURL($db, $context, $set); break;
+	}
+
+	if ($pulled){message("no data pulled!"); return;}
+
+	$cardsInserted = $db->insertNewCardsWithSetID($setid, $set["setcode"], $pulled);
+	if (!$cardsInserted){message("didnt insert new cards!"); return;}
+
+
+	$success = false;
+	if ($db->insertSingleSetPull($set["setcode"], $date, $pulled)){
+		if ($db->closeSetEntry($set["setcode"], $date)){
+			$success = true;
+		}
+	}
+
+	if ($success){
+		message("success!");
+		$db->connection->commit();
+	}
+	else {
+		message("rollback !");
+		$db->rollback();
+	}
+}
 
 
 function search(){
@@ -720,20 +787,4 @@ function writeToFoil(){
 	}
 }
 
-function writeToBase(){
-	$tables = ["LEA", "LEB", "2ED", "3ED", "LEG", "ARN", "ATQ", "ALI", "TMP", "WTH", "STH", "EXO", "MIR", "VIS", "USG", "C16", "C17","C18", "_SET", "_PCG", "_MTG", "_YGO", "_CFV", "_DGB", "_FOW", "_MLP", "_SPS", "_SWD", "_WOW", "_WS", "_DBS", "_FF"];
-
-	$db = DB::app();
-	$stmt = $db->connection->prepare("
-		UPDATE 1sets SET foil = 0, nonfoil = 1 WHERE setcode = :setcode
-	");
-
-	foreach ($tables as $table){
-		$stmt->bindParam(":setcode", $table);
-		$stmt->execute();
-	}
-}
-
-
-//SELECT cardname, count(cardname), setcode, count(setcode) FROM cards group by cardname, setcode HAVING (count(cardname) > 1 and count(setcode) > 1)
 ?>

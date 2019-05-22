@@ -12,6 +12,15 @@ form {
 	border: 1px solid white;
 }
 
+.addFavWrapper {
+	border: 1px solid white;
+	cursor: pointer;
+}
+
+.yellow {
+	color: yellow;
+}
+
 .upper {
 	margin: auto;
 	width: 1115px;

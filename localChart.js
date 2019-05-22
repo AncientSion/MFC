@@ -58,8 +58,6 @@ $(".setDivider").contextmenu(function(e){
 	})
 })
 
-$("#toggleVis").click(toggleUI);
-
 function toggleUI(){
 	$(".checkWrapper").toggleClass("disabled");
 	setRes();

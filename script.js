@@ -199,7 +199,7 @@ class Charter {
 //function doReplace($name){return str_replace("'", "", str_replace(" ", "-", str_replace(",", "", $name)));
 
 	getMKMCardURL(setcode, cardname){
-		
+		if (!this.isLoaded){return;}
 		setcode = setcode.length < 4 ? this.getSetnameBySetcode(setcode) : setcode
 		
 		setcode = setcode.replace(/ /g, "-");
@@ -225,8 +225,23 @@ class Charter {
 			if (!i){
 				set = $(this).val();
 			} else if (i == 1){card = $(this).val()}
-		})
-	//	console.log(set, card);
+		});
+		console.log(set, card);
+
+		let url = this.getMKMCardURL(set, card)
+
+		if (!url){return;}
+		window.open(url, '_blank');
+	}
+
+	linkToChartsPHP(element){
+		let set = "";
+		let card = "";
+		$(element).parent().parent().find("input").each(function(i){
+			if (!i){
+				set = $(this).val();
+			} else if (i == 1){card = $(this).val()}
+		});
 
 		window.open("charts.php?type=preset&set="+set+"&card="+card, '_blank');
 	}
@@ -439,7 +454,7 @@ class Charter {
 			success: function(data){
 			//	console.trace();
 				self.data = JSON.parse(data);
-				self.loaded = 1;
+				self.isLoaded = 1;
 				self.initCardSearchInputs($(".search").first());
 				self.loadExistingCharts();
 			},

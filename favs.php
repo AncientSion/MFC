@@ -87,7 +87,8 @@
 						<div>
 							<input type='form' value='".$fav["setcode"]."'>
 							<input type='form' value='".$fav["cardname"]."'>
-							<input type='button' value='Chart' onclick=charter.linkToMKM(this)>
+							<input type='button' value='Full' onclick=charter.linkToChartsPHP(this)>
+							<input type='button' value='MKM' onclick=charter.linkToMKM(this)>
 							<input type='button' value='DEL' onclick=charter.deleteSingleFavorite(this)>
 						</div>
 					</div>";
@@ -130,6 +131,7 @@
 		margin: auto;
 		width: 300px;
 		padding: 2px;
+		height: unset;
 	}
 
 	.mainContainer div {
