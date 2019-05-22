@@ -285,14 +285,52 @@
 			$stmt->bindParam(":setcode", $setcode);
 
 			for ($i = 0; $i < sizeof($cards); $i++){
-				$stmt->bindParam(":cardname", $card["cardname"]);
-				$stmt->bindParam(":rarity", $card["rarity"]);
+				//print_r($cards[$i]); return false;
+				$stmt->bindParam(":cardname", $cards[$i]["cardname"]);
+				$stmt->bindParam(":rarity", $cards[$i]["rarity"]);
 				$stmt->execute();
-				if ($stmt->errorCode() != 0){
-					return false;
+				if ($stmt->errorCode() == 0){
+					continue;
 				}
+				//message("return false");
+				return false;
 			}
 			return true;
+		}
+
+		public function deleteNULLEntries(){
+
+			$stmt = $this->connection->prepare("SHOW TABLES");
+			$stmt->execute();
+
+			$tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			//print_r($tables);
+
+			$null = array();
+			foreach ($tables as $table){
+				$tbn = $table['Tables_in_crawl'];
+				//print_r($tbn);
+				if ($this->isNoSetTable($tbn)){continue;}
+				//message("checking ".$tbn);
+
+				$query = "SELECT * FROM ".$tbn." WHERE cardid IS NULL";
+				$stmt = $this->connection->prepare($query);
+				$stmt->execute();
+
+				$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				if (sizeof($subResults)){
+					$null[] = $tbn;
+					message("null in ".$tbn.": ".sizeof($subResults));
+					//print_r($subResults[0]); return;
+				}
+			}
+
+			for ($i = 0; $i < sizeof($null); $i++){
+				$sql = "DELETE FROM ".$null[$i]." WHERE cardid IS NULL";
+				$this->connection->exec($sql);
+				$sql = "UPDATE 1sets SET lastPull = '0000-00-00' WHERE setcode = ".$null[$i];
+				$this->connection->exec($sql);
+			}
 		}
 
 	    public function dump(){

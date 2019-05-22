@@ -203,6 +203,8 @@ class Charter {
 		setcode = setcode.length < 4 ? this.getSetnameBySetcode(setcode) : setcode
 		
 		setcode = setcode.replace(/ /g, "-");
+		setcode = setcode.replace(/:/g, "");
+		setcode = setcode.replace(/-- /g, "");
 		cardname = cardname.replace(/ /g, "-");
 		cardname = cardname.replace(/'/g, "");
 		cardname = cardname.replace(/,/g, "");

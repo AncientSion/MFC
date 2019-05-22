@@ -9,8 +9,7 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
-
-
+checkAllForNull();
 handleNewSetCreation();
 
 
@@ -20,64 +19,30 @@ message("Script Execution Completed; TIME:".round($time, 2)." seconds");
 
 
 function handleNewSetCreation(){
-
-
-	message("handleNewSetCreation");
-	$set = array(
-		"setcode" => "C",
-		"setname" => "Modern Horizons",
-		"foil" => 1,
-		"nonfoil" => 1,
-		"lastPull" => "0000-00-00",
-		"type" => 0
-	);
-
-	$db = DB::app();
-
-	$sql = ("SELECT id FROM 1sets ORDER BY id DESC LIMIT 1");
-
-	foreach ($db->connection->query($sql) as $row){
-		print_r($row);
-	}
-	die();
-
-	$db->connection->beginTransaction();
-
-
-	$setid = $db->insertNewSet($set);
-
-	message("setid ".$setid);
-	//message($db->connection->lastInsertId());
-
-	//$db->connection->commit();
-
-		$db->connection->rollback();
-		//
-
-	//message($db->connection->lastInsertId());
-}
-
-function handleNewSetCreation1(){
+	return;
 	message("handleNewSetCreation");
 	$db = DB::app();
 	$context = getContext();
 
 	$set = array(
-		"setcode" => "MHZ",
-		"setname" => "Modern Horizons",
+		"id" => 0,
+		"setcode" => "STC",
+		"setname" => "Store Championship Promos",
 		"foil" => 1,
-		"nonfoil" => 1,
+		"nonfoil" => 0,
 		"lastPull" => "0000-00-00",
 		"type" => 0
 	);
 
-
 	$db->connection->beginTransaction();
-	$setid = $db->insertNewSet($set);
-	if (!$setid){message("no set id!"); return;}
 
-	die();
+	$set["id"] = $db->insertNewSet($set);
+	if (!$set["id"]){message("no set id!"); return;}
+	$db->connection->exec("CREATE TABLE ".$set["setcode"]." LIKE 2ed");
+
 	$pulled;
+
+	message("\n__NOW - ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].", foil ".$set["foil"].", nonfoil ".$set["nonfoil"]);
 
 	switch ($set["type"]){
 		case 0: $pulled = crawlBaseSet($db, $context, $set); break;
@@ -85,26 +50,27 @@ function handleNewSetCreation1(){
 		case 2: $pulled = crawlFreeURL($db, $context, $set); break;
 	}
 
-	if ($pulled){message("no data pulled!"); return;}
+	if (!$pulled){message("no data pulled!"); return;}
 
-	$cardsInserted = $db->insertNewCardsWithSetID($setid, $set["setcode"], $pulled);
+	$cardsInserted = $db->insertNewCardsWithSetID($set["id"], $set["setcode"], $pulled);
 	if (!$cardsInserted){message("didnt insert new cards!"); return;}
 
 
 	$success = false;
-	if ($db->insertSingleSetPull($set["setcode"], $date, $pulled)){
+
+/*	if ($db->insertSingleSetPull($set["setcode"], $date, $pulled)){
 		if ($db->closeSetEntry($set["setcode"], $date)){
 			$success = true;
 		}
 	}
-
-	if ($success){
+*/
+	if ($cardsInserted){
 		message("success!");
 		$db->connection->commit();
 	}
 	else {
 		message("rollback !");
-		$db->rollback();
+		$db->connection->rollback();
 	}
 }
 
@@ -155,21 +121,16 @@ function checkAllForNull(){
 
 	foreach ($tables as $table){
 		if ($db->isNoSetTable($table['Tables_in_crawl'])){continue;}
-		message("checking ".$table['Tables_in_crawl']);
+		//message("checking ".$table['Tables_in_crawl']);
 
 		$query = "SELECT * FROM ".$table['Tables_in_crawl']." WHERE cardid IS NULL";
 		$stmt = $db->connection->prepare($query);
 		$stmt->execute();
 
 		$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($subResults as $error){
-			foreach ($missings as $missing){
-				if ($missing == $table['Tables_in_crawl']." - ".$error["cardname"]){break;}
-			}
-			$missings[] = $table['Tables_in_crawl']." - ".$error["cardname"];
-		}
+		if (sizeof($subResults)){print_r("error in ".$table['Tables_in_crawl'].": ".sizeof($subResults));}
 	}
-	echo implode($missings, " -- ");
+	print_r("DONE");
 }
 
 function deleteNull(){
@@ -757,33 +718,6 @@ function alterShipFiles(){
 			fwrite($dest, implode($new));
 			fclose($dest);
 		}
-	}
-}
-
-
-function writeToFoil(){
-	$tables = ["EXP", "MPS", "AIN", "DCI", "FNM", "BAB", "GDP", "JRW", "CPR", "ALP", "UBT"];
-	$db = DB::app();
-
-	$stmt = $db->connection->prepare("
-		UPDATE 1sets SET foil = 1, nonfoil = 0 WHERE setcode = :setcode
-	");
-	foreach ($tables as $table){
-		$stmt->bindParam(":setcode", $table);
-
-		$stmt->execute();
-	}
-
-	foreach ($tables as $table){
-		$stmt = $db->connection->prepare("
-			UPDATE $table set foilAvail = baseAvail, foilPrice = basePrice, baseAvail = 0, basePrice = 0 WHERE id
-		");
-
-		$stmt->execute();
-		if ($stmt->errorCode() == 0){
-			continue;
-		}
-		else message("error"); die();
 	}
 }
 
