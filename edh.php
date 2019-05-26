@@ -29,6 +29,7 @@ function fetchAll($date){
 
 	foreach ($toDo as $set){
 		message("\n **** ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"]);
+		//return;
 		//continue;
 		switch ($set["type"]){
 			case 0: $pulled = crawlBaseSet($db, $context, $set); break;
@@ -36,6 +37,7 @@ function fetchAll($date){
 			case 2: $pulled = crawlFreeURL($db, $context, $set); break;
 		}
 		//continue;
+		//message("pulls: ".sizeof($pulled)); return;
 		if (!(writeAndClose($db, $set["setcode"], $date, $pulled))){
 			message("error on set ".$set["setcode"]); break;
 		}

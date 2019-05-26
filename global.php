@@ -33,7 +33,7 @@ function getMKMURL($set, $card){
 	else {
 		$base = "https://www.cardmarket.com/en/Magic/Products/Singles/";
 		$set =  doReplace($set);
-		debug($set);
+		//debug($set);
 		$card = str_replace("ö", "oe", str_replace("ä", "ae", str_replace("ü", "ue", $card)));
 		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "-", preg_replace("/,/", "", $card)))));
 		$card = str_replace(":", "", $card);
@@ -642,7 +642,7 @@ function getContext(){
 
 
 function message($print){
-	print_r($print."\n");
+	print_r("\n".$print);
 	//echo $print."</br>";
 }
 
@@ -652,14 +652,15 @@ function crawlBaseSet($db, $context, $pull){
 
 	$set = array();
 	$exit = 0;
-	$page = 1;
+	$page = 0;
 	$maxPages = 0;
 	$prop = "data-original-title";
 
 	while(!$exit){
+		$page++;
 		$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($pull["setname"])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
 		$url .= "&site=".$page;
-		//print_r($url); return;
+		message($url);
 
 		$html = file_get_html($url, false, $context);// $GLOBALS["requests"]++;
 
@@ -674,6 +675,7 @@ function crawlBaseSet($db, $context, $pull){
 		if (!$maxPages){
 			$dropdown = $html->find("div.dropup > div.dropdown-menu", 0);
 			$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
+			//message("pages ".$maxPages); $page = $maxPages -1; continue;
 		}
 
 
@@ -709,8 +711,6 @@ function crawlBaseSet($db, $context, $pull){
 			$rarity = substr($rows[$k]->children(3)->find(".icon", 0)->{$prop}, 0, 1);
 			doAdd($name, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
 		}
-		
-		$page++;
 
 		if ($page >= $maxPages){
 			break;
@@ -752,7 +752,7 @@ function crawlGameBoxes($db, $context, $pull){
 		}
 		
 		if (sizeof($rows) < 50){
-			echo "last page - ";
+			message("last page");
 			break;
 		}
 	}

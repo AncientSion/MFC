@@ -9,6 +9,8 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
+
+updateDate(); return;
 checkAllForNull();
 handleNewSetCreation();
 
@@ -74,27 +76,6 @@ function handleNewSetCreation(){
 	}
 }
 
-
-function search(){
-	$folder = '../htdocs/crawl/fix';
-	$file = "MPS.json";
-
-	$data = file_get_contents($folder."/".$file);
-	$data = json_decode($data)->content;
-
-	foreach ($data as $day){
-		$found = false;
-		foreach ($day->data as $card){
-			//if ($card->name == "Time Stop"){
-			if ($card->name == "Wurmcoil Engine"){
-				$found = true;
-			}
-		}
-
-		echo $day->date.($found ? " yes " : " noooo ")."\n";
-	}
-}
-
 function checkSingleSetForNull($db, $setcode){
 
 	$query = "SELECT * FROM ".$setcode." WHERE cardid IS NULL";
@@ -131,6 +112,25 @@ function checkAllForNull(){
 		if (sizeof($subResults)){print_r("error in ".$table['Tables_in_crawl'].": ".sizeof($subResults));}
 	}
 	print_r("DONE");
+}
+
+function updateDate(){
+	$db = DB::app();
+	$stmt = $db->connection->prepare("SHOW TABLES");
+	$stmt->execute();
+
+	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	foreach ($results as $result){
+		if ($db->isNoSetTable($result['Tables_in_crawl'])){continue;}
+
+		$query = "UPDATE ".$result['Tables_in_crawl']." SET date = '2019-05-25' WHERE date = '2019-05-26'";
+		$stmt = $db->connection->prepare($query);
+		$stmt->execute();
+		if ($stmt->errorCode() == 0){
+			echo "updated ".$result['Tables_in_crawl']."\n";
+		}
+	}
 }
 
 function deleteNull(){
