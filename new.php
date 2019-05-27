@@ -25,11 +25,12 @@ $time = -microtime(true);
 
 echo "\n\n\nScript Execution Started \n\n";
 
-fetchAll($date);
+//fetchAll($date);
+processFolder();
 
 $time += microtime(true);
 
-echo "\n\n\n-".$fetch."-   Script Execution Completed; TIME:".round($time/60, 2)." minutes, fetch: ".$GLOBALS["cards"]." entries over ".$GLOBALS["requests"]." requests";
+echo "\n\n\nScript Execution Completed; TIME:".round($time/60, 2)." minutes";
 
 
 
@@ -109,6 +110,49 @@ function handleDeckList($url, $deckid){
     }
 }
 
+
+function processFolder(){
+	$file = null;
+	$folder = '../htdocs/crawl/lists/';
+	$files = scandir($folder);
+	$files = array_slice($files, 2);
+
+	$cards = array();
+	$amounts = array();
+
+	foreach ($files as $file){
+		message($file);
+
+		$list = fopen($folder.$file,"r");
+
+		while(!feof($list)){
+			$found = false;
+			$str = fgets($list);
+			if (strlen($str) == 2){continue;}
+			$name = substr(substr($str, 2), 0, strlen($str)-3);
+			$amount = intval(substr($str, 0, 1));
+
+			for ($i = 0; $i < sizeof($cards); $i++){
+				if ($name == $cards[$i]){
+					$amounts[$i] += $amount;
+					$found = true;
+					break;
+				}
+			}
+			if (!$found){
+				$cards[] = $name;
+				$amounts[] = $amount;
+			}
+		}
+		fclose($list);
+	}
+
+	for ($i = 0; $i < sizeof($cards); $i++){
+		if ($amounts[$i] <= 4){continue;}
+		message($amounts[$i]."x ".$cards[$i]);
+	}
+	return;
+}
 
 
 ?>
