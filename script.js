@@ -205,6 +205,7 @@ class Charter {
 		setcode = setcode.replace(/ /g, "-");
 		setcode = setcode.replace(/:/g, "");
 		setcode = setcode.replace(/-- /g, "");
+		setcode = setcode.replace(/'/g, "");
 		cardname = cardname.replace(/ /g, "-");
 		cardname = cardname.replace(/'/g, "");
 		cardname = cardname.replace(/,/g, "");

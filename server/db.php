@@ -21,22 +21,6 @@
 	        return self::$instance;
 		}
 
-		public function getPickedSetNames($setcodes){
-			$sql = "SELECT * FROM 1sets WHERE setcode = :setcode";
-			$stmt = $this->connection->prepare($sql);
-
-			$names = array();
-			
-			for ($i = 0; $i < sizeof($setcodes); $i++){
-				$stmt->bindParam(":setcode", $setcodes[$i]);
-				$stmt->execute();
-				$code = $stmt->fetch(PDO::FETCH_ASSOC);
-				$names[] = $code;
-			}
-
-			return $names;
-		}
-
 		public function getAllPickedCardsForShakersFromDB($setcodes, $rarities){
 			$sql = "SELECT * FROM 1cards WHERE setcode = :setcode AND (";
 
@@ -61,11 +45,11 @@
 				$stmt->bindParam(":setcode", $setcodes[$i]);
 
 				for ($j = 0; $j < sizeof($rarities); $j++){
-					//message("bind rarity".($j+1));
+					//msg("bind rarity".($j+1));
 					$stmt->bindParam(":rarity".($j+1), $rarities[$j]);
 				}
 
-				//message("executing");
+				//msg("executing");
 				$stmt->execute();
 				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				$set = array_merge($result, $set);
@@ -82,12 +66,6 @@
 			} return false;
 		}
 
-		public function getAllSets(){
-			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
-			$stmt->execute();
-			return $stmt->fetchAll(PDO::FETCH_ASSOC);
-		}
-
 		public function getLastPullDate(){
 			$sql = "SELECT lastPull from 1sets WHERE id ORDER BY id DESC LIMIT 1";
 			foreach ($this->connection->query($sql) as $result){
@@ -95,9 +73,34 @@
 			}
 		}
 
-		public function getAllCards(){
+		public function getPickedSetNames($setcodes){
+			$sql = "SELECT * FROM 1sets WHERE setcode = :setcode";
+			$stmt = $this->connection->prepare($sql);
 
+			$names = array();
+			
+			for ($i = 0; $i < sizeof($setcodes); $i++){
+				$stmt->bindParam(":setcode", $setcodes[$i]);
+				$stmt->execute();
+				$code = $stmt->fetch(PDO::FETCH_ASSOC);
+				$names[] = $code;
+			}
+
+			return $names;
+		}
+
+		public function getAllSets(){
+			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		public function getAllCards(){
 			$tables = $this->getAllSets();
+			return $this->getAllCardsBySetTables($tables);
+
+		}
+		public function getAllCardsBySetTables($tables){
 			$data = array();
 
 			$stmt = $this->connection->prepare("
@@ -159,12 +162,12 @@
 				");
 
 			//echo $time; die();
-			//message("-".$time."-");
+			//msg("-".$time."-");
 			$stmt->bindValue(":time", $time);
 			$stmt->bindValue(":setcode", $setcode);
 
 			for ($i = 0; $i < sizeof($data); $i++){
-				//message($data[$i]["cardname"]);
+				//msg($data[$i]["cardname"]);
 				$stmt->bindParam(":cardnameA", $data[$i]["cardname"]);
 				$stmt->bindParam(":cardnameB", $data[$i]["cardname"]);
 				$stmt->bindParam(":baseAvail", $data[$i]["baseAvail"]);
@@ -196,10 +199,10 @@
 
 		public function closeSetEntry($setcode, $date){			
 			$sql = "UPDATE 1sets SET lastPull = '$date' WHERE setcode = '$setcode'";
-			//message($sql);
+			//msg($sql);
 			$stmt = $this->connection->prepare($sql);
 			$stmt->execute();
-			//message($stmt->rowCount());
+			//msg($stmt->rowCount());
 			return $stmt->rowCount();
 		}
 
@@ -252,7 +255,7 @@
 		}
 
 		public function insertNewSet($set){
-			message("insertNewSet");
+			msg("insertNewSet");
 			//$this->connection->query("DELETE FROM 1sets WHERE setcode = '".$set["setcode"]."'");
 
 			$stmt = $this->connection->prepare("
@@ -292,7 +295,7 @@
 				if ($stmt->errorCode() == 0){
 					continue;
 				}
-				//message("return false");
+				//msg("return false");
 				return false;
 			}
 			return true;
@@ -311,7 +314,7 @@
 				$tbn = $table['Tables_in_crawl'];
 				//print_r($tbn);
 				if ($this->isNoSetTable($tbn)){continue;}
-				//message("checking ".$tbn);
+				//msg("checking ".$tbn);
 
 				$query = "SELECT * FROM ".$tbn." WHERE cardid IS NULL";
 				$stmt = $this->connection->prepare($query);
@@ -320,7 +323,7 @@
 				$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				if (sizeof($subResults)){
 					$null[] = $tbn;
-					message("null in ".$tbn.": ".sizeof($subResults));
+					msg("null in ".$tbn.": ".sizeof($subResults));
 					//print_r($subResults[0]); return;
 				}
 			}
