@@ -19,20 +19,10 @@ $(document).ready(function(){
 		})
 
 		$(this).find("tbody").find("tr").each(function(){
-		/*	$(this).hover(
+		//	$(this).find("td a").hover(
+			$(this).hover(
 				function(){
-					charter.setCode = $(this).closest(".moveTable").find(".setName").html();
-					charter.cardName = $(this).find("a").first().html();
-				},
-				function(){
-					charter.setCode = "";
-					charter.cardName = "";
-				}
-			)
-		*/	$(this).find("td a").hover(
-				function(){
-					charter.getCardData(0, $(this).closest(".moveTable").find(".setName").html(), $(this).closest("a").html());
-					//charter.getCardData(0, charter.setCode, charter.cardName);
+					charter.getCardData(0, $(this).closest(".moveTable").find(".setName").html(), $(this).find("a").first().html());
 				},
 				function(){
 				}

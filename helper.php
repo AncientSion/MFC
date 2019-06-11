@@ -9,28 +9,32 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
-checkAllForNull();
-return;
+handleNewSetCreation(); return;
+checkAllForNull(); return;
 updateDate();
 checkAllForNull();
-handleNewSetCreation();
-
-
 
 $time += microtime(true);
-msg("Script Execution Completed; TIME:".round($time, 2)." seconds");
+
+
 
 
 function handleNewSetCreation(){
-	return;
-	msg("handleNewSetCreation");
 	$db = DB::app();
 	$context = getContext();
 
+	$setcode = "MHZ";
+
+	echo("handleNewSetCreation: ".$setcode.LR);
+
+
+	$sql = ("SELECT * FROM 1sets WHERE setcode = '".$setcode."'");
+	if ($db->connection->query($sql)->rowCount()){echo "---------invalid setcode".LR; return;}
+
 	$set = array(
 		"id" => 0,
-		"setcode" => "STC",
-		"setname" => "Store Championship Promos",
+		"setcode" => $setcode,
+		"setname" => "Modern Horizon",
 		"foil" => 1,
 		"nonfoil" => 0,
 		"lastPull" => "0000-00-00",

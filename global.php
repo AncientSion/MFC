@@ -28,7 +28,7 @@ function getMKMURL($set, $card){
 	
 	if (strlen($set) > 5 && substr($set, strlen($set)-5, 5) == "Boxes"){
 		$base = "https://www.cardmarket.com/en/".substr($set, 0, strlen($set)-6)."/Products/Booster+Boxes/";
-		$card = str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))));
+		$card = str_Replace(")", "", str_replace("(", "", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))))));
 		return $base.$card;
 	}
 	else {
@@ -37,7 +37,7 @@ function getMKMURL($set, $card){
 		//debug($set);
 		$card = str_replace("ö", "oe", str_replace("ä", "ae", str_replace("ü", "ue", $card)));
 		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "-", preg_replace("/,/", "", $card)))));
-		$card = str_replace(":", "", $card);
+		$card = str_replace(")", "", str_replace("(", "", str_replace(":", "", $card)));
 		//echo $card."</br>";
 		$url = $base.$set."/".$card;
 		return $url;
@@ -332,7 +332,8 @@ function logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $min
 }
 
 function isValidSetForSearchOptions($set, $foil){
-	if ($set["foil"] && $foil || $set["nonfoil"] && !$foil){
+	//var_export($set); echo LR; return true;
+	if ($set["lastPull"] != "0000-00-00" && ($set["foil"] && $foil || $set["nonfoil"] && !$foil)){
 		return true;
 	}
 	//echo "skipping ".$set["setname"];
@@ -361,6 +362,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 		}
 	}
 
+	//var_export($codes); return;
+
 	$data = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
 	$db->getBulkChartData($codes, $data, $depth);
 
@@ -371,6 +374,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	$allData = array();
 
 	for ($i = 0; $i < sizeof($data); $i++){
+		if (!(isset($data[$i][0]))){continue;}
 
 		$extract = array(
 			"setname" => $setnames[$i]["setname"],
@@ -419,9 +423,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
 
 	$time += microtime(true);
-	debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
-
-
+	//debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
+	echo("request completed; TIME:".round($time, 2)." seconds, memory: ".getMemory().LR);
 	echo buildTables($allData, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $maxPrice, $plusminus, $stackDisplay, $skipUnchanged);
 }
 
@@ -642,6 +645,8 @@ function getContext(){
 
 function msg($print){
 
+	echo $print.LR;
+	return;
 	$lr = "\n";
 	if (php_sapi_name() != 'cli'){$lr = "</br>";}
 	print_r($lr.$print);
@@ -679,7 +684,6 @@ function crawlBaseSet($db, $context, $pull){
 			$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
 			//msg("pages ".$maxPages); $page = $maxPages -1; continue;
 		}
-
 
 		$rows = $html->find(".table-body", 0)->children();
 

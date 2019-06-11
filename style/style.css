@@ -20,6 +20,9 @@ form {
 .yellow {
 	color: yellow;
 }
+.small {
+	font-size: 6px;
+}
 
 .upper {
 	margin: auto;

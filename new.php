@@ -15,14 +15,22 @@ define("CONTEXT", stream_context_create(
 	)
 );
 
+
+
+
+
+//crawl();
+processFolder();
+
+
 class glob {
 	static $cards = array();
 	static $cardAmounts = array();
 	static $types = array();
 	static $typeAmounts = array();
 	static $checkSB = 0;
-	static $codes = array("KLD", "AER");
-	static $formats = array("Standard");
+	static $codes = array("WAR", "MHZ");
+	static $formats = array("Standard", "Modern");
 	static $tours = array();
 	static $decks = array();
 	static $activeFormat = "";
@@ -53,10 +61,6 @@ class glob {
 
 
 
-//crawl();
-processFolder();
-
-
 
 function crawl(){
 
@@ -69,8 +73,8 @@ function crawl(){
 
 		$headers = $html->find(".decks-sidebar h4 > a");
 
-		for ($i = 1; $i < sizeof($headers); $i+=2){
-			processTour($headers[$i]);
+		for ($j = 1; $j < sizeof($headers); $j+=2){
+			if (!processTour($headers[$j])){break;}
 		}
 
 		$html->clear(); 
@@ -103,8 +107,12 @@ function processTour($header){
 
 	$dir = dirname(__FILE__).'/lists/'.glob::$activeFormat.'/'.$dateString."_".$tourName.'/';
 	if (!file_exists($dir) && !is_dir($dir)){
-		msg("handling !"); mkdir($dir);  
-	} else msg("exists!"); return;
+		echo("processing!".LR); mkdir($dir);  
+	}
+	else {
+		echo("BREAKING!".LR);
+		return false;
+	}
 
 	$deckNameTDindex = sizeof($rows[1]->children()) == 6 ? 1 : 2;
 
@@ -119,6 +127,7 @@ function processTour($header){
 
 	$html->clear(); 
 	unset($html);
+	return true;
 }
 
 
@@ -132,13 +141,13 @@ function handleDeckList($targetFolder, $deckName, $url, $deckid){
 
 
 function processFolder(){
-	glob::$activeFormat = glob::$formats[0];
-
+	glob::$activeFormat = "Modern";
 	$file = null;
 	//echo ; die();
 	$dir = __DIR__.'/lists/'.glob::$activeFormat."/";
 	$tours = scandir($dir);
-	$tours = array_slice($tours, 2);
+	$tours = array_slice($tours, sizeof($tours)-3);
+	$tours = array_reverse($tours);
 
 	//msg("FORMAT: ".glob::$activeFormat); return;
 
@@ -222,9 +231,9 @@ function readResults(){
 
 	echo "<div class='wrapper'>";
 	postArchetypes(2);
-	postAnyTopCards(48);
+	//postAnyTopCards(48);
 	//postRangeCards(4, 8);
-	//postTopBySet(4);
+	postTopBySet(4);
 	echo "</div>";
 }
 
@@ -250,7 +259,7 @@ function postTopBySet($tresh){
 		foreach ($sets as $set){
 			foreach ($set["cards"] as $card){
 				if (glob::$cards[$i] == $card["cardname"]){
-					echo(glob::$cardAmounts[$i]."x ".glob::$cards[$i].LR);
+					echo(glob::$cardAmounts[$i]."x ".glob::$cards[$i]." <span class='yellow small'>".$set["setcode"]."</span>".LR);
 				}
 			}
 		}
@@ -314,6 +323,9 @@ function postRangeCards($min, $max){
 
 	.yellow {
 		color: yellow;
+	}
+	.small {
+		font-size: 10px
 	}
 
 	div.wrapper {

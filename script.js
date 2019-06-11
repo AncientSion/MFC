@@ -513,7 +513,7 @@ class Charter {
 	addSingleFavorite($element){
 		console.log("addSingleFavorite");
 		let set = $element.closest(".moveTable").find(".setName").html();
-		let card = $element.parent().find("a").first().html();
+		let card = $element.parent().parent().find("a").first().html();
 		let isFoil = $(".upper").find("input:radio").eq(0).attr("checked") == "checked" ? 1 : 0;
 		$element.hide();
 		this.postInsertFavs([set], [card], [isFoil]);
@@ -565,24 +565,29 @@ class Charter {
             url: "favs.php",
             datatype: "json",
             data: {
-                    type: "addNewFavs",
-                    sets: sets,
-                    cards: cards,
-                    isFoil: isFoil
+                type: "addNewFavs",
+                sets: sets,
+                cards: cards,
+                isFoil: isFoil
                 },
             success: function(data){
-				if (charter.siteIsFavorites()){
-	            	$(".newEntryTable tbody tr").each(function(i){
-	            		if (!i){return;}
-	            		$(this).remove();
-	 				})
-	            	addNewRow();
+            	if (data == "added!"){
+					if (charter.siteIsFavorites()){
+		            	$(".newEntryTable tbody tr").each(function(i){
+		            		if (!i){return;}
+		            		$(this).remove();
+		 				})
+		            	addNewRow();
+					}
+					else {
+						$("input.posted").each(function(){
+							//$(this).removeClass().addClass("added").hide();
+							$(this).removeClass().prop("disabled", true);
+						})
+					}
 				}
 				else {
-					$("input.posted").each(function(){
-						//$(this).removeClass().addClass("added").hide();
-						$(this).removeClass().prop("disabled", true);
-					})
+					console.log("error");
 				}
             },
             error: function(){console.log("error")},

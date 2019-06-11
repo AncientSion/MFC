@@ -28,7 +28,8 @@ function fetchAll($date){
 	$toDo = $db->getSetsToPull($date);
 
 	foreach ($toDo as $set){
-		msg("\n **** ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"]);
+		//if ($set["setcode"] != "PRW"){continue;}
+		echo("**** ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].LR);
 		//return;
 		//continue;
 		switch ($set["type"]){
