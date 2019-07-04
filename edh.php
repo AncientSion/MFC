@@ -28,7 +28,7 @@ function fetchAll($date){
 	$toDo = $db->getSetsToPull($date);
 
 	foreach ($toDo as $set){
-		//if ($set["setcode"] != "PRW"){continue;}
+		//if ($set["setcode"] != "MHZ"){continue;}
 		echo("**** ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].LR);
 		//return;
 		//continue;

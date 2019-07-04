@@ -1,26 +1,39 @@
 <?php
 
-
-header('Content-Type: text/html; charset=utf-8');
 include_once(__DIR__."\global.php");
-include_once(__DIR__."\libs\dump.php");
 
-define("CONTEXT", stream_context_create(
-	    array(
-	        "http" =>
-				array(
-				   "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
-				)
-			)
-	)
-);
+if (sizeof($_POST)){
+	if (isset($_POST["type"]) && $_POST["type"] == "analyzeFolder" && isset($_POST["codes"])){
+		$codes = $_POST["codes"];
+		$format = $_POST["format"];
 
+		glob::$activeFormat = $format;
+		glob::$codes = $codes;
+		glob::$depth = $_POST["depth"];
+
+		//echo glob::$depth; return;
+
+		$options = $_POST["options"];
+
+		foreach ($options as $key => $value){
+			//echo "<div>".$key." -> ".$value."</div>";
+			glob::$options[$key] = $value;
+		}
+
+
+		processFolder();
+
+
+
+		//echo "analyzeFolder";
+	}
+	return;
+}
 
 
 
 
 //crawl();
-processFolder();
 
 
 class glob {
@@ -30,11 +43,18 @@ class glob {
 	static $typeAmounts = array();
 	static $checkSB = 0;
 	static $codes = array("WAR", "MHZ");
-	static $formats = array("Standard", "Modern");
+	static $formats = array("Modern", "Standard", "Legacy");
+	static $depth = 0;
 	static $tours = array();
 	static $decks = array();
 	static $activeFormat = "";
 	static $allCards = 0;
+	static $options = array(
+		"topCards" => 0,
+		"minCardShowing" => 0,
+		"maxCardShowing" => 0,
+		"minArchetype" => 0,
+	);
 	//static $lr = php_sapi_name() == "cli" ? "\n" : "</br>";
 
 	static function reset(){
@@ -48,7 +68,7 @@ class glob {
 		if (1){
 			for ($i = sizeof(self::$cardAmounts)-1; $i >= 0; $i--){
 				$name = self::$cards[$i];
-				if ($name == "Forest" || $name == "Mountain" || $name == "Island" || $name == "Plains" || $name == "Swamp"){
+				if ($name == "Forest" || $name == "Mountain" || $name == "Island" || $name == "Plains" || $name == "Swamp" || substr($name, 0, 4) == "Snow"){
 					array_splice(self::$cards, $i, 1);
 					array_splice(self::$cardAmounts, $i, 1);
 				}
@@ -141,15 +161,17 @@ function handleDeckList($targetFolder, $deckName, $url, $deckid){
 
 
 function processFolder(){
-	glob::$activeFormat = "Modern";
+	//glob::$activeFormat = $format;
 	$file = null;
 	//echo ; die();
 	$dir = __DIR__.'/lists/'.glob::$activeFormat."/";
 	$tours = scandir($dir);
-	$tours = array_slice($tours, sizeof($tours)-3);
+
+	$tours = array_slice($tours, 2);
+	//$tours = array_slice($tours, sizeof($tours) - glob::$depth);
+	$tours = array_slice($tours, -glob::$depth);
 	$tours = array_reverse($tours);
 
-	//msg("FORMAT: ".glob::$activeFormat); return;
 
 	foreach ($tours as $tour){
 		if (substr($tour, strlen($tour)-3) == "..."){continue;}
@@ -220,24 +242,38 @@ function readDeckFile($tour, $deck){
 
 function readResults(){
 
-	echo("<div>");
-	echo("analyzing <span class='yellow'>".glob::$activeFormat."</span>, ".(glob::$checkSB ? "Sideboard: ON" : "Sideboard OFF").LR.LR);
-	echo("Tours: ".LR.implode(glob::$tours, LR).LR.LR);
-	echo(array_sum(glob::$decks)." decks".LR);
-	echo("total cards: ".glob::$allCards.LR);
-	echo("</div>");
+	echo "<div class='resultWrapper'>";
 
-	glob::doSort();
+		echo("analyzing <span class='yellow'>".glob::$activeFormat."</span>, ".(glob::$checkSB ? "Sideboard: ON" : "Sideboard OFF").LR.LR);
+		echo("Tours: ".LR.implode(glob::$tours, LR).LR.LR);
+		echo(array_sum(glob::$decks)." decks".LR);
+		echo("total cards: ".glob::$allCards.LR);
 
-	echo "<div class='wrapper'>";
-	postArchetypes(2);
-	//postAnyTopCards(48);
-	//postRangeCards(4, 8);
-	postTopBySet(4);
+		glob::doSort();
+
+
+		if (glob::$options["topCards"]){
+			postAnyTopCards(glob::$options["topCards"]);
+		}
+		else if (glob::$options["minCardShowing"]){
+			if (glob::$options["maxCardShowing"]){
+				postRangeCards(glob::$options["minCardShowing"], glob::$options["maxCardShowing"]);
+			}
+			else postTopBySet(glob::$options["minCardShowing"]);
+		}
+		
+		if (glob::$options["minArchetype"]){
+			postArchetypes(glob::$options["minArchetype"]);
+		}
 	echo "</div>";
 }
 
-function postArchetypes($toShow){	
+
+
+
+function postArchetypes($toShow){
+
+	//var_export(glob::$typeAmounts);
 	echo("<div class='row'><span class='yellow'>Showing archetypes with min ".$toShow." showings</span>".LR);
 
 	$entries = sizeof(glob::$typeAmounts)-1;
@@ -281,7 +317,7 @@ function postAnyTopCards($toShow){
 function postRangeCards($min, $max){
 	echo("<div class='row'><span class='yellow'>Showing cards with range ".$min." - ".$max.", any edition</span>".LR);
 	$entries = sizeof(glob::$cardAmounts)-1;
-	$post = $entries-$toShow;
+	//$post = $entries-$toShow;
 
 	for ($i = sizeof(glob::$cardAmounts)-1; $i >= 0; $i--){
 		if (glob::$cardAmounts[$i] > $max){continue;}
@@ -300,9 +336,93 @@ function postRangeCards($min, $max){
 <head>
 </head>
 	<body>
+		<div>
+			<?php
+
+
+			echo 
+				"<table class='newEntryTable'>
+					<thead>
+						<tr>
+							<th>set</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr class='newEntryBlank'>
+							<td>
+								<div>
+									<input type='form' class='setSearch'></input>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+
+					<tfoot>
+						<tr>
+							<td>
+								<input type='button' value='new row' onclick='charter.addNewRow()'></input>
+							</td>
+						</tr>
+					</tfoot>
+				</table>";
+
+
+					
+		/*		$file = null;
+				//echo ; die();
+				$dir = __DIR__.'/lists/'."Modern"."/";
+				$tours = scandir($dir);
+				$tours = array_slice($tours, 2);
+				$tours = array_reverse($tours);
+
+				echo "<table>";
+
+				foreach ($tours as $tour){
+					echo "<tr>";
+					echo "<td>";
+					echo "<input type='checkbox' checked='checked'>";
+					echo "</td>";
+					echo "<td>".$tour."</td>";
+					echo "</tr>";
+				}
+				echo "</table>";
+		*/
+
+
+				echo "<select>";
+				foreach (glob::$formats as $format){
+					echo "<option value='".$format."'>".$format."</option>";
+				}
+				echo "</select>";
+
+
+				$tours = sizeof(scandir(__DIR__.'/lists/'."Modern"."/"))-2;
+				echo "<div class='option recentTours'>Analyze last<input type='number' value='6' min='1'> tours (max: ".$tours.")</div>";
+				echo "<div class='option topCards'><input type='checkbox' checked='checked'>Show top<input type='number' value='24'> cards</div>";
+				echo "<div class='option minCardShowing'><input type='checkbox'>Min card showing<input type='number' value='12'></div>";
+				echo "<div class='option maxCardShowing'><input type='checkbox'>Max card showing<input type='number' value='32'></div>";
+				echo "<div class='option minArchetype'><input type='checkbox'>Show archetypes with min <input type='number' value='4'> showings</div>";
+
+			?>
+
+			<input type='button' value='analyze' onclick='charter.analyze()'>
+		</div>
 	</body>
 </html>
-<script>
+
+<script src="libs\jquery-2.1.1.min.js"></script>
+<link rel='stylesheet' href='style\jquery-ui.min.css'/>
+<script src='libs\jquery-ui.min.js'></script>
+<script src='script.js'></script>
+
+<script type="text/javascript">
+
+	const charter = new Charter();
+	window.onload = function(){
+		charter.addNewRow();
+	}
+
 </script>
 
 <style>
@@ -315,6 +435,10 @@ function postRangeCards($min, $max){
 
 	body, span {
 		font-size: 14px;
+	}
+
+	.newEntryBlank {
+		display: none;
 	}
 
 	.red {
@@ -337,6 +461,30 @@ function postRangeCards($min, $max){
 		display: inline-block;
 		padding: 15px;
 		margin-left: 20px;
+	}
+
+	.tour, .option {
+		padding: unset;
+		margin: unset;
+		display: block;
+	}
+
+	input[type=number], input[type=text] {
+	  width: 35px;
+	}
+
+	input[type=checkbox] {
+		transdform: scale(1);
+	}
+	
+	div.option {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	div.option input[type=number] {
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 
 </style>

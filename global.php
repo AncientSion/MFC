@@ -1,6 +1,5 @@
 <?php
 
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -8,7 +7,19 @@ error_reporting(E_ALL);
 include(__DIR__."/simple_html_dom.php");
 include(__DIR__."/server/db.php");
 
+header('Content-Type: text/html; charset=utf-8');
 define ("LR", php_sapi_name() == "cli" ? "\n" : "</br>");
+define("CONTEXT", stream_context_create(
+	    array(
+	        "http" =>
+				array(
+				   "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
+				)
+			)
+	)
+);
+
+
 
 function requestCardText($cardname, $set){
 	$folder = 'input';
@@ -171,7 +182,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChangeMax = 14;
+	$availChangeMax = 0;
 	if (sizeof($get)){$availChangeMax = $get["availChangeMax"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChangeMax'># Max Change</div>";
@@ -448,10 +459,12 @@ function setChangeValue(&$card, $forFoil){
 	$pctPriceChange = $card["points"][0][$props[1]] != 0 ? round($absPriceChange / $card["points"][0][$props[1]] * 100, 2) : 0;
 
 	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
+	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
 
 	$card[$props[0]."Change"] = array($absStockChange, $pctStockChange);
 	$card[$props[1]."Change"] = array($absPriceChange, $pctPriceChange);
 
+	//var_export($card["basePrice"]); die();
 	return;
 }
 
@@ -533,7 +546,12 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 			$card = $allSets[$i]["shakers"][$j];
 
 			//unset($card["points"]);
-			//var_export($card); die();
+			//echo $price.LR;
+			//foreach ($card as $key => $value){
+			//	echo $key." => ".$value.LR;
+			//}
+			//var_export($card);
+			//die();
 			$relChange = $card[$volChange][$index];
 			//echo $relChange; die();
 			

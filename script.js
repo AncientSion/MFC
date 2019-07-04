@@ -417,6 +417,13 @@ class Charter {
 		})
 	}
 	
+	addNewRow(){
+		let table = $(".newEntryTable");
+		let row = table.find(".newEntryBlank").clone();
+			row.removeClass().find("div").addClass("search");
+			table.append(row)
+		this.initCardSearchInputs(row)
+	}
 
 	addSetAutoComplete(element){
 		var tags = [];
@@ -426,6 +433,7 @@ class Charter {
 			tags.push(this.data[i].setname);
 		}
 		$(element).find(".setSearch").autocomplete({source: tags});
+		//$(element).find(".setSearch").val("MHZ");
 	}
 
 	getPriceData(screen, setcode, cardname){
@@ -558,6 +566,46 @@ class Charter {
 		} return false;
 	}
 
+	analyze(){
+		console.log("analyze");
+		$(".resultWrapper").remove();
+
+		let codes = [];
+		$(".setSearch.ui-autocomplete-input").each(function(){
+			let val = $(this).val();
+			if (val.length <= 2){return;}
+			if (val.length >= 5){val = charter.getSetCodeBySetName(val);}
+			codes.push(val);
+		});
+		console.log(codes);
+
+		let format = $("select :selected").text();
+
+		let options = {
+			"topCards": $(".option.topCards input:checkbox").prop("checked") ? $(".option.topCards input[type=number]").val() : 0,
+			"minCardShowing": $(".option.minCardShowing input:checkbox").prop("checked") ? $(".option.minCardShowing input[type=number]").val() : 0,
+			"maxCardShowing": $(".option.maxCardShowing input:checkbox").prop("checked") ? $(".option.maxCardShowing input[type=number]").val() : 0,
+			"minArchetype": $(".option.minArchetype input:checkbox").prop("checked") ? $(".option.minArchetype input[type=number]").val() : 0
+		}
+		$.ajax({
+            type: "POST",
+            url: "new.php",
+            datatype: "json",
+            data: {
+                type: "analyzeFolder",
+                depth: $(".option.recentTours input").val(),
+                codes: codes,
+                format: format,
+                options: options
+            },
+            success: function(data){
+            	$(document.body).append(data);
+				//console.log(data);
+            },
+            error: function(){console.log("error")},
+        });
+	}
+
 	postInsertFavs(sets, cards, isFoil){
 		console.log("postInsertFavs");
         $.ajax({
@@ -611,7 +659,7 @@ class Charter {
 	            		if (!i){return;}
 	            		$(this).remove();
 	 				})
-	            	addNewRow();
+	            	charer.addNewRow();
 				}
 				else {
 					$("input.posted").each(function(){

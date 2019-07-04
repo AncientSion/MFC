@@ -31,8 +31,6 @@
 </head>
 	<body>
 		<?php
-
-
 		echo
 			"<form>
 				<table class='newEntryTable'>
@@ -59,7 +57,7 @@
 					<tfoot>
 						<tr>
 							<td colSpan=3>
-								<input type='button' value='new row' onclick='addNewRow()'></input>
+								<input type='button' value='new row' onclick='charter.addNewRow()'></input>
 								<input type='button' value='Confirm' onclick='charter.assembleFavData()'></input>
 							</td>
 						</tr>
@@ -109,20 +107,8 @@
 	const charter = new Charter(1);
 	
 	window.onload = function(){
-		addNewRow();
+		charter.addNewRow();
 	}
-
-	function addNewRow(){
-		let table = $(".newEntryTable");
-		let row = table.find(".newEntryBlank").clone();
-			row.removeClass().find("div").addClass("search");
-
-		//coremoveClass().find("div").addClass("search");
-			table.append(row)
-		charter.initCardSearchInputs(row)
-	}
-
-
 </script>
 
 <style>	
