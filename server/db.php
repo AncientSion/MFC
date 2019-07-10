@@ -85,10 +85,17 @@
 				$code = $stmt->fetch(PDO::FETCH_ASSOC);
 				$names[] = $code;
 			}
+<<<<<<< HEAD
 
 			return $names;
 		}
 
+=======
+
+			return $names;
+		}
+
+>>>>>>> dec3a237e2840f890d043586af180e1a02dc21cd
 		public function getAllSets(){
 			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
 			$stmt->execute();
@@ -135,11 +142,13 @@
 					$points = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 					$cardsets[$i][$j]["points"] = $points;
-					//return;
-				}
-			}
 
-			//return $cardsets;
+				/*	foreach ($cardsets[$i][$j] as $key => $value){
+						var_export($key);
+						echo LR;
+					} die();
+				*/}
+			}
 		}
 
 		public function getChartData($setcode, $cardname){

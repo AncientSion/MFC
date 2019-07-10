@@ -65,18 +65,24 @@ class Charter {
 	getOthers(cardName){
 		$(".reprints").empty();
 		
-		var results = [];
+		let results = [];
 		
 		for (let i = 0; i < this.data.length; i++){
 			for (let j = 0; j < this.data[i].cards.length; j++){
-				if (this.data[i].cards[j].cardname == cardName){
+				if (cardName == this.data[i].cards[j].cardname.substr(0, cardName.length)){
 					results.push(this.data[i].setcode);
 					break;
 				}
+
+			/*	if (this.data[i].cards[j].cardname == cardName){
+					results.push(this.data[i].setcode);
+					break;
+				}
+			*/
 			}
 		}
 		
-		var divs = [];
+		let divs = [];
 		
 		for (let i = 0; i < results.length; i++){
 			$(".reprints").append(

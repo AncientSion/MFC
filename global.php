@@ -386,6 +386,10 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 
 	for ($i = 0; $i < sizeof($data); $i++){
 		if (!(isset($data[$i][0]))){continue;}
+<<<<<<< HEAD
+=======
+		//if (sizeof($data[$i][0]["points"]) != 1){continue;}
+>>>>>>> dec3a237e2840f890d043586af180e1a02dc21cd
 
 		$extract = array(
 			"setname" => $setnames[$i]["setname"],
@@ -459,6 +463,19 @@ function setChangeValue(&$card, $forFoil){
 	$pctPriceChange = $card["points"][0][$props[1]] != 0 ? round($absPriceChange / $card["points"][0][$props[1]] * 100, 2) : 0;
 
 	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
+	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
+
+/*	if (!(isset($card[$props[1]]))){
+		//echo "a".LR;
+	//	var_export($card); die();
+	//	var_export($card["foilAvail"]); die();
+		foreach ($card as $key => $value){
+			var_export($key);
+			echo LR;
+		}
+		die();
+	}
+*/
 	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
 
 	$card[$props[0]."Change"] = array($absStockChange, $pctStockChange);

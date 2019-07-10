@@ -65,7 +65,7 @@ a:link, a:visited {
 .container {
 	display: inline-block;
 	position: relative;
-	width: 440px;
+	width: 300px;
 }
 
 .scrollWrapper {
@@ -76,9 +76,9 @@ a:link, a:visited {
 
 .mainContainer {
 	padding: 5px;
-	width: 1080px;
+	width: 1390px;
 	margin: auto;
-	height: 240px;
+	margin-bottom: 20px;
 }
 
 th {

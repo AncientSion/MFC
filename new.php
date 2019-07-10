@@ -33,7 +33,7 @@ if (sizeof($_POST)){
 
 
 
-//crawl();
+crawl();
 
 
 class glob {
@@ -113,6 +113,7 @@ function processTour($header){
 	$tourName = htmlspecialchars_decode($header->innertext);
 	if (strlen($tourName) > 38){
 		$tourName = substr($tourName, 0, 38);
+		$tourName = str_replace(" ", "_", $tourName);
 	}
 
 	echo("checking ".glob::$activeFormat." tour: ".$tourName.LR);// return;
@@ -130,7 +131,7 @@ function processTour($header){
 		echo("processing!".LR); mkdir($dir);  
 	}
 	else {
-		echo("BREAKING!".LR);
+		echo("_____BREAKING!".LR);
 		return false;
 	}
 
