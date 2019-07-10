@@ -9,27 +9,32 @@ $time = time();
 $date = date('d.m.Y', $time);
 $time = -microtime(true);
 
-
-updateDate(); return;
+handleNewSetCreation(); return;
+checkAllForNull(); return;
+updateDate();
 checkAllForNull();
-handleNewSetCreation();
-
-
 
 $time += microtime(true);
-message("Script Execution Completed; TIME:".round($time, 2)." seconds");
+
+
 
 
 function handleNewSetCreation(){
-	return;
-	message("handleNewSetCreation");
 	$db = DB::app();
 	$context = getContext();
 
+	$setcode = "MHZ";
+
+	echo("handleNewSetCreation: ".$setcode.LR);
+
+
+	$sql = ("SELECT * FROM 1sets WHERE setcode = '".$setcode."'");
+	if ($db->connection->query($sql)->rowCount()){echo "---------invalid setcode".LR; return;}
+
 	$set = array(
 		"id" => 0,
-		"setcode" => "STC",
-		"setname" => "Store Championship Promos",
+		"setcode" => $setcode,
+		"setname" => "Modern Horizon",
 		"foil" => 1,
 		"nonfoil" => 0,
 		"lastPull" => "0000-00-00",
@@ -39,12 +44,12 @@ function handleNewSetCreation(){
 	$db->connection->beginTransaction();
 
 	$set["id"] = $db->insertNewSet($set);
-	if (!$set["id"]){message("no set id!"); return;}
+	if (!$set["id"]){msg("no set id!"); return;}
 	$db->connection->exec("CREATE TABLE ".$set["setcode"]." LIKE 2ed");
 
 	$pulled;
 
-	message("\n__NOW - ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].", foil ".$set["foil"].", nonfoil ".$set["nonfoil"]);
+	msg("\n__NOW - ".$set["setname"]." / ".$set["setcode"].", id ".$set["id"].", foil ".$set["foil"].", nonfoil ".$set["nonfoil"]);
 
 	switch ($set["type"]){
 		case 0: $pulled = crawlBaseSet($db, $context, $set); break;
@@ -52,10 +57,10 @@ function handleNewSetCreation(){
 		case 2: $pulled = crawlFreeURL($db, $context, $set); break;
 	}
 
-	if (!$pulled){message("no data pulled!"); return;}
+	if (!$pulled){msg("no data pulled!"); return;}
 
 	$cardsInserted = $db->insertNewCardsWithSetID($set["id"], $set["setcode"], $pulled);
-	if (!$cardsInserted){message("didnt insert new cards!"); return;}
+	if (!$cardsInserted){msg("didnt insert new cards!"); return;}
 
 
 	$success = false;
@@ -67,11 +72,11 @@ function handleNewSetCreation(){
 	}
 */
 	if ($cardsInserted){
-		message("success!");
+		msg("success!");
 		$db->connection->commit();
 	}
 	else {
-		message("rollback !");
+		msg("rollback !");
 		$db->connection->rollback();
 	}
 }
@@ -102,16 +107,21 @@ function checkAllForNull(){
 
 	foreach ($tables as $table){
 		if ($db->isNoSetTable($table['Tables_in_crawl'])){continue;}
-		//message("checking ".$table['Tables_in_crawl']);
+		//msg("checking ".$table['Tables_in_crawl']);
 
 		$query = "SELECT * FROM ".$table['Tables_in_crawl']." WHERE cardid IS NULL";
 		$stmt = $db->connection->prepare($query);
 		$stmt->execute();
 
 		$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		if (sizeof($subResults)){print_r("error in ".$table['Tables_in_crawl'].": ".sizeof($subResults));}
+		if (sizeof($subResults)){
+			echo "error in ".$table['Tables_in_crawl'].": ".sizeof($subResults).LR;
+			foreach ($subResults as $entry){
+				print_r($entry); break;
+			}
+		}
 	}
-	print_r("DONE");
+	msg("DONE");
 }
 
 function updateDate(){
@@ -182,7 +192,7 @@ function handleSetCreationFromJSON(){
 
 		foreach ($tables as $table){
 			if (strtolower($setcode) == $table['Tables_in_crawl']){
-				message("skipping ".$file); 
+				msg("skipping ".$file); 
 				$insert = false;
 				break;
 			}
@@ -190,7 +200,7 @@ function handleSetCreationFromJSON(){
 	
 		if (!$insert){continue;}
 
-		message("doing ".$file);
+		msg("doing ".$file);
 
 		$data = file_get_contents($folder."/".$file);
 		$data = json_decode($data);
@@ -202,15 +212,15 @@ function handleSetCreationFromJSON(){
 		$missings = checkSingleSetForNull($db, $setcode);
 
 		if (sizeof($missings)){
-			message(implode($missings, " --"));
-			message("\n early return!");
+			msg(implode($missings, " --"));
+			msg("\n early return!");
 			return;
-		} else message("all fine");
+		} else msg("all fine");
 	}
 }
 
 function insertSetIntoSets($db, $data, $setcode){
-	message("insertSetIntoSets for set ".$setcode);
+	msg("insertSetIntoSets for set ".$setcode);
 
 	$stmt = $db->connection->prepare(
 			"INSERT INTO 1sets 
@@ -229,7 +239,7 @@ function insertSetIntoSets($db, $data, $setcode){
 }
 
 function insertCardsIntoCardsTable($db, $json, $setcode){
-	message("insertCardsIntoCardsTable");
+	msg("insertCardsIntoCardsTable");
 
 	$entries = 0;
 
@@ -254,27 +264,27 @@ function insertCardsIntoCardsTable($db, $json, $setcode){
 		//$inserts[] = $card->name;
 	};
 
-	message("inserted from file ".$setcode." to allCards, ".$entries." entries");
+	msg("inserted from file ".$setcode." to allCards, ".$entries." entries");
 	//implode($inserts, ", ");
 }
 
 function recreateSubTable($db, $setcode){
-	message("recreateSubTable");
+	msg("recreateSubTable");
 
 	$sql = "DROP TABLE IF EXISTS ".$setcode;
-	//message($sql);
+	//msg($sql);
 	$db->connection->query($sql);
 
 	$sql = "create table ".$setcode." (id int(5) primary key AUTO_INCREMENT, cardid int(5) default 0, cardname varchar(100) default '' not null, baseAvail int(5) default 0 not null, basePrice decimal(5, 2) default 0 not null, foilAvail int(5) default 0 not null, foilPrice decimal(5, 2) default 0 not null, date date not null)";
 
 	$db->connection->query($sql);
-	message("CREATE TABLE ".$setcode);
+	msg("CREATE TABLE ".$setcode);
 }
 
 
 
 function JSONTOSQL($db, $json, $setcode){
-	message("new JSONTSQL");
+	msg("new JSONTSQL");
 
 	$stmt = $db->connection->prepare(
 		"SELECT id FROM 1cards WHERE setcode = :setcode AND cardname = :cardname
@@ -317,7 +327,7 @@ function JSONTOSQL($db, $json, $setcode){
 	}
 
 	if (sizeof($errors)){
-		message(implode($errors, " -- "));
+		msg(implode($errors, " -- "));
 		//die();
 	}
 
@@ -329,7 +339,7 @@ function JSONTOSQL($db, $json, $setcode){
 	");
 	//$stmt->bindParam(":setcode", $setcode);
 
-	message("all cards id'ed, filling table ".$setcode);
+	msg("all cards id'ed, filling table ".$setcode);
 
 	foreach ($json->content as $day){
 
@@ -348,12 +358,12 @@ function JSONTOSQL($db, $json, $setcode){
 		}
 	}
 
-	message("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
+	msg("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
 	//die();
 }
 
 function xJSONTOSQL($db, $json, $setcode){
-	message("old JSONTSQL");
+	msg("old JSONTSQL");
 
 	$stmt = $db->connection->prepare(
 		"INSERT INTO ".$setcode." 
@@ -363,7 +373,7 @@ function xJSONTOSQL($db, $json, $setcode){
 	");
 	$stmt->bindParam(":setcode", $setcode);
 
-	message("filling table ".$setcode);
+	msg("filling table ".$setcode);
 
 	foreach ($json->content as $day){
 
@@ -381,12 +391,12 @@ function xJSONTOSQL($db, $json, $setcode){
 		}
 	}
 
-	message("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
+	msg("done, inserted: ".(sizeof($json->content) * sizeof($json->content[sizeof($json->content)-1]->data))." rows");
 	return;
 }
 
 function recreateAllCardsTable(){
-	message("recreateAllCardsTable");
+	msg("recreateAllCardsTable");
 	$db = DB::app();
 	$sql = "DROP TABLE IF EXISTS 1cards";
 	DB::app()->connection->query($sql);
@@ -556,7 +566,7 @@ function deleteFromWithin($amountToDelete){
 		for ($i = sizeof($json->content)-1; $i >= 0 ; $i--){
 			for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
 				if ($json->content[$i]->data[$j]->name == "Cross Worlds Booster Box"){
-					//message($data->content[$i]->date . " index: ".$i);
+					//msg($data->content[$i]->date . " index: ".$i);
 					array_splice($json->content, $i, 1);
 					break;
 				}
@@ -567,7 +577,7 @@ function deleteFromWithin($amountToDelete){
 		for ($i = sizeof($json->content)-1; $i >= 0 ; $i--){
 			for ($j = 0; $j < sizeof($json->content[$i]->data); $j++){
 				if ($json->content[$i]->data[$j]->name ==  "Cross Worlds Booster Box"){
-					message($json->content[$i]->date . " index: ".$i);
+					msg($json->content[$i]->date . " index: ".$i);
 					die();
 				}
 			}

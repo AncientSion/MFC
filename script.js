@@ -65,18 +65,24 @@ class Charter {
 	getOthers(cardName){
 		$(".reprints").empty();
 		
-		var results = [];
+		let results = [];
 		
 		for (let i = 0; i < this.data.length; i++){
 			for (let j = 0; j < this.data[i].cards.length; j++){
-				if (this.data[i].cards[j].cardname == cardName){
+				if (cardName == this.data[i].cards[j].cardname.substr(0, cardName.length)){
 					results.push(this.data[i].setcode);
 					break;
 				}
+
+			/*	if (this.data[i].cards[j].cardname == cardName){
+					results.push(this.data[i].setcode);
+					break;
+				}
+			*/
 			}
 		}
 		
-		var divs = [];
+		let divs = [];
 		
 		for (let i = 0; i < results.length; i++){
 			$(".reprints").append(
@@ -205,6 +211,7 @@ class Charter {
 		setcode = setcode.replace(/ /g, "-");
 		setcode = setcode.replace(/:/g, "");
 		setcode = setcode.replace(/-- /g, "");
+		setcode = setcode.replace(/'/g, "");
 		cardname = cardname.replace(/ /g, "-");
 		cardname = cardname.replace(/'/g, "");
 		cardname = cardname.replace(/,/g, "");
@@ -416,6 +423,13 @@ class Charter {
 		})
 	}
 	
+	addNewRow(){
+		let table = $(".newEntryTable");
+		let row = table.find(".newEntryBlank").clone();
+			row.removeClass().find("div").addClass("search");
+			table.append(row)
+		this.initCardSearchInputs(row)
+	}
 
 	addSetAutoComplete(element){
 		var tags = [];
@@ -425,6 +439,7 @@ class Charter {
 			tags.push(this.data[i].setname);
 		}
 		$(element).find(".setSearch").autocomplete({source: tags});
+		//$(element).find(".setSearch").val("MHZ");
 	}
 
 	getPriceData(screen, setcode, cardname){
@@ -512,7 +527,7 @@ class Charter {
 	addSingleFavorite($element){
 		console.log("addSingleFavorite");
 		let set = $element.closest(".moveTable").find(".setName").html();
-		let card = $element.parent().find("a").first().html();
+		let card = $element.parent().parent().find("a").first().html();
 		let isFoil = $(".upper").find("input:radio").eq(0).attr("checked") == "checked" ? 1 : 0;
 		$element.hide();
 		this.postInsertFavs([set], [card], [isFoil]);
@@ -557,6 +572,46 @@ class Charter {
 		} return false;
 	}
 
+	analyze(){
+		console.log("analyze");
+		$(".resultWrapper").remove();
+
+		let codes = [];
+		$(".setSearch.ui-autocomplete-input").each(function(){
+			let val = $(this).val();
+			if (val.length <= 2){return;}
+			if (val.length >= 5){val = charter.getSetCodeBySetName(val);}
+			codes.push(val);
+		});
+		console.log(codes);
+
+		let format = $("select :selected").text();
+
+		let options = {
+			"topCards": $(".option.topCards input:checkbox").prop("checked") ? $(".option.topCards input[type=number]").val() : 0,
+			"minCardShowing": $(".option.minCardShowing input:checkbox").prop("checked") ? $(".option.minCardShowing input[type=number]").val() : 0,
+			"maxCardShowing": $(".option.maxCardShowing input:checkbox").prop("checked") ? $(".option.maxCardShowing input[type=number]").val() : 0,
+			"minArchetype": $(".option.minArchetype input:checkbox").prop("checked") ? $(".option.minArchetype input[type=number]").val() : 0
+		}
+		$.ajax({
+            type: "POST",
+            url: "new.php",
+            datatype: "json",
+            data: {
+                type: "analyzeFolder",
+                depth: $(".option.recentTours input").val(),
+                codes: codes,
+                format: format,
+                options: options
+            },
+            success: function(data){
+            	$(document.body).append(data);
+				//console.log(data);
+            },
+            error: function(){console.log("error")},
+        });
+	}
+
 	postInsertFavs(sets, cards, isFoil){
 		console.log("postInsertFavs");
         $.ajax({
@@ -564,24 +619,29 @@ class Charter {
             url: "favs.php",
             datatype: "json",
             data: {
-                    type: "addNewFavs",
-                    sets: sets,
-                    cards: cards,
-                    isFoil: isFoil
+                type: "addNewFavs",
+                sets: sets,
+                cards: cards,
+                isFoil: isFoil
                 },
             success: function(data){
-				if (charter.siteIsFavorites()){
-	            	$(".newEntryTable tbody tr").each(function(i){
-	            		if (!i){return;}
-	            		$(this).remove();
-	 				})
-	            	addNewRow();
+            	if (data == "added!"){
+					if (charter.siteIsFavorites()){
+		            	$(".newEntryTable tbody tr").each(function(i){
+		            		if (!i){return;}
+		            		$(this).remove();
+		 				})
+		            	addNewRow();
+					}
+					else {
+						$("input.posted").each(function(){
+							//$(this).removeClass().addClass("added").hide();
+							$(this).removeClass().prop("disabled", true);
+						})
+					}
 				}
 				else {
-					$("input.posted").each(function(){
-						//$(this).removeClass().addClass("added").hide();
-						$(this).removeClass().prop("disabled", true);
-					})
+					console.log("error");
 				}
             },
             error: function(){console.log("error")},
@@ -605,7 +665,7 @@ class Charter {
 	            		if (!i){return;}
 	            		$(this).remove();
 	 				})
-	            	addNewRow();
+	            	charer.addNewRow();
 				}
 				else {
 					$("input.posted").each(function(){

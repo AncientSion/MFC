@@ -1,12 +1,24 @@
 <?php
 
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include(__DIR__."/simple_html_dom.php");
 include(__DIR__."/server/db.php");
+
+header('Content-Type: text/html; charset=utf-8');
+define ("LR", php_sapi_name() == "cli" ? "\n" : "</br>");
+define("CONTEXT", stream_context_create(
+	    array(
+	        "http" =>
+				array(
+				   "header" => "Content-Type: application/x-www-form-urlencoded\r\n"."User-Agent: AS-B0T"
+				)
+			)
+	)
+);
+
 
 
 function requestCardText($cardname, $set){
@@ -27,7 +39,7 @@ function getMKMURL($set, $card){
 	
 	if (strlen($set) > 5 && substr($set, strlen($set)-5, 5) == "Boxes"){
 		$base = "https://www.cardmarket.com/en/".substr($set, 0, strlen($set)-6)."/Products/Booster+Boxes/";
-		$card = str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))));
+		$card = str_Replace(")", "", str_replace("(", "", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "", preg_replace("/,/", "", $card))))));
 		return $base.$card;
 	}
 	else {
@@ -36,7 +48,7 @@ function getMKMURL($set, $card){
 		//debug($set);
 		$card = str_replace("ö", "oe", str_replace("ä", "ae", str_replace("ü", "ue", $card)));
 		$card = str_replace("-/-", "-", str_replace("-//", "", preg_replace("/ /", "-", preg_replace("/'/", "-", preg_replace("/,/", "", $card)))));
-		$card = str_replace(":", "", $card);
+		$card = str_replace(")", "", str_replace("(", "", str_replace(":", "", $card)));
 		//echo $card."</br>";
 		$url = $base.$set."/".$card;
 		return $url;
@@ -170,7 +182,7 @@ function getForm($get){
 	$html .= "</div>";
 	$html .= "</div>";
 
-	$availChangeMax = 14;
+	$availChangeMax = 0;
 	if (sizeof($get)){$availChangeMax = $get["availChangeMax"];}
 	$html .="<div class='inputContainer'>";
 	$html .="<div id='availChangeMax'># Max Change</div>";
@@ -331,7 +343,8 @@ function logShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvail, $min
 }
 
 function isValidSetForSearchOptions($set, $foil){
-	if ($set["foil"] && $foil || $set["nonfoil"] && !$foil){
+	//var_export($set); echo LR; return true;
+	if ($set["lastPull"] != "0000-00-00" && ($set["foil"] && $foil || $set["nonfoil"] && !$foil)){
 		return true;
 	}
 	//echo "skipping ".$set["setname"];
@@ -360,7 +373,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 		}
 	}
 
-
+	//var_export($codes); return;
 
 	$data = $db->getAllPickedCardsForShakersFromDB($codes, $rarities);
 	$db->getBulkChartData($codes, $data, $depth);
@@ -372,6 +385,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	$allData = array();
 
 	for ($i = 0; $i < sizeof($data); $i++){
+		if (!(isset($data[$i][0]))){continue;}
+		//if (sizeof($data[$i][0]["points"]) != 1){continue;}
 
 		$extract = array(
 			"setname" => $setnames[$i]["setname"],
@@ -383,7 +398,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 
 		//var_export($extract);
 		//echo $maxAvail;
-		//message(sizeof($data[$i]));
+		//msg(sizeof($data[$i]));
 
 		for ($j = sizeof($data[$i])-1; $j >= 0; $j--){
 			$splice = 0;
@@ -397,12 +412,12 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 			else if ($maxPrice && ((!$foil && $last["basePrice"] > $maxPrice) || ($foil && $last["foilPrice"] > $maxPrice))){$splice = 1;}
 
 			if ($splice){
-				//message("splicing ".$data[$i][$j]["cardname"].", avail: ".$last["foilAvail"]);
+				//msg("splicing ".$data[$i][$j]["cardname"].", avail: ".$last["foilAvail"]);
 				array_splice($data[$i], $j, 1);
 			}
 		}
 
-	//	message(sizeof($data[$i]));
+	//	msg(sizeof($data[$i]));
 		$extract["shakers"] = $data[$i];
 		$allData[] = $extract;
 	}
@@ -420,9 +435,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 	$stackDisplay = ($stackDisplay && $depth && $depth < 11);
 
 	$time += microtime(true);
-	debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
-
-
+	//debug("Script Execution Completed; TIME:".round($time, 2)." seconds, memory: ".getMemory());
+	echo("request completed; TIME:".round($time, 2)." seconds, memory: ".getMemory().LR);
 	echo buildTables($allData, $foil, $compareType, $availChangeMin, $availChangeMax, $minPrice, $maxPrice, $plusminus, $stackDisplay, $skipUnchanged);
 }
 
@@ -441,15 +455,29 @@ function setChangeValue(&$card, $forFoil){
 	$absPriceChange = $card["points"][sizeof($card["points"])-1][$props[1]] - $card["points"][0][$props[1]];
 
 
-	//message($card["cardname"]); message($absPriceChange); message($card["points"][0][$props[1]]);
+	//msg($card["cardname"]); msg($absPriceChange); msg($card["points"][0][$props[1]]);
 	$pctStockChange = $card["points"][0][$props[0]] != 0 ? round($absStockChange / $card["points"][0][$props[0]] * 100, 2) : 0;
 	$pctPriceChange = $card["points"][0][$props[1]] != 0 ? round($absPriceChange / $card["points"][0][$props[1]] * 100, 2) : 0;
 
 	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
 
+/*	if (!(isset($card[$props[1]]))){
+		//echo "a".LR;
+	//	var_export($card); die();
+	//	var_export($card["foilAvail"]); die();
+		foreach ($card as $key => $value){
+			var_export($key);
+			echo LR;
+		}
+		die();
+	}
+*/
+	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
+
 	$card[$props[0]."Change"] = array($absStockChange, $pctStockChange);
 	$card[$props[1]."Change"] = array($absPriceChange, $pctPriceChange);
 
+	//var_export($card["basePrice"]); die();
 	return;
 }
 
@@ -531,7 +559,12 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 			$card = $allSets[$i]["shakers"][$j];
 
 			//unset($card["points"]);
-			//var_export($card); die();
+			//echo $price.LR;
+			//foreach ($card as $key => $value){
+			//	echo $key." => ".$value.LR;
+			//}
+			//var_export($card);
+			//die();
 			$relChange = $card[$volChange][$index];
 			//echo $relChange; die();
 			
@@ -622,7 +655,7 @@ function writeAndClose($db, $setcode, $date, $pulldata){
 
 	if (!$success){
 		$db->connection->rollback();
-		message("error, rolling back");
+		msg("error, rolling back");
 		return false;
 	}
 	$db->connection->commit();
@@ -641,8 +674,13 @@ function getContext(){
 }
 
 
-function message($print){
-	print_r("\n".$print);
+function msg($print){
+
+	echo $print.LR;
+	return;
+	$lr = "\n";
+	if (php_sapi_name() != 'cli'){$lr = "</br>";}
+	print_r($lr.$print);
 	//echo $print."</br>";
 }
 
@@ -660,30 +698,29 @@ function crawlBaseSet($db, $context, $pull){
 		$page++;
 		$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($pull["setname"])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
 		$url .= "&site=".$page;
-		message($url);
+		//msg($url);
 
 		$html = file_get_html($url, false, $context);// $GLOBALS["requests"]++;
 
 		if (!$html){
-			message("NO HTML ! ".$pull["setcode"]);
+			msg("NO HTML ! ".$pull["setcode"]);
 			sleep(5);
 			$html = file_get_html($url, false, $context);
 
-			if (!$html){message("still not!"); die();}
+			if (!$html){msg("still not!"); die();}
 		}
 
 		if (!$maxPages){
 			$dropdown = $html->find("div.dropup > div.dropdown-menu", 0);
 			$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
-			//message("pages ".$maxPages); $page = $maxPages -1; continue;
+			//msg("pages ".$maxPages); $page = $maxPages -1; continue;
 		}
-
 
 		$rows = $html->find(".table-body", 0)->children();
 
 		for ($k = 0; $k < sizeof($rows); $k++){
 			$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->plaintext;
-			//message("pulling row $k with name $name ");
+			//msg("pulling row $k with name $name ");
 			$baseAvail = 0;
 			$basePrice = 0.00;
 			$foilAvail = 0;
@@ -752,7 +789,7 @@ function crawlGameBoxes($db, $context, $pull){
 		}
 		
 		if (sizeof($rows) < 50){
-			message("last page");
+			msg("last page");
 			break;
 		}
 	}

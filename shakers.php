@@ -35,11 +35,17 @@
 			echo "<div class='mainContainer'>
 				<div class='contInnerWrapper'>
 					<div class='container'>
-						<canvas id='foilAvailCanvas'</canvas>
+						<canvas id='basePriceCanvas'</canvas>
+					</div>
+					<div class='container'>
+						<canvas id='baseAvailCanvas'</canvas>
 					</div>
 					<div id='card'></div>
 					<div class='container'>
-						<canvas id='baseAvailCanvas'</canvas>
+						<canvas id='foilPriceCanvas'</canvas>
+					</div>
+					<div class='container'>
+						<canvas id='foilAvailCanvas'</canvas>
 					</div>
 				</div>
 			</div>";
