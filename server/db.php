@@ -85,17 +85,9 @@
 				$code = $stmt->fetch(PDO::FETCH_ASSOC);
 				$names[] = $code;
 			}
-<<<<<<< HEAD
-
 			return $names;
 		}
 
-=======
-
-			return $names;
-		}
-
->>>>>>> dec3a237e2840f890d043586af180e1a02dc21cd
 		public function getAllSets(){
 			$stmt = $this->connection->prepare("SELECT * FROM 1sets");
 			$stmt->execute();

@@ -386,10 +386,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 
 	for ($i = 0; $i < sizeof($data); $i++){
 		if (!(isset($data[$i][0]))){continue;}
-<<<<<<< HEAD
-=======
+
 		//if (sizeof($data[$i][0]["points"]) != 1){continue;}
->>>>>>> dec3a237e2840f890d043586af180e1a02dc21cd
 
 		$extract = array(
 			"setname" => $setnames[$i]["setname"],
