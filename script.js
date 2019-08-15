@@ -559,11 +559,13 @@ class Charter {
 
 	deleteSingleFavorite(element){
 		console.log("deleteSingleFavorite");
-		let name = $(element).closest(".mainContainer").attr("class");
+		let cont = $(element).closest(".mainContainer")
+		let name = cont.attr("class");
 		let id = name.substr(2, name.indexOf(" ")-2)*1;
 		//$element.addClass("posted");
 		//return;
 		this.postDeleteFavs([id]);
+		$(cont).remove();
 	}
 
 	siteIsFavorites(){
@@ -583,32 +585,52 @@ class Charter {
 			if (val.length >= 5){val = charter.getSetCodeBySetName(val);}
 			codes.push(val);
 		});
-		console.log(codes);
 
 		let format = $("select :selected").text();
 
 		let options = {
-			"topCards": $(".option.topCards input:checkbox").prop("checked") ? $(".option.topCards input[type=number]").val() : 0,
-			"minCardShowing": $(".option.minCardShowing input:checkbox").prop("checked") ? $(".option.minCardShowing input[type=number]").val() : 0,
-			"maxCardShowing": $(".option.maxCardShowing input:checkbox").prop("checked") ? $(".option.maxCardShowing input[type=number]").val() : 0,
-			"minArchetype": $(".option.minArchetype input:checkbox").prop("checked") ? $(".option.minArchetype input[type=number]").val() : 0
+			"topCards": $(".option.topCards input:checkbox").prop("checked") ? $(".option.topCards input[type=number]").val()*1 : 0,
+			"minCardShowing": $(".option.minCardShowing input:checkbox").prop("checked") ? $(".option.minCardShowing input[type=number]").val()*1 : 0,
+			"maxCardShowing": $(".option.maxCardShowing input:checkbox").prop("checked") ? $(".option.maxCardShowing input[type=number]").val()*1 : 0,
+			"minArchetype": $(".option.minArchetype input:checkbox").prop("checked") ? $(".option.minArchetype input[type=number]").val()*1 : 0
 		}
+
+		let depth = $(".option.recentTours input").val();
 		$.ajax({
             type: "POST",
             url: "new.php",
             datatype: "json",
             data: {
                 type: "analyzeFolder",
-                depth: $(".option.recentTours input").val(),
+                depth: depth*1,
                 codes: codes,
                 format: format,
                 options: options
             },
             success: function(data){
             	$(document.body).append(data);
-				//console.log(data);
             },
-            error: function(){console.log("error")},
+            error: function(){
+            	console.log("error")
+            },
+        });
+	}
+
+	addRecentTours(format){
+		$.ajax({
+            type: "POST",
+            url: "new.php",
+            datatype: "json",
+            data: {
+                type: "getTours",
+                format: format
+            },
+            success: function(data){
+            	$("#tourList").empty().append(data);
+            },
+            error: function(){
+            	console.log("error")
+            },
         });
 	}
 

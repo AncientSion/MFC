@@ -86,7 +86,8 @@ function showPic(ele){
                     url += "/tooltip";
 
                 img = document.createElement('img');
-                img.style.height = $(".mainContainer").height()-20;
+               // img.style.height = $(".mainContainer").height()-20;
+                img.style.height = 150;
                 img.src = url;
                 img.onload = function(){
                     $("#card").empty().append($("<div>").append($(img)));

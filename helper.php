@@ -18,12 +18,11 @@ $time += microtime(true);
 
 
 
-
 function handleNewSetCreation(){
 	$db = DB::app();
 	$context = getContext();
 
-	$setcode = "M20";
+	$setcode = "C19";
 
 	echo("handleNewSetCreation: ".$setcode.LR);
 
@@ -34,7 +33,7 @@ function handleNewSetCreation(){
 	$set = array(
 		"id" => 0,
 		"setcode" => $setcode,
-		"setname" => "Core 2020",
+		"setname" => "Commander 2019",
 		"foil" => 1,
 		"nonfoil" => 1,
 		"lastPull" => "0000-00-00",
@@ -106,18 +105,20 @@ function checkAllForNull(){
 	$missings = array();
 
 	foreach ($tables as $table){
+		if ($table["Tables_in_crawl"] != "jrw"){continue;}
 		if ($db->isNoSetTable($table['Tables_in_crawl'])){continue;}
-		//msg("checking ".$table['Tables_in_crawl']);
+		msg("checking ".$table['Tables_in_crawl']);
 
+		//	$query = "SELECT * FROM ".$table['Tables_in_crawl']." WHERE cardid IS NULL";
 		$query = "SELECT * FROM ".$table['Tables_in_crawl']." WHERE cardid IS NULL";
 		$stmt = $db->connection->prepare($query);
 		$stmt->execute();
 
 		$subResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		if (sizeof($subResults)){
-			echo "error in ".$table['Tables_in_crawl'].": ".sizeof($subResults).LR;
+			echo "errors in ".$table['Tables_in_crawl'].": ".sizeof($subResults).LR;
 			foreach ($subResults as $entry){
-				print_r($entry); break;
+				print_r($entry["id"]." ".$entry["cardname"].LR);
 			}
 		}
 	}

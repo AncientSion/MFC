@@ -81,6 +81,7 @@ function getForm($get){
 	$html .='<div class="lower"><a href="charts.php" target="_blank">Single lookup</a></div>';
 	$html .='<div class="lower"><a href="favs.php" target="_blank">Favs</a></div>';
 	$html .='<div class="lower"><a href="helper.php" target="_blank">help</a></div>';
+	$html .='<div class="lower"><a href="new.php" target="_blank">tours</a></div>';
 	$html .='<div class="lower"><input type="button" value="hide" onclick="toggleUI()"></div>';
 	$html .='<div class="lower"><input type="button" value="load pics" onclick="charter.toggleLoadPics()"></div>';
 	$html .="</div>";
@@ -407,7 +408,8 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 			//var_export($data[$i][$j]);
 			$last = $data[$i][$j]["points"][sizeof($data[$i][$j]["points"])-1];
 
-			if ($minAvail && ((!$foil && $last["baseAvail"] < $minAvail) || ($foil && $last["foilAvail"] < $minAvail))){$splice = 1;}
+			if (sizeof($data[$i][$j]["points"]) == 1){$splice = 1;}
+			else if ($minAvail && ((!$foil && $last["baseAvail"] < $minAvail) || ($foil && $last["foilAvail"] < $minAvail))){$splice = 1;}
 			else if ($maxAvail && ((!$foil && $last["baseAvail"] > $maxAvail) || ($foil && $last["foilAvail"] > $maxAvail))){$splice = 1;}
 			else if ($minPrice && ((!$foil && $last["basePrice"] < $minPrice) || ($foil && $last["foilPrice"] < $minPrice))){$splice = 1;}
 			else if ($maxPrice && ((!$foil && $last["basePrice"] > $maxPrice) || ($foil && $last["foilPrice"] > $maxPrice))){$splice = 1;}
@@ -442,6 +444,7 @@ function requestAllShakers($codes, $rarities, $foil, $depth, $minAvail, $maxAvai
 }
 
 function setChangeValue(&$card, $forFoil){
+	//if (sizeof($card["points"]) == 1){return;} 
 
 	if (!$forFoil){
 		$props = array("baseAvail", "basePrice");
@@ -460,20 +463,8 @@ function setChangeValue(&$card, $forFoil){
 	$pctStockChange = $card["points"][0][$props[0]] != 0 ? round($absStockChange / $card["points"][0][$props[0]] * 100, 2) : 0;
 	$pctPriceChange = $card["points"][0][$props[1]] != 0 ? round($absPriceChange / $card["points"][0][$props[1]] * 100, 2) : 0;
 
-	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
-	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
 
-/*	if (!(isset($card[$props[1]]))){
-		//echo "a".LR;
-	//	var_export($card); die();
-	//	var_export($card["foilAvail"]); die();
-		foreach ($card as $key => $value){
-			var_export($key);
-			echo LR;
-		}
-		die();
-	}
-*/
+	$card[$props[0]] = array($card["points"][sizeof($card["points"])-1][$props[0]], $card["points"][0][$props[0]]);
 	$card[$props[1]] = array($card["points"][sizeof($card["points"])-1][$props[1]], $card["points"][1][$props[1]]);
 
 	$card[$props[0]."Change"] = array($absStockChange, $pctStockChange);
@@ -560,15 +551,9 @@ function buildTables($allSets, $foil, $compareType, $availChangeMin, $availChang
 		for ($j = 0; $j < sizeof($allSets[$i]["shakers"]); $j++){
 			$card = $allSets[$i]["shakers"][$j];
 
-			//unset($card["points"]);
-			//echo $price.LR;
-			//foreach ($card as $key => $value){
-			//	echo $key." => ".$value.LR;
-			//}
-			//var_export($card);
-			//die();
+			//if (!(isset($card[$volChange][$index]))){echo $card["cardname"]; continue;}
 			$relChange = $card[$volChange][$index];
-			//echo $relChange; die();
+
 			
 			if ($card[$volChange][0] > 0){$class = "green";} else $class = "red";
 
@@ -693,16 +678,20 @@ function crawlBaseSet($db, $context, $pull){
 	$set = array();
 	$exit = 0;
 	$page = 0;
-	$maxPages = 0;
 	$prop = "data-original-title";
 
-	while(!$exit){
-		$page++;
-		$url = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($pull["setname"])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
-		$url .= "&site=".$page;
-		//msg($url);
+	$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Singles/" . doReplace($pull["setname"])."?onlyAvailable=on&sortBy=locName_asc&perSite=50";
 
-		$html = file_get_html($url, false, $context);// $GLOBALS["requests"]++;
+	$html = file_get_html($baseUrl, false, $context);
+	$text = $html->find("#pagination", 0)->find(".mx-1", 0)->innertext;
+	$maxPages = substr($text, strlen($text)-1, 1);
+
+	//echo ("pages in ".$pull["setcode"].": ".$maxPages).LR;
+	
+	for ($j = 1; $j <= $maxPages; $j++){
+		$url = $baseUrl."&site=".$j;
+		//echo $url; die();
+		$html = file_get_html($url, false, $context);	
 
 		if (!$html){
 			msg("NO HTML ! ".$pull["setcode"]);
@@ -710,12 +699,6 @@ function crawlBaseSet($db, $context, $pull){
 			$html = file_get_html($url, false, $context);
 
 			if (!$html){msg("still not!"); die();}
-		}
-
-		if (!$maxPages){
-			$dropdown = $html->find("div.dropup > div.dropdown-menu", 0);
-			$maxPages = $dropdown ? sizeof($dropdown->children()) : 1;
-			//msg("pages ".$maxPages); $page = $maxPages -1; continue;
 		}
 
 		$rows = $html->find(".table-body", 0)->children();
@@ -750,17 +733,9 @@ function crawlBaseSet($db, $context, $pull){
 			$rarity = substr($rows[$k]->children(3)->find(".icon", 0)->{$prop}, 0, 1);
 			doAdd($name, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, $set);
 		}
-
-		if ($page >= $maxPages){
-			break;
-		}
-		else if ($page >= 15){
-			echo "ERROR \n\n";
-			$GLOBALS["errors"][] = $pull["setcode"];
-			break;
-		}
 	}
 
+	//die();
 	$html->clear();
 	unset($html);
 	return $set;
@@ -774,7 +749,7 @@ function crawlGameBoxes($db, $context, $pull){
 		$url = "https://www.cardmarket.com/en/".$game."/Products/Booster-Boxes?sortBy=name_asc&perSite=50";
 		$url .= "&site=".$j;
 
-		$html = file_get_html($url, false, $context);// $GLOBALS["requests"]++;
+		$html = file_get_html($url, false, $context);
 		$rows = $html->find(".table-body", 0)->children();
 
 		for ($k = 0; $k < sizeof($rows); $k++){
@@ -791,7 +766,7 @@ function crawlGameBoxes($db, $context, $pull){
 		}
 		
 		if (sizeof($rows) < 50){
-			msg("last page");
+			//msg("last page");
 			break;
 		}
 	}
@@ -803,13 +778,29 @@ function crawlGameBoxes($db, $context, $pull){
 
 function crawlFreeURL($db, $context, $pull){
 	
-	$set = array();	
-	$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
+	$set = array();
+
+	$baseURL = "";
+	switch ($pull["setcode"]){
+		case "_SET":
+			$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Sets?searchString=Sealed&sortBy=sellVolume_desc&perSite=50";
+			break;
+		case "_KOM":
+			$baseUrl = "https://www.cardmarket.com/en/Magic/Products/Search?idCategory=0&idExpansion=0&searchString=deck+set&onlyAvailable=on&idRarity=0&sortBy=name_asc&perSite=50";
+			break;
+	}
+			
+	//$url = $baseUrl."&site=".$j;
+	$html = file_get_html($baseUrl, false, $context);
+	$text = $html->find("#pagination", 0)->find(".mx-1", 0)->innertext;
+	$maxPages = substr($text, strlen($text)-1, 1);
+
 	
-	for ($j = 0; $j < 10; $j++){			
+	for ($j = 1; $j <= $maxPages; $j++){
 		$url = $baseUrl."&site=".$j;
-		$html = file_get_html($url, false, $context);// $GLOBALS["requests"]++;
+		$html = file_get_html($url, false, $context);
 		$rows = $html->find(".table-body", 0)->children();
+
 		for ($k = 0; $k < sizeof($rows); $k++){
 			$name = $rows[$k]->children(3)->children(0)->children(0)->children(0)->innertext;
 			$baseAvail = $rows[$k]->children(4)->children(0)->innertext;
@@ -821,17 +812,19 @@ function crawlFreeURL($db, $context, $pull){
 			}
 			doAdd($name, "S", $baseAvail, $basePrice, intval(0), floatval(0), $set);
 		}
+
 		
-		if (sizeof($rows) < 50){
-			echo "last page - ";
+	/*	if (sizeof($rows) < 50){
+			echo "last page - ".LR;
 			break;
 		}
-	}
+	*/}
 
 	$html->clear();
 	unset($html);
 	return $set;
 }
+
 
 function doAdd($cardname, $rarity, $baseAvail, $basePrice, $foilAvail, $foilPrice, &$set){
 	$set[] = array(

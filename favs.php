@@ -80,16 +80,19 @@
 				$id = "id".$fav['id'];
 				echo "<div class='".$id." mainContainer'>";
 
+				$setcode = $fav["setcode"];
+				$cardname = $fav["cardname"];
+
 				echo 
-					"<div class='fakeSearch'>
+					'<div class="fakeSearch">
 						<div>
-							<input type='form' value='".$fav["setcode"]."'>
-							<input type='form' value='".$fav["cardname"]."'>
-							<input type='button' value='Full' onclick=charter.linkToChartsPHP(this)>
-							<input type='button' value='MKM' onclick=charter.linkToMKM(this)>
-							<input type='button' value='DEL' onclick=charter.deleteSingleFavorite(this)>
+							<input type="form" value="'.$setcode.'">
+							<input type="form" value="'.$cardname.'">
+							<input type="button" value="Full" onclick=charter.linkToChartsPHP(this)>
+							<input type="button" value="MKM" onclick=charter.linkToMKM(this)>
+							<input type="button" value="DEL" onclick=charter.deleteSingleFavorite(this)>
 						</div>
-					</div>";
+					</div>';
 
 				if ($fav["isFoil"]){
 					echo $foil;

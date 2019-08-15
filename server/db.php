@@ -8,7 +8,7 @@
 		function __construct(){
 			if ($this->connection === null){
 				$access = array("root", 147147);
-				$this->connection = new PDO("mysql:host=localhost;dbname=crawl", $access[0],$access[1]);
+				$this->connection = new PDO("mysql:host=localhost;dbname=crawl", $access[0], $access[1]);
 				$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				$this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			}
@@ -190,11 +190,9 @@
 			$stmt = $this->connection->prepare("
 				SELECT * FROM 1sets WHERE lastPull < '$date' ORDER BY id ASC
 			");
-		//	$stmt = $this->connection->prepare("SELECT * FROM 1sets where setcode = 'CPR'");
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-			//$this->connection->query("UPDATE 1sets SET open = 0 WHERE id");
 			return $result;
 		}
 
