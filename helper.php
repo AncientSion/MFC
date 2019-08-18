@@ -22,7 +22,8 @@ function handleNewSetCreation(){
 	$db = DB::app();
 	$context = getContext();
 
-	$setcode = "C19";
+	$setcode = "C13";
+	$setname = "Commander 2013";
 
 	echo("handleNewSetCreation: ".$setcode.LR);
 
@@ -33,7 +34,7 @@ function handleNewSetCreation(){
 	$set = array(
 		"id" => 0,
 		"setcode" => $setcode,
-		"setname" => "Commander 2019",
+		"setname" => $setname,
 		"foil" => 1,
 		"nonfoil" => 1,
 		"lastPull" => "0000-00-00",
